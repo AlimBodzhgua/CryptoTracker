@@ -1,7 +1,3 @@
-
-
-export const AppRouter = () => {
-	return (
-		<div></div>
-	)
-}
+export const AppRouter = () => (
+    <div />
+);

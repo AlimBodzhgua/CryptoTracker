@@ -1,0 +1,23 @@
+
+.Navbar {
+	height: var(--navbar-height);
+	width: calc(100vw - var(--sidebar-width));
+	padding: 0 15px;
+	//width: 100%;
+
+	position: fixed;
+	right: 0;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	background-color: var(--navbar-bg-color);
+
+
+	.auth {
+		display: flex;
+		justify-content: space-between;
+		gap: 15px
+	}
+}

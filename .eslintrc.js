@@ -24,7 +24,7 @@ module.exports = {
         'no-console': 'warn',
         'no-tabs': 'off',
         'no-undef': 'off',
-        'no-unused-vars': 'warn',
+        'no-unused-vars': 'off',
         'no-shadow': 'off',
         'no-underscore-dangle': 'off',
         'no-mixed-spaces-and-tabs': 'off',

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { App } from './App';
 import { createReduxStore } from './redux/config/store';
 
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root')!);
 
 const store = createReduxStore();
 

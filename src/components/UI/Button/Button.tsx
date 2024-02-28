@@ -11,7 +11,7 @@ export type ButtonThemeType = keyof typeof ButtonTheme;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
-	theme: ButtonThemeType;
+	theme?: ButtonThemeType;
 	className?: string;
 }
 

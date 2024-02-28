@@ -1,3 +1,6 @@
+@import 'variables/global';
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,5 +8,6 @@
 }
 
 .app {
-	font-size: 14px;
+	font-size: 16px;
+	color: #fff
 }

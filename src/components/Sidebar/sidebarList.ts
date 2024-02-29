@@ -8,22 +8,22 @@ import { SidebarItemType } from './types';
 
 export const sidebarList: SidebarItemType[] = [
     {
-        text: t('Main'),
+        text: 'Main',
         path: RoutePath.main,
         Icon: MainLogo,
     },
     {
-        text: t('Coins'),
+        text: 'Coins',
         path: RoutePath.coins,
         Icon: CoinLogo,
     },
     {
-        text: t('News'),
+        text: 'News',
         path: RoutePath.news,
         Icon: NewsLogo,
     },
     {
-        text: t('Profile'),
+        text: 'Profile',
         path: RoutePath.profile,
         Icon: ProfileLogo,
     },

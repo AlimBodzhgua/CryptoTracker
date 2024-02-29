@@ -3,11 +3,6 @@
 	height: var(--navbar-height);
 	width: calc(100vw - var(--sidebar-width));
 	padding: 0 15px;
-	//width: 100%;
-
-	position: fixed;
-	right: 0;
-	top: 0;
 
 	display: flex;
 	justify-content: flex-end;

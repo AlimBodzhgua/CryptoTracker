@@ -10,8 +10,8 @@ interface MainPageProps {
 
 const MainPage: React.FC<MainPageProps> = ({ className }) => (
     <div className={classnames(classes.MainPage, className)}>
-        <Sidebar />
-        <Navbar />
+        {/* <Sidebar />
+        <Navbar /> */}
     </div>
 );
 

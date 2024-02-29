@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppLink } from 'components/UI/AppLink/AppLink';
 import classnames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { SidebarItemType } from '../types';
 import classes from './SidebarItem.module.scss';
 
@@ -11,6 +12,7 @@ interface SidebarItemProps {
 
 export const SidebarItem: React.FC<SidebarItemProps> = (props) => {
     const { item, className } = props;
+    const { t } = useTranslation();
 
     return (
         <AppLink
@@ -18,7 +20,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = (props) => {
             className={classnames(classes.SidebarItem, className)}
         >
             <item.Icon className={classes.icon} />
-            <div>{item.text}</div>
+            <div>{t(`${item.text}`)}</div>
         </AppLink>
     );
 };

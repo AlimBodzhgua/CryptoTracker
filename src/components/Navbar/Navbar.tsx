@@ -16,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
             <LangSwitcher />
             <div className={classes.auth}>
                 <div>{t('Sign up')}</div>
-                <div>{t('Sign in')}</div>
+                <div>{t('Login')}</div>
             </div>
         </nav>
     );

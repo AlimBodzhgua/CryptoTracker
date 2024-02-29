@@ -5,9 +5,19 @@
 	height: 100vh;
 
 	background-color: var(--sidebar-bg-color);
+
+	padding: 15px 17px;
+}
+
+.header {
+	font-size: 26px;
+	font-weight: 800;
+	color: #fff;
 }
 
 .menu {
 	display: flex;
 	flex-direction: column;
+
+	margin: 15px 0;
 }

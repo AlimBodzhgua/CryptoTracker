@@ -1,6 +1,7 @@
 import React from 'react';
+import { Sidebar } from 'components/Sidebar/Sidebar/Sidebar';
+import { Navbar } from 'components/Navbar/Navbar';
 import classnames from 'classnames';
-import { Button } from 'components/UI/Button/Button';
 import classes from './MainPage.module.scss';
 
 interface MainPageProps {
@@ -9,7 +10,8 @@ interface MainPageProps {
 
 const MainPage: React.FC<MainPageProps> = ({ className }) => (
     <div className={classnames(classes.MainPage, className)}>
-        MainPage
+        <Sidebar />
+        <Navbar />
     </div>
 );
 

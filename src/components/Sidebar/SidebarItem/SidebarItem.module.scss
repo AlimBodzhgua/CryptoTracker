@@ -1,0 +1,14 @@
+.SidebarItem {
+	display: flex;
+	gap: 8px;
+
+	margin-bottom: 8px;
+
+	&:hover {
+		background-color: darken(black, 5%);
+	}
+}
+
+.icon {
+	fill: #fff
+}

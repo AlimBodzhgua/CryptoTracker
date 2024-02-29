@@ -1,7 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
-import { AppLink } from 'components/UI/AppLink/AppLink';
 import classes from './Sidebar.module.scss';
+import { sidebarList } from '../sidebarList';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {
 	className?: string;
@@ -9,17 +10,14 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ className }) => (
     <aside className={classnames(classes.Sidebar, className)}>
-        <h1>Coin Cap</h1>
+        <h1 className={classes.header}>Coin Cap</h1>
         <div className={classes.menu}>
-            <AppLink to=''>
-                <span>Coins</span>
-            </AppLink>
-            <AppLink to=''>
-                <span>News</span>
-            </AppLink>
-            <AppLink to=''>
-                <span>Profile</span>
-            </AppLink>
+            {sidebarList.map((item) => (
+                <SidebarItem
+                    key={item.path}
+                    item={item}
+                />
+            ))}
         </div>
     </aside>
 );

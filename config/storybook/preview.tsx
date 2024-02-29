@@ -1,5 +1,7 @@
-/* import React from 'react';
+import React from 'react';
 import { Preview } from '@storybook/react';
+import { BrowserDecorator } from '../../src/config/storybook/BrowserDecorator';
+import { StyleDecorator } from '../../src/config/storybook/StyleDecorator';
 
 const preview: Preview = {
     parameters: {
@@ -11,18 +13,10 @@ const preview: Preview = {
             },
         },
     },
-    decorators: [],
-};
-
-export default preview; */
-import { Preview } from '@storybook/react';
-
-const preview: Preview = {
-    parameters: {
-        controls: {
-            presetColors: [{ color: '#ff4785', title: 'Coral' }, 'rgba(0, 159, 183, 1)', '#fe4a49'],
-        },
-    },
+    decorators: [
+        BrowserDecorator,
+        StyleDecorator,
+    ],
 };
 
 export default preview;

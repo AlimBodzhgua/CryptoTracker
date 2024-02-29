@@ -7,13 +7,14 @@
 
 	position: fixed;
 	right: 0;
+	top: 0;
 
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 
 	background-color: var(--navbar-bg-color);
-
+	color: #fff;
 
 	.auth {
 		display: flex;

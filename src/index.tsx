@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { App } from './App';
 import { createReduxStore } from './redux/config/store';
+import 'config/i18n/i18n';
 
 const root = createRoot(document.getElementById('root')!);
 

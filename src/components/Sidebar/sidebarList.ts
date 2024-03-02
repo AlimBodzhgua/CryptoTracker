@@ -1,5 +1,4 @@
 import { RoutePath } from 'router/routeConfig';
-import { t } from 'i18next';
 import CoinLogo from 'assets/coin1.svg';
 import ProfileLogo from 'assets/profile.svg';
 import NewsLogo from 'assets/news.svg';

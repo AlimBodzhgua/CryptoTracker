@@ -1,14 +1,23 @@
 .SidebarItem {
 	display: flex;
+	align-self: stretch;
 	gap: 8px;
 
 	margin-bottom: 8px;
+	padding: 6px 12px;
+	border-radius: 4px;
+
+	transition: .1s linear background-color;
 
 	&:hover {
-		background-color: darken(black, 5%);
+		background-color: darken(#24484E, 7%);
 	}
 }
 
 .icon {
-	fill: #fff
+	fill: #fff;
+	padding: 0;
+
+	width: 24px;
+	height: 24px;
 }

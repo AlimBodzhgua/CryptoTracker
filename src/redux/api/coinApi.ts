@@ -1,43 +1,42 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { ICoin } from 'types/types';
 
 const API_KEY = 'coinranking2eb56d200a0d6048867e2e0f8fd62263c88205177c531252';
 
-const options = {
-    headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': API_KEY,
-    },
+const coinHeaders = {
+    'Content-Type': 'application/json',
+    'x-access-token': API_KEY,
 };
 
-export interface ICoin {
-	id: string;
-	name: string;
-	symbol: string;
-	icon: string;
-	price: string;
+interface CoinResponse {
+    status: string;
+    data: {
+        stats: Record<string, string | number>,
+        coins: ICoin[]
+    }
 }
 
 export const coinApi = createApi({
     reducerPath: 'coinApi',
-    // baseQuery: fetchBaseQuery({baseUrl: 'https://api.coinranking.com/v2'}),
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://api.coinranking.com/v2',
+        headers: coinHeaders,
+    }),
     tagTypes: ['Coin'],
     endpoints: (builder) => ({
         getCoins: builder.query<ICoin[], string>({
-            query: (limit) => `coins?${limit && `limit=${limit}`}`,
+            query: (limit) => ({
+                url: '/coins',
+                params: {
+                    limit,
+                },
+            }),
+            transformResponse: (response: CoinResponse) => response.data.coins,
         }),
         getCoinDetails: builder.query<ICoin, string>({
             query: (uuid) => `coin/${uuid}`,
         }),
-        getUsers: builder.query({
-            query: (limit = '') => ({
-                url: '/users',
-                params: {
-                    _limit: limit,
-                },
-            }),
-        }),
     }),
 });
 
-export const { useGetUsersQuery } = coinApi;
+export const { useGetCoinsQuery } = coinApi;

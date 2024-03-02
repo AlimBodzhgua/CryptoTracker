@@ -5,5 +5,11 @@
 	"Main": "Main",
 	"Coins": "Coins",
 	"News": "News",
-	"Profile": "Profile"
+	"Profile": "Profile",
+	"Name": "name",
+	"Price": "price",
+	"Change": "change",
+	"24h volume": "24h volume",
+	"Market cap": "market cap",
+	"Error fetching coins": "Error fetching coins"
 }

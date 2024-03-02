@@ -1,0 +1,43 @@
+
+.CoinItem {
+	border: 1px solid black;
+	padding: 5px 6px;
+
+	th {
+		padding: 10px 10px;
+	}
+
+	.rank {
+		border-right: 1px solid black;
+	}
+
+	.bigColumn {
+		display: flex;
+	}
+
+	.icon {
+		width: 28px;
+		height: 28px;
+
+		padding-right: 10px;
+	}
+
+	.name {
+		padding-right: 10px;
+	}
+
+	.symbol {
+		display: block;
+		border: 1px solid grey;
+		padding: 1px;
+		height: fit-content;
+	}
+
+	.positive {
+		color: #9ac555;
+	}
+
+	.negative {
+		color: #e55161;
+	}
+}

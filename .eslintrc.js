@@ -36,6 +36,8 @@ module.exports = {
         'jsx-quotes': ['warn', 'prefer-single'],
         'jsx-a11y/click-events-have-key-events': 'warn',
         'jsx-a11y/control-has-associated-label': 'off',
+        'array-callback-return': 'off',
+        "consistent-return": 'warn',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
         'indent': [2, 4],

@@ -1,8 +1,5 @@
-import { CountStateSchema } from '../reducers/countReducer';
-import { coinApi } from '../api/coinApi';
+import { CoinsStateSchema } from 'redux/slices/coinsSlice';
 
 export interface StateSchema {
-	count: CountStateSchema,
-
-	[coinApi.reducerPath]: ReturnType<typeof coinApi.reducer>,
+	coins: CoinsStateSchema,
 }

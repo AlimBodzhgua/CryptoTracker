@@ -1,10 +1,17 @@
-import React from 'react';
-import { useGetCoinsQuery } from 'redux/api/coinApi';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
+import { fetchCoins } from 'redux/actions/coinsActions';
+import {
+    selectCoins,
+    selectCoinsIsLoading,
+    selectCoinsError,
+} from 'redux/selectors/coinsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import classnames from 'classnames';
-import classes from './CoinTable.module.scss';
 import { CoinItem } from '../CoinItem/CoinItem';
+import classes from './CoinTable.module.scss';
+import { CoinsTableSkeleton } from './CoinsTableSkeleton';
 
 interface CoinTableProps {
 	className?: string;
@@ -12,8 +19,14 @@ interface CoinTableProps {
 
 export const CoinTable: React.FC<CoinTableProps> = ({ className }) => {
     const { t } = useTranslation();
-    const { data: coins, isLoading, error } = useGetCoinsQuery('12');
-    // const isLoading = true;
+    const dispatch = useAppDispatch();
+    const coins = useAppSelector(selectCoins);
+    const isLoading = useAppSelector(selectCoinsIsLoading);
+    const error = useAppSelector(selectCoinsError);
+
+    useEffect(() => {
+        dispatch(fetchCoins(12));
+    }, [dispatch]);
 
     if (error) {
         return (
@@ -22,31 +35,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({ className }) => {
     }
 
     if (isLoading) {
-        return (
-            <table className={
-                classnames(classes.table, className, { separate: isLoading })
-            }
-            >
-                <thead className={classes.header}>
-                    <tr className={classes.row}>
-                        <th><Skeleton width={95} height={30} /></th>
-                        <th><Skeleton width={95} height={30} /></th>
-                        <th><Skeleton width={95} height={30} /></th>
-                        <th><Skeleton width={95} height={30} /></th>
-                        <th><Skeleton width={95} height={30} /></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {new Array(12).fill(0).map(() => (
-                        <tr>
-                            <th colSpan={5}>
-                                <Skeleton width={650} height={35} />
-                            </th>
-                        </tr>
-				    ))}
-                </tbody>
-            </table>
-    	);
+        return <CoinsTableSkeleton />;
     }
 
     return (

@@ -1,19 +1,15 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
-import { countReducer } from '../reducers/countReducer';
-import { coinApi } from '../api/coinApi';
+import { coinsReducer } from '../slices/coinsSlice';
 
 export const createReduxStore = (initialState?: StateSchema) => {
     const rootReducer: ReducersMapObject<StateSchema> = {
-        count: countReducer,
-        [coinApi.reducerPath]: coinApi.reducer,
+        coins: coinsReducer,
     };
 
     const store = configureStore({
         reducer: rootReducer,
         preloadedState: initialState,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coinApi.middleware),
-
     });
 
     return store;

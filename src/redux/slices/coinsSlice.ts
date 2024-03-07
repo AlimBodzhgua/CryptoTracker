@@ -21,6 +21,14 @@ export const coinsSlice = createSlice({
         setCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.coins = action.payload;
         },
+        changeCurrency: (state, action: PayloadAction<number>) => {
+            state.coins = state.coins.map((coin) => ({
+                ...coin,
+                price: String(Number(coin.price) * action.payload),
+                marketCap: String(Number(coin.marketCap) * action.payload),
+                '24hVolume': String(Number(coin['24hVolume']) * action.payload),
+            }));
+        },
     },
     extraReducers: (builder) => {
         builder

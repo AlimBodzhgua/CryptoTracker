@@ -13,7 +13,9 @@
 
 	.auth {
 		display: flex;
-		justify-content: space-between;
-		gap: 15px
+		justify-content: flex-end;
+		gap: 15px;
+
+		width: 25%;
 	}
 }

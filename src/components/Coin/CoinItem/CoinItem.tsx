@@ -1,6 +1,7 @@
-import React from 'react';
-import classnames from 'classnames';
+import React, { memo } from 'react';
 import { ICoin } from 'types/types';
+import { useFormatter } from 'hooks/useFormatter';
+import classnames from 'classnames';
 import classes from './CoinItem.module.scss';
 
 interface CoinItemProps {
@@ -8,8 +9,9 @@ interface CoinItemProps {
 	className?: string;
 }
 
-export const CoinItem: React.FC<CoinItemProps> = (props) => {
+export const CoinItem: React.FC<CoinItemProps> = memo((props) => {
     const { coin, className } = props;
+    const formatter = useFormatter();
 
     return (
         <tr className={classnames(classes.CoinItem, className)}>
@@ -24,8 +26,7 @@ export const CoinItem: React.FC<CoinItemProps> = (props) => {
                 <div className={classes.symbol}>{coin.symbol}</div>
             </th>
             <th>
-                $
-                {coin.price}
+                {formatter.format(Number(coin.price))}
             </th>
             <th className={coin.change.startsWith('-')
                 ? classes.negative
@@ -35,13 +36,11 @@ export const CoinItem: React.FC<CoinItemProps> = (props) => {
                 %
             </th>
             <th>
-                $
-                {coin['24hVolume']}
+                {formatter.format(Number(coin['24hVolume']))}
             </th>
             <th>
-                $
-                {coin.marketCap}
+                {formatter.format(Number(coin.marketCap))}
             </th>
         </tr>
     );
-};
+});

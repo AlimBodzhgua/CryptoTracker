@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CoinTable } from 'components/Coin/CoinTable/CoinTable';
 import { Page } from 'components/UI/Page/Page';
+import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
+import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import classnames from 'classnames';
 import { useAppSelector } from 'hooks/redux';
 import { selectCoins } from 'redux/selectors/coinsSelectors';
@@ -11,27 +13,45 @@ interface CoinsPageProps {
 }
 
 const CoinsPage: React.FC<CoinsPageProps> = ({ className }) => {
-    const [value, setValue] = useState<string>('');
     const coins = useAppSelector(selectCoins);
 
-    useEffect(() => {
-        const searchedCoins = coins?.filter((coin) => {
-            if (coin.name.toLowerCase().includes(value.toLowerCase())) {
-                return coin;
-            }
-        });
-        console.log(searchedCoins);
-    }, [value]);
+    const onSortByName = () => {
+        const sortedCoins = [...coins].sort((a, b) => a.name.localeCompare(b.name));
+        console.log(sortedCoins);
+    };
+
+    const onSortByMarketCap = () => {
+        const sortedCoins = [...coins].sort((a, b) => (a.marketCap > b.marketCap ? -1 : 1));
+        console.log(sortedCoins);
+    };
+
+    const onSortByPrice = () => {
+        const sortedCoins = [...coins].sort((a, b) => (Number(a.price) > Number(b.price) ? -1 : 1));
+        console.log(sortedCoins);
+    };
+
+    const onSortByVolume = () => {
+        const sortedCoins = [...coins].sort((a, b) => (a['24hVolume'] > b['24hVolume'] ? -1 : 1));
+        console.log(sortedCoins);
+    };
 
     return (
         <Page className={classnames(classes.CoinsPage, className)}>
-            <div>
-                <input
-                    type='text'
-                    placeholder='Search Coins...'
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                />
+            <div className={classes.actions}>
+                <CoinsSearchBar />
+                <div className={classes.filterBar}>
+                    <h3>Sort by</h3>
+                    <Button
+                        theme={ButtonTheme.primary}
+                        onClick={onSortByName}
+                    >
+                        Name
+                    </Button>
+                    <Button onClick={onSortByMarketCap}>Market cap</Button>
+                    <Button onClick={onSortByPrice}>Price</Button>
+                    <Button onClick={onSortByVolume}>Volume</Button>
+                    <Button>Change</Button>
+                </div>
             </div>
             <CoinTable />
         </Page>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Sidebar } from 'components/Sidebar/Sidebar/Sidebar';
-import { Navbar } from 'components/Navbar/Navbar';
+import { Input } from 'components/UI/Input/Input';
+import SearchIcon from 'assets/search.svg';
 import classnames from 'classnames';
 import classes from './MainPage.module.scss';
 
@@ -10,8 +10,11 @@ interface MainPageProps {
 
 const MainPage: React.FC<MainPageProps> = ({ className }) => (
     <div className={classnames(classes.MainPage, className)}>
-        {/* <Sidebar />
-        <Navbar /> */}
+        {/*
+        <Sidebar />
+        <Navbar />
+        <Input addonBefore={<SearchIcon />}/>
+         */}
     </div>
 );
 

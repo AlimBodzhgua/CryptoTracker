@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import { fetchCoins } from 'redux/actions/coinsActions';
@@ -17,7 +17,7 @@ interface CoinTableProps {
 	className?: string;
 }
 
-export const CoinTable: React.FC<CoinTableProps> = ({ className }) => {
+export const CoinTable: React.FC<CoinTableProps> = memo(({ className }) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const coins = useAppSelector(selectCoins);
@@ -42,12 +42,12 @@ export const CoinTable: React.FC<CoinTableProps> = ({ className }) => {
         <table className={classnames(classes.table, className)}>
             <thead className={classes.header}>
                 <tr className={classes.row}>
-                    <th>#</th>
-                    <th>{t('Name')}</th>
-                    <th>{t('Price')}</th>
-                    <th>{t('Change')}</th>
-                    <th>{t('24h volume')}</th>
-                    <th>{t('Market cap')}</th>
+                    <th className={classes.colHeader}>#</th>
+                    <th className={classes.colHeader}>{t('Name')}</th>
+                    <th className={classes.colHeader}>{t('Price')}</th>
+                    <th className={classes.colHeader}>{t('Change')}</th>
+                    <th className={classes.colHeader}>{t('24h volume')}</th>
+                    <th className={classes.colHeader}>{t('Market cap')}</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,4 +60,4 @@ export const CoinTable: React.FC<CoinTableProps> = ({ className }) => {
             </tbody>
         </table>
     );
-};
+});

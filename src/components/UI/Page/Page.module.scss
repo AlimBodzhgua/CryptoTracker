@@ -2,11 +2,12 @@
 .Page {
 	height: calc(100vh - var(--navbar-height));
 	width: 100%;
-	padding-top: 120px;
-	padding-bottom: 30px;
-	
-	overflow: scroll;
+	padding: 25px 0;
+
+	overflow-y: scroll;
 
 	display: flex;
 	flex-direction: column;
+
+	background-color: var(--page-bg-color);
 }

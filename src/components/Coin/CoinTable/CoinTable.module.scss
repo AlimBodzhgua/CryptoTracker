@@ -1,15 +1,26 @@
 
 .table {
 	border-collapse: collapse;
-	border-radius: 12px;
-	border: 1px solid black;
+	border: 1px solid var(--table-border-color);
 	box-shadow: 0 0 20px #0000001a;
 
 	margin-top: 45px;
 
-	/*& .separate {
-		border-collapse: separate;
-		border-spacing: 10px;
-		background-color: red;		
-	}*/
+	width: 94%;
+
+	background-color: var(--table-bg-color);
+	color: #fff;
+	font-weight: 300;
+}
+
+
+.colHeader {
+	padding: 15px 0;
+	border-bottom: 1px solid var(--table-border-color);
+	color: grey;
+
+}
+
+.colHeader:nth-child(1) {
+	border-right: 1px solid black;
 }

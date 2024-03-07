@@ -1,0 +1,67 @@
+
+.LangSwitcher {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-weight: 800;
+	font-size: 16px;
+	color: #636367;
+	//light: #E7E7F0
+	//dark: #636367
+
+	padding: 4px 8px;
+	transition: transform .3s linear;
+
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.02);
+	}
+}
+
+.activeEn {
+	color: #E7E7F0;
+	transform: translateX(-30px);
+	transition: transform .5s linear;
+}
+
+.activeRu {
+	color: #E7E7F0;
+	transform: translateX(0px);
+	transition: transform .5s linear;
+}
+
+.inactiveRu {
+	transform: translateX(30px);
+	transition: transform .5s linear;
+}
+
+.inactiveEn {
+	transform: translateX(0);
+	transition: transform .5s linear;
+}
+
+.languages {
+	display: flex;
+	align-items: center;
+}
+
+.language {
+	padding: 0;
+	line-height: 0.9;
+}
+
+
+.icon {
+	margin-right: 6px;
+	fill: #fff;
+	width: 23px;
+	height: 23px;
+}
+
+.separator {
+	height: 12px;
+	width: 1px;
+	background: gray;
+	margin: 0 4px;
+}

@@ -1,4 +1,30 @@
 
 .Button {
 	border: none;
+	padding: 4px;
+	color: #fff;
+
+	font-size: inherit;
+	font-weight: 600;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+
+.primary {
+	color: #fff;
+	background-color: #363636;
+
+	padding: 8px 34px;
+	border-radius: 8px;
+
+	font-weight: 600;
+}
+
+.clear {
+	border: none;
+	padding: none;
+	background: none;
 }

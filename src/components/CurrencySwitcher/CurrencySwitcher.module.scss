@@ -1,0 +1,26 @@
+
+.CurrencySwitcher {
+	background-color: #454545;
+
+	font-family: inherit;
+	font-weight: 600;
+	color: #fff;
+
+	padding: 4px;
+	margin: 0 3px;
+	border-radius: 4px;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.CurrencyOption {
+	border-bottom: 1px solid grey;
+	padding: 4px 0;
+}

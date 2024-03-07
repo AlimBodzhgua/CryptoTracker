@@ -1,0 +1,29 @@
+.Input {
+	display: flex;
+	align-items: center;
+
+	width: fit-content;
+	border-radius: 3px;
+	background-color: #fff;
+
+	padding: 5px 4px;
+	margin-top: 10px;
+	margin-left: 10px;
+
+	transition: border .1s linear;
+}
+
+.focused {
+	border: 2px solid red;
+}
+
+.InputField {
+	border: none;
+	margin: 0px 3px;
+	font-family: inherit;
+	color: inherit;
+
+	&:focus {
+		outline: none;
+	}
+}

@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
-import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from 'components/LangSwitcher/LangSwitcher';
+import { CurrencySwitcher } from 'components/CurrencySwitcher/CurrencySwitcher';
+import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import classnames from 'classnames';
 import classes from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -14,9 +16,10 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
     return (
         <nav className={classnames(classes.Navbar, className)}>
             <LangSwitcher />
+            <CurrencySwitcher />
             <div className={classes.auth}>
-                <div>{t('Sign up')}</div>
-                <div>{t('Login')}</div>
+                <Button theme={ButtonTheme.clear}>{t('Sign up')}</Button>
+                <Button theme={ButtonTheme.clear}>{t('Login')}</Button>
             </div>
         </nav>
     );

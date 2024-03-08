@@ -5,7 +5,7 @@ import { selectCoins } from 'redux/selectors/coinsSelectors';
 import { coinsActions } from 'redux/slices/coinsSlice';
 import { Input } from 'components/UI/Input/Input';
 
-import SearchIcon from 'assets/search.svg';
+import SearchIcon from 'assets/icons/search.svg';
 import classnames from 'classnames';
 import classes from './CoinsSearchBar.module.scss';
 
@@ -40,7 +40,7 @@ export const CoinsSearchBar: React.FC<CoinsSearchBarProps> = (props) => {
             placeholder='Search Coins...'
             value={searchQuery}
             onChange={onSearch}
-            addonBefore={<SearchIcon />}
+            addonBefore={<SearchIcon className={classes.icon} />}
             className={classnames(classes.CoinsSearchBar, className)}
         />
     );

@@ -24,7 +24,7 @@ export const Input: React.FC<InputProps> = (props) => {
     } = props;
 
     const style: CSSProperties = {
-        border: isFocused ? '1.5px solid black' : '1px solid gray',
+        backgroundColor: isFocused ? '#717171' : '#454545',
     };
 
     return (

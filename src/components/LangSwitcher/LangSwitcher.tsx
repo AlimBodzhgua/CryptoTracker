@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
-import GlobeIcon from 'assets/globe.svg';
+import GlobeIcon from 'assets/icons/globe.svg';
 import classnames from 'classnames';
 import classes from './LangSwitcher.module.scss';
 
@@ -9,7 +9,7 @@ interface LangSwitcherProps {
 	className?: string;
 }
 
-export const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }) => {
+export const LangSwitcher: React.FC<LangSwitcherProps> = memo(({ className }) => {
     const { t, i18n } = useTranslation();
 
     const toggleLanguage = () => {
@@ -44,4 +44,4 @@ export const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }) => {
             </div>
         </Button>
     );
-};
+});

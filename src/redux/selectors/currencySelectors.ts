@@ -1,9 +1,7 @@
-import { CurrencyType } from 'redux/slices/currencySlice';
 import { StateSchema } from '../config/StateSchema';
 
-export const selectTargetCurrency = (state: StateSchema) => state.currency.targetCurrency || 'USD';
+export const selectCurrentCurrency = (state: StateSchema) => state.currency.currentCurrency || 'USD';
 
-export const selectTargetCurrencyPrice = (state: StateSchema) => {
-    const target = state.currency.targetCurrency as CurrencyType;
-    return state.currency[target === 'RUB' ? 'RUB' : 'EUR'];
-};
+export const selectTargetCurrency = (state: StateSchema) => state.currency.targetCurrency;
+
+export const selectCurrencyKurs = (state: StateSchema) => state.currency.kurs;

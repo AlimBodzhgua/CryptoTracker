@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { useAppDispatch } from 'hooks/redux';
-import {
-    Currencies,
-    CurrencyType,
-    currencyActions,
-} from 'redux/slices/currencySlice';
+import { currencyActions } from 'redux/slices/currencySlice';
+import { CurrencyType } from 'types/currency';
+import { Currencies } from 'constants/currencies';
 import classnames from 'classnames';
 import classes from './CurrencySwitcher.module.scss';
 
@@ -12,14 +10,14 @@ interface CurrencySwitcherProps {
 	className?: string;
 }
 
-export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = (props) => {
+export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = memo((props) => {
     const { className } = props;
     const dispatch = useAppDispatch();
 
-    const onCurrencySelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const onCurrencySelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
         const targetCurrency = e.target.value as CurrencyType;
         dispatch(currencyActions.setTargetCurrency(targetCurrency));
-    };
+    }, [dispatch]);
 
     return (
         <select
@@ -46,4 +44,4 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = (props) => {
             </option>
         </select>
     );
-};
+});

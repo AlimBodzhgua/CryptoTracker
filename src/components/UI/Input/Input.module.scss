@@ -3,27 +3,43 @@
 	align-items: center;
 
 	width: fit-content;
-	border-radius: 3px;
-	background-color: #fff;
+	border-radius: 7px;
+	background-color: #454545;
 
-	padding: 5px 4px;
+	padding: 10px 8px;
 	margin-top: 10px;
 	margin-left: 10px;
 
-	transition: border .1s linear;
+	font-size: 16px;
+	font-weight: 400;
+	color: #717171;
 }
 
-.focused {
-	border: 2px solid red;
-}
 
 .InputField {
 	border: none;
+	background-color: #454545;
 	margin: 0px 3px;
+
 	font-family: inherit;
+	font-size: inherit;
 	color: inherit;
 
 	&:focus {
 		outline: none;
+		background-color: #717171;
+		color: #FDFDFD;
+
+		&::placeholder {
+			color: #FDFDFD;
+		}
 	}
+}
+
+.Input,
+.InputField {
+	transition:
+		border .1s linear,
+		color .2s ease-in,
+		background-color .2s ease-in
 }

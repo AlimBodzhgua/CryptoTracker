@@ -1,28 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CurrencyType, IKurs } from 'types/currency';
 import { fetchCurrency } from '../actions/currencyActions';
 
-export const Currencies = {
-    USD: 'USD',
-    RUB: 'RUB',
-    EUR: 'EUR',
-} as const;
-
-export type CurrencyType = keyof typeof Currencies;
-
 export interface CurrencySchema {
-	baseCurrency: CurrencyType;
+	currentCurrency: CurrencyType;
 	targetCurrency?: CurrencyType;
-	RUB?: number;
-	EUR?: number;
+    kurs?: IKurs;
 	error?: string;
 	isLoading: boolean;
 }
 
 const initialState: CurrencySchema = {
-    baseCurrency: 'USD',
-    targetCurrency: 'USD',
-    RUB: undefined,
-    EUR: undefined,
+    currentCurrency: 'USD',
+    targetCurrency: undefined,
+    kurs: undefined,
     error: undefined,
     isLoading: false,
 };
@@ -34,6 +25,12 @@ export const currencySlice = createSlice({
         setTargetCurrency: (state, action: PayloadAction<CurrencyType>) => {
             state.targetCurrency = action.payload;
         },
+        resetCurrentCurrency: (state) => {
+            if (state.targetCurrency) {
+                state.currentCurrency = state.targetCurrency;
+                state.targetCurrency = undefined;
+            }
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -41,8 +38,7 @@ export const currencySlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(fetchCurrency.fulfilled, (state, action) => {
-                state.EUR = action.payload.EUR;
-                state.RUB = action.payload.RUB;
+                state.kurs = action.payload;
                 state.isLoading = false;
             })
             .addCase(fetchCurrency.rejected, (state, action) => {
@@ -54,3 +50,4 @@ export const currencySlice = createSlice({
 
 export const { reducer: currencyReducer } = currencySlice;
 export const { actions: currencyActions } = currencySlice;
+export { IKurs };

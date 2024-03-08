@@ -1,9 +1,9 @@
 import { RoutePath } from 'router/routeConfig';
-import CoinLogo from 'assets/coin1.svg';
-import ProfileLogo from 'assets/profile.svg';
-import NewsLogo from 'assets/news.svg';
-import MainLogo from 'assets/main.svg';
-import { SidebarItemType } from './types';
+import { SidebarItemType } from 'types/sidebar';
+import CoinLogo from 'assets/icons/coin.svg';
+import ProfileLogo from 'assets/icons/profile.svg';
+import NewsLogo from 'assets/icons/news.svg';
+import MainLogo from 'assets/icons/main.svg';
 
 export const sidebarList: SidebarItemType[] = [
     {

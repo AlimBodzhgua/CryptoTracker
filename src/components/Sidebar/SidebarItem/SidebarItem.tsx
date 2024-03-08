@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AppLink } from 'components/UI/AppLink/AppLink';
-import classnames from 'classnames';
+import { SidebarItemType } from 'types/sidebar';
 import { useTranslation } from 'react-i18next';
-import { SidebarItemType } from '../types';
+import classnames from 'classnames';
 import classes from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
@@ -10,7 +10,7 @@ interface SidebarItemProps {
 	className?: string;
 }
 
-export const SidebarItem: React.FC<SidebarItemProps> = (props) => {
+export const SidebarItem: React.FC<SidebarItemProps> = memo((props) => {
     const { item, className } = props;
     const { t } = useTranslation();
 
@@ -23,4 +23,4 @@ export const SidebarItem: React.FC<SidebarItemProps> = (props) => {
             <div>{t(`${item.text}`)}</div>
         </AppLink>
     );
-};
+});

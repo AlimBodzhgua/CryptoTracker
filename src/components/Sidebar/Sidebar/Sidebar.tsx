@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { sidebarList } from 'constants/sidebarList';
 import classnames from 'classnames';
-import classes from './Sidebar.module.scss';
-import { sidebarList } from '../sidebarList';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import classes from './Sidebar.module.scss';
 
 interface SidebarProps {
 	className?: string;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ className }) => (
+export const Sidebar: React.FC<SidebarProps> = memo(({ className }) => (
     <aside className={classnames(classes.Sidebar, className)}>
         <h1 className={classes.header}>Coin Cap</h1>
         <div className={classes.menu}>
@@ -20,4 +20,4 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => (
             ))}
         </div>
     </aside>
-);
+));

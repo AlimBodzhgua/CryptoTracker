@@ -1,6 +1,5 @@
 import React, { useEffect, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import { fetchCoins } from 'redux/actions/coinsActions';
 import {
     selectCoins,

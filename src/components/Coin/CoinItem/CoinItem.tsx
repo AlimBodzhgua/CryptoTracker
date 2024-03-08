@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ICoin } from 'types/types';
+import { ICoin } from 'types/coin';
 import { useFormatter } from 'hooks/useFormatter';
 import classnames from 'classnames';
 import classes from './CoinItem.module.scss';

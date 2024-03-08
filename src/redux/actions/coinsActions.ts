@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICoin } from 'types/types';
+import { ICoin } from 'types/coin';
 import axios from 'axios';
 
 const coinHeaders = {

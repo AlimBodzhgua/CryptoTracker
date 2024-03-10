@@ -1,0 +1,23 @@
+.PageError {
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.title {
+	margin-bottom: 12px;
+
+	font-size: 18px;
+	font-weight: 800;
+	color: #000;
+}
+
+.reload {
+	border: none;
+	padding: 5px;
+
+	cursor: pointer;
+}

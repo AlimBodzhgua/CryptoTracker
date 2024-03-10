@@ -21,5 +21,8 @@
 	"Enter password...": "Введите пароль...",
 	"Please enter your email.": "Пожалуйста укажие почту.",
 	"Please enter your password.": "Пожалуйста укажите пароль.",
-	"Passwrod should contain at least 8 scharacters": "Пароль должен содержать минимум 8 символов" 
+	"Passwrod should contain at least 8 scharacters": "Пароль должен содержать минимум 8 символов",
+
+	"An unexpected error occured": "Произошла непредвиденная ошибка",
+	"Reload the page": "Перезагрузить страницу"
 }

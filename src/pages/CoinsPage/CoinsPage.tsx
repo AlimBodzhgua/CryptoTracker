@@ -3,9 +3,11 @@ import { CoinTable } from 'components/Coin/CoinTable/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
-import classnames from 'classnames';
 import { useAppSelector } from 'hooks/redux';
 import { selectCoins } from 'redux/selectors/coinsSelectors';
+import { Modal } from 'components/UI/Modal/Modal';
+import classnames from 'classnames';
+import { Portal } from 'components/UI/Portal/Portal';
 import classes from './CoinsPage.module.scss';
 
 interface CoinsPageProps {

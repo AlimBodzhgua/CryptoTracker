@@ -11,5 +11,14 @@
 	"Change": "change",
 	"24h volume": "24h volume",
 	"Market cap": "market cap",
-	"Error fetching coins": "Error fetching coins"
+	"Error fetching coins": "Error fetching coins",
+
+	"Register": "Register",
+	"Login": "Login",
+
+	"Enter email...": "Enter email...",
+	"Enter password...": "Enter password...",
+	"Please enter your email.": "Please enter your email.",
+	"Please enter your password.": "Please enter your password.",
+	"Passwrod should contain at least 8 scharacters": "Passwrod should contain at least 8 scharacters" 
 }

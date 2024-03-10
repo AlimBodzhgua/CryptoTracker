@@ -3,6 +3,8 @@ import React, {
     InputHTMLAttributes,
     ReactElement,
     ReactNode,
+    forwardRef,
+    memo,
 } from 'react';
 import classnames from 'classnames';
 import { useFocus } from 'hooks/useFocus';
@@ -14,7 +16,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 }
 
-export const Input: React.FC<InputProps> = (props) => {
+export const Input: React.FC<InputProps> = memo(forwardRef((props, ref) => {
     const [isFocused, focusProps] = useFocus();
     const {
         className,
@@ -35,10 +37,10 @@ export const Input: React.FC<InputProps> = (props) => {
             {addonBefore}
             <input
                 className={classes.InputField}
-                {...focusProps}
                 {...otherProps}
+                {...focusProps}
             />
             {addonAfter}
         </div>
     );
-};
+}));

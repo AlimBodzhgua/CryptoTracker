@@ -11,5 +11,15 @@
 	"Change": "Изменение",
 	"24h volume": "24ч Объём",
 	"Market cap": "Рыночная капитализцаия",
-	"Error fetching coins": "Ошибка при получении монет"
+	"Error fetching coins": "Ошибка при получении монет",
+
+	"Register": "Зарегистрироваться",
+	"Login": "Вход",
+	
+
+	"Enter email...": "Введите почту...",
+	"Enter password...": "Введите пароль...",
+	"Please enter your email.": "Пожалуйста укажие почту.",
+	"Please enter your password.": "Пожалуйста укажите пароль.",
+	"Passwrod should contain at least 8 scharacters": "Пароль должен содержать минимум 8 символов" 
 }

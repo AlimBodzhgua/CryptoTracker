@@ -11,34 +11,37 @@
 	//dark: #636367
 
 	padding: 4px 8px;
-	transition: transform .3s linear;
 
 	&:hover {
 		cursor: pointer;
-		transform: scale(1.02);
 	}
 }
 
 .activeEn {
 	color: #E7E7F0;
 	transform: translateX(-30px);
-	transition: transform .5s linear;
 }
 
 .activeRu {
 	color: #E7E7F0;
 	transform: translateX(0px);
-	transition: transform .5s linear;
 }
 
 .inactiveRu {
 	transform: translateX(30px);
-	transition: transform .5s linear;
 }
 
 .inactiveEn {
 	transform: translateX(0);
-	transition: transform .5s linear;
+}
+
+.activeEn,
+.activeRu,
+.inactiveRu,
+.inactiveEn {
+	transition: transform .3s;
+	transition-timing-function: cubic-bezier(.17,.67,.83,.67);
+	transition-timing-function: bezier-curve();
 }
 
 .languages {

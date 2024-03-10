@@ -1,0 +1,31 @@
+
+.Modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	height: 100vh;
+	width: 100vw;
+
+	background-color: rgba(0, 0, 0, .6);
+
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.opened {
+	display: flex;
+}
+
+.content {
+	background-color: #252525;
+	color: #fff;
+	padding: 25px;
+	border-radius: 6px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+

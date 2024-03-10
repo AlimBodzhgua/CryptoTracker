@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .SidebarItem {
 	display: flex;
 	align-self: stretch;
@@ -10,7 +12,8 @@
 	transition: .1s linear background-color;
 
 	&:hover {
-		background-color: darken(#24484E, 7%);
+		// background-color: darken(#24484E, 7%);
+		background-color: color.adjust(#24484E, $lightness: -7%);
 	}
 }
 

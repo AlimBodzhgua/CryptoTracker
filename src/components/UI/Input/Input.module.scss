@@ -7,7 +7,7 @@
 	border-radius: 7px;
 	background-color: #454545;
 
-	padding: 10px 10px;
+	padding: 10px;
 	margin-top: 10px;
 	margin-left: 10px;
 
@@ -16,11 +16,18 @@
 	color: #717171;
 }
 
+.Input,
+.InputField {
+	transition:
+		border .1s linear,
+		color .2s ease-in,
+		background-color .2s ease-in
+}
 
 .InputField {
 	border: none;
 	background-color: #454545;
-	margin: 0px 3px;
+	margin: 0 3px;
 	flex-grow: 1;
 
 	font-family: inherit;
@@ -36,12 +43,4 @@
 			color: #FDFDFD;
 		}
 	}
-}
-
-.Input,
-.InputField {
-	transition:
-		border .1s linear,
-		color .2s ease-in,
-		background-color .2s ease-in
 }

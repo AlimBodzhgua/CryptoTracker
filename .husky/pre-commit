@@ -1,1 +1,2 @@
 npm run lint:ts
+npm run lint:scss

@@ -1,7 +1,9 @@
-import webpack, { DefinePlugin } from 'webpack';
+import webpack from 'webpack';
 import path from 'path';
 import { BuildPaths } from '../build/types/config';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+
 
 export default ({ config }: {config: webpack.Configuration}) => {
     const paths: BuildPaths = {
@@ -11,28 +13,34 @@ export default ({ config }: {config: webpack.Configuration}) => {
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
 
-    config.resolve!.modules!.push(paths.src);
-    config.resolve!.extensions!.push('.ts', '.tsx');
+    if (config.resolve) {
+        config.resolve.plugins = [
+            ...(config.resolve.plugins || []),
+            new TsconfigPathsPlugin({
+              extensions: config.resolve.extensions,
+            }),
+        ]
+        
+        config.resolve.extensions!.push('.ts', '.tsx');
+        config.resolve.modules!.push(paths.src);
+    }
 
-    if (config.module !== undefined) {
+    if (config.module) {
+        //file loader
         config.module.rules = config.module.rules?.map((rule: any) => {
             if (/svg/.test(rule.test as string)) {
                 return { ...rule, exclude: /\.svg$/i };
             }
             return rule;
         });
+
+        config.module.rules!.push({
+            test: /\.svg$/,
+            use: ['@svgr/webpack'],
+        });
+
+        config.module.rules!.push(buildCssLoader(true));
     }
-
-    config!.module!.rules!.push({
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-    });
-
-    config!.module!.rules!.push(buildCssLoader(true));
-    /* config.plugins?.push(new DefinePlugin({
-        __IS_DEV__: JSON.stringify(true),
-        __PROJECT__: JSON.stringify('storybook'),
-    })); */
 
     return config;
 };

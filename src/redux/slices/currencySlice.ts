@@ -50,4 +50,3 @@ export const currencySlice = createSlice({
 
 export const { reducer: currencyReducer } = currencySlice;
 export const { actions: currencyActions } = currencySlice;
-export { IKurs };

@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from 'react';
 import { useAppDispatch } from 'hooks/redux';
-import { currencyActions } from 'redux/slices/currencySlice';
 import { CurrencyType } from 'types/currency';
 import { Currencies } from 'constants/currencies';
+import { currencyActions } from 'redux/slices/currencySlice';
 import classnames from 'classnames';
 import classes from './CurrencySwitcher.module.scss';
 

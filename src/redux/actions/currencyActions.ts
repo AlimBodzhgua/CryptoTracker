@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IKurs } from 'types/currency';
 import axios from 'axios';
 
 const API_KEY = process.env.CURRENCY_API;
 
 export const fetchCurrency = createAsyncThunk<
-	{EUR: number, RUB: number},
+	IKurs,
 	void,
 	{rejectValue: string}
 >(

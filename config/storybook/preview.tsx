@@ -1,15 +1,15 @@
 import { Preview } from '@storybook/react';
 import { BrowserDecorator } from '../../src/config/storybook/BrowserDecorator';
 import { StyleDecorator } from '../../src/config/storybook/StyleDecorator';
+import { StoreDecorator } from '../../src/config/storybook/StoreDecorator';
 import { I18nDecorator } from '../../src/config/storybook/I18nDecorator';
 
 const preview: Preview = {
     parameters: {
-        actions: { argTypesRegex: '^on[A-Z].*' },
         controls: {
             matchers: {
                 color: /(background|color)$/i,
-                date: /Date$/,
+                date: /Date$/i,
             },
         },
     },
@@ -31,6 +31,10 @@ const preview: Preview = {
         BrowserDecorator,
         StyleDecorator,
         I18nDecorator,
+        StoreDecorator({
+            coins: [],
+            currency: {}
+        }),
     ],
 };
 

@@ -1,7 +1,7 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
-import { currencyReducer } from 'redux/slices/currencySlice';
-import { StateSchema } from './StateSchema';
+import { currencyReducer } from '../slices/currencySlice';
 import { coinsReducer } from '../slices/coinsSlice';
+import { StateSchema } from './StateSchema';
 
 export const createReduxStore = (initialState?: StateSchema) => {
     const rootReducer: ReducersMapObject<StateSchema> = {

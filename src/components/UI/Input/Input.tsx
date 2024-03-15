@@ -1,8 +1,10 @@
 import React, {
     CSSProperties,
     InputHTMLAttributes,
+    MutableRefObject,
     ReactElement,
     ReactNode,
+    RefObject,
     forwardRef,
     memo,
 } from 'react';
@@ -13,6 +15,7 @@ import classes from './Input.module.scss';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	addonBefore?: ReactNode | ReactElement;
 	addonAfter?: ReactNode | ReactElement;
+    inputRef?: RefObject<HTMLInputElement>;
 	className?: string;
 }
 
@@ -22,6 +25,7 @@ export const Input: React.FC<InputProps> = memo(forwardRef((props, ref) => {
         className,
         addonBefore,
         addonAfter,
+        inputRef,
         ...otherProps
     } = props;
 
@@ -37,6 +41,7 @@ export const Input: React.FC<InputProps> = memo(forwardRef((props, ref) => {
             {addonBefore}
             <input
                 className={classes.InputField}
+                ref={inputRef}
                 {...otherProps}
                 {...focusProps}
             />

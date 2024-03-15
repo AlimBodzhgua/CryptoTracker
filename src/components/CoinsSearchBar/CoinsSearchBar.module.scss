@@ -1,9 +1,30 @@
 
 .CoinsSearchBar {
 	height: fit-content;
-	width: 30%;
+	width: fit-content;
 }
 
 .icon {
 	stroke: #fff;
+}
+
+.hotkeyHelp {
+	display: flex;
+	align-items: center;
+
+	font-size: 14px;
+	color: hsla(0,0%,100%,.5);
+}
+
+.hotkeyItem {
+	border: 1px solid hsla(0,0%,100%,.3);
+	border-radius: 3px;
+
+	padding: 3px 5px;
+
+	display: block;
+}
+
+.hotkeyPlus {
+	margin: 0 3px;
 }

@@ -5,6 +5,7 @@ import { fetchCoins } from '../actions/coinsActions';
 
 export interface CoinsStateSchema {
 	coins: ICoin[];
+    searchedFilteredCoins: ICoin[];
 	isLoading: boolean;
 	error?: string;
 }
@@ -13,6 +14,7 @@ const initialState: CoinsStateSchema = {
     isLoading: false,
     error: undefined,
     coins: [],
+    searchedFilteredCoins: [],
 };
 
 export const coinsSlice = createSlice({
@@ -21,6 +23,9 @@ export const coinsSlice = createSlice({
     reducers: {
         setCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.coins = action.payload;
+        },
+        setSearchedFilteredCoins: (state, action: PayloadAction<ICoin[]>) => {
+            state.searchedFilteredCoins = action.payload;
         },
         changeCoinsCurrency: (state, action: PayloadAction<{
             kurs: IKurs,

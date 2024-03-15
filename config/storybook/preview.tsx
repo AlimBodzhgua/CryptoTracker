@@ -33,7 +33,7 @@ const preview: Preview = {
         I18nDecorator,
         StoreDecorator({
             coins: [],
-            currency: {}
+            currency: {},
         }),
     ],
 };

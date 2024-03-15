@@ -20,6 +20,6 @@ export const Primary: Story = {
     args: {
         isOpen: true,
         onClose: () => console.log('close window'),
-        children: <div>Modal window</div>
+        children: <div>Modal window</div>,
     },
 };

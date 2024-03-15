@@ -1,5 +1,4 @@
-import React from 'react';
-import { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Decorator } from '@storybook/react';
 import { I18nextProvider } from 'react-i18next';
 

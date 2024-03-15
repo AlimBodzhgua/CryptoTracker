@@ -5,7 +5,11 @@ export interface ICoin {
 	rank: number;
 	iconUrl: string;
 	price: string;
-	change: string; // 24h change(%)
+	change: string; // (%)
 	marketCap: string;
 	'24hVolume': string;
 }
+
+export type SortDirectionType = 'descending' | 'ascending';
+
+export type FieldNameType = keyof Omit<ICoin, 'iconUrl' | 'symbol' | 'id'>;

@@ -27,6 +27,6 @@ export const Rounded: Story = {
     args: {
         width: 45,
         height: 45,
-        radius: '50%'
+        radius: '50%',
     },
 };

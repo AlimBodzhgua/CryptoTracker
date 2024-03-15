@@ -1,9 +1,8 @@
 import webpack from 'webpack';
 import path from 'path';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import { BuildPaths } from '../build/types/config';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-
 
 export default ({ config }: {config: webpack.Configuration}) => {
     const paths: BuildPaths = {
@@ -17,16 +16,16 @@ export default ({ config }: {config: webpack.Configuration}) => {
         config.resolve.plugins = [
             ...(config.resolve.plugins || []),
             new TsconfigPathsPlugin({
-              extensions: config.resolve.extensions,
+                extensions: config.resolve.extensions,
             }),
-        ]
-        
+        ];
+
         config.resolve.extensions!.push('.ts', '.tsx');
         config.resolve.modules!.push(paths.src);
     }
 
     if (config.module) {
-        //file loader
+        // file loader
         config.module.rules = config.module.rules?.map((rule: any) => {
             if (/svg/.test(rule.test as string)) {
                 return { ...rule, exclude: /\.svg$/i };

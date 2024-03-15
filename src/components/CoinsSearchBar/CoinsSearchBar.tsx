@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/redux';
 import { useDebounce } from 'hooks/useDebounce';
 import { selectCoins } from 'redux/selectors/coinsSelectors';
@@ -13,7 +13,7 @@ interface CoinsSearchBarProps {
 	className?: string;
 }
 
-export const CoinsSearchBar: React.FC<CoinsSearchBarProps> = (props) => {
+export const CoinsSearchBar: React.FC<CoinsSearchBarProps> = memo((props) => {
     const { className } = props;
     const [searchQuery, setSearchQuery] = useState<string>('');
     const dispatch = useAppDispatch();
@@ -26,9 +26,8 @@ export const CoinsSearchBar: React.FC<CoinsSearchBarProps> = (props) => {
                 return coin;
             }
         });
-        dispatch(coinsActions.setCoins(searchedCoins));
-        console.log(searchedCoins);
-    }, [debouncedValue]);
+        dispatch(coinsActions.setSearchedFilteredCoins(searchedCoins));
+    }, [debouncedValue, coins]);
 
     const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);
@@ -44,4 +43,4 @@ export const CoinsSearchBar: React.FC<CoinsSearchBarProps> = (props) => {
             className={classnames(classes.CoinsSearchBar, className)}
         />
     );
-};
+});

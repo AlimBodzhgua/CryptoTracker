@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
-import { LoginForm } from '../../AuthForms/LoginForm/LoginForm';
+import { LoginFormAsync } from '../../AuthForms/LoginForm/LoginForm.async';
 import classes from './LoginModal.module.scss';
 
 interface LoginModalProps {
@@ -26,7 +26,7 @@ export const LoginModal: React.FC<LoginModalProps> = (props) => {
             className={classnames(classes.LoginModal, className)}
         >
             <h2 className={classes.header}>{t('Login')}</h2>
-            <LoginForm />
+            <LoginFormAsync onSuccess={onClose} />
         </Modal>
     );
 };

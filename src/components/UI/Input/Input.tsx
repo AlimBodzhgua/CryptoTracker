@@ -1,32 +1,27 @@
-import React, {
+import {
     CSSProperties,
     InputHTMLAttributes,
-    MutableRefObject,
     ReactElement,
     ReactNode,
-    RefObject,
     forwardRef,
     memo,
 } from 'react';
-import classnames from 'classnames';
 import { useFocus } from 'hooks/useFocus';
-import { RefCallBack } from 'react-hook-form';
+import classnames from 'classnames';
 import classes from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	addonBefore?: ReactNode | ReactElement;
 	addonAfter?: ReactNode | ReactElement;
-    inputRef?: RefObject<HTMLInputElement> | RefCallBack;
 	className?: string;
 }
 
-export const Input: React.FC<InputProps> = memo(forwardRef((props, ref) => {
+export const Input = memo(forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     const [isFocused, focusProps] = useFocus();
     const {
         className,
         addonBefore,
         addonAfter,
-        inputRef,
         ...otherProps
     } = props;
 
@@ -42,7 +37,7 @@ export const Input: React.FC<InputProps> = memo(forwardRef((props, ref) => {
             {addonBefore}
             <input
                 className={classes.InputField}
-                ref={inputRef}
+                ref={ref}
                 {...otherProps}
                 {...focusProps}
             />

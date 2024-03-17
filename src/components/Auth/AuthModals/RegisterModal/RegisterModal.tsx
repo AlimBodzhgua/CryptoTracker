@@ -1,8 +1,9 @@
 import React from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
-import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { RegisterForm } from '../../AuthForms/RegisterForm/RegisterForm';
+import classnames from 'classnames';
+import { RegisterFormAsync } from '../../AuthForms/RegisterForm/RegisterForm.async';
+
 import classes from './RegisterModal.module.scss';
 
 interface RegisterModalProps {
@@ -26,7 +27,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = (props) => {
             className={classnames(classes.RegisterModal, className)}
         >
             <h2 className={classes.header}>{t('Register')}</h2>
-            <RegisterForm />
+            <RegisterFormAsync onSuccess={onClose} />
         </Modal>
     );
 };

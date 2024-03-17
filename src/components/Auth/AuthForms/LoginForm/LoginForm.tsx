@@ -1,4 +1,6 @@
-import { FC, useState, memo } from 'react';
+import {
+    FC, useState, memo, useCallback,
+} from 'react';
 import { Input } from 'components/UI/Input/Input';
 import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +18,7 @@ import classnames from 'classnames';
 import classes from './LoginForm.module.scss';
 
 interface LoginFormProps {
+    onSuccess?: () => void;
 	className?: string;
 }
 
@@ -24,11 +27,13 @@ interface IFormInputs {
 	password: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
+const LoginForm: FC<LoginFormProps> = memo((props) => {
+    const { onSuccess, className } = props;
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
     const isLoading = useAppSelector(selectUserIsLoading);
+
     const {
         handleSubmit,
         control,
@@ -37,20 +42,22 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
         mode: 'onSubmit',
     });
 
-    const onTogglePassword = () => {
+    const onToggleShowPassword = () => {
         setShowPassword((prev) => !prev);
     };
 
-    const onSubmit:SubmitHandler<IFormInputs> = (e) => {
-        dispatch(signInUser({
+    const onSubmit:SubmitHandler<IFormInputs> = useCallback(async (e) => {
+        const { meta, payload } = await dispatch(signInUser({
             email: e.email,
             password: e.password,
-        })).then(({ meta, payload }) => {
-            if (meta.requestStatus === 'fulfilled') {
-                localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload));
-            }
-        });
-    };
+        }));
+
+        if (meta.requestStatus === 'fulfilled') {
+            localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload));
+
+            if (onSuccess) onSuccess();
+        }
+    }, [dispatch, onSuccess]);
 
     return (
         <form
@@ -90,7 +97,7 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
                         addonAfter={(
                             <EyeIcon
                                 className={classes.iconRight}
-                                onClick={onTogglePassword}
+                                onClick={onToggleShowPassword}
                             />
                         )}
                         placeholder={t('Enter password...')}
@@ -117,3 +124,5 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
         </form>
     );
 });
+
+export default LoginForm;

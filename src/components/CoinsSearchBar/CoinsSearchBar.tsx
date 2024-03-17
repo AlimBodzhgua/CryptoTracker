@@ -66,7 +66,7 @@ export const CoinsSearchBar: React.FC<CoinsSearchBarProps> = memo((props) => {
             placeholder='Search Coins...'
             value={searchQuery}
             onChange={onSearch}
-            inputRef={inputRef}
+            ref={inputRef}
             addonBefore={<SearchIcon className={classes.icon} />}
             addonAfter={renderHotkeys()}
             className={classnames(classes.CoinsSearchBar, className)}

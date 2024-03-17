@@ -24,5 +24,6 @@
 	"Passwrod should contain at least 8 scharacters": "Пароль должен содержать минимум 8 символов",
 
 	"An unexpected error occured": "Произошла непредвиденная ошибка",
-	"Reload the page": "Перезагрузить страницу"
+	"Reload the page": "Перезагрузить страницу",
+	"Are you sure you want to logout?": "Вы действительно хотите выйти?"
 }

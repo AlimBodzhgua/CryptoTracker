@@ -1,4 +1,6 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, {
+    memo, useCallback, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from 'components/LangSwitcher/LangSwitcher';
 import { CurrencySwitcher } from 'components/CurrencySwitcher/CurrencySwitcher';
@@ -42,14 +44,17 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
         setIsLoginModal(false);
     };
 
-    const onLogout = async () => {
-        dispatch(signOutUser())
-            .then(({ meta }) => {
-                if (meta.requestStatus === 'fulfilled') {
-                    localStorage.removeItem(USER_LOCALSTORAGE_KEY);
-                }
-            });
-    };
+    const onLogout = useCallback(async () => {
+        const confirm = window.confirm(t('Are you sure you want to logout?'));
+
+        if (confirm) {
+            const { meta } = await dispatch(signOutUser());
+
+            if (meta.requestStatus === 'fulfilled') {
+                localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+            }
+        }
+    }, [dispatch]);
 
     return (
         <nav className={classnames(classes.Navbar, className)}>

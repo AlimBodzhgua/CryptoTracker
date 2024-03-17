@@ -13,6 +13,7 @@ export type ButtonThemeType = keyof typeof ButtonTheme;
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 	theme?: ButtonThemeType;
+    disabled?: boolean;
 	className?: string;
 }
 
@@ -21,12 +22,18 @@ export const Button: React.FC<ButtonProps> = memo((props) => {
         children,
         theme = ButtonTheme.primary,
         className,
+        disabled,
         ...otherProps
     } = props;
 
     return (
         <button
-            className={classnames(classes.Button, className, classes[theme])}
+            className={classnames(
+                classes.Button,
+                classes[theme],
+                className,
+                { [classes.disabled]: disabled },
+            )}
             {...otherProps}
         >
             {children}

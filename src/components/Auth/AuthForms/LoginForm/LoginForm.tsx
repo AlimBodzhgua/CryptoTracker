@@ -2,7 +2,11 @@ import { FC, useState, memo } from 'react';
 import { Input } from 'components/UI/Input/Input';
 import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm, Controller } from 'react-hook-form';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { signInUser } from 'redux/actions/userActions';
+import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
+import { selectUserIsLoading } from 'redux/selectors/userSelectors';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';
@@ -22,12 +26,12 @@ interface IFormInputs {
 
 export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
     const { t } = useTranslation();
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const dispatch = useAppDispatch();
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const isLoading = useAppSelector(selectUserIsLoading);
     const {
-        register,
         handleSubmit,
+        control,
         formState: { errors },
     } = useForm<IFormInputs>({
         mode: 'onSubmit',
@@ -37,16 +41,15 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
         setShowPassword((prev) => !prev);
     };
 
-    const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-
-    const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
     const onSubmit:SubmitHandler<IFormInputs> = (e) => {
-        console.log(e);
+        dispatch(signInUser({
+            email: e.email,
+            password: e.password,
+        })).then(({ meta, payload }) => {
+            if (meta.requestStatus === 'fulfilled') {
+                localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload));
+            }
+        });
     };
 
     return (
@@ -55,46 +58,60 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
             className={classnames(classes.LoginForm, className)}
             onSubmit={handleSubmit(onSubmit)}
         >
-            <Input
-                {...register('email', {
-                    required: {
-                        value: true,
-                        message: t('Please enter your email.'),
-                    },
-                })}
-                addonBefore={<EmailIcon className={classes.icon} />}
-                placeholder={t('Enter email...')}
-                value={email}
-                onChange={onEmailChange}
-                className={classes.inputField}
-            />
-            {errors.email
-				&& <div className={classes.message}>{errors.email.message}</div>}
-
-            <Input
-                {...register('password', {
-                    required: {
-                        value: true,
-                        message: t('Please enter your password.'),
-                    },
-                })}
-                addonBefore={<PasswordIcon className={classes.icon} />}
-                addonAfter={(
-                    <EyeIcon
-                        className={classes.iconRight}
-                        onClick={onTogglePassword}
+            <Controller
+                control={control}
+                name='email'
+                defaultValue=''
+                rules={{ required: true }}
+                render={({ field: { value, onChange } }) => (
+                    <Input
+                        addonBefore={<EmailIcon className={classes.icon} />}
+                        placeholder={t('Enter email...')}
+                        className={classes.inputField}
+                        value={value}
+                        onChange={onChange}
                     />
                 )}
-                placeholder={t('Enter password...')}
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={onPasswordChange}
-                className={classes.inputField}
             />
-            {errors.password
-				&& <div className={classes.message}>{errors.password.message}</div>}
+            {errors.email?.type === 'required' && (
+                <div className={classes.message}>
+                    {t('Please enter your email.')}
+                </div>
+            )}
 
-            <Button className={classes.button}>
+            <Controller
+                control={control}
+                name='password'
+                defaultValue=''
+                rules={{ required: true }}
+                render={({ field: { value, onChange } }) => (
+                    <Input
+                        addonBefore={<PasswordIcon className={classes.icon} />}
+                        addonAfter={(
+                            <EyeIcon
+                                className={classes.iconRight}
+                                onClick={onTogglePassword}
+                            />
+                        )}
+                        placeholder={t('Enter password...')}
+                        type={showPassword ? 'text' : 'password'}
+                        className={classes.inputField}
+                        value={value}
+                        onChange={onChange}
+                    />
+                )}
+            />
+            {errors.password?.type === 'required' && (
+                <div className={classes.message}>
+                    {t('Please enter your password.')}
+                </div>
+            )}
+
+            <Button
+                className={classes.button}
+                type='submit'
+                disabled={isLoading}
+            >
                 {t('Login')}
             </Button>
         </form>

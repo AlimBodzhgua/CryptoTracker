@@ -1,3 +1,4 @@
+import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { FieldNameType, ICoin, SortDirectionType } from 'types/coin';
 
 export const coinsSorter = (
@@ -16,3 +17,5 @@ export const coinsSorter = (
 	        }
 	        return Number(a[`${fieldName}`]) < Number(b[`${fieldName}`]) ? -1 : 1;
 });
+
+export const isUserLoggedIn = () => (!!localStorage.getItem(USER_LOCALSTORAGE_KEY));

@@ -17,7 +17,7 @@ export const fetchCurrency = createAsyncThunk<
             `);
             return response.data.data;
         } catch (e) {
-            rejectWithValue(JSON.stringify(e));
+            return rejectWithValue(JSON.stringify(e));
         }
     },
 );

@@ -10,12 +10,13 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 import { useFocus } from 'hooks/useFocus';
+import { RefCallBack } from 'react-hook-form';
 import classes from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	addonBefore?: ReactNode | ReactElement;
 	addonAfter?: ReactNode | ReactElement;
-    inputRef?: RefObject<HTMLInputElement>;
+    inputRef?: RefObject<HTMLInputElement> | RefCallBack;
 	className?: string;
 }
 

@@ -1,5 +1,5 @@
 import React, {
-    FC, ReactNode, useCallback, useEffect,
+    FC, ReactNode, Suspense, useCallback, useEffect,
 } from 'react';
 import classnames from 'classnames';
 import classes from './Modal.module.scss';
@@ -62,7 +62,9 @@ export const Modal: FC<ModalProps> = (props) => {
                     role='button'
                     tabIndex={0}
                 >
-                    {children}
+                    <Suspense fallback="Loading content">
+                        {children}
+                    </Suspense>
                 </div>
             </div>
         </Portal>

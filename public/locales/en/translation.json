@@ -24,5 +24,12 @@
 
 	"An unexpected error occured": "An unexpected error occured",
 	"Reload the page": "Reload the page",
-	"Are you sure you want to logout?": "Are you sure you want to logout?"
+	"Are you sure you want to logout?": "Are you sure you want to logout?",
+	"An email has been sent to you to reset your password.": "An email has been sent to you to reset your password.",
+	"Forgot Password?": "Forgot Password?",
+
+	"Edit": "Edit",
+	"Cancel": "Cancel",
+	"Save": "Save",
+	"Reset": "Reset"
 }

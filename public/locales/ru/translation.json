@@ -25,5 +25,13 @@
 
 	"An unexpected error occured": "Произошла непредвиденная ошибка",
 	"Reload the page": "Перезагрузить страницу",
-	"Are you sure you want to logout?": "Вы действительно хотите выйти?"
+	"Are you sure you want to logout?": "Вы действительно хотите выйти?",
+	"An email has been sent to you to reset your password.": "Вам было отправлено письмо для сброса пароля.",
+	"Forgot Password?": "Забыли пароль?",
+
+
+	"Edit": "Редактировать",
+	"Cancel": "Отменить",
+	"Save": "Сохранить",
+	"Reset": "Сбросить"
 }

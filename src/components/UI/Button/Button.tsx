@@ -10,9 +10,18 @@ export const ButtonTheme = {
 
 export type ButtonThemeType = keyof typeof ButtonTheme;
 
+export const ButtonSize = {
+    small: 'small',
+    medium: 'medium',
+    big: 'big',
+} as const
+
+export type ButtonSizeType = keyof typeof ButtonSize;
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 	theme?: ButtonThemeType;
+    size?: ButtonSizeType;
     disabled?: boolean;
 	className?: string;
 }
@@ -21,6 +30,7 @@ export const Button: React.FC<ButtonProps> = memo((props) => {
     const {
         children,
         theme = ButtonTheme.primary,
+        size = ButtonSize.medium,
         className,
         disabled,
         ...otherProps
@@ -30,8 +40,9 @@ export const Button: React.FC<ButtonProps> = memo((props) => {
         <button
             className={classnames(
                 classes.Button,
-                classes[theme],
                 className,
+                classes[size],
+                classes[theme],
                 { [classes.disabled]: disabled },
             )}
             {...otherProps}

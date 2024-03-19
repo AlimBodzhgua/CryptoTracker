@@ -12,10 +12,19 @@
 	}
 }
 
+.disabled {
+	opacity: .5;
+
+	&:hover {
+		cursor: default;
+	}
+}
+
+
 
 .primary,
 .secondary {
-	padding: 8px 34px;
+	//padding: 8px 34px;
 	border-radius: 8px;
 
 	font-weight: 600;
@@ -37,10 +46,17 @@
 	background: none;
 }
 
-.disabled {
-	opacity: .5;
+.small {
+	font-size: 12px;
+	padding: 6px 20px;
+}
 
-	&:hover {
-		cursor: default;
-	}
+.medium {
+	padding: 8px 34px;
+	font-size: 16px;
+}
+
+.big {
+	font-size: 18px;
+	padding: 10px 36px;
 }

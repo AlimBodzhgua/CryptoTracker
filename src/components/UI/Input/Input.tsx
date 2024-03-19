@@ -14,6 +14,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	addonBefore?: ReactNode | ReactElement;
 	addonAfter?: ReactNode | ReactElement;
 	className?: string;
+    fieldClassName?: string;
 }
 
 export const Input = memo(forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -22,6 +23,7 @@ export const Input = memo(forwardRef<HTMLInputElement, InputProps>((props, ref) 
         className,
         addonBefore,
         addonAfter,
+        fieldClassName,
         ...otherProps
     } = props;
 
@@ -36,7 +38,7 @@ export const Input = memo(forwardRef<HTMLInputElement, InputProps>((props, ref) 
         >
             {addonBefore}
             <input
-                className={classes.InputField}
+                className={classnames(classes.InputField, fieldClassName)}
                 ref={ref}
                 {...otherProps}
                 {...focusProps}

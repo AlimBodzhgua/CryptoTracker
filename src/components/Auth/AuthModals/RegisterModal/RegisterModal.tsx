@@ -26,8 +26,10 @@ export const RegisterModal: React.FC<RegisterModalProps> = (props) => {
             isOpen={isOpen}
             className={classnames(classes.RegisterModal, className)}
         >
-            <h2 className={classes.header}>{t('Register')}</h2>
-            <RegisterFormAsync onSuccess={onClose} />
+            <RegisterFormAsync
+                onSuccess={onClose}
+                title={t('Register')}
+            />
         </Modal>
     );
 };

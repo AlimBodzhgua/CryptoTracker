@@ -19,6 +19,7 @@ import classes from './RegisterForm.module.scss';
 
 interface RegisterFormProps {
     onSuccess?: () => void;
+    title?: string;
 	className?: string;
 }
 
@@ -28,7 +29,7 @@ interface IFormInputs {
 }
 
 const RegisterForm: FC<RegisterFormProps> = memo((props) => {
-    const { onSuccess, className } = props;
+    const { onSuccess, title, className } = props;
     const { t } = useTranslation();
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const dispatch = useAppDispatch();
@@ -63,6 +64,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
             onSubmit={(handleSubmit(onSubmit))}
             className={classnames(classes.RegisterForm, className)}
         >
+            <h2 className={classes.title}>{title}</h2>
             <Controller
                 control={control}
                 name='email'

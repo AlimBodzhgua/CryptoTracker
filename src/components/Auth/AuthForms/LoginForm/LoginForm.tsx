@@ -1,8 +1,8 @@
 import {
-    FC, useState, memo, useCallback,
+    FC, useState, memo, useCallback, MouseEvent,
 } from 'react';
 import { Input } from 'components/UI/Input/Input';
-import { Button } from 'components/UI/Button/Button';
+import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -19,6 +19,8 @@ import classes from './LoginForm.module.scss';
 
 interface LoginFormProps {
     onSuccess?: () => void;
+    onForget?: () => void;
+    title?: string;
 	className?: string;
 }
 
@@ -28,7 +30,12 @@ interface IFormInputs {
 }
 
 const LoginForm: FC<LoginFormProps> = memo((props) => {
-    const { onSuccess, className } = props;
+    const {
+        title,
+        onSuccess,
+        onForget,
+        className,
+    } = props;
     const { t } = useTranslation();
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const dispatch = useAppDispatch();
@@ -59,12 +66,18 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
         }
     }, [dispatch, onSuccess]);
 
+    const onForgetPassword = (e: MouseEvent) => {
+        if (onForget) {
+            onForget();
+        }
+    };
+
     return (
         <form
-            action=''
             className={classnames(classes.LoginForm, className)}
             onSubmit={handleSubmit(onSubmit)}
         >
+            <h2 className={classes.title}>{title}</h2>
             <Controller
                 control={control}
                 name='email'
@@ -120,6 +133,12 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 disabled={isLoading}
             >
                 {t('Login')}
+            </Button>
+            <Button
+                onClick={onForgetPassword}
+                theme={ButtonTheme.clear}
+            >
+                {t('Forgot Password?')}
             </Button>
         </form>
     );

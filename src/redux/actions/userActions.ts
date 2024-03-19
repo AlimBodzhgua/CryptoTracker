@@ -2,6 +2,7 @@ import { createAsyncThunk, isRejectedWithValue } from '@reduxjs/toolkit';
 import { IUser } from 'types/user';
 import {
     createUserWithEmailAndPassword,
+    sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signOut,
 } from 'firebase/auth';
@@ -55,6 +56,21 @@ export const signOutUser = createAsyncThunk<
     async (_, { rejectWithValue }) => {
         try {
             await signOut(auth);
+        } catch (error) {
+            return rejectWithValue(JSON.stringify(error));
+        }
+    },
+);
+
+export const resetUserPassword = createAsyncThunk<
+    void,
+    string,
+    {rejectValue: string}
+>(
+    'resetPassword',
+    async (email, { rejectWithValue }) => {
+        try {
+            await sendPasswordResetEmail(auth, email);
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }

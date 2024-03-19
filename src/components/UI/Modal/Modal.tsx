@@ -62,7 +62,7 @@ export const Modal: FC<ModalProps> = (props) => {
                     role='button'
                     tabIndex={0}
                 >
-                    <Suspense fallback="Loading content">
+                    <Suspense fallback='Loading content'>
                         {children}
                     </Suspense>
                 </div>

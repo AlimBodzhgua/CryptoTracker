@@ -14,7 +14,7 @@ export const ButtonSize = {
     small: 'small',
     medium: 'medium',
     big: 'big',
-} as const
+} as const;
 
 export type ButtonSizeType = keyof typeof ButtonSize;
 

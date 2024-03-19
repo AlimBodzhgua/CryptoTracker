@@ -1,6 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IUser } from 'types/user';
-import { signUpUser, signInUser, signOutUser } from '../actions/userActions';
+import {
+    signUpUser,
+    signInUser,
+    signOutUser,
+    resetUserPassword,
+} from '../actions/userActions';
 
 export interface UserStateSchema {
 	isLoading: boolean;
@@ -24,6 +29,7 @@ export const userSlice = createSlice({
     },
     extraReducers: (builder) => {
     	builder
+    		// SignUpUser
 	    	.addCase(signUpUser.pending, (state) => {
 	    		state.isLoading = true;
 	    	})
@@ -35,6 +41,7 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	})
+	    	// SignInUser
 	    	.addCase(signInUser.pending, (state) => {
 	    		state.isLoading = true;
 	    	})
@@ -46,6 +53,7 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	})
+	    	// SignOutUser
 	    	.addCase(signOutUser.pending, (state) => {
 	    		state.isLoading = true;
 	    	})
@@ -54,6 +62,17 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    	})
 	    	.addCase(signOutUser.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
+	    	// ResetPassword
+	    	.addCase(resetUserPassword.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(resetUserPassword.fulfilled, (state) => {
+	    		state.isLoading = false;
+	    	})
+	    	.addCase(resetUserPassword.rejected, (state, action) => {
 	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	});

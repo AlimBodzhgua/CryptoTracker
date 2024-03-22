@@ -5,6 +5,19 @@
 	padding-bottom: 30px;
 
 	height: 100%;
+	display: flex;
+}
+
+.profileImage {
+	max-width: 165px;
+	max-height: 195px;
+	border-radius: 5px;
+
+	width: 100%;
+	height: 100%;
+	
+	object-fit: cover;
+	margin-right: 25px;
 }
 
 .dataItem {
@@ -28,9 +41,7 @@
 }
 
 .inputField {
-	&::placeholder {
-		color: #fff;
-	}
+	color: #fff;
 } 
 
 .profileActions {
@@ -41,4 +52,53 @@
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
+}
+
+.error {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	flex-direction: center;
+
+	&:hover {
+		.errorMsg {
+			transform: scale(1);
+		}
+	}
+}
+
+.errorMsg {
+	position: absolute;
+	top: -8px;
+	left: 16px;
+	width: 225px;
+
+	color: #fff;
+	background-color: none;
+	
+	transition: transform .2s linear;
+	transform: scale(0);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.errorIcon {
+	fill: red;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+
+.verifyBtn {
+	
+	&:hover {
+		text-decoration: underline;
+	}
+
 }

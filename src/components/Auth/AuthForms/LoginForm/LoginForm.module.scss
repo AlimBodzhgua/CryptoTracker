@@ -37,8 +37,22 @@
 
 
 .button {
-	margin: 12px 0;
+	margin: 14px 0;
 	background-color: var(--orange-color);
+}
+
+.googleIcon {
+	width: 18px;
+	height: 18px;
+	margin-right: 7px;
+}
+
+.googleBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin-bottom: 12px;
 }
 
 .message {

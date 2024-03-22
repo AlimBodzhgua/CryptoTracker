@@ -38,14 +38,15 @@
 }
 
 .clear {
-	border: none;
-	padding: none;
-	background: none;
+	border: none!important;
+	padding: 2px!important;
+	background: none!important;
 }
 
 .small {
 	font-size: 12px;
 	padding: 6px 20px;
+	border-radius: 6px
 }
 
 .medium {

@@ -28,6 +28,10 @@
 	"Are you sure you want to logout?": "Вы действительно хотите выйти?",
 	"An email has been sent to you to reset your password.": "Вам было отправлено письмо для сброса пароля.",
 	"Forgot Password?": "Забыли пароль?",
+	"Wrong password or email.": "Неверный пароль или адрес электронной почты",
+	"Your email is not veified": "Ваша почта не подтверждена",
+	"click to get veification mail": "нажмите, чтобы получить письмо с подтверждением",
+
 
 
 	"Edit": "Редактировать",

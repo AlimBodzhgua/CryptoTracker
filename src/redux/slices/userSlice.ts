@@ -5,6 +5,9 @@ import {
     signInUser,
     signOutUser,
     resetUserPassword,
+    signInWithGoogle,
+    updateUserProfile,
+    updateUserEmail,
 } from '../actions/userActions';
 
 export interface UserStateSchema {
@@ -25,6 +28,16 @@ export const userSlice = createSlice({
     reducers: {
     	initAuthData: (state, action: PayloadAction<IUser>) => {
     		state.authData = action.payload;
+    	},
+    	changeUserImageUrl: (state, action: PayloadAction<string>) => {
+    		if (state.authData) {
+	    		state.authData.imageUrl = action.payload;
+    		}
+    	},
+    	changeUserLogin: (state, action: PayloadAction<string>) => {
+    		if (state.authData) {
+	    		state.authData.login = action.payload;
+    		}
     	},
     },
     extraReducers: (builder) => {
@@ -73,6 +86,37 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    	})
 	    	.addCase(resetUserPassword.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
+	    	// SignInWithGoogle
+	    	.addCase(signInWithGoogle.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(signInWithGoogle.fulfilled, (state, action) => {
+	    		state.isLoading = false;
+	    		state.authData = action.payload;
+	    	})
+	    	.addCase(signInWithGoogle.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
+	    	// UpdateUserProfile
+	    	.addCase(updateUserProfile.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(updateUserProfile.fulfilled, (state, action) => {
+	    		if (state.authData) {
+		    		state.authData.imageUrl = action.payload.imageUrl;
+		    		state.authData.login = action.payload.login;
+
+		    		if (action.payload.email) {
+		    			state.authData.email = action.payload.email;
+		    		}
+	    		}
+	    		state.isLoading = false;
+	    	})
+	    	.addCase(updateUserProfile.rejected, (state, action) => {
 	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	});

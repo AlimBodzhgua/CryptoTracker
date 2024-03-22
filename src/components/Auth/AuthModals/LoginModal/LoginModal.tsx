@@ -35,17 +35,17 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
 
     const ActiveForms: Record<ActiveFormType, JSX.Element> = useMemo(() => ({
         loginForm:
-            <LoginFormAsync
-                title={t('Login')}
-                onSuccess={onClose}
-                onForget={onForget}
-            />,
+    <LoginFormAsync
+        title={t('Login')}
+        onSuccess={onClose}
+        onForget={onForget}
+    />,
         resetForm:
-            <PasswordResetFormAsync
-                title='Forget Password'
-                onSuccess={backToLoginForm}
-                onCancel={backToLoginForm}
-            />,
+    <PasswordResetFormAsync
+        title='Forget Password'
+        onSuccess={backToLoginForm}
+        onCancel={backToLoginForm}
+    />,
     }), [onClose, onForget, backToLoginForm]);
 
     return (

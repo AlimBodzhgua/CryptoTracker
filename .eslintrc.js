@@ -26,7 +26,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'no-mixed-spaces-and-tabs': 'off',
         'no-restricted-globals': 'warn',
-        'no-param-reassign': 'warn',
+        'no-param-reassign': ['error', { 'props': false }],
         'semi': ['warn', 'always'],
         'prefer-const': 'warn',
         'quotes': ['warn', 'single'],
@@ -58,6 +58,9 @@ module.exports = {
                 code: 110,
                 ignoreComments: true
             }
-        ]
+        ],
+        "jsx-a11y/label-has-associated-control": [ 'error', {
+            "controlComponents": ["Input"],
+        }]
     },
 }

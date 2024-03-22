@@ -27,6 +27,10 @@
 	"Are you sure you want to logout?": "Are you sure you want to logout?",
 	"An email has been sent to you to reset your password.": "An email has been sent to you to reset your password.",
 	"Forgot Password?": "Forgot Password?",
+	"Wrong password or email.": "Wrong password or email.",
+	"Your email is not veified": "Your email is not veified",
+	"click to get veification mail": "click to get veification mail",
+
 
 	"Edit": "Edit",
 	"Cancel": "Cancel",

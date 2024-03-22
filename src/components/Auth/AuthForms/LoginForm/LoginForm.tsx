@@ -1,18 +1,19 @@
 import {
-    FC, useState, memo, useCallback, MouseEvent,
+    FC, useState, memo, useCallback,
 } from 'react';
 import { Input } from 'components/UI/Input/Input';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { signInUser } from 'redux/actions/userActions';
+import { signInUser, signInWithGoogle } from 'redux/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
-import { selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { selectUserError, selectUserIsLoading } from 'redux/selectors/userSelectors';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';
 import EyeIcon from 'assets/icons/eye.svg';
+import GoogleIcon from 'assets/icons/google.svg';
 
 import classnames from 'classnames';
 import classes from './LoginForm.module.scss';
@@ -40,6 +41,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const dispatch = useAppDispatch();
     const isLoading = useAppSelector(selectUserIsLoading);
+    const error = useAppSelector(selectUserError);
 
     const {
         handleSubmit,
@@ -66,9 +68,19 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
         }
     }, [dispatch, onSuccess]);
 
-    const onForgetPassword = (e: MouseEvent) => {
+    const onForgetPassword = () => {
         if (onForget) {
             onForget();
+        }
+    };
+
+    const onLoginWithGoogle = async () => {
+        const { meta, payload } = await dispatch(signInWithGoogle());
+
+        if (meta.requestStatus === 'fulfilled') {
+            localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload));
+
+            if (onSuccess) onSuccess();
         }
     };
 
@@ -127,6 +139,13 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 </div>
             )}
 
+            {error
+                && (
+                    <div className={classes.message}>
+                        {t('Wrong password or email.')}
+                    </div>
+                )}
+
             <Button
                 className={classes.button}
                 type='submit'
@@ -135,8 +154,20 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 {t('Login')}
             </Button>
             <Button
+                theme={ButtonTheme.secondary}
+                size={ButtonSize.small}
+                onClick={onLoginWithGoogle}
+                className={classes.googleBtn}
+                disabled={isLoading}
+                type='reset'
+            >
+                <GoogleIcon className={classes.googleIcon} />
+                Log in with Google
+            </Button>
+            <Button
                 onClick={onForgetPassword}
                 theme={ButtonTheme.clear}
+                size={ButtonSize.small}
             >
                 {t('Forgot Password?')}
             </Button>

@@ -5,31 +5,26 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Input } from 'components/UI/Input/Input';
+import { selectUserIsLoading } from 'redux/selectors/userSelectors';
 
 import EmailIcon from 'assets/icons/email.svg';
 
 import classnames from 'classnames';
-import { selectUserIsLoading } from 'redux/selectors/userSelectors';
 import classes from './PasswordResetForm.module.scss';
 
 interface PasswordResetFormProps {
-	title?: string;
-	onSuccess?: () => void;
-	onCancel?: () => void;
-	className?: string;
+    title?: string;
+    onSuccess?: () => void;
+    onCancel?: () => void;
+    className?: string;
 }
 
 interface IFormInputs {
-	email: string;
+    email: string;
 }
 
 const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
-    const {
-        title,
-        onSuccess,
-        onCancel,
-        className,
-    } = props;
+    const { title, onSuccess, onCancel, className } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -43,7 +38,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
         mode: 'onSubmit',
     });
 
-    const onSubmit:SubmitHandler<IFormInputs> = async (e) => {
+    const onSubmit: SubmitHandler<IFormInputs> = async (e) => {
         const { meta } = await dispatch(resetUserPassword(e.email));
 
         if (meta.requestStatus === 'fulfilled') {
@@ -62,7 +57,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
             <Input
                 addonBefore={<EmailIcon className={classes.icon} />}
                 className={classes.inputField}
-                placeholder='Enter you email'
+                placeholder={t('Enter you email')}
                 {...register('email', { required: true })}
             />
 
@@ -71,22 +66,22 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
                     {t('Please enter your email.')}
                 </div>
             )}
-            {isSuccess
-				&& (
-				    <p className={classes.message}>
-					    {t('An email has been sent to you to reset your password.')}
-						<Button
-				    		theme={ButtonTheme.clear}
-						    className={classes.loginBtn}
-						    onClick={onSuccess}
-				        >{t('Login to account')}
-				        </Button>
-				    </p>
-				)}
+            {isSuccess && (
+                <p className={classes.message}>
+                    {t('An email has been sent to you to reset your password.')}
+                    <Button
+                        theme={ButtonTheme.clear}
+                        className={classes.loginBtn}
+                        onClick={onSuccess}
+                    >
+                        {t('Login to account')}
+                    </Button>
+                </p>
+            )}
             <div className={classes.resetActions}>
                 <Button
                     theme={ButtonTheme.secondary}
-                    type='submit'
+                    type="submit"
                     className={classes.resetBtn}
                     disabled={isLoading}
                 >

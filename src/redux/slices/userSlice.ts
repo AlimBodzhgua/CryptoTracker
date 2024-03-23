@@ -7,12 +7,13 @@ import {
     resetUserPassword,
     signInWithGoogle,
     updateUserProfile,
-    updateUserEmail,
 } from '../actions/userActions';
 
 export interface UserStateSchema {
 	isLoading: boolean;
 	error?: string;
+	_mounted: boolean;
+
 	authData: IUser | null;
 }
 
@@ -20,14 +21,18 @@ const initialState:UserStateSchema = {
     isLoading: false,
     error: undefined,
     authData: null,
+    _mounted: false,
 };
 
 export const userSlice = createSlice({
     name: 'userSLice',
     initialState,
     reducers: {
-    	initAuthData: (state, action: PayloadAction<IUser>) => {
-    		state.authData = action.payload;
+    	initAuthData: (state, action: PayloadAction<string | null>) => {
+    		if (action.payload) {
+	    		state.authData = JSON.parse(action.payload);
+    		}
+    		state._mounted = true;
     	},
     	changeUserImageUrl: (state, action: PayloadAction<string>) => {
     		if (state.authData) {
@@ -109,17 +114,13 @@ export const userSlice = createSlice({
 	    		if (state.authData) {
 		    		state.authData.imageUrl = action.payload.imageUrl;
 		    		state.authData.login = action.payload.login;
-
-		    		if (action.payload.email) {
-		    			state.authData.email = action.payload.email;
-		    		}
 	    		}
 	    		state.isLoading = false;
 	    	})
 	    	.addCase(updateUserProfile.rejected, (state, action) => {
 	    		state.isLoading = false;
 	    		state.error = action.payload;
-	    	});
+	    	})
     },
 });
 

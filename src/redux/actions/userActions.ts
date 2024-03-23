@@ -7,7 +7,6 @@ import {
     sendEmailVerification,
     signInWithPopup,
     signOut,
-    updateEmail,
     updateProfile,
 } from 'firebase/auth';
 import { auth, googleProvider } from 'config/firebase/firebase';
@@ -124,7 +123,7 @@ export const sendEmailVerificationMessage = createAsyncThunk<
     },
 );
 
-type updateUserProfileType = Pick<IUser, 'imageUrl' | 'login'> & {email?: string}
+type updateUserProfileType = Pick<IUser, 'imageUrl' | 'login'>
 
 export const updateUserProfile = createAsyncThunk<
     updateUserProfileType,
@@ -134,31 +133,11 @@ export const updateUserProfile = createAsyncThunk<
     'updateUserProfile',
     async (data, { rejectWithValue }) => {
         try {
-            console.log(data);
             await updateProfile(auth.currentUser!, {
                 displayName: data.login,
                 photoURL: data.imageUrl,
             });
-            if (data.email) {
-                await updateEmail(auth.currentUser!, data.email);
-            }
             return data;
-        } catch (error) {
-            return rejectWithValue(JSON.stringify(error));
-        }
-    },
-);
-
-export const updateUserEmail = createAsyncThunk<
-    string,
-    string,
-    {rejectValue: string}
->(
-    'updateUserEmail',
-    async (newEmail, { rejectWithValue }) => {
-        try {
-            await updateEmail(auth.currentUser!, newEmail);
-            return newEmail;
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }

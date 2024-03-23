@@ -58,8 +58,6 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
 
     return (
         <nav className={classnames(classes.Navbar, className)}>
-            <LangSwitcher />
-            <CurrencySwitcher />
             <div className={classes.auth}>
                 {isAuth
                     ? (
@@ -95,6 +93,8 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
                             />
                         </>
                     )}
+            <CurrencySwitcher />
+            <LangSwitcher />
             </div>
         </nav>
     );

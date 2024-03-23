@@ -35,17 +35,15 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
     const id = useId();
     const [edit, setEdit] = useState<boolean>(false);
 
-    const [email, setEmail] = useState<string>("");
-    const [login, setLogin] = useState<string>("");
-    const [imageUrl, setImageUrl] = useState<string>("");
+    const [login, setLogin] = useState<string>('');
+    const [imageUrl, setImageUrl] = useState<string>('');
 
     useEffect(() => {
         if (user) {
-            setEmail(user.email);
             setLogin(user.login);
             setImageUrl(user.imageUrl);
         }
-    }, [user?.login, user?.imageUrl, user?.email]);
+    }, [user?.login, user?.imageUrl]);
 
     const onEdit = () => {
         setEdit(true);
@@ -55,7 +53,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
         if (user) {
             setLogin(user.login);
             setImageUrl(user.imageUrl);
-            setEmail(user.email);
         }
         setEdit(false);
     };
@@ -68,41 +65,26 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
         setImageUrl(e.target.value);
     };
 
-    const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-
     const onSave = useCallback(async () => {
         if (user) {
-            const { meta } = await dispatch(
-                updateUserProfile({
-                    imageUrl,
-                    login,
-                    email: email !== user.email ? email : undefined,
-                }),
-            );
+            const { meta } = await dispatch(updateUserProfile({imageUrl, login}));
 
             if (meta.requestStatus === "fulfilled") {
-                localStorage.setItem(
-                    USER_LOCALSTORAGE_KEY,
-                    JSON.stringify({
-                        ...user,
-                        imageUrl,
-                        login,
-                        email: email !== user.email ? email : user.email,
-                    }),
-                );
+                localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify({...user, imageUrl, login}));
                 setEdit(false);
             }
         }
-    }, [login, email, imageUrl]);
+    }, [login, imageUrl]);
 
-    const onGetVerificationMessage = useCallback(() => {
-        dispatch(sendEmailVerificationMessage());
+    const onGetVerificationMessage = useCallback(async () => {
+        const { meta } = await dispatch(sendEmailVerificationMessage());
+        if (meta.requestStatus === 'fulfilled') {
+            alert('A confirmation message has been sent, confirm your email and re-login to your account');
+        }
     }, [dispatch]);
 
-    const renderErrorIcon = useCallback(
-        () => (
+
+    const renderErrorIcon = useCallback(() => (
             <div className={classes.error}>
                 <p className={classes.errorMsg}>
                     {t('Your email is not veified')}
@@ -117,9 +99,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
                 </p>
                 <ErrorIcon className={classes.errorIcon} />
             </div>
-        ),
-        [],
-    );
+    ), [],);
 
     return (
         <div className={classnames(classes.ProfileCard, className)}>
@@ -128,65 +108,58 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
                 alt="UserProfileImage"
                 className={classes.profileImage}
             />
-            <div>
-                <label htmlFor={`${id}-id`} className={classes.dataItem}>
-                    <span className={classes.dataText}>Id</span>
-                    <Input
-                        value={user?.id}
-                        className={classes.dataInput}
-                        fieldClassName={edit ? classes.inputField : undefined}
-                        disabled
-                        id={`${id}-id`}
-                    />
-                </label>
+            <div className={classes.data}>
 
-                <label htmlFor={`${id}-login`} className={classes.dataItem}>
-                    <span className={classes.dataText}>Login</span>
-                    <Input
-                        placeholder={t('Enter your login')}
-                        className={classes.dataInput}
-                        fieldClassName={edit ? classes.inputField : undefined}
-                        disabled={!edit}
-                        value={login}
-                        onChange={onLoginChange}
-                        id={`${id}-login`}
-                    />
-                </label>
-                <label htmlFor={`${id}-image`} className={classes.dataItem}>
-                    <span className={classes.dataText}>Image url</span>
-                    <Input
-                        placeholder={t('Enter your image url')}
-                        className={classes.dataInput}
-                        fieldClassName={edit ? classes.inputField : undefined}
-                        disabled={!edit}
-                        value={imageUrl}
-                        onChange={onImageUrlChange}
-                        id={`${id}-image`}
-                    />
-                </label>
+                <div className={classes.dataWrapper}>
+                    <label htmlFor={`${id}-id`} className={classes.dataItem}>
+                        <span className={classes.dataText}>Id</span>
+                        <Input
+                            value={user!.id}
+                            className={classes.dataInput}
+                            id={`${id}-id`}
+                            disabled
+                        />
+                    </label>
 
-                {/*
-                    Должно быть true когда
-                    edit === false
-                        &&
-                    isEmailVerified === false
-                        [edit === false && user!.isEmailVerified === false ? true : false]
-                        Если edit станет true а user!.isEmailVerified === false то
-                */}
-                <label htmlFor={`${id}-email`} className={classes.dataItem}>
-                    <span className={classes.dataText}>Email</span>
-                    <Input
-                        className={classes.dataInput}
-                        fieldClassName={edit ? classes.inputField : undefined}
-                        id={`${id}-email`}
-                        disabled={
-                            edit === false || user!.isEmailVerified === false
-                        }
-                        value={email}
-                        onChange={onEmailChange}
-                        addonAfter={!user?.isEmailVerified && renderErrorIcon()}
-                    />
-                </label>
+                    <label htmlFor={`${id}-email`} className={classes.dataItem}>
+                        <span className={classes.dataText}>Email</span>
+                        <Input
+                            value={user!.email}
+                            className={classes.dataInput}
+                            id={`${id}-email`}
+                            addonAfter={!user?.isEmailVerified && renderErrorIcon()}
+                            disabled
+                        />
+                    </label>
+                </div>
+
+                <div className={classes.dataWrapper}>
+                    <label htmlFor={`${id}-login`} className={classes.dataItem}>
+                        <span className={classes.dataText}>Login</span>
+                        <Input
+                            placeholder={t('Enter your login')}
+                            className={classes.dataInput}
+                            fieldClassName={edit ? classes.inputField : undefined}
+                            disabled={!edit}
+                            value={login}
+                            onChange={onLoginChange}
+                            id={`${id}-login`}
+                        />
+                    </label>
+                    <label htmlFor={`${id}-image`} className={classes.dataItem}>
+                        <span className={classes.dataText}>Image url</span>
+                        <Input
+                            placeholder={t('Enter your image url')}
+                            className={classes.dataInput}
+                            fieldClassName={edit ? classes.inputField : undefined}
+                            disabled={!edit}
+                            value={imageUrl}
+                            onChange={onImageUrlChange}
+                            id={`${id}-image`}
+                        />
+                    </label>
+                </div>
+
             </div>
 
             <div className={classes.profileActions}>

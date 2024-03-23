@@ -9,10 +9,8 @@ import {
 import { coinsActions } from 'redux/slices/coinsSlice';
 import { currencyActions } from 'redux/slices/currencySlice';
 import { AppRouter } from 'router/AppRouter';
-import { isUserLoggedIn } from 'utils/utils';
 import { userActions } from 'redux/slices/userSlice';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
-import { IUser } from 'types/user';
 import 'styles/index.scss';
 
 export const App: FC = () => {
@@ -23,11 +21,8 @@ export const App: FC = () => {
 
     useEffect(() => {
         dispatch(fetchCurrency());
-
-        if (isUserLoggedIn()) {
-            const user: IUser = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY) || '');
-            dispatch(userActions.initAuthData(user));
-        }
+        const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+        dispatch(userActions.initAuthData(user));
     }, [dispatch]);
 
     useEffect(() => {

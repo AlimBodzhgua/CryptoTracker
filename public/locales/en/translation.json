@@ -13,9 +13,6 @@
 	"Market cap": "market cap",
 	"Error fetching coins": "Error fetching coins",
 
-	"Register": "Register",
-	"Login": "Login",
-
 	"Enter email...": "Enter email...",
 	"Enter password...": "Enter password...",
 	"Please enter your email.": "Please enter your email.",
@@ -30,8 +27,13 @@
 	"Wrong password or email.": "Wrong password or email.",
 	"Your email is not veified": "Your email is not veified",
 	"click to get veification mail": "click to get veification mail",
+	"This page require auth.": "This page require auth.",
+	"Soon you will redirect to the main page.": "Soon you will redirect to the main page.",
+	"Please register or log in your account to access the page.": "Please register or log in your account to access the page.",
 
 
+	"Register": "Register",
+	"Login": "Login",
 	"Edit": "Edit",
 	"Cancel": "Cancel",
 	"Save": "Save",

@@ -13,9 +13,6 @@
 	"Market cap": "Рыночная капитализцаия",
 	"Error fetching coins": "Ошибка при получении монет",
 
-	"Register": "Зарегистрироваться",
-	"Login": "Вход",
-	
 
 	"Enter email...": "Введите почту...",
 	"Enter password...": "Введите пароль...",
@@ -32,9 +29,15 @@
 	"Your email is not veified": "Ваша почта не подтверждена",
 	"click to get veification mail": "нажмите, чтобы получить письмо с подтверждением",
 
+	"This page require auth.": "Эта страница требует авторизации.",
+	"Soon you will redirect to the main page.": "Вы будете перенаправлены на главную страницу.",
+	"Please register or log in your account to access the page.": "Пожалуйста, зарегистрируйтесь или войдите в свою учетную запись, чтобы получить доступ к странице.",
+
 
 
 	"Edit": "Редактировать",
+	"Register": "Зарегистрироваться",
+	"Login": "Вход",
 	"Cancel": "Отменить",
 	"Save": "Сохранить",
 	"Reset": "Сбросить"

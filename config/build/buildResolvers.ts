@@ -5,4 +5,5 @@ export const buildResolvers = (options: BuildOptions): webpack.ResolveOptions =>
     extensions: ['.ts', '.tsx', '.js'],
     preferAbsolute: true,
     modules: [options.paths.src, 'node_modules'],
+    fallback: { timers: require.resolve('timers-browserify') }
 });

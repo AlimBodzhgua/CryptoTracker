@@ -19,7 +19,6 @@ export const RequireAuth: FC<RequireAuthProps> = ({children}) => {
 	useEffect(() => {
 		timer.current = setTimeout(() => {
 			navigate(RoutePath.main);
-			console.log('timer');
 		}, 3500)
 
 		return () => {

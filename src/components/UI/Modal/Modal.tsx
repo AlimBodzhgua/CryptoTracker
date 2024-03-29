@@ -4,6 +4,7 @@ import React, {
 import classnames from 'classnames';
 import classes from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
+import { ColorRing } from 'react-loader-spinner';
 
 interface ModalProps {
 	isOpen: boolean;
@@ -24,7 +25,7 @@ export const Modal: FC<ModalProps> = (props) => {
         if (onClose) {
             onClose();
         }
-    }, []);
+    }, [onClose]);
 
     const onKeydown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') {
@@ -62,7 +63,17 @@ export const Modal: FC<ModalProps> = (props) => {
                     role='button'
                     tabIndex={0}
                 >
-                    <Suspense fallback='Loading content'>
+                    <Suspense fallback={
+                        <ColorRing
+                            visible={true}
+                            height="80"
+                            width="80"
+                            ariaLabel="color-ring-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="color-ring-wrapper"
+                            colors={['#e6e6e6', '#cccccc', '#b3b3b3', '#bfbfbf', '#e6e6e6']}
+                        />
+                    }>
                         {children}
                     </Suspense>
                 </div>

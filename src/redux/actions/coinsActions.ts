@@ -22,7 +22,6 @@ export const fetchCoins = createAsyncThunk<
                     limit,
                 },
             });
-            console.log('fetch coins');
             return response.data.data.coins;
         } catch (e) {
             return rejectWithValue(JSON.stringify(e));

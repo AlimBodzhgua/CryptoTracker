@@ -6,13 +6,13 @@
 	"Coins": "Монеты",
 	"News": "Новости",
 	"Profile": "Профиль",
+	"Converter": "Конвертер",
 	"Name": "Название",
 	"Price": "Цена",
 	"Change": "Изменение",
 	"24h volume": "24ч Объём",
 	"Market cap": "Рыночная капитализцаия",
 	"Error fetching coins": "Ошибка при получении монет",
-
 
 	"Enter email...": "Введите почту...",
 	"Enter password...": "Введите пароль...",
@@ -33,12 +33,15 @@
 	"Soon you will redirect to the main page.": "Вы будете перенаправлены на главную страницу.",
 	"Please register or log in your account to access the page.": "Пожалуйста, зарегистрируйтесь или войдите в свою учетную запись, чтобы получить доступ к странице.",
 
-
-
 	"Edit": "Редактировать",
 	"Register": "Зарегистрироваться",
 	"Login": "Вход",
 	"Cancel": "Отменить",
 	"Save": "Сохранить",
-	"Reset": "Сбросить"
+	"Reset": "Сбросить",
+
+	"Only the user can see the history of previous conversions": "Только авторизованный пользователь может видеть историю предыдущих конвертаций",
+	"Select Coin": "Выберите монету",
+	"Convert": "Конвертировать",
+	"History": "История"
 }

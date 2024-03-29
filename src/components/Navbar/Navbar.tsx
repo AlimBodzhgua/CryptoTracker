@@ -93,8 +93,8 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
                             />
                         </>
                     )}
-            <CurrencySwitcher />
-            <LangSwitcher />
+                <CurrencySwitcher />
+                <LangSwitcher />
             </div>
         </nav>
     );

@@ -37,6 +37,7 @@ module.exports = {
         "consistent-return": 'warn',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
+        'react/prop-types': 'off',
         'indent': [2, 4],
         'react/jsx-filename-extension': [
             2, 
@@ -51,7 +52,6 @@ module.exports = {
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/button-has-type': 'off',
-        'react/prop-types': 'warn',
         'max-len': [
             'error',
             {

@@ -1,19 +1,17 @@
-import { FC, ReactNode, Suspense, useCallback } from 'react';
+import {
+    FC, ReactNode, Suspense, useCallback,
+} from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/UI/Layout/Layout';
 import { RouteConfig } from './routeConfig';
 import { RequireAuth } from './RequireAuth';
 
 export const AppRouter: FC = () => {
-
-    const renderRouteElement = useCallback((element: ReactNode) => {
-        return (
-            <Suspense fallback={<h1>Loading Page...</h1>}>
-                {element}
-            </Suspense>
-        )
-    }, [])
-
+    const renderRouteElement = useCallback((element: ReactNode) => (
+        <Suspense fallback={<h1>Loading Page...</h1>}>
+            {element}
+        </Suspense>
+    ), []);
 
     return (
         <Routes>
@@ -25,10 +23,10 @@ export const AppRouter: FC = () => {
                         index={route.index}
                         element={route.authRequire
                             ? <RequireAuth>{renderRouteElement(route.element)}</RequireAuth>
-                            : renderRouteElement(route.element)
-                        }
+                            : renderRouteElement(route.element)}
                     />
                 ))}
             </Route>
         </Routes>
-)};
+    );
+};

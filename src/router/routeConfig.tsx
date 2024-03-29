@@ -6,6 +6,7 @@ const NewsPage = lazy(() => import('pages/NewsPage/NewsPage'));
 const CoinsPage = lazy(() => import('pages/CoinsPage/CoinsPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const ProfilePage = lazy(() => import('pages/ProfilePage/ProfilePage'));
+const ConverterPage = lazy(() => import('pages/ConverterPage/ConverterPage'));
 
 export type AppRouteProps = RouteProps & {
 	authRequire?: boolean;
@@ -16,6 +17,7 @@ export enum AppRoutes {
 	COINS = 'coins',
 	NEWS = 'news',
     PROFILE = 'profile',
+    CONVERTER = 'converter',
 
 	NOT_FOUND = 'not_found',
 }
@@ -25,6 +27,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.COINS]: '/coins',
     [AppRoutes.NEWS]: '/news',
     [AppRoutes.PROFILE]: '/profile',
+    [AppRoutes.CONVERTER]: '/converter',
 
     [AppRoutes.NOT_FOUND]: '*',
 };
@@ -46,6 +49,10 @@ export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
         path: RoutePath.profile,
         element: <ProfilePage />,
         authRequire: true,
+    },
+    [AppRoutes.CONVERTER]: {
+        path: RoutePath.converter,
+        element: <ConverterPage />,
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath.not_found,

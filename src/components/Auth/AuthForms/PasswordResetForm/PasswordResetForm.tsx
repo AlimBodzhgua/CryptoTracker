@@ -24,7 +24,9 @@ interface IFormInputs {
 }
 
 const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
-    const { title, onSuccess, onCancel, className } = props;
+    const {
+        title, onSuccess, onCancel, className,
+    } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -81,7 +83,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
             <div className={classes.resetActions}>
                 <Button
                     theme={ButtonTheme.secondary}
-                    type="submit"
+                    type='submit'
                     className={classes.resetBtn}
                     disabled={isLoading}
                 >

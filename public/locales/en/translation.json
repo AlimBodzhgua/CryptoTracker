@@ -6,6 +6,7 @@
 	"Coins": "Coins",
 	"News": "News",
 	"Profile": "Profile",
+	"Converter": "Converter",
 	"Name": "name",
 	"Price": "price",
 	"Change": "change",
@@ -37,5 +38,10 @@
 	"Edit": "Edit",
 	"Cancel": "Cancel",
 	"Save": "Save",
-	"Reset": "Reset"
+	"Reset": "Reset",
+
+	"Only the user can see the history of previous conversions": "Only the user can see the history of previous conversions",
+	"Select Coin": "Select Coin",
+	"Convert": "Convert",
+	"History": "History"
 }

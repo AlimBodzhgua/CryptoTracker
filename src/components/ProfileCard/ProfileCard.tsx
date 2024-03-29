@@ -5,23 +5,23 @@ import React, {
     useId,
     useState,
     memo,
-} from "react";
-import { Input } from "components/UI/Input/Input";
-import { selectUser, selectUserIsLoading } from "redux/selectors/userSelectors";
-import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { Button, ButtonSize, ButtonTheme } from "components/UI/Button/Button";
-import { USER_LOCALSTORAGE_KEY } from "constants/localStorage";
-import { useTranslation } from "react-i18next";
+} from 'react';
+import { Input } from 'components/UI/Input/Input';
+import { selectUser, selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
+import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
+import { useTranslation } from 'react-i18next';
 import {
     sendEmailVerificationMessage,
     updateUserProfile,
-} from "redux/actions/userActions";
+} from 'redux/actions/userActions';
 
-import UserDefaultImage from "assets/userDefaultImage.jpg";
-import ErrorIcon from "assets/icons/error.svg";
+import UserDefaultImage from 'assets/userDefaultImage.jpg';
+import ErrorIcon from 'assets/icons/error.svg';
 
-import classnames from "classnames";
-import classes from "./ProfileCard.module.scss";
+import classnames from 'classnames';
+import classes from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
@@ -67,10 +67,10 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 
     const onSave = useCallback(async () => {
         if (user) {
-            const { meta } = await dispatch(updateUserProfile({imageUrl, login}));
+            const { meta } = await dispatch(updateUserProfile({ imageUrl, login }));
 
-            if (meta.requestStatus === "fulfilled") {
-                localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify({...user, imageUrl, login}));
+            if (meta.requestStatus === 'fulfilled') {
+                localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify({ ...user, imageUrl, login }));
                 setEdit(false);
             }
         }
@@ -83,29 +83,28 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
         }
     }, [dispatch]);
 
-
     const renderErrorIcon = useCallback(() => (
-            <div className={classes.error}>
-                <p className={classes.errorMsg}>
-                    {t('Your email is not veified')}
-                    <Button
-                        theme={ButtonTheme.clear}
-                        size={ButtonSize.small}
-                        className={classes.verifyBtn}
-                        onClick={onGetVerificationMessage}
-                    >
-                        {t('click to get veification mail')}
-                    </Button>
-                </p>
-                <ErrorIcon className={classes.errorIcon} />
-            </div>
-    ), [],);
+        <div className={classes.error}>
+            <p className={classes.errorMsg}>
+                {t('Your email is not veified')}
+                <Button
+                    theme={ButtonTheme.clear}
+                    size={ButtonSize.small}
+                    className={classes.verifyBtn}
+                    onClick={onGetVerificationMessage}
+                >
+                    {t('click to get veification mail')}
+                </Button>
+            </p>
+            <ErrorIcon className={classes.errorIcon} />
+        </div>
+    ), []);
 
     return (
         <div className={classnames(classes.ProfileCard, className)}>
             <img
                 src={user!.imageUrl.length ? user?.imageUrl : UserDefaultImage}
-                alt="UserProfileImage"
+                alt='UserProfileImage'
                 className={classes.profileImage}
             />
             <div className={classes.data}>

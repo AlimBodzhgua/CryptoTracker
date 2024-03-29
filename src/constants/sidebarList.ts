@@ -4,6 +4,7 @@ import CoinLogo from 'assets/icons/coin.svg';
 import ProfileLogo from 'assets/icons/profile.svg';
 import NewsLogo from 'assets/icons/news.svg';
 import MainLogo from 'assets/icons/main.svg';
+import ConverterLogo from 'assets/icons/swap.svg';
 
 export const sidebarList: SidebarItemType[] = [
     {
@@ -20,6 +21,11 @@ export const sidebarList: SidebarItemType[] = [
         text: 'News',
         path: RoutePath.news,
         Icon: NewsLogo,
+    },
+    {
+        text: 'Converter',
+        path: RoutePath.converter,
+        Icon: ConverterLogo,
     },
     {
         text: 'Profile',

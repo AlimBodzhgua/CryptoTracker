@@ -76,12 +76,6 @@
 	display: flex;
 	align-items: center;
 	flex-direction: center;
-
-	&:hover {
-		.errorMsg {
-			transform: scale(1);
-		}
-	}
 }
 
 .errorMsg {
@@ -102,6 +96,12 @@
 	flex-direction: column;
 }
 
+.error:hover {
+	.errorMsg {
+		transform: scale(1);
+	}
+}
+
 .errorIcon {
 	fill: red;
 
@@ -112,7 +112,6 @@
 
 
 .verifyBtn {
-	
 	&:hover {
 		text-decoration: underline;
 	}

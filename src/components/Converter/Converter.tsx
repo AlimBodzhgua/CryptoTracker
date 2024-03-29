@@ -14,13 +14,13 @@ import {
 } from 'redux/selectors/converterSelectors';
 import { converterActions } from 'redux/slices/converterSlice';
 import { convertCoins } from 'redux/actions/converterActions';
+import { CoinSelector } from './CoinSelector/CoinSelector';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 
 import HistoryIcon from 'assets/icons/history.svg';
 import SwitchIcon from 'assets/icons/switch.svg';
 
 import classnames from 'classnames';
-import { CoinSelector } from './CoinSelector/CoinSelector';
 import classes from './Converter.module.scss';
 
 interface ConverterProps {
@@ -126,6 +126,7 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
             <Button
                 className={classes.convertBtn}
                 onClick={onConvert}
+                disabled={isLoading}
             >
                 {t('Convert')}
             </Button>

@@ -1,10 +1,8 @@
 import { useAppSelector } from 'hooks/redux';
-import {
-    FC, ReactNode, useEffect, useRef,
-} from 'react';
+import { FC, ReactNode, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { selectUser, selectUserMounted } from 'redux/selectors/userSelectors';
-import { PageRequierAuth } from 'components/PageRequierAuth/PageRequierAuth';
+import { PageRequireAuth } from 'components/PageRequireAuth/PageRequireAuth';
 import { RoutePath } from './routeConfig';
 
 interface RequireAuthProps {
@@ -30,7 +28,7 @@ export const RequireAuth: FC<RequireAuthProps> = ({ children }) => {
     }, [authData]);
 
     if (!authData && mounted) {
-        return <PageRequierAuth />;
+        return <PageRequireAuth />;
     }
 
     return children;

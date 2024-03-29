@@ -1,11 +1,11 @@
 import React from 'react';
-import classnames from 'classnames';
+import { Page } from 'components/UI/Page/Page';
 import classes from './NotFoundPage.module.scss';
 
 const NotFoundPage: React.FC = () => (
-    <div className={classes.NotFoundPage}>
+    <Page className={classes.NotFoundPage}>
         <h1>Page not foung</h1>
-    </div>
+    </Page>
 );
 
 export default NotFoundPage;

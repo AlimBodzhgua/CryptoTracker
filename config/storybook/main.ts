@@ -1,9 +1,11 @@
+import { TransformOptions } from '@babel/core';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
     stories: [
         '../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     ],
+    framework: '@storybook/react-webpack5',
     addons: [
         '@storybook/addon-webpack5-compiler-swc',
         '@storybook/addon-onboarding',
@@ -13,23 +15,6 @@ const config: StorybookConfig = {
         '@storybook/addon-interactions',
         '@storybook/addon-webpack5-compiler-babel',
     ],
-    framework: {
-        name: '@storybook/react-webpack5',
-        options: {
-	    	builder: {
-	        	useSWC: true,
-	    	},
-	    },
-    },
-    swc: () => ({
-        jsc: {
-            transform: {
-                react: {
-                    runtime: 'automatic',
-	        	},
-	      	},
-        },
-    }),
     docs: {
         autodocs: 'tag',
     },

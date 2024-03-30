@@ -12,9 +12,9 @@ import { LoginModal } from 'components/Auth/AuthModals/LoginModal/LoginModal';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { selectUser } from 'redux/selectors/userSelectors';
 import { signOutUser } from 'redux/actions/userActions';
+import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 
 import classnames from 'classnames';
-import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import classes from './Navbar.module.scss';
 
 interface NavbarProps {

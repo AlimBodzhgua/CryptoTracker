@@ -12,11 +12,13 @@
 
 	.bigColumn {
 		display: flex;
+		align-items: center;
 	}
 
 	.icon {
-		width: 28px;
-		height: 28px;
+		width: 35px;
+		height: 32px;
+		object-fit: contain;
 
 		padding-right: 10px;
 	}

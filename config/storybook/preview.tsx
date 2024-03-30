@@ -1,7 +1,6 @@
 import { Preview } from '@storybook/react';
 import { BrowserDecorator } from '../../src/config/storybook/BrowserDecorator';
 import { StyleDecorator } from '../../src/config/storybook/StyleDecorator';
-import { StoreDecorator } from '../../src/config/storybook/StoreDecorator';
 import { I18nDecorator } from '../../src/config/storybook/I18nDecorator';
 
 const preview: Preview = {
@@ -31,10 +30,6 @@ const preview: Preview = {
         BrowserDecorator,
         StyleDecorator,
         I18nDecorator,
-        StoreDecorator({
-            coins: [],
-            currency: {},
-        }),
     ],
 };
 

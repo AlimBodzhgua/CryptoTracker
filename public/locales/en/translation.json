@@ -43,5 +43,10 @@
 	"Only the user can see the history of previous conversions": "Only the user can see the history of previous conversions",
 	"Select Coin": "Select Coin",
 	"Convert": "Convert",
-	"History": "History"
+	"History": "History",
+
+	"An error occurred.": "An error occurred.",
+	"Warning!": "Warning!",
+	"Success.": "Success.",
+	"Error fetching data, try to reload the page, or visiti the page later": "Error fetching data, try to reload the page, or visiti the page later"
 }

@@ -1,0 +1,43 @@
+
+.Message {
+	text-align: center;
+	color: #262626;
+
+	border-radius: 6px;
+	padding: 15px 16px;
+	position: relative;
+	min-width: 320px;
+
+	.title {
+		margin-bottom: 5px;	
+	}
+
+	.text {
+		font-weight: 600;
+	}
+}
+
+
+.icon {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	transform: scale(1.2);
+}
+
+
+.warn {
+	background-color: #FFB300;
+}
+
+.warnIcon {
+	fill: #ffff1a;
+}
+
+.error {
+	background-color: #ff4d4d;
+}
+
+.success {
+	background-color: #DEF6DD;
+}

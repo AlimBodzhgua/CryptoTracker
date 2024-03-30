@@ -43,5 +43,10 @@
 	"Only the user can see the history of previous conversions": "Только авторизованный пользователь может видеть историю предыдущих конвертаций",
 	"Select Coin": "Выберите монету",
 	"Convert": "Конвертировать",
-	"History": "История"
+	"History": "История",
+
+	"An error occurred.": "Произошла ошибка.",
+	"Warning!": "Внимение!",
+	"Success.": "Успешно.",
+	"Error fetching data, try to reload the page, or visiti the page later": "Ошибка при получении данных. Попробуйте перезагрузить страницу или посетите страницу позже."
 }

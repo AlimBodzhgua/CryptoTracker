@@ -40,3 +40,21 @@
 	justify-content: start;
 	padding-left: 12px;
 }
+
+.errorMsg {
+	margin-top: 140px;
+	text-align: center;
+	color: #262626;
+	border-radius: 6px;
+	padding: 16px 14px;
+
+	background-color: #ff4d4d;
+
+	.errorTitle {
+		margin-bottom: 5px;	
+	}
+
+	.errorText {
+		font-weight: 600;
+	}
+}

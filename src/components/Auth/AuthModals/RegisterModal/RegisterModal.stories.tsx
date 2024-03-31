@@ -8,6 +8,7 @@ const meta = {
     component: RegisterModal,
     parameters: {
         layout: 'centered',
+        loki: { skip: true },
     },
     tags: ['autodocs'],
     argTypes: {},

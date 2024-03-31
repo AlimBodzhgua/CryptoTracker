@@ -7,6 +7,7 @@ const meta = {
     component: LoaderRing,
     parameters: {
         layout: 'centered',
+        loki: { skip: true },
     },
     tags: ['autodocs'],
     argTypes: {},

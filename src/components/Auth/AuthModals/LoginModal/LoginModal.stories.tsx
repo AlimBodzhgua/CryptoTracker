@@ -8,6 +8,7 @@ const meta = {
     component: LoginModal,
     parameters: {
         layout: 'centered',
+        loki: { skip: true },
     },
     tags: ['autodocs'],
     argTypes: {},

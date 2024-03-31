@@ -1,0 +1,52 @@
+{
+	"Language": "Ru",
+	"Login": "Login",
+	"Sign up": "Sign up",
+	"Main": "Main",
+	"Coins": "Coins",
+	"News": "News",
+	"Profile": "Profile",
+	"Converter": "Converter",
+	"Name": "name",
+	"Price": "price",
+	"Change": "change",
+	"24h volume": "24h volume",
+	"Market cap": "market cap",
+	"Error fetching coins": "Error fetching coins",
+
+	"Enter email...": "Enter email...",
+	"Enter password...": "Enter password...",
+	"Please enter your email.": "Please enter your email.",
+	"Please enter your password.": "Please enter your password.",
+	"Passwrod should contain at least 6 scharacters": "Passwrod should contain at least 6 scharacters",
+
+	"An unexpected error occured": "An unexpected error occured",
+	"Reload the page": "Reload the page",
+	"Are you sure you want to logout?": "Are you sure you want to logout?",
+	"An email has been sent to you to reset your password.": "An email has been sent to you to reset your password.",
+	"Forgot Password?": "Forgot Password?",
+	"Wrong password or email.": "Wrong password or email.",
+	"Your email is not veified": "Your email is not veified",
+	"click to get veification mail": "click to get veification mail",
+	"This page require auth.": "This page require auth.",
+	"Soon you will redirect to the main page.": "Soon you will redirect to the main page.",
+	"Please register or log in your account to access the page.": "Please register or log in your account to access the page.",
+
+
+	"Register": "Register",
+	"Login": "Login",
+	"Edit": "Edit",
+	"Cancel": "Cancel",
+	"Save": "Save",
+	"Reset": "Reset",
+
+	"Only the user can see the history of previous conversions": "Only the user can see the history of previous conversions",
+	"Select Coin": "Select Coin",
+	"Convert": "Convert",
+	"History": "History",
+
+	"An error occurred.": "An error occurred.",
+	"Warning!": "Warning!",
+	"Success.": "Success.",
+	"Error fetching data, try to reload the page, or visiti the page later": "Error fetching data, try to reload the page, or visiti the page later"
+}

@@ -1,27 +1,23 @@
-import {
-    FC, useCallback, useMemo, useState,
-} from 'react';
+import { FC, Suspense, useCallback, useMemo, useState } from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
 import { useTranslation } from 'react-i18next';
-import classnames from 'classnames';
 import { LoginFormAsync } from '../../AuthForms/LoginForm/LoginForm.async';
 import { PasswordResetFormAsync } from '../../AuthForms/PasswordResetForm/PasswordResetForm.async';
+import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
+
+import classnames from 'classnames';
 import classes from './LoginModal.module.scss';
 
 interface LoginModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-	className?: string;
+    isOpen: boolean;
+    onClose: () => void;
+    className?: string;
 }
 
 type ActiveFormType = 'loginForm' | 'resetForm';
 
 export const LoginModal: FC<LoginModalProps> = (props) => {
-    const {
-        isOpen,
-        onClose,
-        className,
-    } = props;
+    const { isOpen, onClose, className } = props;
     const { t } = useTranslation();
     const [activeForm, setAcitveForm] = useState<ActiveFormType>('loginForm');
 
@@ -33,20 +29,25 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
         setAcitveForm('loginForm');
     }, []);
 
-    const ActiveForms: Record<ActiveFormType, JSX.Element> = useMemo(() => ({
-        loginForm:
-    <LoginFormAsync
-        title={t('Login')}
-        onSuccess={onClose}
-        onForget={onForget}
-    />,
-        resetForm:
-    <PasswordResetFormAsync
-        title='Forget Password'
-        onSuccess={backToLoginForm}
-        onCancel={backToLoginForm}
-    />,
-    }), [onClose, onForget, backToLoginForm]);
+    const ActiveForms: Record<ActiveFormType, JSX.Element> = useMemo(
+        () => ({
+            loginForm: (
+                <LoginFormAsync
+                    title={t('Login')}
+                    onSuccess={onClose}
+                    onForget={onForget}
+                />
+            ),
+            resetForm: (
+                <PasswordResetFormAsync
+                    title={t('Password Reset')}
+                    onSuccess={backToLoginForm}
+                    onCancel={backToLoginForm}
+                />
+            ),
+        }),
+        [onClose, onForget, backToLoginForm, t],
+    );
 
     return (
         <Modal
@@ -54,7 +55,9 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
             isOpen={isOpen}
             className={classnames(classes.LoginModal, className)}
         >
-            {ActiveForms[activeForm]}
+            <Suspense fallback={<LoaderRing />}>
+                {ActiveForms[activeForm]}
+            </Suspense>
         </Modal>
     );
 };

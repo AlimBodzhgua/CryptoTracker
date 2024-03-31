@@ -1,5 +1,5 @@
 import { FC, memo, useState } from 'react';
-import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
+import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { resetUserPassword } from 'redux/actions/userActions';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -59,7 +59,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
             <Input
                 addonBefore={<EmailIcon className={classes.icon} />}
                 className={classes.inputField}
-                placeholder={t('Enter you email')}
+                placeholder={t('Enter you email...')}
                 {...register('email', { required: true })}
             />
 

@@ -64,9 +64,7 @@ export const Modal: FC<ModalProps> = (props) => {
                     role='button'
                     tabIndex={0}
                 >
-                    <Suspense fallback={<LoaderRing />}>
-                        {children}
-                    </Suspense>
+                    {children}
                 </div>
             </div>
         </Portal>

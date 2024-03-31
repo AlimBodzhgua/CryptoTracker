@@ -1,0 +1,52 @@
+{
+	"Language": "Eng",
+	"Login": "Войти",
+	"Sign up": "Зарегистрироваться",
+	"Main": "Главная",
+	"Coins": "Монеты",
+	"News": "Новости",
+	"Profile": "Профиль",
+	"Converter": "Конвертер",
+	"Name": "Название",
+	"Price": "Цена",
+	"Change": "Изменение",
+	"24h volume": "24ч Объём",
+	"Market cap": "Рыночная капитализцаия",
+	"Error fetching coins": "Ошибка при получении монет",
+
+	"Enter email...": "Введите почту...",
+	"Enter password...": "Введите пароль...",
+	"Please enter your email.": "Пожалуйста укажие почту.",
+	"Please enter your password.": "Пожалуйста укажите пароль.",
+	"Passwrod should contain at least 8 scharacters": "Пароль должен содержать минимум 8 символов",
+
+	"An unexpected error occured": "Произошла непредвиденная ошибка",
+	"Reload the page": "Перезагрузить страницу",
+	"Are you sure you want to logout?": "Вы действительно хотите выйти?",
+	"An email has been sent to you to reset your password.": "Вам было отправлено письмо для сброса пароля.",
+	"Forgot Password?": "Забыли пароль?",
+	"Wrong password or email.": "Неверный пароль или адрес электронной почты",
+	"Your email is not veified": "Ваша почта не подтверждена",
+	"click to get veification mail": "нажмите, чтобы получить письмо с подтверждением",
+
+	"This page require auth.": "Эта страница требует авторизации.",
+	"Soon you will redirect to the main page.": "Вы будете перенаправлены на главную страницу.",
+	"Please register or log in your account to access the page.": "Пожалуйста, зарегистрируйтесь или войдите в свою учетную запись, чтобы получить доступ к странице.",
+
+	"Edit": "Редактировать",
+	"Register": "Зарегистрироваться",
+	"Login": "Вход",
+	"Cancel": "Отменить",
+	"Save": "Сохранить",
+	"Reset": "Сбросить",
+
+	"Only the user can see the history of previous conversions": "Только авторизованный пользователь может видеть историю предыдущих конвертаций",
+	"Select Coin": "Выберите монету",
+	"Convert": "Конвертировать",
+	"History": "История",
+
+	"An error occurred.": "Произошла ошибка.",
+	"Warning!": "Внимение!",
+	"Success.": "Успешно.",
+	"Error fetching data, try to reload the page, or visiti the page later": "Ошибка при получении данных. Попробуйте перезагрузить страницу или посетите страницу позже."
+}

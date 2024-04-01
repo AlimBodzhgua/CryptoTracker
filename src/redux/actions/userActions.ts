@@ -43,7 +43,6 @@ export const signInUser = createAsyncThunk<
     async (user, { rejectWithValue }) => {
         try {
             const response = await signInWithEmailAndPassword(auth, user.email, user.password);
-            console.log(response.user);
             return {
                 id: response.user.uid,
                 email: response.user.email,

@@ -1,5 +1,7 @@
 import { useAppSelector } from 'hooks/redux';
-import { FC, ReactNode, useEffect, useRef } from 'react';
+import {
+    FC, ReactNode, useEffect, useRef,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { selectUser, selectUserMounted } from 'redux/selectors/userSelectors';
 import { PageRequireAuth } from 'components/PageRequireAuth/PageRequireAuth';

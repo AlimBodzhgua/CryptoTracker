@@ -37,8 +37,8 @@ const preview: Preview = {
         StoreDecorator({
             user: {},
             currency: {},
-            coins: {}
-        })
+            coins: {},
+        }),
     ],
 };
 

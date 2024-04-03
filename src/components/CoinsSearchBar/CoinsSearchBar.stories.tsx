@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CoinsSearchBar } from './CoinsSearchBar';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
+import { CoinsSearchBar } from './CoinsSearchBar';
 
 const meta = {
     title: 'components/CoinsSearchBar',
@@ -20,7 +20,7 @@ export const Primary: Story = {
     args: {},
     decorators: StoreDecorator({
         coins: {
-            coins: []
-        }
-    })
+            coins: [],
+        },
+    }),
 };

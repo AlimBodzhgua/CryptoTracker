@@ -1,10 +1,10 @@
 import React, {
     FC, ReactNode, Suspense, useCallback, useEffect,
 } from 'react';
+import classnames from 'classnames';
 import { Portal } from '../Portal/Portal';
 import { LoaderRing } from '../LoaderRing/LoaderRing';
 
-import classnames from 'classnames';
 import classes from './Modal.module.scss';
 
 interface ModalProps {

@@ -32,6 +32,6 @@ export const isLoading: Story = {
     decorators: StoreDecorator({
         user: {
             isLoading: true,
-        }
-    })
+        },
+    }),
 };

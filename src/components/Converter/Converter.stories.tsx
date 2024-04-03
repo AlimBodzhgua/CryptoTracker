@@ -1,9 +1,9 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Converter } from './Converter';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
 import { initialConverterData } from 'constants/converter';
+import { Converter } from './Converter';
 
 const meta = {
     title: 'components/Converter',
@@ -28,6 +28,6 @@ export const isLoading: Story = {
         converter: {
             isLoading: true,
             converterData: initialConverterData,
-        }
-    })
+        },
+    }),
 };

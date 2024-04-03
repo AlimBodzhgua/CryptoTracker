@@ -1,3 +1,5 @@
+import { HistoryType } from './converter';
+
 export interface IUser {
 	id: string;
 	email: string;
@@ -5,4 +7,5 @@ export interface IUser {
 	login: string;
 	imageUrl: string;
 	isEmailVerified: boolean;
+	conversionHistory?: HistoryType[];
 }

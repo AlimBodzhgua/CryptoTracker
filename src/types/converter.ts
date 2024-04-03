@@ -10,3 +10,15 @@ export interface IConverter {
 }
 
 export type ConverterListType = 'to' | 'from';
+
+export interface IHistory {
+	coinFrom: ConverterCoinType;
+	coinTo: ConverterCoinType;
+	amount: number;
+	result: number;
+}
+
+export type HistoryType = Omit<IConverter, 'converterCoins'> & {
+	amount: number;
+	id?: string;
+};

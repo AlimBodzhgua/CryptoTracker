@@ -9,11 +9,11 @@ import {
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { TriangleSorter } from 'components/TriangleSorter/TriangleSorter';
 import { FieldNameType } from 'types/coin';
+import { Message } from 'components/UI/Message/Message';
+import classnames from 'classnames';
 import { CoinItem } from '../CoinItem/CoinItem';
 import { CoinsTableSkeleton } from './CoinsTableSkeleton';
-import { Message } from 'components/UI/Message/Message';
 
-import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {
@@ -34,7 +34,7 @@ export const CoinTable: React.FC<CoinTableProps> = memo(({ className }) => {
 
     if (error) {
         return (
-            <Message 
+            <Message
                 type='error'
                 text={t('Error fetching data, try to reload the page, or visiti the page later')}
                 withIcon

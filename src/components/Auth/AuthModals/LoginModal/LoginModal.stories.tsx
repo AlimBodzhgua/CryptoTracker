@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { LoginModal } from './LoginModal';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
+import { LoginModal } from './LoginModal';
 
 const meta = {
     title: 'components/LoginModal',
@@ -32,6 +32,6 @@ export const isLoading: Story = {
     decorators: StoreDecorator({
         user: {
             isLoading: true,
-        }
-    })
+        },
+    }),
 };

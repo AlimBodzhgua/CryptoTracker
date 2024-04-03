@@ -7,6 +7,8 @@ import {
     resetUserPassword,
     signInWithGoogle,
     updateUserProfile,
+    addHistory,
+    clearHistory,
 } from '../actions/userActions';
 
 export interface UserStateSchema {
@@ -118,6 +120,34 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    	})
 	    	.addCase(updateUserProfile.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
+	    	// AddHistory
+	    	.addCase(addHistory.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(addHistory.fulfilled, (state, action) => {
+	    		if (state.authData) {
+	    			state.authData.conversionHistory!.push(action.payload);
+	    		}
+	    		state.isLoading = false;
+	    	})
+	    	.addCase(addHistory.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
+	    	// ClearHistory
+	    	.addCase(clearHistory.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(clearHistory.fulfilled, (state, action) => {
+	    		if (state.authData) {
+	    			state.authData.conversionHistory = [];
+	    		}
+	    		state.isLoading = false;
+	    	})
+	    	.addCase(clearHistory.rejected, (state, action) => {
 	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	});

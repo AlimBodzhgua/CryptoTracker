@@ -10,7 +10,7 @@ interface CoinsPageProps {
 	className?: string;
 }
 
-const CoinsPage: React.FC<CoinsPageProps> = ({ className }) =>  (
+const CoinsPage: React.FC<CoinsPageProps> = ({ className }) => (
     <Page className={classnames(classes.CoinsPage, className)}>
         <div className={classes.actions}>
             <CoinsSearchBar />

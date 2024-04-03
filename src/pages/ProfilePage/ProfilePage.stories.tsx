@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ProfilePage from './ProfilePage';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
+import ProfilePage from './ProfilePage';
 
 const meta = {
     title: 'pages/ProfilePage',
@@ -22,13 +22,13 @@ const authData = {
     email: 'user@mail.ru',
     imageUrl: 'https://www.w3schools.com/howto/img_avatar.png',
     isEmailVerified: false,
-}
+};
 
 export const Primary: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {
-            authData: authData
-        }
-    })
+            authData,
+        },
+    }),
 };

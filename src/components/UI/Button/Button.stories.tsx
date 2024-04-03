@@ -29,7 +29,6 @@ export const Secondary: Story = {
     },
 };
 
-
 export const Clear: Story = {
     args: {
         children: 'button',

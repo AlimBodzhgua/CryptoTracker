@@ -1,10 +1,10 @@
 import { FC, Suspense } from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
 import { useTranslation } from 'react-i18next';
-import { RegisterFormAsync } from '../../AuthForms/RegisterForm/RegisterForm.async';
 import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
 
 import classnames from 'classnames';
+import { RegisterFormAsync } from '../../AuthForms/RegisterForm/RegisterForm.async';
 import classes from './RegisterModal.module.scss';
 
 interface RegisterModalProps {

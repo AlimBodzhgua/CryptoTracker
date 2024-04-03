@@ -14,13 +14,16 @@ import {
 } from 'redux/selectors/converterSelectors';
 import { converterActions } from 'redux/slices/converterSlice';
 import { convertCoins } from 'redux/actions/converterActions';
-import { CoinSelector } from './CoinSelector/CoinSelector';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
+import { HistoryModal } from 'components/History/HistoryModal/HistoryModal';
+import { addHistory } from 'redux/actions/userActions';
+import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 
 import HistoryIcon from 'assets/icons/history.svg';
 import SwitchIcon from 'assets/icons/switch.svg';
 
 import classnames from 'classnames';
+import { CoinSelector } from './CoinSelector/CoinSelector';
 import classes from './Converter.module.scss';
 
 interface ConverterProps {
@@ -35,7 +38,9 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
     const coinTo = useAppSelector(selectConverterCoinTo);
     const result = useAppSelector(selecetConverterResult);
     const isLoading = useAppSelector(selectConverterIsLoading);
+    const formatter = Intl.NumberFormat('ru', { maximumSignificantDigits: 8 });
 
+    const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
     const [amount, setAmount] = useState<number>(0);
 
     const onAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,16 +50,37 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
     const onShowHistory = () => {
         if (!user) {
             alert(t('Only the user can see the history of previous conversions'));
+        } else {
+            setShowHistoryModal(true);
         }
+    };
+
+    const onCloseHistoryModal = () => {
+        setShowHistoryModal(false);
     };
 
     const onSwitch = useCallback(() => {
         dispatch(converterActions.switchCoins());
     }, [dispatch]);
 
-    const onConvert = useCallback(() => {
+    const addNewHistory = useCallback(async (convertResult: number) => {
+        const { meta, payload } = await dispatch(addHistory({
+            coinFrom, coinTo, amount, convertResult,
+        }));
+        if (meta.requestStatus === 'fulfilled') {
+            localStorage.setItem(
+                USER_LOCALSTORAGE_KEY,
+                JSON.stringify({ ...user, conversionHistory: [...user!.conversionHistory!, payload] }),
+            );
+        }
+    }, [amount, coinFrom, coinTo, result]);
+
+    const onConvert = useCallback(async () => {
         if (amount) {
-            dispatch(convertCoins({ coinFrom, coinTo, amount }));
+            const { meta, payload } = await dispatch(convertCoins({ coinFrom, coinTo, amount }));
+            if (meta.requestStatus === 'fulfilled' && user) {
+                addNewHistory(payload as number);
+            }
         }
     }, [dispatch, amount, coinFrom, coinTo]);
 
@@ -72,6 +98,10 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
                     >
                         {t('History')}
                     </Button>
+                    <HistoryModal
+                        isOpen={showHistoryModal}
+                        onClose={onCloseHistoryModal}
+                    />
                 </div>
             </div>
 
@@ -103,7 +133,6 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
                     <Input
                         className={classes.itemField}
                         fieldClassName={classes.inputField}
-                        type='number'
                         readOnly
                         addonAfter={
                             <CoinSelector coin={coinTo} listType='to' />
@@ -118,7 +147,7 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
                     ?	<Skeleton width='70%' radius='45px' height='33px' />
                     :	(
                         <div>
-                            {`${amount} ${coinFrom.symbol} ≈ ${result} ${coinTo.symbol}`}
+                            {`${amount} ${coinFrom.symbol} ≈ ${formatter.format(result)} ${coinTo.symbol}`}
                         </div>
                     )}
                 <span />

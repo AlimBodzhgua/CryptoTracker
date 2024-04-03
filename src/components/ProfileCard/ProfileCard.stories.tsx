@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ProfileCard } from './ProfileCard';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
+import { ProfileCard } from './ProfileCard';
 
 const meta = {
     title: 'components/ProfileCard',
@@ -22,31 +22,31 @@ const authData = {
     email: 'user@mail.ru',
     imageUrl: 'https://www.w3schools.com/howto/img_avatar.png',
     isEmailVerified: false,
-}
+};
 
 export const Primary: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {
-            authData: authData,
-        }
-    })
+            authData,
+        },
+    }),
 };
 
 export const EmailVerified: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {
-            authData: {...authData, isEmailVerified: true},
-        }
-    })
+            authData: { ...authData, isEmailVerified: true },
+        },
+    }),
 };
 export const isLoading: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {
-            authData: authData,
-            isLoading: true
-        }
-    })
+            authData,
+            isLoading: true,
+        },
+    }),
 };

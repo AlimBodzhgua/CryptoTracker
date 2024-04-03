@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SidebarItem } from './SidebarItem';
 import { sidebarList } from 'constants/sidebarList';
+import { SidebarItem } from './SidebarItem';
 
 const meta = {
     title: 'components/SidebarItem',
@@ -16,9 +16,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
 export const Primary: Story = {
     args: {
-        item: sidebarList[0]
+        item: sidebarList[0],
     },
 };

@@ -18,42 +18,40 @@ interface MessageProps {
 }
 
 export const Message: FC<MessageProps> = memo((props) => {
-	const {
-		type,
-		text,
-		withIcon,
-		className,
-	} = props;
-	const { t } = useTranslation();
+    const {
+        type,
+        text,
+        withIcon,
+        className,
+    } = props;
+    const { t } = useTranslation();
 
-	const title = useMemo(() => {
-		switch (type) {
-			case 'warn':
+    const title = useMemo(() => {
+        switch (type) {
+        case 'warn':
 			    return t('Warning!');
-			case 'error':
+        case 'error':
 			    return t('An error occured.');
-			case 'success':
-				return t('Success.');
-		}
-	}, [type])
+        case 'success':
+            return t('Success.');
+        }
+    }, [type]);
 
-	return (
-		<div className={classnames(
-			classes.Message,
-			classes[type],
-			className,
-		)}>
-			{(type === 'warn' && withIcon) &&
-				<WarningIcon className={classnames(classes.icon, classes.warnIcon)}/>
-			}
-			{(type === 'error' && withIcon) &&
-				<ErrorIcon className={classes.icon}/>
-			}
-			{(type === 'success' && withIcon) && 
-				<SuccessIcon className={classes.icon}/>
-			}
+    return (
+        <div className={classnames(
+            classes.Message,
+            classes[type],
+            className,
+        )}
+        >
+            {(type === 'warn' && withIcon)
+				&& <WarningIcon className={classnames(classes.icon, classes.warnIcon)} />}
+            {(type === 'error' && withIcon)
+				&& <ErrorIcon className={classes.icon} />}
+            {(type === 'success' && withIcon)
+				&& <SuccessIcon className={classes.icon} />}
             <h2 className={classes.title}>{title}</h2>
             <div className={classes.text}>{text}</div>
         </div>
-	)
-})
+    );
+});

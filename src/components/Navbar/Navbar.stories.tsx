@@ -24,16 +24,16 @@ export const userLoggedIn: Story = {
                 email: 'user@mail.ru',
                 login: 'user',
                 isEmailVerified: true,
-            }
-        }
-    })
+            },
+        },
+    }),
 };
 
 export const userNotLoggedIn: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {
-            authData: undefined
-        }
-    })
+            authData: undefined,
+        },
+    }),
 };

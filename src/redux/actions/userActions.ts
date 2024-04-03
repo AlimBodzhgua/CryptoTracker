@@ -9,7 +9,14 @@ import {
     signOut,
     updateProfile,
 } from 'firebase/auth';
-import { auth, googleProvider } from 'config/firebase/firebase';
+import {
+    setDoc, doc, updateDoc, arrayUnion, getDoc,
+} from 'firebase/firestore';
+import { auth, googleProvider, db } from 'config/firebase/firebase';
+import { createHistoryDoc, getUserDataObject } from 'utils/utils';
+import { selectUser } from 'redux/selectors/userSelectors';
+import { StateSchema } from 'redux/config/StateSchema';
+import { HistoryType } from 'types/converter';
 
 export const signUpUser = createAsyncThunk<
 	IUser,
@@ -20,14 +27,10 @@ export const signUpUser = createAsyncThunk<
     async (user, { rejectWithValue }) => {
         try {
             const response = await createUserWithEmailAndPassword(auth, user.email, user.password);
-            return {
-                id: response.user.uid,
-                email: response.user.email,
-                login: response.user.displayName || '',
-                imageUrl: response.user.photoURL || '',
-                password: response.user.refreshToken,
-                isEmailVerified: response.user.emailVerified,
-            } as IUser;
+            const userData = getUserDataObject(response);
+            await setDoc(doc(db, 'users', response.user.uid), userData);
+
+            return userData;
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }
@@ -43,14 +46,12 @@ export const signInUser = createAsyncThunk<
     async (user, { rejectWithValue }) => {
         try {
             const response = await signInWithEmailAndPassword(auth, user.email, user.password);
+            const userData = getUserDataObject(response);
+            const userDoc = await getDoc(doc(db, 'users', response.user.uid));
             return {
-                id: response.user.uid,
-                email: response.user.email,
-                login: response.user.displayName || '',
-                imageUrl: response.user.photoURL || '',
-                password: response.user.refreshToken,
-                isEmailVerified: response.user.emailVerified,
-            } as IUser;
+                ...userData,
+                conversionHistory: userDoc?.data()?.conversionHistory,
+            };
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }
@@ -66,11 +67,10 @@ export const signInWithGoogle = createAsyncThunk<
     async (_, { rejectWithValue }) => {
         try {
             const response = await signInWithPopup(auth, googleProvider);
-            return {
-                id: response.user.uid,
-                password: response.user.refreshToken,
-                email: response.user.email,
-            } as IUser;
+            const userData = getUserDataObject(response);
+            await setDoc(doc(db, 'users', response.user.uid), userData);
+
+            return userData;
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }
@@ -137,6 +137,57 @@ export const updateUserProfile = createAsyncThunk<
                 photoURL: data.imageUrl,
             });
             return data;
+        } catch (error) {
+            return rejectWithValue(JSON.stringify(error));
+        }
+    },
+);
+
+export const addHistory = createAsyncThunk<
+    HistoryType,
+    HistoryType,
+    {
+        rejectValue: string,
+        state: StateSchema,
+    }
+>(
+    'addHistory',
+    async (history, { rejectWithValue, getState }) => {
+        const user = selectUser(getState());
+        try {
+            const userDocRef = doc(db, 'users', user!.id);
+            await updateDoc(userDocRef, {
+                conversionHistory: arrayUnion(createHistoryDoc(
+                    history.coinFrom,
+                    history.coinTo,
+                    history.amount,
+                    history.convertResult,
+                )),
+            });
+            return history;
+        } catch (error) {
+            return rejectWithValue(JSON.stringify(error));
+        }
+    },
+);
+
+export const clearHistory = createAsyncThunk<
+    void,
+    void,
+    {
+        rejectValue: string,
+        state: StateSchema,
+    }
+>(
+    'clearHistory',
+    async (_, { rejectWithValue, getState }) => {
+        const user = selectUser(getState());
+        const userDocRef = doc(db, 'users', user!.id);
+        try {
+            userDocRef;
+            await updateDoc(userDocRef, {
+                conversionHistory: [],
+            });
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }

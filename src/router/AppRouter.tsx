@@ -3,13 +3,13 @@ import {
 } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/UI/Layout/Layout';
+import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
 import { RouteConfig } from './routeConfig';
 import { RequireAuth } from './RequireAuth';
-import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
 
 export const AppRouter: FC = () => {
     const renderRouteElement = useCallback((element: ReactNode) => (
-        <Suspense fallback={<LoaderRing className='spinner_wrapper'/>}>
+        <Suspense fallback={<LoaderRing className='spinner_wrapper' />}>
             {element}
         </Suspense>
     ), []);

@@ -1,11 +1,13 @@
-import { FC, Suspense, useCallback, useMemo, useState } from 'react';
+import {
+    FC, Suspense, useCallback, useMemo, useState,
+} from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
 import { useTranslation } from 'react-i18next';
+import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
+import classnames from 'classnames';
 import { LoginFormAsync } from '../../AuthForms/LoginForm/LoginForm.async';
 import { PasswordResetFormAsync } from '../../AuthForms/PasswordResetForm/PasswordResetForm.async';
-import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
 
-import classnames from 'classnames';
 import classes from './LoginModal.module.scss';
 
 interface LoginModalProps {

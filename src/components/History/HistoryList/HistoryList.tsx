@@ -49,7 +49,7 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
                 width='100%'
                 height='50px'
                 radius='4px'
-                // eslint-disable react/no-array-index-key
+                // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 className={classes.skeletonItem}
             />

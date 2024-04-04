@@ -20,16 +20,22 @@ export const converterSlice = createSlice({
     initialState,
     reducers: {
         setCoinFrom: (state, action: PayloadAction<ConverterCoinType>) => {
+            state.converterData.convertResult = 0;
             state.converterData.coinFrom = action.payload;
         },
         setCoinTo: (state, action: PayloadAction<ConverterCoinType>) => {
+            state.converterData.convertResult = 0;
             state.converterData.coinTo = action.payload;
         },
         switchCoins: (state) => {
             const { coinFrom } = state.converterData;
+            state.converterData.convertResult = 0;
             state.converterData.coinFrom = state.converterData.coinTo;
             state.converterData.coinTo = coinFrom;
         },
+        resetResult: (state) => {
+            state.converterData.convertResult = 0;
+        }
     },
     extraReducers: (builder) => {
         builder

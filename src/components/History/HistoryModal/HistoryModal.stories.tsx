@@ -45,9 +45,8 @@ const conversionHistory = [
             symbol: 'USC',
         },
         convertResult: 39828,
-    }
-]
-
+    },
+];
 
 export const Primary: Story = {
     args: {
@@ -58,11 +57,10 @@ export const Primary: Story = {
         user: {
             isLoading: false,
             error: undefined,
-            authData: { conversionHistory }
+            authData: { conversionHistory },
         },
     }),
 };
-
 
 export const emptyList: Story = {
     args: {

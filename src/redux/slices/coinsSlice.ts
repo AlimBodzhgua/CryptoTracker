@@ -8,6 +8,11 @@ export interface CoinsStateSchema {
     searchedFilteredCoins: ICoin[];
 	isLoading: boolean;
 	error?: string;
+
+    // pagination
+    page: number;
+    limit: number;
+    hasMore: boolean;
 }
 
 const initialState: CoinsStateSchema = {
@@ -15,6 +20,10 @@ const initialState: CoinsStateSchema = {
     error: undefined,
     coins: [],
     searchedFilteredCoins: [],
+
+    page: 0,
+    limit: 12,
+    hasMore: true,
 };
 
 export const coinsSlice = createSlice({
@@ -23,6 +32,12 @@ export const coinsSlice = createSlice({
     reducers: {
         setCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.coins = action.payload;
+        },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
+            if (state.page >= 8) {
+                state.hasMore = false;
+            }
         },
         setSearchedFilteredCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.searchedFilteredCoins = action.payload;
@@ -91,7 +106,7 @@ export const coinsSlice = createSlice({
             })
             .addCase(fetchCoins.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.coins = action.payload;
+                state.coins = state.coins.concat(action.payload);
             });
     },
 });

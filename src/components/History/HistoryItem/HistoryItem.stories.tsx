@@ -16,20 +16,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const item = {
-	amount: 1,
-	coinFrom: {
-		iconUrl: 'https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg',
-		name: 'Bitcoin',
-		symbol: 'BTC',
-	},
-	coinTo: {
-		iconUrl: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg',
-		name: 'Usd tether',
-		symbol: 'USDT',
-	},
-	convertResult: 65789.5,
-}
-
+    amount: 1,
+    coinFrom: {
+        iconUrl: 'https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg',
+        name: 'Bitcoin',
+        symbol: 'BTC',
+    },
+    coinTo: {
+        iconUrl: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg',
+        name: 'Usd tether',
+        symbol: 'USDT',
+    },
+    convertResult: 65789.5,
+};
 
 export const Primary: Story = {
     args: { item },

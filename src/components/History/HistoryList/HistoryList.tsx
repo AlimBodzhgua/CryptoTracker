@@ -9,9 +9,9 @@ import { clearHistory } from 'redux/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { Message } from 'components/UI/Message/Message';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
+import classnames from 'classnames';
 import { HistoryItem } from '../HistoryItem/HistoryItem';
 
-import classnames from 'classnames';
 import classes from './HistoryList.module.scss';
 
 interface HistoryListProps {

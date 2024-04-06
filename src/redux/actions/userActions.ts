@@ -182,9 +182,8 @@ export const clearHistory = createAsyncThunk<
     'clearHistory',
     async (_, { rejectWithValue, getState }) => {
         const user = selectUser(getState());
-        const userDocRef = doc(db, 'users', user!.id);
         try {
-            userDocRef;
+            const userDocRef = doc(db, 'users', user!.id);
             await updateDoc(userDocRef, {
                 conversionHistory: [],
             });

@@ -35,7 +35,7 @@ export const converterSlice = createSlice({
         },
         resetResult: (state) => {
             state.converterData.convertResult = 0;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder

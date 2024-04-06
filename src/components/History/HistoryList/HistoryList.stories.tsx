@@ -17,36 +17,35 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const conversionHistory = [
-	{
-		amount: 1,
-		coinFrom: {
-			iconUrl: 'https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg',
-			name: 'Bitcoin',
-			symbol: 'BTC',
-		},
-		coinTo: {
-			iconUrl: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg',
-			name: 'Usd tether',
-			symbol: 'USDT',
-		},
-		convertResult: 65789.5,
-	},
-	{
-		amount: 12,
-		coinFrom: {
-			iconUrl: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg',
-			name: 'Ethereum',
-			symbol: 'ETH',
-		},
-		coinTo: {
-			iconUrl: 'https://cdn.coinranking.com/jkDf8sQbY/usdc.svg',
-			name: 'Usc',
-			symbol: 'USC',
-		},
-		convertResult: 39828,
-	}
-]
-
+    {
+        amount: 1,
+        coinFrom: {
+            iconUrl: 'https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg',
+            name: 'Bitcoin',
+            symbol: 'BTC',
+        },
+        coinTo: {
+            iconUrl: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg',
+            name: 'Usd tether',
+            symbol: 'USDT',
+        },
+        convertResult: 65789.5,
+    },
+    {
+        amount: 12,
+        coinFrom: {
+            iconUrl: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg',
+            name: 'Ethereum',
+            symbol: 'ETH',
+        },
+        coinTo: {
+            iconUrl: 'https://cdn.coinranking.com/jkDf8sQbY/usdc.svg',
+            name: 'Usc',
+            symbol: 'USC',
+        },
+        convertResult: 39828,
+    },
+];
 
 export const Primary: Story = {
     args: {},
@@ -54,11 +53,10 @@ export const Primary: Story = {
         user: {
             isLoading: false,
             error: undefined,
-            authData: { conversionHistory }
+            authData: { conversionHistory },
         },
     }),
 };
-
 
 export const emptyList: Story = {
     args: {},

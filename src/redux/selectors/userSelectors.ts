@@ -9,5 +9,5 @@ export const selectUserError = (state: StateSchema) => state.user.error;
 export const selectUserMounted = (state: StateSchema) => state.user._mounted;
 
 export const selectUserConversionHistory = (state: StateSchema) => (
-	state.user.authData?.conversionHistory || []
-)
+    state.user.authData?.conversionHistory || []
+);

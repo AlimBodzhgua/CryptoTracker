@@ -7,3 +7,9 @@ export const selectSearchedFilteredCoins = (state: StateSchema) => state.coins.s
 export const selectCoinsIsLoading = (state: StateSchema) => state.coins.isLoading || false;
 
 export const selectCoinsError = (state: StateSchema) => state.coins.error || '';
+
+export const selectCoinsPageLimit = (state: StateSchema) => state.coins.limit;
+
+export const selectCoinsPageNumber = (state: StateSchema) => state.coins.page;
+
+export const selectCoinsPageHasMore = (state: StateSchema) => state.coins.hasMore;

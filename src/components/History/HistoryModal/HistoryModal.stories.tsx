@@ -62,14 +62,14 @@ export const Primary: Story = {
     }),
 };
 
-export const emptyList: Story = {
+export const EmptyList: Story = {
     args: {
         isOpen: true,
         onClose: () => console.log('close window'),
     },
 };
 
-export const isLoading: Story = {
+export const IsLoading: Story = {
     args: {
         isOpen: true,
         onClose: () => console.log('close window'),
@@ -82,7 +82,7 @@ export const isLoading: Story = {
     }),
 };
 
-export const withError: Story = {
+export const WithError: Story = {
     args: {
         isOpen: true,
         onClose: () => console.log('close window'),

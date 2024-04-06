@@ -16,7 +16,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const userLoggedIn: Story = {
+export const UserLoggedIn: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {
@@ -29,7 +29,7 @@ export const userLoggedIn: Story = {
     }),
 };
 
-export const userNotLoggedIn: Story = {
+export const UserNotLoggedIn: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {

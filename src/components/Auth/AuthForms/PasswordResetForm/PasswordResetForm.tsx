@@ -25,7 +25,10 @@ interface IFormInputs {
 
 const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
     const {
-        title, onSuccess, onCancel, className,
+        title,
+        onSuccess,
+        onCancel,
+        className,
     } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();

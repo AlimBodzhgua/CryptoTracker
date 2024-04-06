@@ -24,7 +24,7 @@ export const Primary: Story = {
     },
 };
 
-export const isLoading: Story = {
+export const IsLoading: Story = {
     args: {
         isOpen: true,
         onClose: () => console.log('close window'),

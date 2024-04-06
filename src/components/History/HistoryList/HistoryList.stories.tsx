@@ -58,11 +58,11 @@ export const Primary: Story = {
     }),
 };
 
-export const emptyList: Story = {
+export const EmptyList: Story = {
     args: {},
 };
 
-export const isLoading: Story = {
+export const IsLoading: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {
@@ -72,7 +72,7 @@ export const isLoading: Story = {
     }),
 };
 
-export const withError: Story = {
+export const WithError: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {

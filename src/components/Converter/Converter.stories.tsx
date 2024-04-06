@@ -22,7 +22,7 @@ export const Primary: Story = {
     args: {},
 };
 
-export const isLoading: Story = {
+export const IsLoading: Story = {
     args: {},
     decorators: StoreDecorator({
         converter: {

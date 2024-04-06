@@ -41,7 +41,7 @@ export const EmailVerified: Story = {
         },
     }),
 };
-export const isLoading: Story = {
+export const IsLoading: Story = {
     args: {},
     decorators: StoreDecorator({
         user: {

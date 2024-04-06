@@ -11,14 +11,13 @@ import classnames from 'classnames';
 import classes from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-	addonBefore?: ReactNode | ReactElement;
-	addonAfter?: ReactNode | ReactElement;
-	className?: string;
+    addonBefore?: ReactNode | ReactElement;
+    addonAfter?: ReactNode | ReactElement;
+    className?: string;
     fieldClassName?: string;
 }
 
 export const Input = memo(forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-    const [isFocused, focusProps] = useFocus();
     const {
         className,
         addonBefore,
@@ -26,16 +25,14 @@ export const Input = memo(forwardRef<HTMLInputElement, InputProps>((props, ref) 
         fieldClassName,
         ...otherProps
     } = props;
+    const [isFocused, focusProps] = useFocus();
 
     const style: CSSProperties = {
         backgroundColor: isFocused ? '#717171' : '#454545',
     };
 
     return (
-        <div
-            className={classnames(classes.Input, className)}
-            style={style}
-        >
+        <div className={classnames(classes.Input, className)} style={style}>
             {addonBefore}
             <input
                 className={classnames(classes.InputField, fieldClassName)}

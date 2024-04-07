@@ -10,6 +10,19 @@ export interface ICoin {
 	'24hVolume': string;
 }
 
+export type GlobalStatsCoin = Pick<ICoin, 'id' | 'name' | 'symbol' | 'iconUrl'>
+
+export interface IGlobalStats {
+	totalCoins: number,
+    totalMarkets: number,
+    totalExchanges: number,
+    totalMarketCap: string,
+    total24hVolume: string,
+    btcDominance: number,
+    bestCoins: Array<GlobalStatsCoin>,
+    newestCoins: Array<GlobalStatsCoin>,
+}
+
 export type SortDirectionType = 'descending' | 'ascending';
 
 export type FieldNameType = keyof Omit<ICoin, 'iconUrl' | 'symbol' | 'id'>;

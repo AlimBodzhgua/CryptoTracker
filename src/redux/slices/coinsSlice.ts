@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrencyType, IKurs } from 'types/currency';
-import { ICoin } from 'types/coin';
-import { fetchCoins } from '../actions/coinsActions';
+import { ICoin, IGlobalStats } from 'types/coin';
+import { fetchCoins, fetchGlobalStats } from '../actions/coinsActions';
 
 export interface CoinsStateSchema {
 	coins: ICoin[];
     searchedFilteredCoins: ICoin[];
+    globalStats?: IGlobalStats;
+
 	isLoading: boolean;
 	error?: string;
 
@@ -16,10 +18,12 @@ export interface CoinsStateSchema {
 }
 
 const initialState: CoinsStateSchema = {
-    isLoading: false,
-    error: undefined,
     coins: [],
     searchedFilteredCoins: [],
+    globalStats: undefined,
+
+    isLoading: false,
+    error: undefined,
 
     page: 0,
     limit: 12,
@@ -107,6 +111,18 @@ export const coinsSlice = createSlice({
             .addCase(fetchCoins.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.coins = state.coins.concat(action.payload);
+            })
+            // fetchGlobalStats
+            .addCase(fetchGlobalStats.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchGlobalStats.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+            .addCase(fetchGlobalStats.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.globalStats = action.payload;
             });
     },
 });

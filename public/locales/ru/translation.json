@@ -14,6 +14,15 @@
 	"Market cap": "Рыночная капитализцаия",
 	"Error fetching coins": "Ошибка при получении монет",
 
+	"Btc Dominance": "Доминация биткоина",
+	"Total 24hVolume": "Общий 24ч. Объем",
+	"Total MarketCap": "Общая капитализация",
+	"Total Exchanges": "Всего обменов",
+	"Total Markets": "Всего рынков",
+	"Total Coins": "Всего монет",
+	"Best performing coins": "Самые эффективные монеты",
+	"Newest coins": "Новейшие монеты",
+
 	"Enter email...": "Введите почту...",
 	"Enter password...": "Введите пароль...",
 	"Please enter your email.": "Пожалуйста укажие почту.",

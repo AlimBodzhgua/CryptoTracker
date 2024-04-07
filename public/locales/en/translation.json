@@ -14,6 +14,15 @@
 	"Market cap": "market cap",
 	"Error fetching coins": "Error fetching coins",
 
+	"Btc Dominance": "Btc Dominance",
+	"Total 24hVolume": "Total 24hVolume",
+	"Total MarketCap": "Total MarketCap",
+	"Total Exchanges": "Total Exchanges",
+	"Total Markets": "Total Markets",
+	"Total Coins": "Total Coins",
+	"Best performing coins": "Best performing coins",
+	"Newest coins": "Newest coins",
+
 	"Enter email...": "Enter email...",
 	"Enter password...": "Enter password...",
 	"Please enter your email.": "Please enter your email.",

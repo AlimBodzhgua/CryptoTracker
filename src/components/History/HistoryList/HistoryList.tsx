@@ -58,15 +58,14 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 
     const renderHistoryContent = useCallback(() => {
         if (history.length) {
-            return history.map((item) => <HistoryItem item={item} key={item.convertResult} />)
-        } else {
-            return (
-                <h3 className={classes.emptyMsg}>
-                    {t('Convertasion list is empty')}
-                </h3>
-            )
+            return history.map((item) => <HistoryItem item={item} key={item.convertResult} />);
         }
-    }, [history])
+        return (
+            <h3 className={classes.emptyMsg}>
+                {t('Convertasion list is empty')}
+            </h3>
+        );
+    }, [history]);
 
     return (
         <>
@@ -83,9 +82,8 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
             </div>
             <ul className={classnames(classes.HistoryList, className)}>
                 {isLoading
-                    ?   <>{renderListSkeleton()}</>
-                    :   <>{renderHistoryContent()}</>
-                }
+                    ? <>{renderListSkeleton()}</>
+                    : <>{renderHistoryContent()}</>}
             </ul>
         </>
     );

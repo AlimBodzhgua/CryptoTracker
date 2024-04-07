@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICoin } from 'types/coin';
+import { ICoin, IGlobalStats } from 'types/coin';
 import { StateSchema } from 'redux/config/StateSchema';
 import {
     selectCoinsIsLoading,
@@ -59,13 +59,30 @@ export const fetchNextCoins = createAsyncThunk<
     'fetchNextCoins',
     async (_, { dispatch, getState }) => {
         const page = selectCoinsPageNumber(getState());
-        const limit = selectCoinsPageLimit(getState());
         const hasMore = selectCoinsPageHasMore(getState());
         const isLoading = selectCoinsIsLoading(getState());
 
         if (hasMore && !isLoading) {
             dispatch(coinsActions.setPage(page + 1));
             dispatch(fetchCoins({ page: page + 1 }));
+        }
+    },
+);
+
+export const fetchGlobalStats = createAsyncThunk<
+    IGlobalStats,
+    void,
+    {
+        rejectValue: string,
+    }
+>(
+    'fetchGlobalStats',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await axios.get('https://api.coinranking.com/v2/stats');
+            return response.data.data as IGlobalStats;
+        } catch (error) {
+            return rejectWithValue(JSON.stringify(error));
         }
     },
 );

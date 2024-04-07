@@ -1,4 +1,9 @@
-import React from 'react';
+import { FC, useEffect } from 'react';
+import { Stats } from 'components/GlobalStats/Stats/Stats';
+import { Page } from 'components/UI/Page/Page';
+import { useAppDispatch } from 'hooks/redux';
+import { fetchGlobalStats } from 'redux/actions/coinsActions';
+
 import classnames from 'classnames';
 import classes from './MainPage.module.scss';
 
@@ -6,8 +11,18 @@ interface MainPageProps {
 	className?: string;
 }
 
-const MainPage: React.FC<MainPageProps> = ({ className }) => (
-    <div className={classnames(classes.MainPage, className)} />
+const MainPage: FC<MainPageProps> = ({ className }) => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchGlobalStats());
+    }, [dispatch]);
+
+    return (
+        <Page className={classnames(classes.MainPage, className)}>
+            <Stats />
+        </Page>
  	);
+};
 
 export default MainPage;

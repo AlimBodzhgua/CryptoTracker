@@ -1,6 +1,6 @@
 
 .Sidebar {
-	width: var(--sidebar-width);
+	min-width: var(--sidebar-width);
 	height: 100vh;
 
 	background-color: var(--sidebar-bg-color);

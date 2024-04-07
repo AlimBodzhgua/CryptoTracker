@@ -1,0 +1,61 @@
+
+.Stats {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 20px;
+
+	width: 70%;
+	padding: 18px 6px;
+	color: #fff;
+
+	background-color: #221F34;
+	border: 1px solid white;
+	border-radius: 8px;
+}
+
+.data {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+	width: 30%;
+}
+
+.dataTitle {
+	margin-bottom: 8px;
+	font-weight: 600;
+	font-size: 18px;
+}
+
+.listSection {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid white;
+}
+
+.listWrapper {
+	width: 50%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.listTitle {
+	font-size: 22px;
+	margin-bottom: 10px;
+}
+
+.listSkeleton {
+	margin-bottom: 12px;
+}

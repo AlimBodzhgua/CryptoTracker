@@ -1,0 +1,33 @@
+
+.List {
+	display: flex;
+	flex-direction: column;
+}
+
+.listItem {
+	display: flex;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.icon {
+	width: 30px;
+	margin-right: 10px;
+}
+
+.itemData {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.name {
+	margin-right: 5px;
+
+	font-size: 18px;
+}
+
+.symbol {
+	font-size: 14px;
+}

@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { selectUser } from 'redux/selectors/userSelectors';
 import { signOutUser } from 'redux/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
+import { useSearchParams } from 'react-router-dom';
 
 import classnames from 'classnames';
 import classes from './Navbar.module.scss';
@@ -28,21 +29,38 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
     const dispatch = useAppDispatch();
     const isAuth = useAppSelector(selectUser);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const onCloseRegisterModal = () => {
         setIsRegisterModal(false);
+        setSearchParams('');
     };
 
     const onOpenRegisterModal = () => {
         setIsRegisterModal(true);
+        setSearchParams({'modal': 'register'});
     };
 
     const onOpenLoginModal = () => {
         setIsLoginModal(true);
+        setSearchParams({'modal': 'login'});
     };
 
     const onCloseLoginModal = () => {
         setIsLoginModal(false);
+        setSearchParams('');
     };
+
+    useEffect(() => {
+        if (searchParams.has('modal', 'register')) {
+            onCloseLoginModal();
+            onOpenRegisterModal();
+        }
+        if (searchParams.has('modal', 'login')) {
+            onCloseRegisterModal();
+            onOpenLoginModal();
+        }
+    }, [searchParams])
 
     const onLogout = useCallback(async () => {
         const confirm = window.confirm(t('Are you sure you want to logout?'));

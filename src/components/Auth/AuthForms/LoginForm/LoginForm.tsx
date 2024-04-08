@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { signInUser, signInWithGoogle } from 'redux/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { selectUserError, selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { useSearchParams } from 'react-router-dom';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';
@@ -39,6 +40,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
     } = props;
     const { t } = useTranslation();
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [_, setSearchParams] = useSearchParams();
     const dispatch = useAppDispatch();
     const isLoading = useAppSelector(selectUserIsLoading);
     const error = useAppSelector(selectUserError);
@@ -83,6 +85,10 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
             if (onSuccess) onSuccess();
         }
     };
+
+    const onMoveToRegister = () => {
+        setSearchParams({'modal': 'register'});
+    }
 
     return (
         <form
@@ -162,15 +168,24 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 type='reset'
             >
                 <GoogleIcon className={classes.googleIcon} />
-                Log in with Google
+                {t('Log In with Google')}
             </Button>
             <Button
                 onClick={onForgetPassword}
                 theme={ButtonTheme.clear}
                 size={ButtonSize.small}
+                className={classes.fogerBtn}
             >
                 {t('Forgot Password?')}
             </Button>
+            <div>
+                {t('Don`t have an account?')}
+                <Button
+                    theme={ButtonTheme.clear}
+                    onClick={onMoveToRegister}
+                    className={classes.registerBtn}
+                >{t('Sign Up')}</Button>
+            </div>
         </form>
     );
 });

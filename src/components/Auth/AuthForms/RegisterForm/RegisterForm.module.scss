@@ -48,3 +48,11 @@
 
 	padding-left: 12px;
 }
+
+.loginBtn {
+	font-weight: 500;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

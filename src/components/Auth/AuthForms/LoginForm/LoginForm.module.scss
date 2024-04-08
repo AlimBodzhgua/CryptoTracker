@@ -61,3 +61,19 @@
 
 	padding-left: 12px;
 }
+
+.fogerBtn {
+	margin-bottom: 5px;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.registerBtn {
+	font-weight: 500;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

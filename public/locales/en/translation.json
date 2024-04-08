@@ -29,6 +29,10 @@
 	"Please enter your password.": "Please enter your password.",
 	"Passwrod should contain at least 6 scharacters": "Passwrod should contain at least 6 scharacters",
 	"Password Reset": "Password Reset",
+	"Don`t have an account?": "Don`t have an account?",
+	"Sign Up": "Sign Up",
+	"Already have an account?": "Already have an account?",
+	"Sign In": "Sign In",
 
 	"An unexpected error occured": "An unexpected error occured",
 	"Reload the page": "Reload the page",

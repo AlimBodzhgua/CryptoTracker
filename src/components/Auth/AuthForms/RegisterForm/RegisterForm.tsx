@@ -4,11 +4,12 @@ import {
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'components/UI/Input/Input';
-import { Button } from 'components/UI/Button/Button';
+import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { signUpUser } from 'redux/actions/userActions';
 import { selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { useSearchParams } from 'react-router-dom';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';
@@ -32,6 +33,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
     const { onSuccess, title, className } = props;
     const { t } = useTranslation();
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [_, setSearchParams] = useSearchParams();
     const dispatch = useAppDispatch();
     const isLoading = useAppSelector(selectUserIsLoading);
     const {
@@ -58,6 +60,10 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
             if (onSuccess) onSuccess();
         }
     }, [dispatch, onSuccess]);
+
+    const onMoveToLogin = () => {
+        setSearchParams({'modal': 'login'});
+    }
 
     return (
         <form
@@ -120,7 +126,14 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
             >
                 {t('Register')}
             </Button>
-            <div>Already have an account? Sign in</div>
+            <div>
+                {t('Already have an account?')}
+                <Button
+                    theme={ButtonTheme.clear}
+                    onClick={onMoveToLogin}
+                    className={classes.loginBtn}
+                >{t('Sign In')}</Button>
+            </div>
         </form>
     );
 });

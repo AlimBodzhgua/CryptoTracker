@@ -29,6 +29,10 @@
 	"Please enter your password.": "Пожалуйста укажите пароль.",
 	"Passwrod should contain at least 8 scharacters": "Пароль должен содержать минимум 8 символов",
 	"Password Reset": "Сброс пароля",
+	"Don`t have an account?": "У вас нет аккаунта?",
+	"Sign Up": "Зарегистрироваться",
+	"Already have an account?": "Уже есть аккаунт?",
+	"Sign In": "Войти",
 
 	"An unexpected error occured": "Произошла непредвиденная ошибка",
 	"Reload the page": "Перезагрузить страницу",

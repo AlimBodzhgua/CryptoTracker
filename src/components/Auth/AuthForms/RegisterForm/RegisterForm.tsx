@@ -8,7 +8,7 @@ import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { signUpUser } from 'redux/actions/userActions';
-import { selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { selectUserError, selectUserIsLoading } from 'redux/selectors/userSelectors';
 import { useSearchParams } from 'react-router-dom';
 
 import EmailIcon from 'assets/icons/email.svg';
@@ -36,6 +36,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
     const [_, setSearchParams] = useSearchParams();
     const dispatch = useAppDispatch();
     const isLoading = useAppSelector(selectUserIsLoading);
+    const error = useAppSelector(selectUserError);
     const {
         handleSubmit,
         control,
@@ -117,6 +118,12 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
             {errors.password?.type === 'required' && (
                 <div className={classes.message}>
                     {t('Please enter your password.')}
+                </div>
+            )}
+
+            {error && (
+                <div className={classes.message}>
+                    {t('User with such email already exist.')}
                 </div>
             )}
 

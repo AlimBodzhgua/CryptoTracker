@@ -33,6 +33,7 @@
 	"Sign Up": "Sign Up",
 	"Already have an account?": "Already have an account?",
 	"Sign In": "Sign In",
+	"User with such email already exist.": "User with such email already exist.",
 
 	"An unexpected error occured": "An unexpected error occured",
 	"Reload the page": "Reload the page",

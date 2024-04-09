@@ -17,6 +17,7 @@ import { createHistoryDoc, getUserDataObject } from 'utils/utils';
 import { selectUser } from 'redux/selectors/userSelectors';
 import { StateSchema } from 'redux/config/StateSchema';
 import { HistoryType } from 'types/converter';
+import { FirebaseError } from 'firebase/app';
 
 export const signUpUser = createAsyncThunk<
 	IUser,
@@ -29,13 +30,16 @@ export const signUpUser = createAsyncThunk<
             const response = await createUserWithEmailAndPassword(auth, user.email, user.password);
             const userData = getUserDataObject(response);
             await setDoc(doc(db, 'users', response.user.uid), userData);
-
             return userData;
-        } catch (error) {
+        } catch (error: unknown) {
+            if (error instanceof FirebaseError) {
+                return rejectWithValue(error.code);
+            }
             return rejectWithValue(JSON.stringify(error));
         }
     },
 );
+
 
 export const signInUser = createAsyncThunk<
 	IUser,
@@ -53,6 +57,9 @@ export const signInUser = createAsyncThunk<
                 conversionHistory: userDoc?.data()?.conversionHistory,
             };
         } catch (error) {
+            if (error instanceof FirebaseError) {
+                return rejectWithValue(error.code);
+            }
             return rejectWithValue(JSON.stringify(error));
         }
     },

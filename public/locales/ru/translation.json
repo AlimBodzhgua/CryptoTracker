@@ -33,6 +33,7 @@
 	"Sign Up": "Зарегистрироваться",
 	"Already have an account?": "Уже есть аккаунт?",
 	"Sign In": "Войти",
+	"User with such email already exist.": "Пользователь с таким адресом электронной почты уже существует.",
 
 	"An unexpected error occured": "Произошла непредвиденная ошибка",
 	"Reload the page": "Перезагрузить страницу",

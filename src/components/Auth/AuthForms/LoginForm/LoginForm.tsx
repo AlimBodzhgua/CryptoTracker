@@ -181,7 +181,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
             >
                 {t('Forgot Password?')}
             </Button>
-            <div>
+            <div className={classes.notRegistered}>
                 {t('Don`t have an account?')}
                 <Button
                     theme={ButtonTheme.clear}

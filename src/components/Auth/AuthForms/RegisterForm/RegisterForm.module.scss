@@ -49,6 +49,15 @@
 	padding-left: 12px;
 }
 
+.haveAccount {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2px;
+	
+	color: #fff;
+}
+
 .loginBtn {
 	font-weight: 500;
 

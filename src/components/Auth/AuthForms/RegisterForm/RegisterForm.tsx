@@ -136,7 +136,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
             >
                 {t('Register')}
             </Button>
-            <div>
+            <div className={classes.haveAccount}>
                 {t('Already have an account?')}
                 <Button
                     theme={ButtonTheme.clear}

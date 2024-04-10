@@ -11,5 +11,5 @@ export const selectUserMounted = (state: StateSchema) => state.user._mounted;
 
 export const selectUserConversionHistory = createSelector(
     selectUser,
-    (authData) =>  authData?.conversionHistory || []
-)
+    (authData) => authData?.conversionHistory || [],
+);

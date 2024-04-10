@@ -88,9 +88,9 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
     };
 
     const onMoveToRegister = () => {
-        setSearchParams({'modal': 'register'});
+        setSearchParams({ modal: 'register' });
         dispatch(userActions.clearError());
-    }
+    };
 
     return (
         <form
@@ -177,7 +177,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 theme={ButtonTheme.clear}
                 size={ButtonSize.small}
                 className={classes.fogerBtn}
-                type={'reset'}
+                type='reset'
             >
                 {t('Forgot Password?')}
             </Button>
@@ -187,8 +187,10 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                     theme={ButtonTheme.clear}
                     onClick={onMoveToRegister}
                     className={classes.registerBtn}
-                    type={'reset'}
-                >{t('Sign Up')}</Button>
+                    type='reset'
+                >
+                    {t('Sign Up')}
+                </Button>
             </div>
         </form>
     );

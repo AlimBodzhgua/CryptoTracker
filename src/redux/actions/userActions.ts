@@ -40,7 +40,6 @@ export const signUpUser = createAsyncThunk<
     },
 );
 
-
 export const signInUser = createAsyncThunk<
 	IUser,
 	{email: string, password: string},

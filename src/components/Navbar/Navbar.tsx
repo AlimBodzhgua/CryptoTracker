@@ -38,12 +38,12 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
 
     const onOpenRegisterModal = () => {
         setIsRegisterModal(true);
-        setSearchParams({'modal': 'register'});
+        setSearchParams({ modal: 'register' });
     };
 
     const onOpenLoginModal = () => {
         setIsLoginModal(true);
-        setSearchParams({'modal': 'login'});
+        setSearchParams({ modal: 'login' });
     };
 
     const onCloseLoginModal = () => {
@@ -60,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
             onCloseRegisterModal();
             onOpenLoginModal();
         }
-    }, [searchParams])
+    }, [searchParams]);
 
     const onLogout = useCallback(async () => {
         const confirm = window.confirm(t('Are you sure you want to logout?'));

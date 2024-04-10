@@ -3,21 +3,19 @@ import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import { useTranslation } from 'react-i18next';
 import classes from './Stats.module.scss';
 
-export const StatsSkeleton: FC = memo(() =>  {
+export const StatsSkeleton: FC = memo(() => {
     const { t } = useTranslation();
 
-    const renderListSkeletons = useCallback(() => {
-        return new Array(3).fill(0).map((_, index) => (
-            <Skeleton
-                //  eslint-disable-next-line
+    const renderListSkeletons = useCallback(() => new Array(3).fill(0).map((_, index) => (
+        <Skeleton
+            //  eslint-disable-next-line
                 key={index}
-                width='240px'
-                height='32px'
-                radius='6px'
-                className={classes.listSkeleton}
-            />
-        ))
-    }, [])
+            width='240px'
+            height='32px'
+            radius='6px'
+            className={classes.listSkeleton}
+        />
+    )), []);
 
     return (
         <div className={classes.Stats}>
@@ -55,4 +53,4 @@ export const StatsSkeleton: FC = memo(() =>  {
             </div>
         </div>
     );
-})
+});

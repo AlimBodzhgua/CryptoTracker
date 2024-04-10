@@ -8,10 +8,10 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { Message } from 'components/UI/Message/Message';
 import { useTranslation } from 'react-i18next';
+import classnames from 'classnames';
 import { StatsSkeleton } from './StatsSkeleton';
 import { List } from '../List/List';
 
-import classnames from 'classnames';
 import classes from './Stats.module.scss';
 
 interface StatsProps {

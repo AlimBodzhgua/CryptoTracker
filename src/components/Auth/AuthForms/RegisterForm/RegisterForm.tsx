@@ -64,9 +64,9 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
     }, [dispatch, onSuccess]);
 
     const onMoveToLogin = () => {
-        setSearchParams({'modal': 'login'});
+        setSearchParams({ modal: 'login' });
         dispatch(userActions.clearError());
-    }
+    };
 
     return (
         <form
@@ -132,7 +132,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
             <Button
                 className={classes.button}
                 disabled={isLoading}
-                type={'submit'}
+                type='submit'
             >
                 {t('Register')}
             </Button>
@@ -142,8 +142,10 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
                     theme={ButtonTheme.clear}
                     onClick={onMoveToLogin}
                     className={classes.loginBtn}
-                    type={'reset'}
-                >{t('Sign In')}</Button>
+                    type='reset'
+                >
+                    {t('Sign In')}
+                </Button>
             </div>
         </form>
     );

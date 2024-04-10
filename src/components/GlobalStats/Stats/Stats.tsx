@@ -8,10 +8,10 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { Message } from 'components/UI/Message/Message';
 import { useTranslation } from 'react-i18next';
-import classnames from 'classnames';
 import { StatsSkeleton } from './StatsSkeleton';
 import { List } from '../List/List';
 
+import classnames from 'classnames';
 import classes from './Stats.module.scss';
 
 interface StatsProps {
@@ -58,13 +58,13 @@ export const Stats: FC<StatsProps> = memo(({ className }) => {
                             <h3 className={classes.listTitle}>
                                 {t('Best performing coins')}
                             </h3>
-                            <List coins={stats!.bestCoins} />
+                            <List coins={stats.bestCoins} />
                         </div>
                         <div className={classes.listWrapper}>
                             <h3 className={classes.listTitle}>
                                 {t('Newest coins')}
                             </h3>
-                            <List coins={stats!.newestCoins} />
+                            <List coins={stats.newestCoins} />
                         </div>
                     </>
                 )}

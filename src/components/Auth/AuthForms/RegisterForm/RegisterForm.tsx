@@ -10,6 +10,7 @@ import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { signUpUser } from 'redux/actions/userActions';
 import { selectUserError, selectUserIsLoading } from 'redux/selectors/userSelectors';
 import { useSearchParams } from 'react-router-dom';
+import { userActions } from 'redux/slices/userSlice';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';
@@ -64,6 +65,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 
     const onMoveToLogin = () => {
         setSearchParams({'modal': 'login'});
+        dispatch(userActions.clearError());
     }
 
     return (
@@ -130,6 +132,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
             <Button
                 className={classes.button}
                 disabled={isLoading}
+                type={'submit'}
             >
                 {t('Register')}
             </Button>
@@ -139,6 +142,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
                     theme={ButtonTheme.clear}
                     onClick={onMoveToLogin}
                     className={classes.loginBtn}
+                    type={'reset'}
                 >{t('Sign In')}</Button>
             </div>
         </form>

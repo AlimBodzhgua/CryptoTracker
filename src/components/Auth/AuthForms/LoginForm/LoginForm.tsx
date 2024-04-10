@@ -10,6 +10,7 @@ import { signInUser, signInWithGoogle } from 'redux/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { selectUserError, selectUserIsLoading } from 'redux/selectors/userSelectors';
 import { useSearchParams } from 'react-router-dom';
+import { userActions } from 'redux/slices/userSlice';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';
@@ -88,6 +89,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 
     const onMoveToRegister = () => {
         setSearchParams({'modal': 'register'});
+        dispatch(userActions.clearError());
     }
 
     return (
@@ -175,6 +177,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 theme={ButtonTheme.clear}
                 size={ButtonSize.small}
                 className={classes.fogerBtn}
+                type={'reset'}
             >
                 {t('Forgot Password?')}
             </Button>
@@ -184,6 +187,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                     theme={ButtonTheme.clear}
                     onClick={onMoveToRegister}
                     className={classes.registerBtn}
+                    type={'reset'}
                 >{t('Sign Up')}</Button>
             </div>
         </form>

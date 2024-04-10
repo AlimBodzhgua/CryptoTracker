@@ -46,6 +46,9 @@ export const userSlice = createSlice({
 	    		state.authData.login = action.payload;
     		}
     	},
+        clearError: (state) => {
+            state.error = undefined;
+        },
     },
     extraReducers: (builder) => {
     	builder

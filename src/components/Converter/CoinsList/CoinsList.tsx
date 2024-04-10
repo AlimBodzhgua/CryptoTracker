@@ -5,9 +5,10 @@ import { fetchConverterCoins } from 'redux/actions/converterActions';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { CoinItem } from '../CoinItem/CoinItem';
+
 import classnames from 'classnames';
 import classes from './CoinsList.module.scss';
-import { CoinItem } from '../CoinItem/CoinItem';
 
 interface CoinsListProps {
 	className?: string;
@@ -22,7 +23,7 @@ export const CoinsList: FC<CoinsListProps> = memo((props) => {
     const dispatch = useAppDispatch();
     const coins = useAppSelector(selectConverterCoins);
     const { t } = useTranslation();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const isShow = searchParams.has('listType');
 
     useEffect(() => {

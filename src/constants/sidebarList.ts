@@ -2,7 +2,7 @@ import { RoutePath } from 'router/routeConfig';
 import { SidebarItemType } from 'types/sidebar';
 import CoinLogo from 'assets/icons/coin.svg';
 import ProfileLogo from 'assets/icons/profile.svg';
-import NewsLogo from 'assets/icons/news.svg';
+import NewsLogo from 'assets/icons/star.svg';
 import MainLogo from 'assets/icons/main.svg';
 import ConverterLogo from 'assets/icons/swap.svg';
 
@@ -18,8 +18,8 @@ export const sidebarList: SidebarItemType[] = [
         Icon: CoinLogo,
     },
     {
-        text: 'News',
-        path: RoutePath.news,
+        text: 'Watchlist',
+        path: RoutePath.watchlist,
         Icon: NewsLogo,
     },
     {

@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { RouteProps } from 'react-router-dom';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
-const NewsPage = lazy(() => import('pages/NewsPage/NewsPage'));
+const WatchListPage = lazy(() => import('pages/WatchListPage/WatchListPage'));
 const CoinsPage = lazy(() => import('pages/CoinsPage/CoinsPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const ProfilePage = lazy(() => import('pages/ProfilePage/ProfilePage'));
@@ -15,7 +15,7 @@ export type AppRouteProps = RouteProps & {
 export enum AppRoutes {
 	MAIN = 'main',
 	COINS = 'coins',
-	NEWS = 'news',
+	WATCH_LIST = 'watchlist',
     PROFILE = 'profile',
     CONVERTER = 'converter',
 
@@ -25,7 +25,7 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.COINS]: '/coins',
-    [AppRoutes.NEWS]: '/news',
+    [AppRoutes.WATCH_LIST]: '/watchlist',
     [AppRoutes.PROFILE]: '/profile',
     [AppRoutes.CONVERTER]: '/converter',
 
@@ -41,9 +41,10 @@ export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
         path: RoutePath.coins,
         element: <CoinsPage />,
     },
-    [AppRoutes.NEWS]: {
-        path: RoutePath.news,
-        element: <NewsPage />,
+    [AppRoutes.WATCH_LIST]: {
+        path: RoutePath.watchlist,
+        element: <WatchListPage />,
+        authRequire: true,
     },
     [AppRoutes.PROFILE]: {
         path: RoutePath.profile,

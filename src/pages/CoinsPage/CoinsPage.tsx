@@ -18,7 +18,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     useEffect(() => {
         dispatch(fetchCoins({ page: 0 }));
     }, [dispatch]);
-    
+
     const loadNextCoins = useCallback(() => {
         dispatch(fetchNextCoins());
     }, [dispatch]);

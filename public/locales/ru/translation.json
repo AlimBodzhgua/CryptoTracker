@@ -63,5 +63,11 @@
 	"An error occurred.": "Произошла ошибка.",
 	"Warning!": "Внимение!",
 	"Success.": "Успешно.",
-	"Error fetching data, try to reload the page, or visiti the page later": "Ошибка при получении данных. Попробуйте перезагрузить страницу или посетите страницу позже."
+	"Error fetching data, try to reload the page, or visiti the page later": "Ошибка при получении данных. Попробуйте перезагрузить страницу или посетите страницу позже.",
+
+	"Error fetcthing watchlist coins.": "Ошибка при получении списка отлеживаемых монет.",
+	"Your watchlist Coins.": "Ваш список отлеживаемых монет.",
+	"Your watchlist is empty.": "Список отслеживаемых монет пуст.",
+	"You can add coins to watchlist on coins page.": "Вы можете добавить монеты на странице с монетами.",
+	"Add coins": "Добавить монеты"
 }

@@ -63,5 +63,11 @@
 	"An error occurred.": "An error occurred.",
 	"Warning!": "Warning!",
 	"Success.": "Success.",
-	"Error fetching data, try to reload the page, or visiti the page later": "Error fetching data, try to reload the page, or visiti the page later"
+	"Error fetching data, try to reload the page, or visiti the page later": "Error fetching data, try to reload the page, or visiti the page later",
+
+	"Error fetcthing watchlist coins.": "Error fetcthing watchlist coins.",
+	"Your watchlist coins.": "Your watchlist coins.",
+	"Your watchlist is empty.": "Your watchlist is empty.",
+	"You can add coins to watchlist on coins page.": "You can add coins to watchlist on coins page.",
+	"Add coins": "Add coins"
 }

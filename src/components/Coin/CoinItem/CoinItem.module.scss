@@ -23,6 +23,26 @@
 		padding-right: 10px;
 	}
 
+	.starIconSelected {
+		width: 28px;
+		height: 28px;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.starIcon {
+		width: 28px;
+		height: 25px;
+		fill: #d1d1d1;
+
+		&:hover {
+			cursor: pointer;
+			fill: #fb0;
+		}
+	}
+
 	.name {
 		padding-right: 10px;
 	}

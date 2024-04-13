@@ -9,6 +9,8 @@ import {
     updateUserProfile,
     addHistory,
     clearHistory,
+    addWatchListCoin,
+    removeWatchListCoin,
 } from '../actions/userActions';
 
 export interface UserStateSchema {
@@ -44,6 +46,11 @@ export const userSlice = createSlice({
     	changeUserLogin: (state, action: PayloadAction<string>) => {
     		if (state.authData) {
 	    		state.authData.login = action.payload;
+    		}
+    	},
+    	addWatchListCoin: (state, action: PayloadAction<string>) => {
+    		if (state.authData) {
+	    		state.authData.watchList.push(action.payload);
     		}
     	},
         clearError: (state) => {
@@ -151,6 +158,34 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    	})
 	    	.addCase(clearHistory.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
+	    	// addWatchListCoins
+	    	.addCase(addWatchListCoin.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(addWatchListCoin.fulfilled, (state, action) => {
+	    		if (state.authData) {
+	    			state.authData.watchList.push(action.payload);
+	    		}
+	    		state.isLoading = false;
+	    	})
+	    	.addCase(addWatchListCoin.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
+	    	// removeWatchListCoins
+	    	.addCase(removeWatchListCoin.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(removeWatchListCoin.fulfilled, (state, action) => {
+	    		if (state.authData) {
+	    			state.authData.watchList = state.authData.watchList.filter((id) => id !== action.payload);
+	    		}
+	    		state.isLoading = false;
+	    	})
+	    	.addCase(removeWatchListCoin.rejected, (state, action) => {
 	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	});

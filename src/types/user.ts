@@ -8,4 +8,5 @@ export interface IUser {
 	imageUrl: string;
 	isEmailVerified: boolean;
 	conversionHistory?: HistoryType[];
+	watchList: string[];
 }

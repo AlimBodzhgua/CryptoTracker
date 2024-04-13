@@ -10,7 +10,7 @@ import {
     updateProfile,
 } from 'firebase/auth';
 import {
-    setDoc, doc, updateDoc, arrayUnion, getDoc,
+    setDoc, doc, updateDoc, arrayUnion, getDoc, arrayRemove,
 } from 'firebase/firestore';
 import { auth, googleProvider, db } from 'config/firebase/firebase';
 import { createHistoryDoc, getUserDataObject } from 'utils/utils';
@@ -54,6 +54,7 @@ export const signInUser = createAsyncThunk<
             return {
                 ...userData,
                 conversionHistory: userDoc?.data()?.conversionHistory,
+                watchList: userDoc?.data()?.watchList,
             };
         } catch (error) {
             if (error instanceof FirebaseError) {
@@ -193,6 +194,52 @@ export const clearHistory = createAsyncThunk<
             await updateDoc(userDocRef, {
                 conversionHistory: [],
             });
+        } catch (error) {
+            return rejectWithValue(JSON.stringify(error));
+        }
+    },
+);
+
+export const addWatchListCoin = createAsyncThunk<
+    string,
+    string,
+    {
+        rejectValue: string,
+        state: StateSchema,
+    }
+>(
+    'addWatchListCoin',
+    async (uuid, { rejectWithValue, getState }) => {
+        const user = selectUser(getState());
+        try {
+            const userDocRef = doc(db, 'users', user!.id);
+            await updateDoc(userDocRef, {
+                watchList: arrayUnion(uuid),
+            });
+            return uuid;
+        } catch (error) {
+            return rejectWithValue(JSON.stringify(error));
+        }
+    },
+);
+
+export const removeWatchListCoin = createAsyncThunk<
+    string,
+    string,
+    {
+        rejectValue: string,
+        state: StateSchema,
+    }
+>(
+    'removeWatchListCoin',
+    async (uuid, { rejectWithValue, getState }) => {
+        const user = selectUser(getState());
+        try {
+            const userDocRef = doc(db, 'users', user!.id);
+            await updateDoc(userDocRef, {
+                watchList: arrayRemove(uuid),
+            });
+            return uuid;
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }

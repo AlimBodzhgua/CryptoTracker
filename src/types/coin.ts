@@ -1,5 +1,5 @@
 export interface ICoin {
-	id: string;
+	uuid: string;
 	name: string;
 	symbol: string;
 	rank: number;
@@ -10,7 +10,7 @@ export interface ICoin {
 	'24hVolume': string;
 }
 
-export type GlobalStatsCoin = Pick<ICoin, 'id' | 'name' | 'symbol' | 'iconUrl'>
+export type GlobalStatsCoin = Pick<ICoin, 'uuid' | 'name' | 'symbol' | 'iconUrl'>
 
 export interface IGlobalStats {
 	totalCoins: number,
@@ -25,4 +25,4 @@ export interface IGlobalStats {
 
 export type SortDirectionType = 'descending' | 'ascending';
 
-export type FieldNameType = keyof Omit<ICoin, 'iconUrl' | 'symbol' | 'id'>;
+export type FieldNameType = keyof Omit<ICoin, 'iconUrl' | 'symbol' | 'uuid'>;

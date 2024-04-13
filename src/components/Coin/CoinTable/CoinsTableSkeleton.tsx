@@ -23,11 +23,12 @@ export const CoinsTableSkeleton: FC<CoinsTableSkeletonProps> = memo((props) => {
                 && (
                     <thead className={classes.header}>
                         <tr className={classes.row}>
-                            <th><Skeleton width={135} height={30} radius='10px' /></th>
-                            <th><Skeleton width={135} height={30} radius='10px' /></th>
-                            <th><Skeleton width={135} height={30} radius='10px' /></th>
-                            <th><Skeleton width={135} height={30} radius='10px' /></th>
-                            <th><Skeleton width={135} height={30} radius='10px' /></th>
+                            <th><Skeleton width={125} height={30} radius='10px' /></th>
+                            <th><Skeleton width={125} height={30} radius='10px' /></th>
+                            <th><Skeleton width={125} height={30} radius='10px' /></th>
+                            <th><Skeleton width={125} height={30} radius='10px' /></th>
+                            <th><Skeleton width={125} height={30} radius='10px' /></th>
+                            <th><Skeleton width={125} height={30} radius='10px' /></th>
                         </tr>
                     </thead>
                 )}
@@ -35,7 +36,7 @@ export const CoinsTableSkeleton: FC<CoinsTableSkeletonProps> = memo((props) => {
                 {new Array(12).fill(0).map((_, index) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <tr key={index}>
-                        <th colSpan={5}>
+                        <th colSpan={6}>
                             <Skeleton width='100%' height={35} radius='10px' />
                         </th>
                     </tr>

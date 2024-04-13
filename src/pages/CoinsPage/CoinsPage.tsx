@@ -1,9 +1,9 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { CoinTable } from 'components/Coin/CoinTable/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
 import { useAppDispatch } from 'hooks/redux';
-import { fetchNextCoins } from 'redux/actions/coinsActions';
+import { fetchCoins, fetchNextCoins } from 'redux/actions/coinsActions';
 
 import classnames from 'classnames';
 import classes from './CoinsPage.module.scss';
@@ -15,6 +15,10 @@ interface CoinsPageProps {
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        dispatch(fetchCoins({ page: 0 }));
+    }, [dispatch]);
+    
     const loadNextCoins = useCallback(() => {
         dispatch(fetchNextCoins());
     }, [dispatch]);

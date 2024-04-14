@@ -5,8 +5,7 @@ import { ICoin } from 'types/coin';
 import { useFormatter } from 'hooks/useFormatter';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { addWatchListCoin, removeWatchListCoin } from 'redux/actions/userActions';
-import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
-import { selectUser, selectUserWatchListCoins, selectUserWatchListIds } from 'redux/selectors/userSelectors';
+import { selectUser, selectUserMounted, selectUserWatchListIds } from 'redux/selectors/userSelectors';
 import StarIcon from 'assets/icons/star.svg';
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 
@@ -22,35 +21,27 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
     const { coin, className } = props;
     const [isInWatchList, setIsInWatchList] = useState<boolean>(false);
     const watchListIds = useAppSelector(selectUserWatchListIds);
-    const watchListCoins = useAppSelector(selectUserWatchListCoins);
     const user = useAppSelector(selectUser);
+    const isUserMounted = useAppSelector(selectUserMounted);
     const dispatch = useAppDispatch();
     const formatter = useFormatter();
 
     useEffect(() => {
-        watchListIds.forEach((item) => {
-            if (item === coin.uuid) {
-                setIsInWatchList(true);
-            }
-        });
-    }, []);
+        if (isUserMounted) {
+            watchListIds.forEach((item) => {
+                if (item === coin.uuid) {
+                    setIsInWatchList(true);
+                }
+            });
+        }
+    }, [isUserMounted]);
 
     const onAddCoinToWatchList = useCallback(async () => {
         if (user) {
-            const { meta, payload } = await dispatch(addWatchListCoin(coin.uuid));
+            const { meta } = await dispatch(addWatchListCoin(coin.uuid));
 
             if (meta.requestStatus === 'fulfilled') {
                 setIsInWatchList(true);
-                localStorage.setItem(
-                    USER_LOCALSTORAGE_KEY,
-                    JSON.stringify({
-                        ...user,
-                        watchList: {
-                            ids: [...watchListIds, payload],
-                            coins: watchListCoins,
-                        },
-                    }),
-                );
             }
         }
     }, [dispatch, user]);
@@ -60,16 +51,6 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
 
         if (meta.requestStatus === 'fulfilled') {
             setIsInWatchList(false);
-            localStorage.setItem(
-                USER_LOCALSTORAGE_KEY,
-                JSON.stringify({
-                    ...user,
-                    watchList: {
-                        ids: [...watchListIds.filter((id) => id !== coin.uuid)],
-                        coins: watchListCoins,
-                    },
-                }),
-            );
         }
     }, [dispatch, watchListIds]);
 

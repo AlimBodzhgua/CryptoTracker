@@ -1,15 +1,9 @@
 import { FC } from 'react';
 import { ICoin } from 'types/coin';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch } from 'hooks/redux';
 import { removeWatchListCoin } from 'redux/actions/userActions';
-import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { SortableItem } from 'components/SortableItem/SortableItem';
-import {
-    selectUser,
-    selectUserWatchListCoins,
-    selectUserWatchListIds,
-} from 'redux/selectors/userSelectors';
 
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 
@@ -24,25 +18,9 @@ interface WatchListItemProps {
 export const WatchListItem: FC<WatchListItemProps> = (props) => {
     const { coin, className } = props;
     const dispatch = useAppDispatch();
-    const user = useAppSelector(selectUser);
-    const watchListIds = useAppSelector(selectUserWatchListIds);
-    const watchListCoins = useAppSelector(selectUserWatchListCoins);
 
     const onRemoveFromWatchList = async () => {
-        const { meta } = await dispatch(removeWatchListCoin(coin.uuid));
-
-        if (meta.requestStatus === 'fulfilled') {
-            localStorage.setItem(
-                USER_LOCALSTORAGE_KEY,
-                JSON.stringify({
-                    ...user,
-                    watchList: {
-                        ids: [...watchListIds.filter((id) => id !== coin.uuid)],
-                        coins: watchListCoins,
-                    },
-                }),
-            );
-        }
+        dispatch(removeWatchListCoin(coin.uuid));
     };
 
     return (

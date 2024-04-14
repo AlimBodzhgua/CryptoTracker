@@ -26,6 +26,26 @@ import { ICoin } from 'types/coin';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import axios from 'axios';
 
+export const initUserAuth = createAsyncThunk<
+    IUser,
+    string,
+    {rejectValue: string}
+>(
+    'initUserAuth',
+    async (userId, { rejectWithValue }) => {
+        try {
+            const userDoc = await getDoc(doc(db, 'users', userId));
+            console.log(userDoc.data());
+            return userDoc.data() as IUser;
+        } catch (error: unknown) {
+            if (error instanceof FirebaseError) {
+                return rejectWithValue(error.code);
+            }
+            return rejectWithValue(JSON.stringify(error));
+        }
+    },
+);
+
 export const signUpUser = createAsyncThunk<
 	IUser,
 	{email: string, password: string},

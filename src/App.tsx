@@ -9,8 +9,9 @@ import {
 import { coinsActions } from 'redux/slices/coinsSlice';
 import { currencyActions } from 'redux/slices/currencySlice';
 import { AppRouter } from 'router/AppRouter';
-import { userActions } from 'redux/slices/userSlice';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
+import { IUser } from 'types/user';
+import { initUserAuth } from 'redux/actions/userActions';
 import 'styles/index.scss';
 
 export const App: FC = () => {
@@ -22,7 +23,10 @@ export const App: FC = () => {
     useEffect(() => {
         dispatch(fetchCurrency());
         const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-        dispatch(userActions.initAuthData(user));
+        if (user) {
+            const authData = JSON.parse(user) as IUser;
+            dispatch(initUserAuth(authData.id));
+        }
     }, [dispatch]);
 
     useEffect(() => {

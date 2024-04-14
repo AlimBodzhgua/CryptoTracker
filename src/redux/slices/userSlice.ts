@@ -13,6 +13,7 @@ import {
     addWatchListCoin,
     removeWatchListCoin,
     fetchWatchListCoins,
+    initUserAuth,
 } from '../actions/userActions';
 
 export interface UserStateSchema {
@@ -34,12 +35,6 @@ export const userSlice = createSlice({
     name: 'userSLice',
     initialState,
     reducers: {
-    	initAuthData: (state, action: PayloadAction<string | null>) => {
-    		if (action.payload) {
-	    		state.authData = JSON.parse(action.payload);
-    		}
-    		state._mounted = true;
-    	},
     	changeUserImageUrl: (state, action: PayloadAction<string>) => {
     		if (state.authData) {
 	    		state.authData.imageUrl = action.payload;
@@ -75,6 +70,19 @@ export const userSlice = createSlice({
     },
     extraReducers: (builder) => {
     	builder
+    		// initUserAuth
+	    	.addCase(initUserAuth.pending, (state) => {
+	    		state.isLoading = true;
+	    	})
+	    	.addCase(initUserAuth.fulfilled, (state, action) => {
+	    		state.authData = action.payload;
+	    		state.isLoading = false;
+	    		state._mounted = true;
+	    	})
+	    	.addCase(initUserAuth.rejected, (state, action) => {
+	    		state.isLoading = false;
+	    		state.error = action.payload;
+	    	})
     		// SignUpUser
 	    	.addCase(signUpUser.pending, (state) => {
 	    		state.isLoading = true;

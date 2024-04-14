@@ -8,11 +8,11 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { useAppSelector } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
-import classnames from 'classnames';
 import { CoinItem } from '../CoinItem/CoinItem';
 import { CoinsTableHeader } from './CoinsTableHeader';
 import { CoinsTableSkeleton } from './CoinsTableSkeleton';
 
+import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {
@@ -26,13 +26,15 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
     const page = useAppSelector(selectCoinsPageNumber);
     const error = useAppSelector(selectCoinsError);
 
-    const withHeader = useMemo(() => (page === 0), [page]);
+    const withHeader = useMemo(() => page === 0, [page]);
 
     if (error) {
         return (
             <Message
-                type='error'
-                text={t('Error fetching data, try to reload the page, or visiti the page later')}
+                type="error"
+                text={t(
+                    "Error fetching data, try to reload the page, or visiti the page later",
+                )}
                 withIcon
             />
         );
@@ -41,29 +43,23 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
     return (
         <>
             <table className={classnames(classes.table, className)}>
-                {searchedFilteredCoins.length
-                    ? (
-                        <>
-                            <CoinsTableHeader />
-                            <tbody>
-                                {searchedFilteredCoins.map((coin) => (
-                                    <CoinItem
-                                        coin={coin}
-                                        key={coin.uuid}
-                                    />
-                                ))}
-                            </tbody>
-                        </>
-                    )
-                    : null}
+                {searchedFilteredCoins.length ? (
+                    <>
+                        <CoinsTableHeader />
+                        <tbody>
+                            {searchedFilteredCoins.map((coin) => (
+                                <CoinItem coin={coin} key={coin.uuid} />
+                            ))}
+                        </tbody>
+                    </>
+                ) : null}
             </table>
-            {isLoading
-                && (
-                    <CoinsTableSkeleton
-                        withHeader={withHeader}
-                        className={classes.tableSkeleton}
-                    />
-                )}
+            {isLoading && (
+                <CoinsTableSkeleton
+                    withHeader={withHeader}
+                    className={classes.tableSkeleton}
+                />
+            )}
         </>
     );
 });

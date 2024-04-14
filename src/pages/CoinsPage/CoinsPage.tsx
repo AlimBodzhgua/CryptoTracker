@@ -16,7 +16,9 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(fetchCoins({ page: 0 }));
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchCoins({ page: 0 }));
+        }
     }, [dispatch]);
 
     const loadNextCoins = useCallback(() => {

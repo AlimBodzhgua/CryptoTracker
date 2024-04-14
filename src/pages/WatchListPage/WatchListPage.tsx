@@ -15,7 +15,9 @@ const WatchListPage: FC<WatchListPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(fetchWatchListCoins());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchWatchListCoins());
+        }
     }, [dispatch]);
 
     return (

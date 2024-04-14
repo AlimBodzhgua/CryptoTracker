@@ -6,7 +6,7 @@ import Dotenv from 'dotenv-webpack';
 import { type BuildOptions } from './types/config';
 
 export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstance[] => {
-    const { paths, isDev } = options;
+    const { paths, isDev, project } = options;
 
     const plugins = [
         new HtmlWebpackPlugin({
@@ -18,6 +18,10 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
             chunkFilename: 'css/[name].[contenthash].css',
         }),
         new Dotenv(),
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+            __PROJECT__: JSON.stringify(project),
+        })
     ];
 
     if (isDev) {

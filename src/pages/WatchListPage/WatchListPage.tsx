@@ -11,11 +11,6 @@ interface WatchListPageProps {
 	className?: string;
 }
 
-/*
-const API_KEY = process.env.NEWS_API;
-const link = `https://newsdata.io/api/1/news?apikey=${API_KEY}`
-*/
-
 const WatchListPage: FC<WatchListPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
 

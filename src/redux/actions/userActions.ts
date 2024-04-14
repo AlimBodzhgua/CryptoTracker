@@ -35,7 +35,6 @@ export const initUserAuth = createAsyncThunk<
     async (userId, { rejectWithValue }) => {
         try {
             const userDoc = await getDoc(doc(db, 'users', userId));
-            console.log(userDoc.data());
             return userDoc.data() as IUser;
         } catch (error: unknown) {
             if (error instanceof FirebaseError) {
@@ -301,7 +300,6 @@ export const fetchWatchListCoins = createAsyncThunk<
     'fetchWatchListCoins',
     async (_, { rejectWithValue, getState }) => {
         const watchListIds = selectUserWatchListIds(getState());
-        console.log(watchListIds);
         try {
             if (watchListIds.length) {
                 const response = await axios.get('https://api.coinranking.com/v2/coins', {

@@ -10,7 +10,6 @@ import {
 import { AppDispatch } from 'redux/config/store';
 import { coinsActions } from 'redux/slices/coinsSlice';
 import axios from 'axios';
-import { selectUserWatchList } from 'redux/selectors/userSelectors';
 
 const coinHeaders = {
     'Content-Type': 'application/json',
@@ -84,34 +83,6 @@ export const fetchGlobalStats = createAsyncThunk<
             return response.data.data as IGlobalStats;
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
-        }
-    },
-);
-
-export const fetchWatchListCoins = createAsyncThunk<
-    ICoin[],
-    void,
-    {
-        rejectValue: string,
-        state: StateSchema,
-    }
->(
-    'fetchWatchListCoins',
-    async (_, { rejectWithValue, getState }) => {
-        const watchList = selectUserWatchList(getState());
-        try {
-            if (watchList.length) {
-                const response = await axios.get('https://api.coinranking.com/v2/coins', {
-                    headers: coinHeaders,
-                    params: {
-                        uuids: watchList,
-                    },
-                });
-                console.log(response.data.data.coins);
-                return response.data.data.coins;
-            } return [];
-        } catch (e) {
-            return rejectWithValue(JSON.stringify(e));
         }
     },
 );

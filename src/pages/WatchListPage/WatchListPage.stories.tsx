@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
-import { WatchList } from './WatchList';
+import WatchListPage from './WatchListPage';
 
 const meta = {
-    title: 'components/WatchList',
-    component: WatchList,
+    title: 'pages/WatchListPage',
+    component: WatchListPage,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
     argTypes: {},
-} satisfies Meta<typeof WatchList>;
+} satisfies Meta<typeof WatchListPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -65,15 +65,6 @@ export const Empty: Story = {
                 watchList: {ids: [], coins: []}
             }
         },
-    }),
-};
-
-export const IsLoading: Story = {
-    args: {},
-    decorators: StoreDecorator({
-    	user: {
-    		isLoading: true,
-    	},
     }),
 };
 

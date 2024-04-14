@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrencyType, IKurs } from 'types/currency';
 import { ICoin, IGlobalStats } from 'types/coin';
-import { fetchCoins, fetchGlobalStats, fetchWatchListCoins } from '../actions/coinsActions';
+import { fetchCoins, fetchGlobalStats } from '../actions/coinsActions';
 
 export interface CoinsStateSchema {
 	coins: ICoin[];
@@ -123,17 +123,6 @@ export const coinsSlice = createSlice({
             .addCase(fetchGlobalStats.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.globalStats = action.payload;
-            })
-            // fetchWatchListCoins
-            .addCase(fetchWatchListCoins.pending, (state) => {
-                state.isLoading = true;
-            })
-            .addCase(fetchWatchListCoins.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.payload;
-            })
-            .addCase(fetchWatchListCoins.fulfilled, (state) => {
-                state.isLoading = false;
             });
     },
 });

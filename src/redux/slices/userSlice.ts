@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IUser } from 'types/user';
+import { arrayMove } from '@dnd-kit/sortable';
 import {
     signUpUser,
     signInUser,
@@ -11,6 +12,7 @@ import {
     clearHistory,
     addWatchListCoin,
     removeWatchListCoin,
+    fetchWatchListCoins,
 } from '../actions/userActions';
 
 export interface UserStateSchema {
@@ -48,13 +50,27 @@ export const userSlice = createSlice({
 	    		state.authData.login = action.payload;
     		}
     	},
-    	addWatchListCoin: (state, action: PayloadAction<string>) => {
+    	addWatchListCoinId: (state, action: PayloadAction<string>) => {
     		if (state.authData) {
-	    		state.authData.watchList.push(action.payload);
+	    		state.authData.watchList.ids.push(action.payload);
     		}
     	},
         clearError: (state) => {
             state.error = undefined;
+        },
+        moveWatchList: (state, action: PayloadAction<{activeId: string, overId: string}>) => {
+        	if (state.authData) {
+        		const watchListIds = state.authData.watchList.ids;
+        		const watchListCoins = state.authData.watchList.coins;
+
+	        	let oldIndex = watchListIds.indexOf(action.payload.activeId);
+	        	let newIndex = watchListIds.indexOf(action.payload.overId);
+	        	state.authData.watchList.ids = arrayMove(watchListIds, oldIndex, newIndex);
+
+	        	oldIndex = watchListCoins.findIndex((coin) => coin.uuid === action.payload.activeId);
+		        newIndex = watchListCoins.findIndex((coin) => coin.uuid === action.payload.overId);
+		        state.authData.watchList.coins = arrayMove(watchListCoins, oldIndex, newIndex);
+        	}
         },
     },
     extraReducers: (builder) => {
@@ -161,13 +177,13 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	})
-	    	// addWatchListCoins
+	    	// addWatchListCoin
 	    	.addCase(addWatchListCoin.pending, (state) => {
 	    		state.isLoading = true;
 	    	})
 	    	.addCase(addWatchListCoin.fulfilled, (state, action) => {
 	    		if (state.authData) {
-	    			state.authData.watchList.push(action.payload);
+	    			state.authData.watchList.ids.push(action.payload);
 	    		}
 	    		state.isLoading = false;
 	    	})
@@ -181,14 +197,36 @@ export const userSlice = createSlice({
 	    	})
 	    	.addCase(removeWatchListCoin.fulfilled, (state, action) => {
 	    		if (state.authData) {
-	    			state.authData.watchList = state.authData.watchList.filter((id) => id !== action.payload);
+	    			state.authData.watchList.ids = state.authData.watchList.ids.filter((id) => (
+	    				id !== action.payload
+	    			));
+
+	    			if (state.authData.watchList.coins.length) {
+		    			state.authData.watchList.coins = state.authData.watchList.coins.filter((coin) => (
+		    				coin.uuid !== action.payload
+		    			));
+	    			}
 	    		}
 	    		state.isLoading = false;
 	    	})
 	    	.addCase(removeWatchListCoin.rejected, (state, action) => {
 	    		state.isLoading = false;
 	    		state.error = action.payload;
-	    	});
+	    	})
+	    	// fetchWatchListCoins
+            .addCase(fetchWatchListCoins.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchWatchListCoins.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+            .addCase(fetchWatchListCoins.fulfilled, (state, action) => {
+                state.isLoading = false;
+                if (state.authData) {
+	                state.authData.watchList.coins = action.payload;
+                }
+            });
     },
 });
 

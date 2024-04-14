@@ -26,7 +26,7 @@ export const Primary: Story = {
             price: '67280.52',
             change: '-2.23',
             marketCap: '1324185382970',
-            '24hVolume': '39114805739'
-        }
+            '24hVolume': '39114805739',
+        },
     },
 };

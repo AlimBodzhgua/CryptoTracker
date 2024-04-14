@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { WatchList } from './WatchList';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
+import { WatchList } from './WatchList';
 
 const meta = {
     title: 'components/WatchList',
@@ -17,7 +17,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const coinsList = [
-	{
+    {
         uuid: 'Qwsogvtv82FCd',
         symbol: 'BTC',
         name: 'Bitcoin',
@@ -26,7 +26,7 @@ const coinsList = [
         price: '67280.52',
         change: '-2.23',
         marketCap: '1324185382970',
-        '24hVolume': '39114805739'
+        '24hVolume': '39114805739',
     },
     {
         uuid: 'Qwsogvtv82FCd',
@@ -37,42 +37,33 @@ const coinsList = [
         price: '3248.5472',
         change: '-1.23',
         marketCap: '396529271041',
-        '24hVolume': '23482853164'
-    }
-]
+        '24hVolume': '23482853164',
+    },
+];
 
 export const Primary: Story = {
-    args: {
-    	coins: coinsList
-    },
+    args: {},
 };
 
-
 export const Empty: Story = {
-    args: {
-    	coins: []
-    },
+    args: {},
 };
 
 export const IsLoading: Story = {
-    args: {
-    	coins: []
-    },
+    args: {},
     decorators: StoreDecorator({
-    	coins: {
+    	user: {
     		isLoading: true,
-    	}
-    })
+    	},
+    }),
 };
 
 export const WithError: Story = {
-    args: {
-    	coins: []
-    },
+    args: {},
     decorators: StoreDecorator({
-    	coins: {
+    	user: {
     		isLoading: false,
     		error: 'error message',
-    	}
-    })
+    	},
+    }),
 };

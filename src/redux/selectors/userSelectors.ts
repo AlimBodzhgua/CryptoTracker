@@ -14,7 +14,12 @@ export const selectUserConversionHistory = createSelector(
     (authData) => authData?.conversionHistory || [],
 );
 
-export const selectUserWatchList = createSelector(
+export const selectUserWatchListCoins = createSelector(
     selectUser,
-    (authData) => authData?.watchList || [],
+    (authData) => authData?.watchList.coins || [],
+);
+
+export const selectUserWatchListIds = createSelector(
+    selectUser,
+    (authData) => authData?.watchList.ids || [],
 );

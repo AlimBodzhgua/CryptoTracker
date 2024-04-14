@@ -6,7 +6,7 @@ import { useFormatter } from 'hooks/useFormatter';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { addWatchListCoin, removeWatchListCoin } from 'redux/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
-import { selectUser, selectUserWatchList } from 'redux/selectors/userSelectors';
+import { selectUser, selectUserWatchListCoins, selectUserWatchListIds } from 'redux/selectors/userSelectors';
 import StarIcon from 'assets/icons/star.svg';
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 
@@ -21,13 +21,14 @@ interface CoinItemProps {
 export const CoinItem: FC<CoinItemProps> = memo((props) => {
     const { coin, className } = props;
     const [isInWatchList, setIsInWatchList] = useState<boolean>(false);
-    const watchList = useAppSelector(selectUserWatchList);
+    const watchListIds = useAppSelector(selectUserWatchListIds);
+    const watchListCoins = useAppSelector(selectUserWatchListCoins);
     const user = useAppSelector(selectUser);
     const dispatch = useAppDispatch();
     const formatter = useFormatter();
 
     useEffect(() => {
-        watchList.forEach((item) => {
+        watchListIds.forEach((item) => {
             if (item === coin.uuid) {
                 setIsInWatchList(true);
             }
@@ -42,7 +43,13 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
                 setIsInWatchList(true);
                 localStorage.setItem(
                     USER_LOCALSTORAGE_KEY,
-                    JSON.stringify({ ...user, watchList: [...watchList, payload] }),
+                    JSON.stringify({
+                        ...user,
+                        watchList: {
+                            ids: [...watchListIds, payload],
+                            coins: watchListCoins,
+                        },
+                    }),
                 );
             }
         }
@@ -55,10 +62,16 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
             setIsInWatchList(false);
             localStorage.setItem(
                 USER_LOCALSTORAGE_KEY,
-                JSON.stringify({ ...user, watchList: [...watchList.filter((id) => id !== coin.uuid)] }),
+                JSON.stringify({
+                    ...user,
+                    watchList: {
+                        ids: [...watchListIds.filter((id) => id !== coin.uuid)],
+                        coins: watchListCoins,
+                    },
+                }),
             );
         }
-    }, [dispatch, watchList]);
+    }, [dispatch, watchListIds]);
 
     return (
         <tr className={classnames(classes.CoinItem, className)}>

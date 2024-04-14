@@ -48,5 +48,5 @@ export const getUserDataObject = (data: UserCredential):IUser => ({
     password: data.user.refreshToken,
     isEmailVerified: data.user.emailVerified,
     conversionHistory: [],
-    watchList: [],
+    watchList: { ids: [], coins: [] },
 });

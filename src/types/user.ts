@@ -1,6 +1,11 @@
 import { ICoin } from './coin';
 import { HistoryType } from './converter';
 
+export interface IWatchList {
+	ids: string[];
+	coins: ICoin[];
+}
+
 export interface IUser {
 	id: string;
 	email: string;
@@ -10,9 +15,4 @@ export interface IUser {
 	isEmailVerified: boolean;
 	conversionHistory?: HistoryType[];
 	watchList: IWatchList;
-}
-
-export interface IWatchList {
-	ids: string[];
-	coins: ICoin[];
 }

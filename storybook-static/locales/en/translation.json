@@ -4,7 +4,7 @@
 	"Sign up": "Sign up",
 	"Main": "Main",
 	"Coins": "Coins",
-	"News": "News",
+	"Watchlist": "Watchlist",
 	"Profile": "Profile",
 	"Converter": "Converter",
 	"Name": "name",
@@ -14,11 +14,26 @@
 	"Market cap": "market cap",
 	"Error fetching coins": "Error fetching coins",
 
+	"Btc Dominance": "Btc Dominance",
+	"Total 24hVolume": "Total 24hVolume",
+	"Total MarketCap": "Total MarketCap",
+	"Total Exchanges": "Total Exchanges",
+	"Total Markets": "Total Markets",
+	"Total Coins": "Total Coins",
+	"Best performing coins": "Best performing coins",
+	"Newest coins": "Newest coins",
+
 	"Enter email...": "Enter email...",
 	"Enter password...": "Enter password...",
 	"Please enter your email.": "Please enter your email.",
 	"Please enter your password.": "Please enter your password.",
 	"Passwrod should contain at least 6 scharacters": "Passwrod should contain at least 6 scharacters",
+	"Password Reset": "Password Reset",
+	"Don`t have an account?": "Don`t have an account?",
+	"Sign Up": "Sign Up",
+	"Already have an account?": "Already have an account?",
+	"Sign In": "Sign In",
+	"User with such email already exist.": "User with such email already exist.",
 
 	"An unexpected error occured": "An unexpected error occured",
 	"Reload the page": "Reload the page",
@@ -48,5 +63,11 @@
 	"An error occurred.": "An error occurred.",
 	"Warning!": "Warning!",
 	"Success.": "Success.",
-	"Error fetching data, try to reload the page, or visiti the page later": "Error fetching data, try to reload the page, or visiti the page later"
+	"Error fetching data, try to reload the page, or visiti the page later": "Error fetching data, try to reload the page, or visiti the page later",
+
+	"Error fetcthing watchlist coins.": "Error fetcthing watchlist coins.",
+	"Your watchlist coins.": "Your watchlist coins.",
+	"Your watchlist is empty.": "Your watchlist is empty.",
+	"You can add coins to watchlist on coins page.": "You can add coins to watchlist on coins page.",
+	"Add coins": "Add coins"
 }

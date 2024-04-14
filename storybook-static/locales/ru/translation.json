@@ -4,7 +4,7 @@
 	"Sign up": "Зарегистрироваться",
 	"Main": "Главная",
 	"Coins": "Монеты",
-	"News": "Новости",
+	"Watchlist": "Список наблюдения",
 	"Profile": "Профиль",
 	"Converter": "Конвертер",
 	"Name": "Название",
@@ -14,11 +14,26 @@
 	"Market cap": "Рыночная капитализцаия",
 	"Error fetching coins": "Ошибка при получении монет",
 
+	"Btc Dominance": "Доминация биткоина",
+	"Total 24hVolume": "Общий 24ч. Объем",
+	"Total MarketCap": "Общая капитализация",
+	"Total Exchanges": "Всего обменов",
+	"Total Markets": "Всего рынков",
+	"Total Coins": "Всего монет",
+	"Best performing coins": "Самые эффективные монеты",
+	"Newest coins": "Новейшие монеты",
+
 	"Enter email...": "Введите почту...",
 	"Enter password...": "Введите пароль...",
 	"Please enter your email.": "Пожалуйста укажие почту.",
 	"Please enter your password.": "Пожалуйста укажите пароль.",
 	"Passwrod should contain at least 8 scharacters": "Пароль должен содержать минимум 8 символов",
+	"Password Reset": "Сброс пароля",
+	"Don`t have an account?": "У вас нет аккаунта?",
+	"Sign Up": "Зарегистрироваться",
+	"Already have an account?": "Уже есть аккаунт?",
+	"Sign In": "Войти",
+	"User with such email already exist.": "Пользователь с таким адресом электронной почты уже существует.",
 
 	"An unexpected error occured": "Произошла непредвиденная ошибка",
 	"Reload the page": "Перезагрузить страницу",
@@ -48,5 +63,11 @@
 	"An error occurred.": "Произошла ошибка.",
 	"Warning!": "Внимение!",
 	"Success.": "Успешно.",
-	"Error fetching data, try to reload the page, or visiti the page later": "Ошибка при получении данных. Попробуйте перезагрузить страницу или посетите страницу позже."
+	"Error fetching data, try to reload the page, or visiti the page later": "Ошибка при получении данных. Попробуйте перезагрузить страницу или посетите страницу позже.",
+
+	"Error fetcthing watchlist coins.": "Ошибка при получении списка отлеживаемых монет.",
+	"Your watchlist Coins.": "Ваш список отлеживаемых монет.",
+	"Your watchlist is empty.": "Список отслеживаемых монет пуст.",
+	"You can add coins to watchlist on coins page.": "Вы можете добавить монеты на странице с монетами.",
+	"Add coins": "Добавить монеты"
 }

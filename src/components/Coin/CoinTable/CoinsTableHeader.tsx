@@ -1,7 +1,8 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TriangleSorter } from 'components/TriangleSorter/TriangleSorter';
 import { FieldNameType } from 'types/coin';
+import { useSearchParams } from 'react-router-dom';
 
 import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
@@ -10,9 +11,32 @@ interface CoinsTableHeaderProps {
 	className?: string;
 }
 
+const SortField = {
+    rank: 'rank',
+    name: 'name',
+    price: 'price',
+    change: 'change',
+    '24hVolume': '24hVolume',
+    marketCap: 'marketCap',
+} as const;
+
 export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
     const { t } = useTranslation();
-    const [activeTriangle, setActiveTriangle] = useState<FieldNameType>('rank');
+    const [activeTriangle, setActiveTriangle] = useState<FieldNameType>(SortField.rank);
+    const [searchParams, _] = useSearchParams();
+
+    useEffect(() => {
+        if (searchParams.has('field')) {
+            const fieldValues: string[] = Object.values(SortField);
+            const paramFieldValue = searchParams.get('field');
+             
+            if (fieldValues.includes(paramFieldValue!)) {
+                setActiveTriangle(paramFieldValue as FieldNameType);
+            } else {
+                throw Error('Such url does not exist');
+            }
+        }
+    }, [])
 
     return (
         <thead className={classnames(classes.header, className)}>
@@ -21,7 +45,7 @@ export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
                     <div className={classes.headerItem}>
                         <span>#</span>
                         <TriangleSorter
-                            sortField='rank'
+                            sortField={SortField.rank}
                             activeTriangle={activeTriangle}
                             setActiveTriangle={setActiveTriangle}
                         />
@@ -36,7 +60,7 @@ export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
                     >
                         <span>{t('Name')}</span>
                         <TriangleSorter
-                            sortField='name'
+                            sortField={SortField.name}
                             activeTriangle={activeTriangle}
                             setActiveTriangle={setActiveTriangle}
                         />
@@ -46,7 +70,7 @@ export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
                     <div className={classes.headerItem}>
                         <span>{t('Price')}</span>
                         <TriangleSorter
-                            sortField='price'
+                            sortField={SortField.price}
                             activeTriangle={activeTriangle}
                             setActiveTriangle={setActiveTriangle}
                         />
@@ -56,7 +80,7 @@ export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
                     <div className={classes.headerItem}>
                         <span>{t('Change')}</span>
                         <TriangleSorter
-                            sortField='change'
+                            sortField={SortField.change}
                             activeTriangle={activeTriangle}
                             setActiveTriangle={setActiveTriangle}
                         />
@@ -66,7 +90,7 @@ export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
                     <div className={classes.headerItem}>
                         <span>{t('24h volume')}</span>
                         <TriangleSorter
-                            sortField='24hVolume'
+                            sortField={SortField['24hVolume']}
                             activeTriangle={activeTriangle}
                             setActiveTriangle={setActiveTriangle}
                         />
@@ -76,7 +100,7 @@ export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
                     <div className={classes.headerItem}>
                         <span>{t('Market cap')}</span>
                         <TriangleSorter
-                            sortField='marketCap'
+                            sortField={SortField.marketCap}
                             activeTriangle={activeTriangle}
                             setActiveTriangle={setActiveTriangle}
                         />

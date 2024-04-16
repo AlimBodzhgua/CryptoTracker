@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { ICoin } from 'types/coin';
 import { useTranslation } from 'react-i18next';
 import { useFormatter } from 'hooks/useFormatter';
@@ -11,7 +11,7 @@ interface WatchListItemOverviewProps {
 	className?: string;
 }
 
-export const WatchListItemOverview: FC<WatchListItemOverviewProps> = (props) => {
+export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props) => {
 	const { coin, className } = props;
 	const { t } = useTranslation();
 	const formatter = useFormatter('en', 'standard', 6);
@@ -49,4 +49,4 @@ export const WatchListItemOverview: FC<WatchListItemOverviewProps> = (props) => 
 			</div>
 		</div>
 	)
-}
+})

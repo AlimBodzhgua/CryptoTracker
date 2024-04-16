@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +31,7 @@ interface WatchListProps {
 	className?: string;
 }
 
-export const WatchList: FC<WatchListProps> = ({ className }) => {
+export const WatchList: FC<WatchListProps> = memo(({ className }) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const watchListCoins = useAppSelector(selectUserWatchListCoins);
@@ -51,7 +51,7 @@ export const WatchList: FC<WatchListProps> = ({ className }) => {
         }),
     );
 
-    const onWatchlistDragEnd = (e: DragEndEvent) => {
+    const onWatchlistDragEnd = useCallback((e: DragEndEvent) => {
         const { active, over } = e;
         if (active.id !== over!.id) {
             dispatch(userActions.moveWatchList({
@@ -60,7 +60,7 @@ export const WatchList: FC<WatchListProps> = ({ className }) => {
             }));
             dispatch(updateWatchList());
         }
-    };
+    }, [dispatch]);
 
     if (isLoading) {
         return <WatchListSkeleton />;
@@ -113,4 +113,4 @@ export const WatchList: FC<WatchListProps> = ({ className }) => {
             </SortableContext>
         </DndContext>
     );
-};
+});

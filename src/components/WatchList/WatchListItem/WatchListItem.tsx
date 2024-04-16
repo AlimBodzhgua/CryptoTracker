@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, memo, useCallback } from 'react';
 import { ICoin } from 'types/coin';
 import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { useAppDispatch } from 'hooks/redux';
@@ -18,15 +18,15 @@ interface WatchListItemProps {
 	className?: string;
 }
 
-export const WatchListItem: FC<WatchListItemProps> = (props) => {
+export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
     const { coin, className } = props;
     const { t } = useTranslation();
     const [isOverviewModal, setIsOverviewModal] = useState<boolean>(false);
     const dispatch = useAppDispatch();
 
-    const onRemoveFromWatchList = async () => {
+    const onRemoveFromWatchList = useCallback(async () => {
         dispatch(removeWatchListCoin(coin.uuid));
-    };
+    }, [dispatch]);
 
     const onOpenOverviewModal = () => {
         setIsOverviewModal(true)
@@ -84,4 +84,4 @@ export const WatchListItem: FC<WatchListItemProps> = (props) => {
             </li>
         </SortableItem>
     );
-};
+});

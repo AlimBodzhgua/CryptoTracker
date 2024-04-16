@@ -9,8 +9,8 @@ import {
 import { useAppSelector } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
 import { CoinItem } from '../CoinItem/CoinItem';
-import { CoinsTableHeader } from './CoinsTableHeader';
-import { CoinsTableSkeleton } from './CoinsTableSkeleton';
+import { CoinTableHeader } from './CoinTableHeader';
+import { CoinTableSkeleton } from './CoinTableSkeleton';
 
 import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
@@ -45,7 +45,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
             <table className={classnames(classes.table, className)}>
                 {searchedFilteredCoins.length ? (
                     <>
-                        <CoinsTableHeader />
+                        <CoinTableHeader />
                         <tbody>
                             {searchedFilteredCoins.map((coin) => (
                                 <CoinItem coin={coin} key={coin.uuid}/>
@@ -55,7 +55,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
                 ) : null}
             </table>
             {isLoading && (
-                <CoinsTableSkeleton
+                <CoinTableSkeleton
                     withHeader={withHeader}
                     className={classes.tableSkeleton}
                 />

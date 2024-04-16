@@ -7,7 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 
-interface CoinsTableHeaderProps {
+interface CoinTableHeaderProps {
 	className?: string;
 }
 
@@ -20,7 +20,7 @@ const SortField = {
     marketCap: 'marketCap',
 } as const;
 
-export const CoinsTableHeader: FC<CoinsTableHeaderProps> = ({ className }) => {
+export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
     const { t } = useTranslation();
     const [activeTriangle, setActiveTriangle] = useState<FieldNameType>(SortField.rank);
     const [searchParams, _] = useSearchParams();

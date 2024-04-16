@@ -3,12 +3,12 @@ import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 
-interface CoinsTableSkeletonProps {
+interface CoinTableSkeletonProps {
     withHeader: boolean;
 	className?: string;
 }
 
-export const CoinsTableSkeleton: FC<CoinsTableSkeletonProps> = memo((props) => {
+export const CoinTableSkeleton: FC<CoinTableSkeletonProps> = memo((props) => {
     const {
         withHeader,
         className,

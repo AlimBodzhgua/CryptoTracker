@@ -5,6 +5,7 @@ import { useAppDispatch } from 'hooks/redux';
 import { removeWatchListCoin } from 'redux/actions/userActions';
 import { SortableItem } from 'components/SortableItem/SortableItem';
 import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
+import { useTranslation } from 'react-i18next';
 
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 import InfoIcon from 'assets/icons/info.svg';
@@ -19,6 +20,7 @@ interface WatchListItemProps {
 
 export const WatchListItem: FC<WatchListItemProps> = (props) => {
     const { coin, className } = props;
+    const { t } = useTranslation();
     const [isOverviewModal, setIsOverviewModal] = useState<boolean>(false);
     const dispatch = useAppDispatch();
 
@@ -54,7 +56,7 @@ export const WatchListItem: FC<WatchListItemProps> = (props) => {
                         className={classes.infoBtn}
                     >
                         <InfoIcon className={classes.infoIcon} />
-                        <div>overview</div>
+                        <div>{t('overview')}</div>
                     </Button>
                     <WatchListItemModal
                         coin={coin}

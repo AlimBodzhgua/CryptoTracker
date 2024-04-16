@@ -1,11 +1,11 @@
 import { FC, memo, useCallback } from 'react';
 import { ConverterCoinType, ConverterListType } from 'types/converter';
+import { CoinsList } from '../CoinsList/CoinsList';
 import { useSearchParams } from 'react-router-dom';
 
 import ArrowIcon from 'assets/icons/arrow.svg';
 
 import classnames from 'classnames';
-import { CoinsList } from '../CoinsList/CoinsList';
 import classes from './CoinSelector.module.scss';
 
 interface CoinSelectorProps {
@@ -16,11 +16,11 @@ interface CoinSelectorProps {
 
 export const CoinSelector: FC<CoinSelectorProps> = memo((props) => {
     const { coin, listType, className } = props;
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [_, setSearchParams] = useSearchParams();
 
     const onShowCoinList = useCallback(() => {
         setSearchParams({ listType });
-    }, []);
+    }, [listType]);
 
     const onHideCoinsList = useCallback(() => {
         setSearchParams('');

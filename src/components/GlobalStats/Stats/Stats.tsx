@@ -8,10 +8,10 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { Message } from 'components/UI/Message/Message';
 import { useTranslation } from 'react-i18next';
-import classnames from 'classnames';
 import { StatsSkeleton } from './StatsSkeleton';
 import { List } from '../List/List';
 
+import classnames from 'classnames';
 import classes from './Stats.module.scss';
 
 interface StatsProps {
@@ -25,6 +25,10 @@ export const Stats: FC<StatsProps> = memo(({ className }) => {
     const isLoading = useAppSelector(selectCoinsIsLoading);
     const error = useAppSelector(selectCoinsError);
 
+    if (isLoading) {
+        return <StatsSkeleton />;
+    }
+    
     if (error) {
         return (
             <div className={classes.Stats}>
@@ -37,14 +41,10 @@ export const Stats: FC<StatsProps> = memo(({ className }) => {
         );
     }
 
-    if (isLoading) {
-        return <StatsSkeleton />;
-    }
-
     return (
         <div className={classnames(classes.Stats, className)}>
             {statsData.map((data) => (
-                <div className={classes.data} key={data.value}>
+                <div className={classes.data} key={crypto.randomUUID()}>
                     <div className={classes.dataTitle}>
                         {t(`${data.title}`)}
                     </div>

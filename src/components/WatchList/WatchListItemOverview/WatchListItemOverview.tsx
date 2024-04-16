@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ICoin } from 'types/coin';
 import { useTranslation } from 'react-i18next';
+import { useFormatter } from 'hooks/useFormatter';
 
 import classes from './WatchListItemOverview.module.scss';
 import classnames from 'classnames';
@@ -13,12 +14,7 @@ interface WatchListItemOverviewProps {
 export const WatchListItemOverview: FC<WatchListItemOverviewProps> = (props) => {
 	const { coin, className } = props;
 	const { t } = useTranslation();
-	const formatter = Intl.NumberFormat('en', {
-        style: 'currency',
-        currency: 'usd',
-        notation: 'standard',
-        minimumSignificantDigits: 6,
-    })
+	const formatter = useFormatter('en', 'standard', 6);
 
 	return (
 		<div className={classnames(classes.WatchListItemOverview, className)}>

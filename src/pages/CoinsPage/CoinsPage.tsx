@@ -4,6 +4,7 @@ import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
 import { useAppDispatch } from 'hooks/redux';
 import { fetchCoins, fetchNextCoins } from 'redux/actions/coinsActions';
+import { coinsActions } from 'redux/slices/coinsSlice';
 
 import classnames from 'classnames';
 import classes from './CoinsPage.module.scss';
@@ -18,6 +19,10 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchCoins({ page: 0 }));
+        }
+
+        return () => {
+            dispatch(coinsActions.resetCoins());
         }
     }, [dispatch]);
 

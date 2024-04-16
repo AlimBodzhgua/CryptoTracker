@@ -48,7 +48,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
                         <CoinsTableHeader />
                         <tbody>
                             {searchedFilteredCoins.map((coin) => (
-                                <CoinItem coin={coin} />
+                                <CoinItem coin={coin} key={coin.uuid}/>
                             ))}
                         </tbody>
                     </>

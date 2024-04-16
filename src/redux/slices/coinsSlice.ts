@@ -43,6 +43,10 @@ export const coinsSlice = createSlice({
                 state.hasMore = false;
             }
         },
+        resetCoins: (state) => {
+            state.coins = [];
+            state.searchedFilteredCoins = [];
+        },
         setSearchedFilteredCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.searchedFilteredCoins = action.payload;
         },

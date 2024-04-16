@@ -17,13 +17,12 @@ import { convertCoins } from 'redux/actions/converterActions';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import { HistoryModal } from 'components/History/HistoryModal/HistoryModal';
 import { addHistory } from 'redux/actions/userActions';
-import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
+import { CoinSelector } from './CoinSelector/CoinSelector';
 
 import HistoryIcon from 'assets/icons/history.svg';
 import SwitchIcon from 'assets/icons/switch.svg';
 
 import classnames from 'classnames';
-import { CoinSelector } from './CoinSelector/CoinSelector';
 import classes from './Converter.module.scss';
 
 interface ConverterProps {
@@ -43,6 +42,10 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
     const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
     const [amount, setAmount] = useState<number>(0);
 
+    useEffect(() => () => {
+        dispatch(converterActions.resetResult());
+    }, []);
+    
     const onAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
         setAmount(Number(e.target?.value));
     };
@@ -55,10 +58,6 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
         }
     };
 
-    useEffect(() => () => {
-        dispatch(converterActions.resetResult());
-    }, []);
-
     const onCloseHistoryModal = () => {
         setShowHistoryModal(false);
     };
@@ -67,16 +66,10 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
         dispatch(converterActions.switchCoins());
     }, [dispatch]);
 
-    const addNewHistory = useCallback(async (convertResult: number) => {
-        const { meta, payload } = await dispatch(addHistory({
+    const addNewHistory = useCallback((convertResult: number) => {
+        dispatch(addHistory({
             coinFrom, coinTo, amount, convertResult,
         }));
-        if (meta.requestStatus === 'fulfilled') {
-            localStorage.setItem(
-                USER_LOCALSTORAGE_KEY,
-                JSON.stringify({ ...user, conversionHistory: [...user!.conversionHistory!, payload] }),
-            );
-        }
     }, [amount, coinFrom, coinTo, result]);
 
     const onConvert = useCallback(async () => {

@@ -58,6 +58,10 @@
 	"Reset": "Reset",
 
 	"Only the user can see the history of previous conversions": "Only the user can see the history of previous conversions",
+	"Error loading history, try to reload the page": "Error loading history, try to reload the page",
+	"Convertasion list is empty": "Convertasion list is empty",
+	"Convertasion history": "Convertasion history",
+	"clear": "clear",
 	"Select Coin": "Select Coin",
 	"Convert": "Convert",
 	"History": "History",

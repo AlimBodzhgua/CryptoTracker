@@ -58,8 +58,8 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
         return (
             <Message
                 withIcon
-                type='error'
-                text='Error loading history, try to reload the page'
+                type={'error'}
+                text={t('Error loading history, try to reload the page')}
             />
         );
     }
@@ -74,7 +74,7 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
                     onClick={onClear}
                     disabled={isLoading}
                 >
-                    clear
+                    {t('clear')}
                 </Button>
             </div>
             <ul className={classnames(classes.HistoryList, className)}>

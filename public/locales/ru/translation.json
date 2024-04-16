@@ -58,6 +58,10 @@
 	"Reset": "Сбросить",
 
 	"Only the user can see the history of previous conversions": "Только авторизованный пользователь может видеть историю предыдущих конвертаций",
+	"Error loading history, try to reload the page": "Ошибка загрузка истории, попробуйте обновить стрнаицу",
+	"Convertasion list is empty": "Список конвераций пуст",
+	"Convertasion history": "История конвераций",
+	"clear": "отчистить",
 	"Select Coin": "Выберите монету",
 	"Convert": "Конвертировать",
 	"History": "История",

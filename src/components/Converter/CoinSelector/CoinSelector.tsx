@@ -1,7 +1,7 @@
 import { FC, memo, useCallback } from 'react';
 import { ConverterCoinType, ConverterListType } from 'types/converter';
-import { CoinsList } from '../CoinsList/CoinsList';
 import { useSearchParams } from 'react-router-dom';
+import { CoinsList } from '../CoinsList/CoinsList';
 
 import ArrowIcon from 'assets/icons/arrow.svg';
 
@@ -20,7 +20,7 @@ export const CoinSelector: FC<CoinSelectorProps> = memo((props) => {
 
     const onShowCoinList = useCallback(() => {
         setSearchParams({ listType });
-    }, [listType]);
+    }, []);
 
     const onHideCoinsList = useCallback(() => {
         setSearchParams('');

@@ -20,10 +20,10 @@ export const CoinsList: FC<CoinsListProps> = memo((props) => {
         onHideCoinsList,
         className,
     } = props;
-    const { t } = useTranslation();
-    const [searchParams] = useSearchParams();
     const dispatch = useAppDispatch();
     const coins = useAppSelector(selectConverterCoins);
+    const { t } = useTranslation();
+    const [searchParams] = useSearchParams();
     const isShow = searchParams.has('listType');
 
     useEffect(() => {

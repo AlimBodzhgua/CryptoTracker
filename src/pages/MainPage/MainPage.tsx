@@ -15,7 +15,9 @@ const MainPage: FC<MainPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(fetchGlobalStats());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchGlobalStats());
+        }
     }, [dispatch]);
 
     return (

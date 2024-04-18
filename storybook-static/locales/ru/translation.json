@@ -10,9 +10,11 @@
 	"Name": "Название",
 	"Price": "Цена",
 	"Change": "Изменение",
+	"Сhange 24h": "Изменения 24ч",
 	"24h volume": "24ч Объём",
 	"Market cap": "Рыночная капитализцаия",
 	"Error fetching coins": "Ошибка при получении монет",
+	"Market Stats": "Статистика Рынка",
 
 	"Btc Dominance": "Доминация биткоина",
 	"Total 24hVolume": "Общий 24ч. Объем",
@@ -56,6 +58,10 @@
 	"Reset": "Сбросить",
 
 	"Only the user can see the history of previous conversions": "Только авторизованный пользователь может видеть историю предыдущих конвертаций",
+	"Error loading history, try to reload the page": "Ошибка загрузка истории, попробуйте обновить стрнаицу",
+	"Convertasion list is empty": "Список конвертаций пуст",
+	"Convertasion history": "История конвертаций",
+	"clear": "очистить",
 	"Select Coin": "Выберите монету",
 	"Convert": "Конвертировать",
 	"History": "История",
@@ -69,5 +75,7 @@
 	"Your watchlist Coins.": "Ваш список отлеживаемых монет.",
 	"Your watchlist is empty.": "Список отслеживаемых монет пуст.",
 	"You can add coins to watchlist on coins page.": "Вы можете добавить монеты на странице с монетами.",
-	"Add coins": "Добавить монеты"
+	"Add coins": "Добавить монеты",
+	"overview": "обзор",
+	"Last 24 hour chart": "График за последние 24 часа"
 }

@@ -29,14 +29,14 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
         if (searchParams.has('field')) {
             const fieldValues: string[] = Object.values(SortField);
             const paramFieldValue = searchParams.get('field');
-             
+
             if (fieldValues.includes(paramFieldValue!)) {
                 setActiveTriangle(paramFieldValue as FieldNameType);
             } else {
                 throw Error('Such url does not exist');
             }
         }
-    }, [])
+    }, []);
 
     return (
         <thead className={classnames(classes.header, className)}>

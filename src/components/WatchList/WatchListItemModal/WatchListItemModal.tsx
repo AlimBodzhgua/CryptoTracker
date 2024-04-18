@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
-import { WatchListItemOverview } from '../WatchListItemOverview/WatchListItemOverview';
 import { ICoin } from 'types/coin';
 
 import classnames from 'classnames';
+import { WatchListItemOverview } from '../WatchListItemOverview/WatchListItemOverview';
 
 interface WatchListItemModalProps {
     coin: ICoin;
@@ -26,7 +26,7 @@ export const WatchListItemModal: FC<WatchListItemModalProps> = (props) => {
             isOpen={isOpen}
             className={classnames(className)}
         >
-            <WatchListItemOverview coin={coin}/>
+            <WatchListItemOverview coin={coin} />
         </Modal>
     );
 };

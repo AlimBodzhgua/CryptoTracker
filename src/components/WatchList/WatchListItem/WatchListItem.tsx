@@ -1,11 +1,13 @@
-import { FC, useState, memo, useCallback } from 'react';
+import {
+    FC, useState, memo, useCallback,
+} from 'react';
 import { ICoin } from 'types/coin';
 import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { useAppDispatch } from 'hooks/redux';
 import { removeWatchListCoin } from 'redux/actions/userActions';
 import { SortableItem } from 'components/SortableItem/SortableItem';
-import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
 import { useTranslation } from 'react-i18next';
+import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
 
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 import InfoIcon from 'assets/icons/info.svg';
@@ -29,12 +31,12 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
     }, [dispatch]);
 
     const onOpenOverviewModal = () => {
-        setIsOverviewModal(true)
-    }
+        setIsOverviewModal(true);
+    };
 
     const onCloseOverviewModal = () => {
-        setIsOverviewModal(false)
-    }
+        setIsOverviewModal(false);
+    };
 
     return (
         <SortableItem id={coin.uuid}>

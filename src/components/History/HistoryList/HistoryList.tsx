@@ -10,9 +10,9 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { clearHistory } from 'redux/actions/userActions';
 import { Message } from 'components/UI/Message/Message';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
+import classnames from 'classnames';
 import { HistoryItem } from '../HistoryItem/HistoryItem';
 
-import classnames from 'classnames';
 import classes from './HistoryList.module.scss';
 
 interface HistoryListProps {
@@ -58,7 +58,7 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
         return (
             <Message
                 withIcon
-                type={'error'}
+                type='error'
                 text={t('Error loading history, try to reload the page')}
             />
         );

@@ -25,6 +25,7 @@ import { WatchListItem } from './WatchListItem/WatchListItem';
 
 import StarIcon from 'assets/icons/starSelected.svg';
 import classnames from 'classnames';
+
 import classes from './WatchList.module.scss';
 
 interface WatchListProps {

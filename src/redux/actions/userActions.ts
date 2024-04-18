@@ -309,9 +309,9 @@ export const fetchWatchListCoins = createAsyncThunk<
                     },
                 });
                 const watchListCoins: ICoin[] = response.data.data.coins;
-                const indexes = watchListIds.map((id) => 
-                    watchListCoins.findIndex((coin) => coin.uuid === id)
-                );
+                const indexes = watchListIds.map((id) => watchListCoins.findIndex((coin) => (
+                    coin.uuid === id
+                )));
                 const result = indexes.map((value) => watchListCoins[value]);
                 return result;
             } return [];

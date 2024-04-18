@@ -8,11 +8,11 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { useAppSelector } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
+import classnames from 'classnames';
 import { CoinItem } from '../CoinItem/CoinItem';
 import { CoinTableHeader } from './CoinTableHeader';
 import { CoinTableSkeleton } from './CoinTableSkeleton';
 
-import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {
@@ -31,9 +31,9 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
     if (error) {
         return (
             <Message
-                type="error"
+                type='error'
                 text={t(
-                    "Error fetching data, try to reload the page, or visiti the page later",
+                    'Error fetching data, try to reload the page, or visiti the page later',
                 )}
                 withIcon
             />
@@ -48,7 +48,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
                         <CoinTableHeader />
                         <tbody>
                             {searchedFilteredCoins.map((coin) => (
-                                <CoinItem coin={coin} key={coin.uuid}/>
+                                <CoinItem coin={coin} key={coin.uuid} />
                             ))}
                         </tbody>
                     </>

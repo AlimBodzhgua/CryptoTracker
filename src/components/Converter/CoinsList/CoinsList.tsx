@@ -1,13 +1,15 @@
-import { FC, useEffect, memo, useCallback } from 'react';
+import {
+    FC, useEffect, memo, useCallback,
+} from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { selectConverterCoins } from 'redux/selectors/converterSelectors';
 import { fetchConverterCoins } from 'redux/actions/converterActions';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import classnames from 'classnames';
 import { CoinItem } from '../CoinItem/CoinItem';
 
-import classnames from 'classnames';
 import classes from './CoinsList.module.scss';
 
 interface CoinsListProps {

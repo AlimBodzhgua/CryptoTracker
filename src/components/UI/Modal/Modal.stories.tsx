@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
     args: {
         isOpen: true,
-        onClose: () => console.log('close window'),
+        onClose: () => {},
         children: <div>Modal window</div>,
     },
 };

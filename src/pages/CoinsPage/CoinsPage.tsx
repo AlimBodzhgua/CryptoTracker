@@ -23,7 +23,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 
         return () => {
             dispatch(coinsActions.resetCoins());
-        }
+        };
     }, [dispatch]);
 
     const loadNextCoins = useCallback(() => {

@@ -51,7 +51,7 @@ const conversionHistory = [
 export const Primary: Story = {
     args: {
         isOpen: true,
-        onClose: () => console.log('close window'),
+        onClose: () => {},
     },
     decorators: StoreDecorator({
         user: {
@@ -65,14 +65,14 @@ export const Primary: Story = {
 export const EmptyList: Story = {
     args: {
         isOpen: true,
-        onClose: () => console.log('close window'),
+        onClose: () => {},
     },
 };
 
 export const IsLoading: Story = {
     args: {
         isOpen: true,
-        onClose: () => console.log('close window'),
+        onClose: () => {},
     },
     decorators: StoreDecorator({
         user: {
@@ -85,7 +85,7 @@ export const IsLoading: Story = {
 export const WithError: Story = {
     args: {
         isOpen: true,
-        onClose: () => console.log('close window'),
+        onClose: () => {},
     },
     decorators: StoreDecorator({
         user: {

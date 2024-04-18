@@ -1,4 +1,6 @@
-import { FC, useEffect, useState, memo, useMemo } from 'react';
+import {
+    FC, useEffect, useState, memo, useMemo,
+} from 'react';
 import { FieldNameType, SortDirectionType } from 'types/coin';
 import { coinsSorter } from 'utils/utils';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -39,23 +41,22 @@ export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
 
     useEffect(() => {
         if (searchParams.has('by')) {
-
             const sortValues: string[] = Object.values(SortDirection);
             const paramSortValue = searchParams.get('by');
-             
+
             if (sortValues.includes(paramSortValue!)) {
                 setSortDirection(paramSortValue as SortDirectionType);
             } else {
                 throw Error('Such url does not exist');
             }
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (isActive) {
             const sortedCoins = coinsSorter(coins, sortDirection, sortField);
             dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
-            const searchParams = new URLSearchParams({'field': sortField, 'by': sortDirection});
+            const searchParams = new URLSearchParams({ field: sortField, by: sortDirection });
             setSearchParams(searchParams);
         }
     }, [sortDirection, isActive]);
@@ -64,8 +65,7 @@ export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
         setActiveTriangle(sortField);
         setSortDirection(sortDirection === SortDirection.ascending
             ? SortDirection.descending
-            : SortDirection.ascending
-        );
+            : SortDirection.ascending);
     };
 
     return (
@@ -78,11 +78,13 @@ export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
             <span className={classnames(
                 classes.topAngle,
                 sortDirection === SortDirection.descending && isActive ? classes.active : undefined,
-            )}/>
+            )}
+            />
             <span className={classnames(
                 classes.botAngle,
                 sortDirection === SortDirection.ascending && isActive ? classes.active : undefined,
-            )}/>
+            )}
+            />
         </div>
     );
 });

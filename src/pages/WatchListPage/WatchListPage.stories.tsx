@@ -50,8 +50,8 @@ export const Primary: Story = {
                 watchList: {
                     ids: ['Qwsogvtv82FCd', 'razxDUgYGNAdQ'],
                     coins: coinsList,
-                }
-            }
+                },
+            },
         },
     }),
 };
@@ -62,8 +62,8 @@ export const Empty: Story = {
         user: {
             isLoading: false,
             authData: {
-                watchList: {ids: [], coins: []}
-            }
+                watchList: { ids: [], coins: [] },
+            },
         },
     }),
 };

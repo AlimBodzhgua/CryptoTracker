@@ -21,7 +21,7 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __PROJECT__: JSON.stringify(project),
-        })
+        }),
     ];
 
     if (isDev) {

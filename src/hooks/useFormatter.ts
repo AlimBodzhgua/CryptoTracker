@@ -8,8 +8,8 @@ type LocaleType = 'ru' | 'en' | undefined;
 export const useFormatter = (
     locale:LocaleType = 'ru',
     notation:NotationType = 'compact',
-    minDigits?: number,
-    maxDigits?: number,
+    minDigits:number = 4,
+    maxDigits:number = 6,
 ) => {
     const currentCurrency = useAppSelector(selectCurrentCurrency);
 
@@ -17,8 +17,8 @@ export const useFormatter = (
         style: 'currency',
         currency: currentCurrency,
         notation,
-        minimumSignificantDigits: minDigits ? minDigits : undefined,
-        maximumSignificantDigits: maxDigits ? maxDigits : undefined,
+        minimumSignificantDigits: minDigits || undefined,
+        maximumSignificantDigits: maxDigits || undefined,
     }), [currentCurrency, locale, notation, minDigits, maxDigits]);
 
     return formatter;

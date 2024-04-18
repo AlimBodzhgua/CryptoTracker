@@ -5,18 +5,21 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+	background-color: var(--page-bg-color);
 }
 
 .title {
 	margin-bottom: 12px;
 
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: 800;
-	color: #000;
+	color: #fff;
 }
 
 .reload {
 	border: none;
+	border-radius: 0;
 	padding: 5px;
 
 	cursor: pointer;

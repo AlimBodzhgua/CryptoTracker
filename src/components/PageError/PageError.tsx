@@ -1,5 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Button, ButtonTheme } from 'components/UI/Button/Button';
+
 import classnames from 'classnames';
 import classes from './PageError.module.scss';
 
@@ -20,12 +22,13 @@ export const PageError: React.FC<PageErrorProps> = (props) => {
             >
                 {t('An unexpected error occured')}
             </p>
-            <button
+            <Button
                 className={classes.reload}
                 onClick={onReload}
+                theme={ButtonTheme.secondary}
             >
                 {t('Reload the page')}
-            </button>
+            </Button>
         </div>
     );
 };

@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { CoinTable } from './CoinTable';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
-import { WatchList } from './WatchList';
+import classes from './CoinTable.module.scss'
+
 
 const meta = {
-    title: 'components/WatchList',
-    component: WatchList,
+    title: 'components/CoinTable',
+    component: CoinTable,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
     argTypes: {},
-} satisfies Meta<typeof WatchList>;
+} satisfies Meta<typeof CoinTable>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -51,28 +53,26 @@ const coinsList = [
 ];
 
 export const Primary: Story = {
-    args: {},
+    args: {
+        className: classes.fullWidth,
+    },
     decorators: StoreDecorator({
-        user: {
+        coins: {
             isLoading: false,
-            authData: {
-                watchList: {
-                    ids: ['Qwsogvtv82FCd', 'razxDUgYGNAdQ'],
-                    coins: coinsList,
-                },
-            }
+            page: 0,
+            searchedFilteredCoins: coinsList,
+            coins: coinsList,
         },
     }),
 };
 
-export const Empty: Story = {
+
+export const WithError: Story = {
     args: {},
     decorators: StoreDecorator({
-        user: {
+        coins: {
             isLoading: false,
-            authData: {
-                watchList: {ids: [], coins: []}
-            }
+            error: 'error',
         },
     }),
 };
@@ -80,18 +80,45 @@ export const Empty: Story = {
 export const IsLoading: Story = {
     args: {},
     decorators: StoreDecorator({
-    	user: {
-    		isLoading: true,
-    	},
+        coins: {
+            isLoading: true,
+            page: 0,
+            coins: [],
+            searchedFilteredCoins: []
+        },
     }),
 };
 
-export const WithError: Story = {
+export const FetchNextData: Story = {
     args: {},
     decorators: StoreDecorator({
-    	user: {
-    		isLoading: false,
-    		error: 'error message',
-    	},
+        coins: {
+            isLoading: true,
+            page: 1,
+            coins: coinsList,
+            searchedFilteredCoins: coinsList,
+        },
+    }),
+};
+
+export const WithCoinInWatchList: Story = {
+    args: {
+        className: classes.fullWidth,
+    },
+    decorators: StoreDecorator({
+        coins: {
+            isLoading: false,
+            page: 0,
+            searchedFilteredCoins: coinsList,
+            coins: coinsList,
+        },
+        user: {
+            _mounted: true,
+            authData: {
+                watchList: {
+                    ids: ['Qwsogvtv82FCd'],
+                }
+            }
+        }
     }),
 };

@@ -4,7 +4,7 @@ import classes from './NotFoundPage.module.scss';
 
 const NotFoundPage: React.FC = () => (
     <Page className={classes.NotFoundPage}>
-        <h1>Page not foung</h1>
+        <h1>Page not found</h1>
     </Page>
 );
 

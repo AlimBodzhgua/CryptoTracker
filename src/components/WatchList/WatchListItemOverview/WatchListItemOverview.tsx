@@ -2,6 +2,7 @@ import { FC, memo } from 'react';
 import { ICoin } from 'types/coin';
 import { useTranslation } from 'react-i18next';
 import { useFormatter } from 'hooks/useFormatter';
+import { Chart } from 'components/Chart/Chart';
 
 import classes from './WatchListItemOverview.module.scss';
 import classnames from 'classnames';
@@ -16,8 +17,16 @@ export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props
 	const { t } = useTranslation();
 	const formatter = useFormatter('en', 'standard', 6);
 
+	const onBackgroundClick = (e: React.MouseEvent) => {
+    	e.stopPropagation();
+    };
+
 	return (
-		<div className={classnames(classes.WatchListItemOverview, className)}>
+		<div
+			className={classnames(classes.WatchListItemOverview, className)}
+			onClick={onBackgroundClick}
+			role={'button'}
+		>
 			<div className={classes.rank}>rank #{coin.rank}</div>
 			<div className={classes.headerData}>
 				<img src={coin.iconUrl} alt={coin.name} className={classes.icon}/>
@@ -47,6 +56,7 @@ export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props
 					</div>
 				</div>
 			</div>
+			<Chart sparkline={coin.sparkline!}/>
 		</div>
 	)
 })

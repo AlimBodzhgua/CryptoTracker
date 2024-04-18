@@ -8,6 +8,7 @@ export interface ICoin {
 	change: string; // (%)
 	marketCap: string;
 	'24hVolume': string;
+	sparkline: string[];
 }
 
 export type GlobalStatsCoin = Pick<ICoin, 'uuid' | 'name' | 'symbol' | 'iconUrl'>

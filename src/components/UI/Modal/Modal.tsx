@@ -1,10 +1,7 @@
-import React, {
-    FC, ReactNode, Suspense, useCallback, useEffect,
-} from 'react';
-import classnames from 'classnames';
+import { FC, ReactNode, useCallback, useEffect } from 'react';
 import { Portal } from '../Portal/Portal';
-import { LoaderRing } from '../LoaderRing/LoaderRing';
 
+import classnames from 'classnames';
 import classes from './Modal.module.scss';
 
 interface ModalProps {
@@ -46,7 +43,7 @@ export const Modal: FC<ModalProps> = (props) => {
         e.stopPropagation();
     };
 
-    const onBackgroundClick = (e: React.MouseEvent) => {
+    const onBackgroundClick = () => {
     	closeHandler();
     };
 

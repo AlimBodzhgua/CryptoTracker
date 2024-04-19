@@ -1,7 +1,7 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo, useCallback, useMemo } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import {
@@ -39,6 +39,11 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
     const isLoading = useAppSelector(selectUserIsLoading);
     const error = useAppSelector(selectUserError);
     const navigate = useNavigate();
+    const [searchParams, _] = useSearchParams();
+
+    const dragDisabled = useMemo(
+        () => searchParams.has('modal') ? true : false
+    , [searchParams])
 
     const onNavigateToCoinsPage = () => {
         navigate('/coins');
@@ -83,7 +88,10 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
             modifiers={[restrictToParentElement]}
             onDragEnd={onWatchlistDragEnd}
         >
-            <SortableContext items={watchListCoins.map((item) => item.uuid)}>
+            <SortableContext
+                items={watchListCoins.map((item) => item.uuid)}
+                disabled={dragDisabled}
+            >
                 <ul className={classnames(classes.WatchList, className)}>
                     {watchListCoins.length
                         ? (

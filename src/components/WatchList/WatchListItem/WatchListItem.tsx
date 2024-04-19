@@ -8,6 +8,7 @@ import { removeWatchListCoin } from 'redux/actions/userActions';
 import { SortableItem } from 'components/SortableItem/SortableItem';
 import { useTranslation } from 'react-i18next';
 import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
+import { useSearchParams } from 'react-router-dom';
 
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 import InfoIcon from 'assets/icons/info.svg';
@@ -24,6 +25,7 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
     const { coin, className } = props;
     const { t } = useTranslation();
     const [isOverviewModal, setIsOverviewModal] = useState<boolean>(false);
+    const [_, setSearchParams] = useSearchParams();
     const dispatch = useAppDispatch();
 
     const onRemoveFromWatchList = useCallback(async () => {
@@ -32,10 +34,12 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 
     const onOpenOverviewModal = () => {
         setIsOverviewModal(true);
+        setSearchParams({modal: 'overview'});
     };
 
     const onCloseOverviewModal = () => {
         setIsOverviewModal(false);
+        setSearchParams('');
     };
 
     return (

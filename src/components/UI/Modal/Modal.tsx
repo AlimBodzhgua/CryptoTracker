@@ -43,10 +43,6 @@ export const Modal: FC<ModalProps> = (props) => {
         e.stopPropagation();
     };
 
-    const onContentMouseDown = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    }
-
     const onBackgroundClick = () => {
     	closeHandler();
     };
@@ -56,14 +52,12 @@ export const Modal: FC<ModalProps> = (props) => {
             <div
                 className={classnames(classes.Modal, className, { [classes.opened]: isOpen })}
                 onClick={onBackgroundClick}
-                onMouseDown={onBackgroundClick}
                 role='button'
                 tabIndex={-1}
             >
                 <div
                     className={classes.content}
                     onClick={onContentClick}
-                    onMouseDown={onContentMouseDown}
                     role='button'
                     tabIndex={0}
                 >

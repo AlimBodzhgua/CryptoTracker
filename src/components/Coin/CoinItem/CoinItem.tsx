@@ -6,6 +6,8 @@ import { useFormatter } from 'hooks/useFormatter';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { addWatchListCoin, removeWatchListCoin } from 'redux/actions/userActions';
 import { selectUser, selectUserMounted, selectUserWatchListIds } from 'redux/selectors/userSelectors';
+import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
+
 import StarIcon from 'assets/icons/star.svg';
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 
@@ -20,6 +22,7 @@ interface CoinItemProps {
 export const CoinItem: FC<CoinItemProps> = memo((props) => {
     const { coin, className } = props;
     const [isInWatchList, setIsInWatchList] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const watchListIds = useAppSelector(selectUserWatchListIds);
     const user = useAppSelector(selectUser);
     const isUserMounted = useAppSelector(selectUserMounted);
@@ -38,21 +41,43 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
 
     const onAddCoinToWatchList = useCallback(async () => {
         if (user) {
+            setIsLoading(true);
             const { meta } = await dispatch(addWatchListCoin(coin.uuid));
 
             if (meta.requestStatus === 'fulfilled') {
+                setIsLoading(false);
                 setIsInWatchList(true);
+            } else if (meta.requestStatus === 'rejected') {
+                setIsLoading(false);
             }
         }
     }, [dispatch, user]);
 
     const onRemoveCoinFromWatchList = useCallback(async () => {
+        setIsLoading(true);
         const { meta } = await dispatch(removeWatchListCoin(coin.uuid));
 
         if (meta.requestStatus === 'fulfilled') {
             setIsInWatchList(false);
+            setIsLoading(false);
+        } else if (meta.requestStatus === 'rejected') {
+            setIsLoading(false);
         }
     }, [dispatch, watchListIds]);
+
+    const renderWatchListAction = useCallback(() => {
+        return (isInWatchList
+            ?   <StarSelectedIcon
+                    className={classes.starIconSelected}
+                    onClick={onRemoveCoinFromWatchList}
+                />
+            :   <StarIcon
+                    className={classes.starIcon}
+                    onClick={onAddCoinToWatchList}
+                />
+        )
+    }, [isInWatchList, onRemoveCoinFromWatchList, onAddCoinToWatchList])
+
 
     return (
         <tr className={classnames(classes.CoinItem, className)}>
@@ -83,19 +108,10 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
                 {formatter.format(Number(coin.marketCap))}
             </th>
             <th>
-                {isInWatchList
-                    ? (
-                        <StarSelectedIcon
-                            className={classes.starIconSelected}
-                            onClick={onRemoveCoinFromWatchList}
-                        />
-                    )
-                    : (
-                        <StarIcon
-                            className={classes.starIcon}
-                            onClick={onAddCoinToWatchList}
-                        />
-                    )}
+                {isLoading 
+                    ? <LoaderRing className={classes.loader}/>
+                    : renderWatchListAction()
+                }
             </th>
         </tr>
     );

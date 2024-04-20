@@ -7,6 +7,10 @@
 		padding: 10px;
 	}
 
+	th:last-child {
+
+	}
+
 	.rank {
 		border-right: 1px solid black;
 	}
@@ -42,6 +46,12 @@
 			cursor: pointer;
 			fill: #fb0;
 		}
+	}
+
+	.loader {
+		margin: 0 auto;
+		width: 28px;
+		height: 25px;
 	}
 
 	.name {

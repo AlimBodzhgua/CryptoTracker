@@ -65,6 +65,12 @@ export const coinsSlice = createSlice({
                     marketCap: String(Number(coin.marketCap) * currencyPrice),
                     '24hVolume': String(Number(coin['24hVolume']) * currencyPrice),
                 }));
+
+                if (state.globalStats) {
+                    state.globalStats.btcDominance = state.globalStats.btcDominance * currencyPrice
+                    state.globalStats.totalMarketCap = String(Number(state.globalStats.totalMarketCap) * currencyPrice)
+                    state.globalStats.total24hVolume = String(Number(state.globalStats.total24hVolume) * currencyPrice)
+                }
             } else if (
                 (action.payload.currentCurrency === 'EUR' || action.payload.currentCurrency === 'RUB')
                 && (action.payload.targetCurrency === 'EUR' || action.payload.targetCurrency === 'RUB')
@@ -89,6 +95,13 @@ export const coinsSlice = createSlice({
                     marketCap: String(Number(coin.marketCap) * currencyPrice),
                     '24hVolume': String(Number(coin['24hVolume']) * currencyPrice),
                 }));
+
+                if (state.globalStats) {
+                    state.globalStats.btcDominance = state.globalStats.btcDominance * currencyPrice
+                    state.globalStats.totalMarketCap = String(Number(state.globalStats.totalMarketCap) * currencyPrice)
+                    state.globalStats.total24hVolume = String(Number(state.globalStats.total24hVolume) * currencyPrice)
+                }
+
             } else {
                 // ('RUB/EUR -> USD')
                 const currency = action.payload.currentCurrency;
@@ -100,6 +113,13 @@ export const coinsSlice = createSlice({
                     marketCap: String(Number(coin.marketCap) / currencyPrice),
                     '24hVolume': String(Number(coin['24hVolume']) / currencyPrice),
                 }));
+
+                if (state.globalStats) {
+                    state.globalStats.btcDominance = state.globalStats.btcDominance / currencyPrice
+                    state.globalStats.totalMarketCap = String(Number(state.globalStats.totalMarketCap) / currencyPrice)
+                    state.globalStats.total24hVolume = String(Number(state.globalStats.total24hVolume) / currencyPrice)
+                }
+
             }
         },
     },

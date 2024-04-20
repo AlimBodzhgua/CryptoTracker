@@ -16,7 +16,7 @@ export const LoaderRing: FC<LoaderRingProps> = ({ className }) => (
             width='80'
             ariaLabel='color-ring-loading'
             wrapperStyle={{}}
-            wrapperClass='color-ring-wrapper'
+            wrapperClass={classnames(classes.LoaderRing, className)}
             colors={['#e6e6e6', '#cccccc', '#b3b3b3', '#bfbfbf', '#e6e6e6']}
         />
     </div>

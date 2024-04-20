@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
 
     return (
         <nav className={classnames(classes.Navbar, className)}>
-            <div className={classes.auth}>
+            <div className={classes.actions}>
                 {isAuth
                     ? (
                         <Button

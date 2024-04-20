@@ -11,9 +11,10 @@
 	background-color: var(--navbar-bg-color);
 	color: #fff;
 
-	.auth {
+	.actions {
 		display: flex;
 		justify-content: flex-end;
+		align-items: center;
 		gap: 15px;
 
 		width: 25%;

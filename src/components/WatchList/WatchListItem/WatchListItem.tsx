@@ -25,11 +25,18 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
     const { coin, className } = props;
     const { t } = useTranslation();
     const [isOverviewModal, setIsOverviewModal] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [_, setSearchParams] = useSearchParams();
     const dispatch = useAppDispatch();
 
     const onRemoveFromWatchList = useCallback(async () => {
-        dispatch(removeWatchListCoin(coin.uuid));
+        setIsLoading(true);
+        const { meta } = await dispatch(removeWatchListCoin(coin.uuid));
+
+        if (meta.requestStatus === 'fulfilled' || meta.requestStatus === 'rejected') {
+            setIsLoading(false);
+        }
+
     }, [dispatch]);
 
     const onOpenOverviewModal = () => {
@@ -44,7 +51,11 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 
     return (
         <SortableItem id={coin.uuid}>
-            <li className={classnames(classes.WatchListItem, className)}>
+            <li className={classnames(
+                classes.WatchListItem,
+                className,
+                {[classes.deleting]: isLoading}
+            )}>
                 <div className={classes.itemData}>
                     <img
                         src={coin.iconUrl}

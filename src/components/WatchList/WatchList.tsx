@@ -76,7 +76,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
         return (
             <Message
                 type='error'
-                text={t('Error fetcthing watchlist coins.')}
+                text={t('Error fetcthing watchlist coins')}
                 withIcon
             />
         );
@@ -96,7 +96,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
                     {watchListCoins.length
                         ? (
                             <>
-                                <h2 className={classes.title}>{t('Your watchlist coins.')}</h2>
+                                <h2 className={classes.title}>{t('Your watchlist coins')}</h2>
                                 {watchListCoins.map((coin) => <WatchListItem coin={coin} key={coin.uuid} />)}
                             </>
                         ) : (

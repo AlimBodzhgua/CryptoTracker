@@ -200,9 +200,6 @@ export const userSlice = createSlice({
 	    		state.error = action.payload;
 	    	})
 	    	// removeWatchListCoins
-	    	.addCase(removeWatchListCoin.pending, (state) => {
-	    		state.isLoading = true;
-	    	})
 	    	.addCase(removeWatchListCoin.fulfilled, (state, action) => {
 	    		if (state.authData) {
 	    			state.authData.watchList.ids = state.authData.watchList.ids.filter((id) => (
@@ -218,7 +215,6 @@ export const userSlice = createSlice({
 	    		state.isLoading = false;
 	    	})
 	    	.addCase(removeWatchListCoin.rejected, (state, action) => {
-	    		state.isLoading = false;
 	    		state.error = action.payload;
 	    	})
 	    	// fetchWatchListCoins

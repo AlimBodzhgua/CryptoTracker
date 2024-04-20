@@ -6,6 +6,7 @@ import {
     selectCoinsPageHasMore,
     selectCoinsPageLimit,
     selectCoinsPageNumber,
+    selectCoinsTag,
 } from 'redux/selectors/coinsSelectors';
 import { AppDispatch } from 'redux/config/store';
 import { coinsActions } from 'redux/slices/coinsSlice';
@@ -33,12 +34,14 @@ export const fetchCoins = createAsyncThunk<
     async (props, { rejectWithValue, getState }) => {
         const { page = 0 } = props;
         const limit = selectCoinsPageLimit(getState());
+        const tag = selectCoinsTag(getState());
         try {
             const response = await axios.get('https://api.coinranking.com/v2/coins', {
                 headers: coinHeaders,
                 params: {
                     limit,
                     offset: page * limit,
+                    tags: tag === undefined ? [] : tag, 
                 },
             });
             return response.data.data.coins;

@@ -1,0 +1,29 @@
+
+.TagsSelector {
+	background-color: #454545;
+	border: none;
+	height: 45px;
+	width: 95px;
+
+	font-family: inherit;
+	font-weight: 600;
+	color: #fff;
+	padding: 0 8px;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+
+}
+
+.selectorOption {
+	margin: 2px 4px;
+
+	font-family: inherit;
+	font-size: 16px;
+	border: none;
+}

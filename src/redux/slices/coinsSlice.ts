@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrencyType, IKurs } from 'types/currency';
-import { ICoin, IGlobalStats } from 'types/coin';
+import { ICoin, IGlobalStats, TagType } from 'types/coin';
 import { fetchCoins, fetchGlobalStats } from '../actions/coinsActions';
 
 export interface CoinsStateSchema {
 	coins: ICoin[];
     searchedFilteredCoins: ICoin[];
     globalStats?: IGlobalStats;
+    tag?: TagType; 
 
 	isLoading: boolean;
 	error?: string;
@@ -21,6 +22,7 @@ const initialState: CoinsStateSchema = {
     coins: [],
     searchedFilteredCoins: [],
     globalStats: undefined,
+    tag: undefined,
 
     isLoading: false,
     error: undefined,
@@ -37,6 +39,13 @@ export const coinsSlice = createSlice({
         setCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.coins = action.payload;
         },
+        setTag: (state, action: PayloadAction<TagType>) => {
+            if (action.payload === 'All Coins') {
+                state.tag = undefined;
+            } else {
+                state.tag = action.payload;
+            }
+        },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
             if (state.page >= 8) {
@@ -46,6 +55,7 @@ export const coinsSlice = createSlice({
         resetCoins: (state) => {
             state.coins = [];
             state.searchedFilteredCoins = [];
+            state.tag = undefined;
         },
         setSearchedFilteredCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.searchedFilteredCoins = action.payload;

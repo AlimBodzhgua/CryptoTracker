@@ -1,3 +1,5 @@
+import { TagList } from "components/TagsSelector/TagsSelector";
+
 export interface ICoin {
 	uuid: string;
 	name: string;
@@ -27,3 +29,5 @@ export interface IGlobalStats {
 export type SortDirectionType = 'descending' | 'ascending';
 
 export type FieldNameType = keyof Omit<ICoin, 'iconUrl' | 'symbol' | 'uuid'>;
+
+export type TagType = keyof typeof TagList;

@@ -2,9 +2,11 @@ import { FC, useCallback, useEffect } from 'react';
 import { CoinTable } from 'components/Coin/CoinTable/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { fetchCoins, fetchNextCoins } from 'redux/actions/coinsActions';
 import { coinsActions } from 'redux/slices/coinsSlice';
+import { TagsSelector } from 'components/TagsSelector/TagsSelector';
+import { selectCoinsTag } from 'redux/selectors/coinsSelectors';
 
 import classnames from 'classnames';
 import classes from './CoinsPage.module.scss';
@@ -15,6 +17,7 @@ interface CoinsPageProps {
 
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
+    const tag = useAppSelector(selectCoinsTag);
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -24,7 +27,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
         return () => {
             dispatch(coinsActions.resetCoins());
         };
-    }, [dispatch]);
+    }, [dispatch, tag]);
 
     const loadNextCoins = useCallback(() => {
         dispatch(fetchNextCoins());
@@ -37,6 +40,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
         >
             <div className={classes.actions}>
                 <CoinsSearchBar />
+                <TagsSelector />
             </div>
             <CoinTable />
         </Page>

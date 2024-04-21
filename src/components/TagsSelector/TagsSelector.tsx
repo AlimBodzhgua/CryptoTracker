@@ -1,7 +1,6 @@
-import { FC, useState } from 'react';
+import { FC} from 'react';
 import { TagType } from 'types/coin';
-import { selectCoinsTag } from 'redux/selectors/coinsSelectors';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch } from 'hooks/redux';
 
 import classes from './TagsSelector.module.scss';
 import classnames from 'classnames';

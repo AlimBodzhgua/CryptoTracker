@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { NotationType } from 'types/coin';
 import { useAppDispatch } from 'hooks/redux';
 import { coinsActions } from 'redux/slices/coinsSlice';
@@ -17,13 +17,13 @@ export const NotationList = {
 	engineering: 'engineering',
 } as const;
 
-export const PriceNotationSelector: FC<PriceNotationSelectorProps> = ({className}) => {
+export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({className}) => {
 	const dispatch = useAppDispatch();
 
-	const onNotationSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+	const onNotationSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedNotation = e.target.value as NotationType;
 		dispatch(coinsActions.setPriceNotation(selectedNotation));
-	}
+	}, [dispatch])
 
 	return (
 		<select
@@ -42,4 +42,4 @@ export const PriceNotationSelector: FC<PriceNotationSelectorProps> = ({className
 			))}
         </select>
 	)
-}
+})

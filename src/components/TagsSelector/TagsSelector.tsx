@@ -1,10 +1,11 @@
-import { FC} from 'react';
+import { FC, memo, useCallback } from 'react';
 import { TagType } from 'types/coin';
 import { useAppDispatch } from 'hooks/redux';
+import { coinsActions } from 'redux/slices/coinsSlice';
+import { fetchCoins } from 'redux/actions/coinsActions';
 
 import classes from './TagsSelector.module.scss';
 import classnames from 'classnames';
-import { coinsActions } from 'redux/slices/coinsSlice';
 
 interface TagsSelectorProps {
 	className?: string;
@@ -20,23 +21,24 @@ export const TagList = {
 	nft: 'nft',
 	dex: 'dex',
 	meme: 'meme',
-	wrapped: 'wrapped'
-} as const
+	wrapped: 'wrapped',
+} as const;
 
-export const TagsSelector: FC<TagsSelectorProps> = ({className}) => {
+export const TagsSelector: FC<TagsSelectorProps> = memo(({className}) => {
 	const dispatch = useAppDispatch();
 
-	const onTagSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+	const onTagSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedTag = e.target.value as TagType;
-		dispatch(coinsActions.setTag(selectedTag))
-	}
+		dispatch(coinsActions.setTag(selectedTag));
+		dispatch(fetchCoins({page : 0}));
+	}, [dispatch]);
 
 	return (
 		<select
 			className={classnames(classes.TagsSelector, className)}
 			onChange={onTagSelect}
 		>
-			{Object.values(TagList).map((tag) => (
+			{Object.keys(TagList).map((tag) => (
 	            <option
 	            	key={tag}
 	                value={tag}
@@ -47,4 +49,4 @@ export const TagsSelector: FC<TagsSelectorProps> = ({className}) => {
 			))}
         </select>
 	)
-}
+})

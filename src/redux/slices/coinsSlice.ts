@@ -47,6 +47,8 @@ export const coinsSlice = createSlice({
             } else {
                 state.tag = action.payload;
             }
+            state.coins = [];
+            state.searchedFilteredCoins = [];
         },
         setPriceNotation: (state, action: PayloadAction<NotationType>) => {
             state.priceNotation = action.payload;

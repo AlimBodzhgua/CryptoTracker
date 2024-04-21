@@ -2,11 +2,10 @@ import { FC, useCallback, useEffect } from 'react';
 import { CoinTable } from 'components/Coin/CoinTable/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch } from 'hooks/redux';
 import { fetchCoins, fetchNextCoins } from 'redux/actions/coinsActions';
 import { coinsActions } from 'redux/slices/coinsSlice';
 import { TagsSelector } from 'components/TagsSelector/TagsSelector';
-import { selectCoinsTag } from 'redux/selectors/coinsSelectors';
 import { PriceNotationSelector } from 'components/PriceNotationSelector/PriceNotationSelector';
 import { Button } from 'components/UI/Button/Button';
 
@@ -21,7 +20,6 @@ interface CoinsPageProps {
 
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
-    const tag = useAppSelector(selectCoinsTag);
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -31,15 +29,15 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
         return () => {
             dispatch(coinsActions.resetCoins());
         };
-    }, [dispatch, tag]);
+    }, [dispatch]);
 
     const loadNextCoins = useCallback(() => {
         dispatch(fetchNextCoins());
     }, [dispatch]);
 
-    const resetSettings = () => {
+    const resetSettings = useCallback(() => {
         dispatch(coinsActions.resetCoins());
-    }
+    }, [dispatch]);
 
     return (
         <Page

@@ -2,15 +2,17 @@ import { useMemo } from 'react';
 import { selectCurrentCurrency } from 'redux/selectors/currencySelectors';
 import { useAppSelector } from './redux';
 import { useTranslation } from 'react-i18next';
+import { NotationType } from 'types/coin';
+import { selectCoinsPriceNotation } from 'redux/selectors/coinsSelectors';
 
-type NotationType = 'standard' | 'scientific' | 'engineering' | 'compact' | undefined;
 
 export const useFormatter = (
-    notation:NotationType = 'compact',
+    //notation:NotationType = 'compact',
     minDigits:number = 4,
     maxDigits:number = 6,
 ) => {
     const currentCurrency = useAppSelector(selectCurrentCurrency);
+    const notation = useAppSelector(selectCoinsPriceNotation);
     const { i18n } = useTranslation();
 
     const formatter = useMemo(() => Intl.NumberFormat(i18n.language, {

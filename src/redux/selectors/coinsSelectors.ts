@@ -5,6 +5,8 @@ export const selectCoins = (state: StateSchema) => state.coins.coins;
 
 export const selectCoinsTag = (state: StateSchema) => state.coins.tag;
 
+export const selectCoinsPriceNotation = (state: StateSchema) => state.coins.priceNotation;
+
 export const selectSearchedFilteredCoins = (state: StateSchema) => state.coins.searchedFilteredCoins;
 
 export const selectCoinsIsLoading = (state: StateSchema) => state.coins.isLoading || false;

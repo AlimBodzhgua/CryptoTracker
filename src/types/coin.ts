@@ -31,3 +31,5 @@ export type SortDirectionType = 'descending' | 'ascending';
 export type FieldNameType = keyof Omit<ICoin, 'iconUrl' | 'symbol' | 'uuid'>;
 
 export type TagType = keyof typeof TagList;
+
+export type NotationType = 'standard' | 'scientific' | 'engineering' | 'compact' | undefined;

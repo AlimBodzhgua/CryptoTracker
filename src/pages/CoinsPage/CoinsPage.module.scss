@@ -5,9 +5,29 @@
 	align-items: center;
 }
 
-.actions {
+.header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 95%;
+	width: 94%;
+}
+
+.actions {
+	height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2px;
+}
+
+.resetBtn {
+	background-color: #454545;
+	border-radius: 0;
+	padding: 5px 12px;
+	height: 100%;
+}
+
+.resetIcon {
+	width: 30px;
 }

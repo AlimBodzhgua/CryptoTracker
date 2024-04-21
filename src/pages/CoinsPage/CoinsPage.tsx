@@ -7,6 +7,10 @@ import { fetchCoins, fetchNextCoins } from 'redux/actions/coinsActions';
 import { coinsActions } from 'redux/slices/coinsSlice';
 import { TagsSelector } from 'components/TagsSelector/TagsSelector';
 import { selectCoinsTag } from 'redux/selectors/coinsSelectors';
+import { PriceNotationSelector } from 'components/PriceNotationSelector/PriceNotationSelector';
+import { Button } from 'components/UI/Button/Button';
+
+import ResetIcon from 'assets/icons/reset.svg';
 
 import classnames from 'classnames';
 import classes from './CoinsPage.module.scss';
@@ -33,14 +37,27 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
         dispatch(fetchNextCoins());
     }, [dispatch]);
 
+    const resetSettings = () => {
+        dispatch(coinsActions.resetCoins());
+    }
+
     return (
         <Page
             className={classnames(classes.CoinsPage, className)}
             onScrollEnd={loadNextCoins}
         >
-            <div className={classes.actions}>
+            <div className={classes.header}>
                 <CoinsSearchBar />
-                <TagsSelector />
+                <div className={classes.actions}>
+                    <TagsSelector />
+                    <PriceNotationSelector />
+                    <Button
+                        className={classes.resetBtn}
+                        onClick={resetSettings}
+                    >
+                        <ResetIcon className={classes.resetIcon}/>
+                    </Button>
+                </div>
             </div>
             <CoinTable />
         </Page>

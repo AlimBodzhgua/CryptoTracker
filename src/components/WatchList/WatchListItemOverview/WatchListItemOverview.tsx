@@ -15,7 +15,7 @@ interface WatchListItemOverviewProps {
 export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props) => {
     const { coin, className } = props;
     const { t } = useTranslation();
-    const formatter = useFormatter('standard');
+    const formatter = useFormatter();
 
     return (
         <div className={classnames(classes.WatchListItemOverview, className)}>

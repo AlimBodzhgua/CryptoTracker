@@ -1,8 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 import { TagType } from 'types/coin';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { coinsActions } from 'redux/slices/coinsSlice';
 import { fetchCoins } from 'redux/actions/coinsActions';
+import { selectCoinsTag } from 'redux/selectors/coinsSelectors';
 
 import classes from './TagsSelector.module.scss';
 import classnames from 'classnames';
@@ -26,6 +27,7 @@ export const TagList = {
 
 export const TagsSelector: FC<TagsSelectorProps> = memo(({className}) => {
 	const dispatch = useAppDispatch();
+	const currentTag = useAppSelector(selectCoinsTag);
 
 	const onTagSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedTag = e.target.value as TagType;
@@ -43,6 +45,7 @@ export const TagsSelector: FC<TagsSelectorProps> = memo(({className}) => {
 	            	key={tag}
 	                value={tag}
 	                className={classes.selectorOption}
+	                selected={currentTag === tag}
 	            >
 	                {tag}
 	            </option>

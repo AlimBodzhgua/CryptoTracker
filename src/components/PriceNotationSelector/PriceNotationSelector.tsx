@@ -27,16 +27,16 @@ export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({clas
 	const onNotationSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedNotation = e.target.value as NotationType;
 		dispatch(coinsActions.setPriceNotation(selectedNotation));
-	}, [dispatch])
+	}, [dispatch]);
 
 	return (
 		<select
 			className={classnames(classes.PriceNotationSelector, className)}
 			onChange={onNotationSelect}
+			value={priceNotation === undefined ? 'placeholder': priceNotation}
 		>
 			<option
-				value={undefined}
-				selected={priceNotation === undefined}
+				value={'placeholder'}
 				hidden
 			>{t('Price Notation')}</option>
 			{Object.values(NotationList).map((notation) => (

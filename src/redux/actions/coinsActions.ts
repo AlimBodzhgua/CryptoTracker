@@ -41,7 +41,7 @@ export const fetchCoins = createAsyncThunk<
                 params: {
                     limit,
                     offset: page * limit,
-                    ...(tag !== undefined) && {tags: tag}, 
+                    ...(tag !== 'All Coins') && {tags: tag}, 
                 },
             });
             return response.data.data.coins;

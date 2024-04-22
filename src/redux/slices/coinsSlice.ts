@@ -7,7 +7,7 @@ export interface CoinsStateSchema {
 	coins: ICoin[];
     searchedFilteredCoins: ICoin[];
     globalStats?: IGlobalStats;
-    tag?: TagType;
+    tag: TagType;
     priceNotation?: NotationType;
 
 	isLoading: boolean;
@@ -23,7 +23,7 @@ const initialState: CoinsStateSchema = {
     coins: [],
     searchedFilteredCoins: [],
     globalStats: undefined,
-    tag: undefined,
+    tag: 'All Coins',
     priceNotation: undefined,
 
     isLoading: false,
@@ -43,11 +43,9 @@ export const coinsSlice = createSlice({
         },
         setTag: (state, action: PayloadAction<TagType>) => {
             if (action.payload === 'All Coins') {
-                state.tag = undefined;
                 state.page = -1;
-            } else {
-                state.tag = action.payload;
             }
+            state.tag = action.payload;
             state.coins = [];
             state.searchedFilteredCoins = [];
         },
@@ -63,7 +61,7 @@ export const coinsSlice = createSlice({
         resetCoinsState: (state) => {
             state.coins = [];
             state.searchedFilteredCoins = [];
-            state.tag = undefined;
+            state.tag = 'All Coins';
             state.priceNotation = 'standard';
             state.page = 0;
         },

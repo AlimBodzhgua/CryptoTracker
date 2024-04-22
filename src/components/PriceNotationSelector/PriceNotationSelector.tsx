@@ -1,7 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 import { NotationType } from 'types/coin';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { coinsActions } from 'redux/slices/coinsSlice';
+import { selectCoinsPriceNotation } from 'redux/selectors/coinsSelectors';
+import { useTranslation } from 'react-i18next';
 
 import classes from './PriceNotationSelector.module.scss';
 import classnames from 'classnames';
@@ -18,7 +20,9 @@ export const NotationList = {
 } as const;
 
 export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({className}) => {
+	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
+	const priceNotation = useAppSelector(selectCoinsPriceNotation);
 
 	const onNotationSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedNotation = e.target.value as NotationType;
@@ -30,7 +34,11 @@ export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({clas
 			className={classnames(classes.PriceNotationSelector, className)}
 			onChange={onNotationSelect}
 		>
-			<option value={undefined} hidden>Price Notation</option>
+			<option
+				value={undefined}
+				selected={priceNotation === undefined}
+				hidden
+			>{t('Price Notation')}</option>
 			{Object.values(NotationList).map((notation) => (
 	            <option
 	            	key={notation}

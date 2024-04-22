@@ -24,7 +24,7 @@ const initialState: CoinsStateSchema = {
     searchedFilteredCoins: [],
     globalStats: undefined,
     tag: undefined,
-    priceNotation: 'standard',
+    priceNotation: undefined,
 
     isLoading: false,
     error: undefined,
@@ -44,6 +44,7 @@ export const coinsSlice = createSlice({
         setTag: (state, action: PayloadAction<TagType>) => {
             if (action.payload === 'All Coins') {
                 state.tag = undefined;
+                state.page = -1;
             } else {
                 state.tag = action.payload;
             }
@@ -59,11 +60,12 @@ export const coinsSlice = createSlice({
                 state.hasMore = false;
             }
         },
-        resetCoins: (state) => {
+        resetCoinsState: (state) => {
             state.coins = [];
             state.searchedFilteredCoins = [];
             state.tag = undefined;
-            state.priceNotation = 'standard'
+            state.priceNotation = 'standard';
+            state.page = 0;
         },
         setSearchedFilteredCoins: (state, action: PayloadAction<ICoin[]>) => {
             state.searchedFilteredCoins = action.payload;

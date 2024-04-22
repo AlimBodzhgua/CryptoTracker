@@ -37,7 +37,6 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     }, [dispatch]);
 
     const loadNextCoins = useCallback(() => {
-        console.log('NEXT PAGE');
         dispatch(fetchNextCoins());
     }, [dispatch]);
 

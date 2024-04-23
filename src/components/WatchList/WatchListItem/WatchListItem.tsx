@@ -7,13 +7,13 @@ import { useAppDispatch } from 'hooks/redux';
 import { removeWatchListCoin } from 'redux/actions/userActions';
 import { SortableItem } from 'components/SortableItem/SortableItem';
 import { useTranslation } from 'react-i18next';
-import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
 import { useSearchParams } from 'react-router-dom';
 
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 import InfoIcon from 'assets/icons/info.svg';
 
 import classnames from 'classnames';
+import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
 import classes from './WatchListItem.module.scss';
 
 interface WatchListItemProps {
@@ -36,12 +36,11 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
         if (meta.requestStatus === 'fulfilled' || meta.requestStatus === 'rejected') {
             setIsLoading(false);
         }
-
     }, [dispatch]);
 
     const onOpenOverviewModal = () => {
         setIsOverviewModal(true);
-        setSearchParams({modal: 'overview'});
+        setSearchParams({ modal: 'overview' });
     };
 
     const onCloseOverviewModal = () => {
@@ -54,8 +53,9 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
             <li className={classnames(
                 classes.WatchListItem,
                 className,
-                {[classes.deleting]: isLoading}
-            )}>
+                { [classes.deleting]: isLoading },
+            )}
+            >
                 <div className={classes.itemData}>
                     <img
                         src={coin.iconUrl}

@@ -1,7 +1,9 @@
-import { FC, ReactNode, useCallback, useEffect } from 'react';
+import {
+    FC, ReactNode, useCallback, useEffect,
+} from 'react';
+import classnames from 'classnames';
 import { Portal } from '../Portal/Portal';
 
-import classnames from 'classnames';
 import classes from './Modal.module.scss';
 
 interface ModalProps {

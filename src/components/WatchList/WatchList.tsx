@@ -1,4 +1,6 @@
-import { FC, memo, useCallback, useMemo } from 'react';
+import {
+    FC, memo, useCallback, useMemo,
+} from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -20,11 +22,10 @@ import {
     selectUserWatchListCoins,
 } from 'redux/selectors/userSelectors';
 import { updateWatchList } from 'redux/actions/userActions';
-import { WatchListSkeleton } from './WatchListSkeleton';
-import { WatchListItem } from './WatchListItem/WatchListItem';
-
 import StarIcon from 'assets/icons/starSelected.svg';
 import classnames from 'classnames';
+import { WatchListSkeleton } from './WatchListSkeleton';
+import { WatchListItem } from './WatchListItem/WatchListItem';
 
 import classes from './WatchList.module.scss';
 
@@ -42,8 +43,9 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
     const [searchParams, _] = useSearchParams();
 
     const dragDisabled = useMemo(
-        () => searchParams.has('modal') ? true : false
-    , [searchParams])
+        () => (!!searchParams.has('modal')),
+        [searchParams],
+    );
 
     const onNavigateToCoinsPage = () => {
         navigate('/coins');

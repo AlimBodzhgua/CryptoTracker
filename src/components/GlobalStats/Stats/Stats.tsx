@@ -8,11 +8,11 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { Message } from 'components/UI/Message/Message';
 import { useTranslation } from 'react-i18next';
+import { useFormatter } from 'hooks/useFormatter';
+import classnames from 'classnames';
 import { StatsSkeleton } from './StatsSkeleton';
 import { List } from '../List/List';
-import { useFormatter } from 'hooks/useFormatter';
 
-import classnames from 'classnames';
 import classes from './Stats.module.scss';
 
 interface StatsProps {
@@ -25,7 +25,7 @@ export const Stats: FC<StatsProps> = memo(({ className }) => {
     const statsData = useAppSelector(selectCoinsGlobalStatsData);
     const isLoading = useAppSelector(selectCoinsIsLoading);
     const error = useAppSelector(selectCoinsError);
-    const formatter = useFormatter()
+    const formatter = useFormatter();
 
     if (isLoading) {
         return <StatsSkeleton />;
@@ -53,8 +53,7 @@ export const Stats: FC<StatsProps> = memo(({ className }) => {
                     <div className={classes.dataValue}>
                         {index <= 2
                             ? formatter.format(Number(data.value))
-                            : data.value
-                        }
+                            : data.value}
                     </div>
                 </div>
             ))}

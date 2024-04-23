@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrencyType, IKurs } from 'types/currency';
-import { ICoin, IGlobalStats, NotationType, TagType } from 'types/coin';
+import {
+    ICoin, IGlobalStats, NotationType, TagType,
+} from 'types/coin';
 import { fetchCoins, fetchGlobalStats } from '../actions/coinsActions';
 
 export interface CoinsStateSchema {
@@ -85,9 +87,13 @@ export const coinsSlice = createSlice({
                 }));
 
                 if (state.globalStats) {
-                    state.globalStats.btcDominance = state.globalStats.btcDominance * currencyPrice
-                    state.globalStats.totalMarketCap = String(Number(state.globalStats.totalMarketCap) * currencyPrice)
-                    state.globalStats.total24hVolume = String(Number(state.globalStats.total24hVolume) * currencyPrice)
+                    state.globalStats.btcDominance *= currencyPrice;
+                    state.globalStats.totalMarketCap = String(
+                        Number(state.globalStats.totalMarketCap) * currencyPrice
+                    );
+                    state.globalStats.total24hVolume = String(
+                        Number(state.globalStats.total24hVolume) * currencyPrice
+                    );
                 }
             } else if (
                 (action.payload.currentCurrency === 'EUR' || action.payload.currentCurrency === 'RUB')
@@ -115,11 +121,14 @@ export const coinsSlice = createSlice({
                 }));
 
                 if (state.globalStats) {
-                    state.globalStats.btcDominance = state.globalStats.btcDominance * currencyPrice
-                    state.globalStats.totalMarketCap = String(Number(state.globalStats.totalMarketCap) * currencyPrice)
-                    state.globalStats.total24hVolume = String(Number(state.globalStats.total24hVolume) * currencyPrice)
+                    state.globalStats.btcDominance *= currencyPrice;
+                    state.globalStats.totalMarketCap = String(
+                        Number(state.globalStats.totalMarketCap) * currencyPrice
+                    );
+                    state.globalStats.total24hVolume = String(
+                        Number(state.globalStats.total24hVolume) * currencyPrice
+                    );
                 }
-
             } else {
                 // ('RUB/EUR -> USD')
                 const currency = action.payload.currentCurrency;
@@ -133,11 +142,14 @@ export const coinsSlice = createSlice({
                 }));
 
                 if (state.globalStats) {
-                    state.globalStats.btcDominance = state.globalStats.btcDominance / currencyPrice
-                    state.globalStats.totalMarketCap = String(Number(state.globalStats.totalMarketCap) / currencyPrice)
-                    state.globalStats.total24hVolume = String(Number(state.globalStats.total24hVolume) / currencyPrice)
+                    state.globalStats.btcDominance /= currencyPrice;
+                    state.globalStats.totalMarketCap = String(
+                        Number(state.globalStats.totalMarketCap) / currencyPrice,
+                    );
+                    state.globalStats.total24hVolume = String(
+                        Number(state.globalStats.total24hVolume) / currencyPrice,
+                    );
                 }
-
             }
         },
     },

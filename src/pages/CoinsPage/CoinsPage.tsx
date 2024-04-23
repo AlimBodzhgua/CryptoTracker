@@ -62,7 +62,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
                         className={classes.resetBtn}
                         onClick={resetSettings}
                     >
-                        <ResetIcon className={classes.resetIcon}/>
+                        <ResetIcon className={classes.resetIcon} />
                     </Button>
                 </div>
             </div>

@@ -65,19 +65,20 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
         }
     }, [dispatch, watchListIds]);
 
-    const renderWatchListAction = useCallback(() => {
-        return (isInWatchList
-            ?   <StarSelectedIcon
-                    className={classes.starIconSelected}
-                    onClick={onRemoveCoinFromWatchList}
-                />
-            :   <StarIcon
-                    className={classes.starIcon}
-                    onClick={onAddCoinToWatchList}
-                />
+    const renderWatchListAction = useCallback(() => (isInWatchList
+        ? (
+            <StarSelectedIcon
+                className={classes.starIconSelected}
+                onClick={onRemoveCoinFromWatchList}
+            />
         )
-    }, [isInWatchList, onRemoveCoinFromWatchList, onAddCoinToWatchList])
-
+        : (
+            <StarIcon
+                className={classes.starIcon}
+                onClick={onAddCoinToWatchList}
+            />
+        )
+    ), [isInWatchList, onRemoveCoinFromWatchList, onAddCoinToWatchList]);
 
     return (
         <tr className={classnames(classes.CoinItem, className)}>
@@ -108,10 +109,9 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
                 {formatter.format(Number(coin.marketCap))}
             </th>
             <th>
-                {isLoading 
-                    ? <LoaderRing className={classes.loader}/>
-                    : renderWatchListAction()
-                }
+                {isLoading
+                    ? <LoaderRing className={classes.loader} />
+                    : renderWatchListAction()}
             </th>
         </tr>
     );

@@ -1,4 +1,4 @@
-import { TagList } from "components/TagsSelector/TagsSelector";
+import { TagList } from 'components/TagsSelector/TagsSelector';
 
 export interface ICoin {
 	uuid: string;

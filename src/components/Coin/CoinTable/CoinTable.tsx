@@ -8,11 +8,11 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { useAppSelector } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
+import classnames from 'classnames';
 import { CoinItem } from '../CoinItem/CoinItem';
 import { CoinTableHeader } from './CoinTableHeader';
 import { CoinTableSkeleton } from './CoinTableSkeleton';
 
-import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {

@@ -1,6 +1,4 @@
-import React, {
-    memo, useCallback, useEffect, useState,
-} from 'react';
+import { FC, memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from 'components/LangSwitcher/LangSwitcher';
 import { CurrencySwitcher } from 'components/CurrencySwitcher/CurrencySwitcher';
@@ -22,7 +20,7 @@ interface NavbarProps {
 	className?: string;
 }
 
-export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
+export const Navbar: FC<NavbarProps> = memo(({ className }) => {
     const { t } = useTranslation();
     const [isRegisterModal, setIsRegisterModal] = useState<boolean>(false);
     const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
@@ -31,25 +29,25 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const onCloseRegisterModal = () => {
+    const onCloseRegisterModal = useCallback(() => {
         setIsRegisterModal(false);
         setSearchParams('');
-    };
+    }, []);
 
-    const onOpenRegisterModal = () => {
+    const onOpenRegisterModal = useCallback(() => {
         setIsRegisterModal(true);
         setSearchParams({ modal: 'register' });
-    };
+    }, []);
 
-    const onOpenLoginModal = () => {
+    const onOpenLoginModal = useCallback(() => {
         setIsLoginModal(true);
         setSearchParams({ modal: 'login' });
-    };
+    }, []);
 
-    const onCloseLoginModal = () => {
+    const onCloseLoginModal = useCallback(() => {
         setIsLoginModal(false);
         setSearchParams('');
-    };
+    }, []);
 
     useEffect(() => {
         if (searchParams.has('modal', 'register')) {

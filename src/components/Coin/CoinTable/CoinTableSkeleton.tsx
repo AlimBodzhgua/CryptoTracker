@@ -1,5 +1,6 @@
 import { FC, memo } from 'react';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
+
 import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 

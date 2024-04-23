@@ -8,11 +8,11 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { useAppSelector } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
-import classnames from 'classnames';
 import { CoinItem } from '../CoinItem/CoinItem';
 import { CoinTableHeader } from './CoinTableHeader';
 import { CoinTableSkeleton } from './CoinTableSkeleton';
 
+import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {
@@ -36,6 +36,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
                     'Error fetching data, try to reload the page, or visiti the page later',
                 )}
                 withIcon
+                className={classes.errorMsg}
             />
         );
     }

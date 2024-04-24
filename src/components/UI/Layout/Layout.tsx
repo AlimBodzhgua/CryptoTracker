@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Sidebar } from 'components/Sidebar/Sidebar/Sidebar';
+import { Sidebar } from 'components/Sidebar';
 import { Navbar } from 'components/Navbar/Navbar';
 import classes from './Layout.module.scss';
 

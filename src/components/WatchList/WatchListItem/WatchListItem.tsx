@@ -8,12 +8,12 @@ import { removeWatchListCoin } from 'redux/actions/userActions';
 import { SortableItem } from 'components/SortableItem/SortableItem';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
 
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 import InfoIcon from 'assets/icons/info.svg';
 
 import classnames from 'classnames';
-import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
 import classes from './WatchListItem.module.scss';
 
 interface WatchListItemProps {
@@ -38,15 +38,15 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
         }
     }, [dispatch]);
 
-    const onOpenOverviewModal = () => {
+    const onOpenOverviewModal = useCallback(() => {
         setIsOverviewModal(true);
         setSearchParams({ modal: 'overview' });
-    };
+    }, []);
 
-    const onCloseOverviewModal = () => {
+    const onCloseOverviewModal = useCallback(() => {
         setIsOverviewModal(false);
         setSearchParams('');
-    };
+    }, []);
 
     return (
         <SortableItem id={coin.uuid}>

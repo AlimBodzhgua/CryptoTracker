@@ -1,9 +1,9 @@
 import { FC, Suspense } from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
 import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
-import classnames from 'classnames';
 import { HistoryListAsync } from '../HistoryList/HistoryList.async';
 
+import classnames from 'classnames';
 import classes from './HistoryModal.module.scss';
 
 interface HistoryModalProps {

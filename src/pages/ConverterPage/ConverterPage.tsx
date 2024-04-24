@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { Converter } from 'components/Converter/Converter';
+import { Converter } from 'components/Converter';
 import { Page } from 'components/UI/Page/Page';
 import classnames from 'classnames';
 import classes from './ConverterPage.module.scss';

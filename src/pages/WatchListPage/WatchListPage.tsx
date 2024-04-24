@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { fetchWatchListCoins } from 'redux/actions/userActions';
 import { Page } from 'components/UI/Page/Page';
-import { WatchList } from 'components/WatchList/WatchList';
+import { WatchList } from 'components/WatchList';
 import { selectUserMounted } from 'redux/selectors/userSelectors';
 
 import classnames from 'classnames';

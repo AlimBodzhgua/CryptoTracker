@@ -1,11 +1,11 @@
 import { FC, memo, useCallback } from 'react';
 import { ConverterCoinType, ConverterListType } from 'types/converter';
 import { useSearchParams } from 'react-router-dom';
+import { CoinsList } from '../CoinsList/CoinsList';
 
 import ArrowIcon from 'assets/icons/arrow.svg';
 
 import classnames from 'classnames';
-import { CoinsList } from '../CoinsList/CoinsList';
 import classes from './CoinSelector.module.scss';
 
 interface CoinSelectorProps {

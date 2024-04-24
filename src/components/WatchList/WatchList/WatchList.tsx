@@ -22,11 +22,11 @@ import {
     selectUserWatchListCoins,
 } from 'redux/selectors/userSelectors';
 import { updateWatchList } from 'redux/actions/userActions';
+import { WatchListSkeleton } from './WatchListSkeleton';
+import { WatchListItem } from '../WatchListItem/WatchListItem';
+
 import StarIcon from 'assets/icons/starSelected.svg';
 import classnames from 'classnames';
-import { WatchListSkeleton } from './WatchListSkeleton';
-import { WatchListItem } from './WatchListItem/WatchListItem';
-
 import classes from './WatchList.module.scss';
 
 interface WatchListProps {

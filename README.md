@@ -28,20 +28,20 @@ CURRENCY_API='YOUR_API_KEY_HERE'
 
 This app also use firebase store, create a firebase project and put your firebase data in .env file varibales:
 
-FIREBASE_API_KEY='YOUR_API_KEY'
-FIREBASE_AUTH_DOMAIN='YOUR_AUTH_DOMAIN'
-FIREBASE_PROJECT_ID='YOUR PROJECT ID'
-FIREBASE_STORAGE_BUCKET='YOUR_STORAGE_BUCCKET'
-FIREBASE_MESAGGING_SENDER_ID='YOUR_MESAGGING_SENDER_ID'
-FIREBASE_APP_ID='YOUR_APP_ID'
-FIREBASE_MEASUREMENT_ID='YOUR_MEASUREMENT_ID'
+FIREBASE_API_KEY='YOUR_API_KEY'\
+FIREBASE_AUTH_DOMAIN='YOUR_AUTH_DOMAIN'\
+FIREBASE_PROJECT_ID='YOUR PROJECT ID'\
+FIREBASE_STORAGE_BUCKET='YOUR_STORAGE_BUCCKET'\
+FIREBASE_MESAGGING_SENDER_ID='YOUR_MESAGGING_SENDER_ID'\
+FIREBASE_APP_ID='YOUR_APP_ID'\
+FIREBASE_MEASUREMENT_ID='YOUR_MEASUREMENT_ID'\
 
-To run this app use: npm run start
+## To run this app use: npm run start
 
 It runs the app in the development mode.
 Open http://localhost:3000 to view it in your browser.
 
-To run storybook use: npm run storybook
+## To run storybook use: npm run storybook
 
 It runs the storybook in 6006 port.
 Open http://localhost:6006 to view it in your browser.

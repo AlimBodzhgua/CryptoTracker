@@ -3,10 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from 'components/LangSwitcher/LangSwitcher';
 import { CurrencySwitcher } from 'components/CurrencySwitcher/CurrencySwitcher';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
-import {
-    RegisterModal,
-} from 'components/Auth/AuthModals/RegisterModal/RegisterModal';
-import { LoginModal } from 'components/Auth/AuthModals/LoginModal/LoginModal';
+import { LoginModal, RegisterModal } from 'components/Auth';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { selectUser } from 'redux/selectors/userSelectors';
 import { signOutUser } from 'redux/actions/userActions';

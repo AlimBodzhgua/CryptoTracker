@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect } from 'react';
-import { CoinTable } from 'components/Coin/CoinTable/CoinTable';
+import { CoinTable } from 'components/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';

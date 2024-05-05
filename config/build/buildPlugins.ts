@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import CopyPlugin from 'copy-webpack-plugin';
 import { type BuildOptions } from './types/config';
 
 export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstance[] => {
@@ -22,6 +23,11 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
             __IS_DEV__: JSON.stringify(isDev),
             __PROJECT__: JSON.stringify(project),
         }),
+        new CopyPlugin({
+            patterns: [
+                { from: paths.locales, to: paths.buildLocales },
+            ],
+        })
     ];
 
     if (isDev) {

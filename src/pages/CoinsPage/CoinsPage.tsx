@@ -3,14 +3,12 @@ import { CoinTable } from 'components/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { fetchCoins, fetchNextCoins } from 'redux/actions/coinsActions';
-import { coinsActions } from 'redux/slices/coinsSlice';
+import { fetchCoins, fetchNextCoins, resetCoinsSettings } from 'redux/actions/coinsActions';
 import { TagsSelector } from 'components/TagsSelector/TagsSelector';
 import { PriceNotationSelector } from 'components/PriceNotationSelector/PriceNotationSelector';
 import { Button } from 'components/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
-import { selectCoins, selectCoinsPageNumber } from 'redux/selectors/coinsSelectors';
-import { coinsSorter } from 'utils/utils';
+import { selectCoinsPageNumber } from 'redux/selectors/coinsSelectors';
 
 import ResetIcon from 'assets/icons/reset.svg';
 
@@ -23,7 +21,6 @@ interface CoinsPageProps {
 
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
-    const coins = useAppSelector(selectCoins);
     const page = useAppSelector(selectCoinsPageNumber);
     const [_, setSearchParams] = useSearchParams();
 
@@ -38,11 +35,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     }, [dispatch]);
 
     const resetSettings = useCallback(() => {
-        dispatch(coinsActions.setTag('All Coins'));
-        setSearchParams('field=rank&by=ascending');
-        const sortedCoins = coinsSorter(coins, 'ascending', 'rank');
-        dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
-        dispatch(coinsActions.setPriceNotation(undefined));
+        dispatch(resetCoinsSettings(setSearchParams));
     }, [dispatch]);
 
     return (

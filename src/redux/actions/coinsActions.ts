@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ICoin, IGlobalStats } from 'types/coin';
 import { StateSchema } from 'redux/config/StateSchema';
 import {
+    selectCoins,
     selectCoinsIsLoading,
     selectCoinsPageHasMore,
     selectCoinsPageLimit,
@@ -10,7 +11,9 @@ import {
 } from 'redux/selectors/coinsSelectors';
 import { AppDispatch } from 'redux/config/store';
 import { coinsActions } from 'redux/slices/coinsSlice';
+import { coinsSorter } from 'utils/utils';
 import axios from 'axios';
+import { SetURLSearchParams } from 'react-router-dom';
 
 const coinHeaders = {
     'Content-Type': 'application/json',
@@ -87,5 +90,25 @@ export const fetchGlobalStats = createAsyncThunk<
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));
         }
+    },
+);
+
+
+export const resetCoinsSettings = createAsyncThunk<
+    void,
+    SetURLSearchParams,
+    {
+        dispatch: AppDispatch,
+        state: StateSchema,
+    }
+>(
+    'resetCoinsSettings',
+    async (setSearchParams, { dispatch, getState }) => {
+        const coins = selectCoins(getState());
+        dispatch(coinsActions.setTag('All Coins'));
+        setSearchParams('field=rank&by=ascending');
+        const sortedCoins = coinsSorter(coins, 'ascending', 'rank');
+        dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
+        dispatch(coinsActions.setPriceNotation(undefined));
     },
 );

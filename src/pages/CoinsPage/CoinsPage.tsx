@@ -9,7 +9,7 @@ import { TagsSelector } from 'components/TagsSelector/TagsSelector';
 import { PriceNotationSelector } from 'components/PriceNotationSelector/PriceNotationSelector';
 import { Button } from 'components/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
-import { selectCoins } from 'redux/selectors/coinsSelectors';
+import { selectCoins, selectCoinsPageNumber } from 'redux/selectors/coinsSelectors';
 import { coinsSorter } from 'utils/utils';
 
 import ResetIcon from 'assets/icons/reset.svg';
@@ -24,16 +24,13 @@ interface CoinsPageProps {
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
     const dispatch = useAppDispatch();
     const coins = useAppSelector(selectCoins);
+    const page = useAppSelector(selectCoinsPageNumber);
     const [_, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchCoins({ page: 0 }));
+            (page === 0) && dispatch(fetchCoins({ page }));
         }
-
-        return () => {
-            dispatch(coinsActions.resetCoinsState());
-        };
     }, [dispatch]);
 
     const loadNextCoins = useCallback(() => {

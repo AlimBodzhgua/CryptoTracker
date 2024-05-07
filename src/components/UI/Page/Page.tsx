@@ -45,7 +45,7 @@ export const Page: FC<PageProps> = (props) => {
     }, 700)
 
     return (
-        <div
+        <main
             className={classnames(classes.Page, className)}
             ref={wrapperRef}
             onScroll={onScroll}
@@ -55,6 +55,6 @@ export const Page: FC<PageProps> = (props) => {
                 ? <div ref={triggerRef} style={{ marginTop: '-1px' }} />
                 : null
             }
-        </div>
+        </main>
     );
 };

@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
 
-import { Stats } from './Stats';
+import { GlobalStats } from './GlobalStats';
 
 const meta = {
-    title: 'components/Stats',
-    component: Stats,
+    title: 'components/GlobalStats',
+    component: GlobalStats,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
     argTypes: {},
-} satisfies Meta<typeof Stats>;
+} satisfies Meta<typeof GlobalStats>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -1,15 +1,15 @@
 import { FC, memo, useCallback } from 'react';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import { useTranslation } from 'react-i18next';
-import classes from './Stats.module.scss';
+import classes from './GlobalStats.module.scss';
 
-export const StatsSkeleton: FC = memo(() => {
+export const GlobalStatsSkeleton: FC = memo(() => {
     const { t } = useTranslation();
 
     const renderListSkeletons = useCallback(() => new Array(3).fill(0).map((_, index) => (
         <Skeleton
             //  eslint-disable-next-line
-                key={index}
+            key={index}
             width='240px'
             height='32px'
             radius='6px'

@@ -9,17 +9,17 @@ import {
 import { Message } from 'components/UI/Message/Message';
 import { useTranslation } from 'react-i18next';
 import { useFormatter } from 'hooks/useFormatter';
-import classnames from 'classnames';
-import { StatsSkeleton } from './StatsSkeleton';
+import { GlobalStatsSkeleton } from './GlobalStatsSkeleton';
 import { List } from '../List/List';
 
-import classes from './Stats.module.scss';
+import classnames from 'classnames';
+import classes from './GlobalStats.module.scss';
 
 interface StatsProps {
 	className?: string;
 }
 
-export const Stats: FC<StatsProps> = memo(({ className }) => {
+export const GlobalStats: FC<StatsProps> = memo(({ className }) => {
     const { t } = useTranslation();
     const stats = useAppSelector(selectCoinsGlobalStats);
     const statsData = useAppSelector(selectCoinsGlobalStatsData);
@@ -28,7 +28,7 @@ export const Stats: FC<StatsProps> = memo(({ className }) => {
     const formatter = useFormatter();
 
     if (isLoading) {
-        return <StatsSkeleton />;
+        return <GlobalStatsSkeleton />;
     }
 
     if (error) {

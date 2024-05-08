@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Stats } from 'components/GlobalStats/Stats/Stats';
+import { GlobalStats } from 'components/GlobalStats';
 import { Page } from 'components/UI/Page/Page';
 import { useAppDispatch } from 'hooks/redux';
 import { fetchGlobalStats } from 'redux/actions/coinsActions';
@@ -22,7 +22,7 @@ const MainPage: FC<MainPageProps> = ({ className }) => {
 
     return (
         <Page className={classnames(classes.MainPage, className)}>
-            <Stats />
+            <GlobalStats />
         </Page>
  	);
 };

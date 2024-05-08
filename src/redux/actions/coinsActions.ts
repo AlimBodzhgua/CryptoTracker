@@ -12,13 +12,9 @@ import {
 import { AppDispatch } from 'redux/config/store';
 import { coinsActions } from 'redux/slices/coinsSlice';
 import { coinsSorter } from 'utils/utils';
-import axios from 'axios';
 import { SetURLSearchParams } from 'react-router-dom';
+import coinApi from 'api/coinApi';
 
-const coinHeaders = {
-    'Content-Type': 'application/json',
-    'x-access-token': process.env.API_KEY,
-};
 
 interface FetchCoinsProps {
     page?: number;
@@ -39,8 +35,7 @@ export const fetchCoins = createAsyncThunk<
         const limit = selectCoinsPageLimit(getState());
         const tag = selectCoinsTag(getState());
         try {
-            const response = await axios.get('https://api.coinranking.com/v2/coins', {
-                headers: coinHeaders,
+            const response = await coinApi.get('/coins', {
                 params: {
                     limit,
                     offset: page * limit,
@@ -85,7 +80,7 @@ export const fetchGlobalStats = createAsyncThunk<
     'fetchGlobalStats',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('https://api.coinranking.com/v2/stats');
+            const response = await coinApi.get('/stats');
             return response.data.data as IGlobalStats;
         } catch (error) {
             return rejectWithValue(JSON.stringify(error));

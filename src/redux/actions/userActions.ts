@@ -24,7 +24,7 @@ import {
 } from 'redux/selectors/userSelectors';
 import { ICoin } from 'types/coin';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
-import axios from 'axios';
+import coinApi from 'api/coinApi';
 
 export const initUserAuth = createAsyncThunk<
     IUser,
@@ -284,11 +284,6 @@ export const removeWatchListCoin = createAsyncThunk<
     },
 );
 
-const coinHeaders = {
-    'Content-Type': 'application/json',
-    'x-access-token': process.env.API_KEY,
-};
-
 export const fetchWatchListCoins = createAsyncThunk<
     ICoin[],
     void,
@@ -302,8 +297,7 @@ export const fetchWatchListCoins = createAsyncThunk<
         const watchListIds = selectUserWatchListIds(getState());
         try {
             if (watchListIds.length) {
-                const response = await axios.get('https://api.coinranking.com/v2/coins', {
-                    headers: coinHeaders,
+                const response = await coinApi.get('/coins', {
                     params: {
                         uuids: watchListIds,
                     },

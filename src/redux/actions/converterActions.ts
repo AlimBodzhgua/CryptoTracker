@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ConverterCoinType } from 'types/converter';
 import axios from 'axios';
+import coinApi from 'api/coinApi';
 
 export const convertCoins = createAsyncThunk<
 	number,
@@ -26,11 +27,6 @@ export const convertCoins = createAsyncThunk<
     },
 );
 
-const coinHeaders = {
-    'Content-Type': 'application/json',
-    'x-access-token': process.env.API_KEY,
-};
-
 export const fetchConverterCoins = createAsyncThunk<
 	ConverterCoinType[],
 	void,
@@ -40,8 +36,7 @@ export const fetchConverterCoins = createAsyncThunk<
     async (_, { rejectWithValue }) => {
         try {
             const limit = 20;
-            const response = await axios.get('https://api.coinranking.com/v2/coins', {
-                headers: coinHeaders,
+            const response = await coinApi.get('/coins', {
                 params: {
                     limit,
                 },

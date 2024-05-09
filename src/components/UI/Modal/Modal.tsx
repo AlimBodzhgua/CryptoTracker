@@ -52,7 +52,7 @@ export const Modal: FC<ModalProps> = (props) => {
     return (
         <Portal>
             <div
-                className={classnames(classes.Modal, className, { [classes.opened]: isOpen })}
+                className={classnames(classes.Modal, className, { [classes.opened]: isOpen }, 'app_modal')}
                 onClick={onBackgroundClick}
                 role='button'
                 tabIndex={-1}

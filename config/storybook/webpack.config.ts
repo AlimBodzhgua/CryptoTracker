@@ -24,6 +24,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
         config.resolve.extensions!.push('.ts', '.tsx');
         config.resolve.modules!.push(paths.src);
+        config.resolve.fallback = { "timers": require.resolve("timers-browserify")};
     }
 
     if (config.module) {

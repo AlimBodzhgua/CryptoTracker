@@ -18,6 +18,7 @@ module.exports = {
         'react-hooks'
     ],
     "rules": {
+        'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
         'no-console': 'warn',
         'no-tabs': 'off',
         'no-undef': 'off',

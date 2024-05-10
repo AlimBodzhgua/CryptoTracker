@@ -5,10 +5,10 @@ import { ICoin } from 'types/coin';
 import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { useAppDispatch } from 'hooks/redux';
 import { removeWatchListCoin } from 'redux/actions/userActions';
-import { SortableItem } from 'components/SortableItem/SortableItem';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
+import { SortableItem } from 'lib/components/SortableItem';
 
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 import InfoIcon from 'assets/icons/info.svg';

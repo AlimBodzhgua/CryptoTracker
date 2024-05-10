@@ -6,13 +6,11 @@ import Dotenv from 'dotenv-webpack';
 import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-
-
 import { type BuildOptions } from './types/config';
-
 
 export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstance[] => {
     const { paths, isDev, project } = options;
+    const isProd = !isDev;
 
     const plugins = [
         new HtmlWebpackPlugin({
@@ -28,17 +26,24 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
             __IS_DEV__: JSON.stringify(isDev),
             __PROJECT__: JSON.stringify(project),
         }),
-        new CopyPlugin({
-            patterns: [
-                { from: paths.locales, to: paths.buildLocales },
-            ],
-        }),
-        new ForkTsCheckerWebpackPlugin()
+        new ForkTsCheckerWebpackPlugin(),
     ];
 
     if (isDev) {
         plugins.push(new ReactRefreshPlugin());
-        //plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}));
+        // plugins.push(new BundleAnalyzerPlugin({openAnalyzer: true}));
+    }
+
+    if (isProd) {
+        plugins.push(new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash].css',
+            chunkFilename: 'css/[name].[contenthash].css',
+        }));
+        plugins.push(new CopyPlugin({
+            patterns: [
+                { from: paths.locales, to: paths.buildLocales },
+            ],
+        }));
     }
 
     return plugins;

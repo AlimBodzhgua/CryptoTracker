@@ -1,6 +1,7 @@
 
 .Sidebar {
 	min-width: var(--sidebar-width);
+	width: var(--sidebar-width);
 	height: 100vh;
 
 	background-color: var(--sidebar-bg-color);
@@ -10,12 +11,26 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+
+	position: relative;
+
+	transition: min-width .3s linear, width .3s linear;
+}
+
+.collapsed {
+	min-width: var(--sidebar-width-collapsed);
+	width: var(--sidebar-width-collapsed);
+
+	.header {
+		font-size: 22px;
+	}
 }
 
 .header {
 	font-size: 26px;
 	font-weight: 800;
 	color: #fff;
+	text-align: center;
 }
 
 .menu {
@@ -26,4 +41,19 @@
 
 	margin: 15px 0;
 	width: 100%;
+}
+
+.toggleBtn {
+	position: absolute;
+	bottom: 32px;
+	right: -32px;
+	background-color: var(--sidebar-bg-color)!important;
+	font-size: 34px;
+
+	display: flex;
+	align-items: center;
+}
+
+.arrowIcon {
+	width: 30px;
 }

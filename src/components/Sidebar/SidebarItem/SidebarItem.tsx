@@ -8,19 +8,28 @@ import classes from './SidebarItem.module.scss';
 interface SidebarItemProps {
 	item: SidebarItemType
 	className?: string;
+    collapsed?: boolean;
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = memo((props) => {
-    const { item, className } = props;
+    const {
+        item,
+        collapsed,
+        className,
+    } = props;
     const { t } = useTranslation();
 
     return (
         <AppLink
             to={item.path}
-            className={classnames(classes.SidebarItem, className)}
+            className={classnames(
+                classes.SidebarItem,
+                className,
+                {[classes.collapsed]: collapsed}
+            )}
         >
             <item.Icon className={classes.icon} />
-            <div>{t(`${item.text}`)}</div>
+            <div className={classes.linkText}>{t(`${item.text}`)}</div>
         </AppLink>
     );
 });

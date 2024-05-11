@@ -13,8 +13,21 @@
 	transition: .1s linear background-color;
 
 	&:hover {
-		// background-color: darken(#24484E, 7%);
 		background-color: color.adjust(#24484E, $lightness: -7%);
+	}
+
+}
+
+.collapsed {
+	.icon {
+		width: 28px;
+		height: 28px;
+		transform: translateX(5px);
+	}
+	
+	.linkText {
+		width: 0;
+		opacity: 0;
 	}
 }
 
@@ -22,6 +35,18 @@
 	fill: #fff;
 	padding: 0;
 
+	min-width: 24px;
+	min-height: 24px;
 	width: 24px;
 	height: 24px;
+
+	transition:
+		width .2s linear,
+		height .2s linear,
+		transform .4s linear
+}
+
+.linkText {
+	opacity: 1;
+	transition: opacity .1s linear;
 }

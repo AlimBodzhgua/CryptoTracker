@@ -28,9 +28,9 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
             {
                 loader: 'ts-loader',
                 options: {
-                getCustomTransformers: () => ({
-                    before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
-                }),
+                    getCustomTransformers: () => ({
+                        before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+                    }),
                     transpileOnly: isDev,
                 },
             },

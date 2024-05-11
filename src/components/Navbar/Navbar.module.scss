@@ -1,7 +1,7 @@
 
 .Navbar {
 	height: var(--navbar-height);
-	width: calc(100vw - var(--sidebar-width));
+	width: 100%;
 	padding: 0 25px;
 
 	display: flex;

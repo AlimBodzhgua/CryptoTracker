@@ -160,14 +160,19 @@ type updateUserProfileType = Pick<IUser, 'imageUrl' | 'login'>
 export const updateUserProfile = createAsyncThunk<
     updateUserProfileType,
     updateUserProfileType,
-    {rejectValue: string}
+    {
+        rejectValue: string,
+        state: StateSchema,
+    }
 >(
     'updateUserProfile',
-    async (data, { rejectWithValue }) => {
+    async (data, { rejectWithValue, getState }) => {
+        const user = selectUser(getState()); 
         try {
-            await updateProfile(auth.currentUser!, {
-                displayName: data.login,
-                photoURL: data.imageUrl,
+            const userDocRef = doc(db, 'users', user!.id);
+            await updateDoc(userDocRef, {
+                login: data.login,
+                imageUrl: data.imageUrl,
             });
             return data;
         } catch (error) {

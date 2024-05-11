@@ -10,13 +10,15 @@ import { Input } from 'components/UI/Input/Input';
 import { selectUser, selectUserIsLoading } from 'redux/selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
-import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { useTranslation } from 'react-i18next';
 import {
     sendEmailVerificationMessage,
     updateUserProfile,
 } from 'redux/actions/userActions';
 
+import { AppImage } from 'components/UI/AppImage/AppImage';
+import { ProfileCardSkeleton } from './ProfileCardSkeleton';
+import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import UserDefaultImage from 'assets/userDefaultImage.jpg';
 import ErrorIcon from 'assets/icons/error.svg';
 
@@ -45,17 +47,17 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
         }
     }, [user?.login, user?.imageUrl]);
 
-    const onEdit = () => {
+    const onEdit = useCallback(() => {
         setEdit(true);
-    };
+    }, []);
 
-    const onCancel = () => {
+    const onCancel = useCallback(() => {
         if (user) {
             setLogin(user.login);
             setImageUrl(user.imageUrl);
         }
         setEdit(false);
-    };
+    }, []);
 
     const onLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
         setLogin(e.target.value);
@@ -70,7 +72,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
             const { meta } = await dispatch(updateUserProfile({ imageUrl, login }));
 
             if (meta.requestStatus === 'fulfilled') {
-                localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify({ ...user, imageUrl, login }));
                 setEdit(false);
             }
         }
@@ -100,15 +101,19 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
         </div>
     ), []);
 
+    if (isLoading) {
+        return <ProfileCardSkeleton />
+    }
+
     return (
         <div className={classnames(classes.ProfileCard, className)}>
-            <img
-                src={user!.imageUrl.length ? user?.imageUrl : UserDefaultImage}
-                alt='UserProfileImage'
+            <AppImage 
+                src={user!.imageUrl.length ? user!.imageUrl : UserDefaultImage}
                 className={classes.profileImage}
+                fallback={<Skeleton width={'185'} height={'205'} />}
             />
-            <div className={classes.data}>
 
+            <div className={classes.data}>
                 <div className={classes.dataWrapper}>
                     <label htmlFor={`${id}-id`} className={classes.dataItem}>
                         <span className={classes.dataText}>Id</span>
@@ -158,7 +163,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
                         />
                     </label>
                 </div>
-
             </div>
 
             <div className={classes.profileActions}>

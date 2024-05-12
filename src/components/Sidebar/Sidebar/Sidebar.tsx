@@ -39,8 +39,8 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
                 theme={ButtonTheme.clear}
             >
                 {collapsed
-                    ? <LeftIcon className={classes.arrowIcon} />
-                    : <RightIcon className={classes.arrowIcon} />
+                    ? <RightIcon className={classes.arrowIcon} />
+                    : <LeftIcon className={classes.arrowIcon} />
                 }
             </Button>
         </aside>

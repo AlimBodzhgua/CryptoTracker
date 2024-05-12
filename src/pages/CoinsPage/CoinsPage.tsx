@@ -43,6 +43,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
         <Page
             className={classnames(classes.CoinsPage, className)}
             onScrollEnd={loadNextCoins}
+            withAutoScrollTopBtn
         >
             <div className={classes.header}>
                 <CoinsSearchBar />

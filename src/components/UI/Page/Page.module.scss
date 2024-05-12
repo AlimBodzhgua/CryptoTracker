@@ -12,3 +12,24 @@
 	background-color: var(--page-bg-color);
 	color: #fff;
 }
+
+.scrollBtn {
+	position: absolute;
+	bottom: 28px;
+	right: 5px;
+
+	background-color: #454545!important;
+	opacity: 0.7;
+	transition: opacity .3s linear;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.arrowIcon {
+	width: 55px;
+	height: 35px;
+
+	transform: rotate(90deg);
+}

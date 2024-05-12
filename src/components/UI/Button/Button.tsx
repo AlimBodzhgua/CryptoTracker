@@ -45,6 +45,7 @@ export const Button: React.FC<ButtonProps> = memo((props) => {
                 classes[size],
                 { [classes.disabled]: disabled },
             )}
+            disabled={disabled}
             {...otherProps}
         >
             {children}

@@ -30,6 +30,7 @@ export const CoinTableSkeleton: FC<CoinTableSkeletonProps> = memo((props) => {
                             <th><Skeleton width={125} height={30} radius='10px' /></th>
                             <th><Skeleton width={125} height={30} radius='10px' /></th>
                             <th><Skeleton width={125} height={30} radius='10px' /></th>
+                            <th><Skeleton width={125} height={30} radius='10px' /></th>
                         </tr>
                     </thead>
                 )}
@@ -37,7 +38,7 @@ export const CoinTableSkeleton: FC<CoinTableSkeletonProps> = memo((props) => {
                 {new Array(12).fill(0).map((_, index) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <tr key={index}>
-                        <th colSpan={6}>
+                        <th colSpan={7}>
                             <Skeleton width='100%' height={35} radius='10px' />
                         </th>
                     </tr>

@@ -56,6 +56,13 @@
 
 	.name {
 		padding-right: 10px;
+		text-align: left;
+
+		text-overflow: ellipsis;
+		overflow: hidden; 
+		max-width: 160px; 
+		height: 1.2em; 
+		white-space: nowrap;
 	}
 
 	.symbol {

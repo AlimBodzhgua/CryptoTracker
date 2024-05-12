@@ -5,7 +5,6 @@
 	box-shadow: 0 0 20px #0000001a;
 
 	margin-top: 40px;
-
 	width: 85%;
 
 	background-color: var(--table-bg-color);
@@ -24,6 +23,7 @@
 .loading {
 	border-collapse: separate;
 	border-spacing: 15px;
+	border-top: none;
 }
 
 .errorMsg {

@@ -15,13 +15,12 @@ import {
     sendEmailVerification,
     signInWithPopup,
     signOut,
-    updateProfile,
 } from 'firebase/auth';
 import {
     selectUser,
     selectUserWatchListCoins,
     selectUserWatchListIds,
-} from 'redux/selectors/userSelectors';
+} from '../selectors/userSelectors';
 import { ICoin } from 'types/coin';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import coinApi from 'api/coinApi';

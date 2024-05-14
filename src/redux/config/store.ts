@@ -1,8 +1,8 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
-import { userReducer } from 'redux/slices/userSlice';
-import { converterReducer } from 'redux/slices/converterSlice';
+import { userReducer } from '../slices/userSlice';
+import { converterReducer } from '../slices/converterSlice';
 import { currencyReducer } from '../slices/currencySlice';
-import { scrollRestorationReducer } from 'redux/slices/scrollRestorationSlice';
+import { scrollRestorationReducer } from '../slices/scrollRestorationSlice';
 import { coinsReducer } from '../slices/coinsSlice';
 import { StateSchema } from './StateSchema';
 

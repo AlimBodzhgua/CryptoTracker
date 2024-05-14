@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { initialConverterData } from 'constants/converter';
-import { convertCoins, fetchConverterCoins } from 'redux/actions/converterActions';
 import { ConverterCoinType, IConverter } from 'types/converter';
+import { convertCoins, fetchConverterCoins } from '../actions/converterActions';
 
 export interface ConverterStateSchema {
 	converterData: IConverter;

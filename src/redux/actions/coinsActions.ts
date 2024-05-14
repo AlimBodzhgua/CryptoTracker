@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ICoin, IGlobalStats } from 'types/coin';
-import { StateSchema } from 'redux/config/StateSchema';
+import { StateSchema } from '../config/StateSchema';
 import {
     selectCoins,
     selectCoinsIsLoading,
@@ -8,9 +8,9 @@ import {
     selectCoinsPageLimit,
     selectCoinsPageNumber,
     selectCoinsTag,
-} from 'redux/selectors/coinsSelectors';
-import { AppDispatch } from 'redux/config/store';
-import { coinsActions } from 'redux/slices/coinsSlice';
+} from '../selectors/coinsSelectors';
+import { AppDispatch } from '../config/store';
+import { coinsActions } from '../slices/coinsSlice';
 import { coinsSorter } from 'utils/utils';
 import { SetURLSearchParams } from 'react-router-dom';
 import coinApi from 'api/coinApi';

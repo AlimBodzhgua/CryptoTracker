@@ -18,3 +18,16 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
     args: {},
 };
+
+export const WithAddonBefore: Story = {
+    args: {
+        addonBefore: <div>before</div>
+    },
+};
+
+export const WithAddonAfter: Story = {
+    args: {
+        addonAfter: <div>after</div>
+    },
+};
+

@@ -28,14 +28,14 @@ export const Message: FC<MessageProps> = memo((props) => {
 
     const title = useMemo(() => {
         switch (type) {
-        case 'warn':
-			    return t('Warning!');
-        case 'error':
-			    return t('An error occured.');
-        case 'success':
-            return t('Success.');
-        default:
-            return t('success');
+            case 'warn':
+    			return t('Warning!');
+            case 'error':
+    			return t('An error occured.');
+            case 'success':
+                return t('Success.');
+            default:
+                return t('success');
         }
     }, [type]);
 
@@ -45,13 +45,26 @@ export const Message: FC<MessageProps> = memo((props) => {
             classes[type],
             className,
         )}
+            data-testid='message'
         >
-            {(type === 'warn' && withIcon)
-				&& <WarningIcon className={classnames(classes.icon, classes.warnIcon)} />}
-            {(type === 'error' && withIcon)
-				&& <ErrorIcon className={classes.icon} />}
-            {(type === 'success' && withIcon)
-				&& <SuccessIcon className={classes.icon} />}
+            {(type === 'warn' && withIcon) && 
+                <WarningIcon
+                    className={classnames(classes.icon, classes.warnIcon)}
+                    data-testid='icon'
+                />
+            }
+            {(type === 'error' && withIcon) &&
+                <ErrorIcon
+                    className={classes.icon}
+                    data-testid='icon'
+                />
+            }
+            {(type === 'success' && withIcon) &&
+                <SuccessIcon
+                    className={classes.icon}
+                    data-testid='icon'
+                />
+            }
             <h2 className={classes.title}>{title}</h2>
             <div className={classes.text}>{text}</div>
         </div>

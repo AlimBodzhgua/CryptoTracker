@@ -32,11 +32,16 @@ export const Input = memo(forwardRef<HTMLInputElement, InputProps>((props, ref) 
     };
 
     return (
-        <div className={classnames(classes.Input, className)} style={style}>
+        <div
+            className={classnames(classes.Input, className)}
+            style={style}
+            data-testid='inputWrapper'
+        >
             {addonBefore}
             <input
                 className={classnames(classes.InputField, fieldClassName)}
                 ref={ref}
+                data-testid='inputField'
                 {...otherProps}
                 {...focusProps}
             />

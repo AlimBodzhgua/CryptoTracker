@@ -27,6 +27,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = memo((props) => {
                 className,
                 {[classes.collapsed]: collapsed}
             )}
+            data-testid='sidebar-item'
         >
             <item.Icon className={classes.icon} />
             <div className={classes.linkText}>{t(`${item.text}`)}</div>

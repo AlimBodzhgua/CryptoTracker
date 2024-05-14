@@ -34,6 +34,8 @@ export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({ cla
             className={classnames(classes.PriceNotationSelector, className)}
             onChange={onNotationSelect}
             value={priceNotation === undefined ? 'placeholder' : priceNotation}
+            data-testid='price-selector'
+
         >
             <option
                 value='placeholder'

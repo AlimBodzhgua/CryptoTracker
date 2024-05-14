@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Input } from './Input';
 
 
@@ -23,4 +23,13 @@ describe('Input', () => {
 		const input = screen.getByTestId('inputField');
 		expect(input).toHaveClass('InputField searchInput');
 	});
+
+	test('input onChange work', () => {
+		const onChange = jest.fn();
+		render(<Input placeholder={'search'} fieldClassName={'searchInput'} onChange={onChange}/>);
+		const input = screen.getByTestId('inputField');
+		waitFor(() => fireEvent.change(input, {target: {value: 'react'}}))
+			.then(() => expect(onChange).toHaveBeenCalledTimes(5))
+	});
+
 })

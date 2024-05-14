@@ -96,6 +96,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
         <form
             className={classnames(classes.LoginForm, className)}
             onSubmit={handleSubmit(onSubmit)}
+            data-testid='login-form'
         >
             <h2 className={classes.title}>{title}</h2>
             <Controller
@@ -176,7 +177,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
                 onClick={onForgetPassword}
                 theme={ButtonTheme.clear}
                 size={ButtonSize.small}
-                className={classes.fogerBtn}
+                className={classes.forgetBtn}
                 type='reset'
             >
                 {t('Forgot Password?')}

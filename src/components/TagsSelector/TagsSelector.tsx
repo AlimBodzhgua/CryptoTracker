@@ -40,6 +40,7 @@ export const TagsSelector: FC<TagsSelectorProps> = memo(({ className }) => {
             className={classnames(classes.TagsSelector, className)}
             onChange={onTagSelect}
             value={currentTag}
+            data-testid='tags-selector'
         >
             {Object.keys(TagList).map((tag) => (
                 <option

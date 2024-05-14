@@ -21,3 +21,10 @@ export const Primary: Story = {
         item: sidebarList[0],
     },
 };
+
+export const Collapsed: Story = {
+    args: {
+        item: sidebarList[0],
+        collapsed: true,
+    },
+};

@@ -68,9 +68,16 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({className}) => {
 	}, [dispatch]);
 
 	return (
-		<div className={classnames(classes.AuthActionsMenu, className)}>
+		<div
+			className={classnames(classes.AuthActionsMenu, className)}
+			data-testid='auth-menu'
+		>
 			{isAuth ? (
-				<Button theme={ButtonTheme.clear} onClick={onLogout}>
+				<Button
+					theme={ButtonTheme.clear}
+					onClick={onLogout}
+					data-testid='logout-button'
+				>
 					{t('Logout')}
 				</Button>
 			) : (
@@ -78,6 +85,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({className}) => {
 					<Button
 						theme={ButtonTheme.clear}
 						onClick={onOpenRegisterModal}
+						data-testid='signup-button'
 					>
 						{t('Sign up')}
 					</Button>
@@ -89,6 +97,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({className}) => {
 					<Button
 						theme={ButtonTheme.clear}
 						onClick={onOpenLoginModal}
+						data-testid='login-button'
 					>
 						{t('Login')}
 					</Button>

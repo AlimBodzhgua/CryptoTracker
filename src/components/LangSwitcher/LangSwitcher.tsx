@@ -22,6 +22,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = memo(({ className }) => {
             onClick={toggleLanguage}
             className={classnames(classes.LangSwitcher, className)}
             theme={ButtonTheme.clear}
+            data-testid='switch-button'
         >
             <GlobeIcon className={classes.icon} />
             <div className={classes.languages}>

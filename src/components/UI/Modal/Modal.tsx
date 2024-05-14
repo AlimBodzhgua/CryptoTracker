@@ -56,6 +56,7 @@ export const Modal: FC<ModalProps> = (props) => {
                 onClick={onBackgroundClick}
                 role='button'
                 tabIndex={-1}
+                data-testid='modal'
             >
                 <div
                     className={classes.content}

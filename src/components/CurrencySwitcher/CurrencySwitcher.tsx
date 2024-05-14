@@ -25,24 +25,15 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = memo((props) =>
             onChange={onCurrencySelect}
             data-testid='currency-switcher'
         >
-            <option
-                value={Currencies.USD}
-                className={classes.CurrencyOption}
-            >
-                USD
-            </option>
-            <option
-                value={Currencies.EUR}
-                className={classes.CurrencyOption}
-            >
-                EUR
-            </option>
-            <option
-                value={Currencies.RUB}
-                className={classes.CurrencyOption}
-            >
-                RUB
-            </option>
+            {Object.values(Currencies).map((currency) => (
+                <option
+                    value={currency}
+                    className={classes.CurrencyOption}
+                    key={currency}
+                >
+                    {currency}
+                </option>
+            ))}
         </select>
     );
 });

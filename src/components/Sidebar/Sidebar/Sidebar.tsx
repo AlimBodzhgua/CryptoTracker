@@ -20,9 +20,10 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
     }
 
     return (
-        <aside className={
-            classnames(classes.Sidebar, className, {[classes.collapsed]: collapsed})
-        }>
+        <aside
+            className={classnames(classes.Sidebar, className, {[classes.collapsed]: collapsed})}
+            data-testid='sidebar'
+        >
             <h1 className={classes.header}>Coin Cap</h1>
             <div className={classes.menu}>
                 {sidebarList.map((item) => (
@@ -37,6 +38,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
                 className={classes.toggleBtn}
                 onClick={onToggle}
                 theme={ButtonTheme.clear}
+                data-testid='toggle-button'
             >
                 {collapsed
                     ? <RightIcon className={classes.arrowIcon} />

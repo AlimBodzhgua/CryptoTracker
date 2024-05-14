@@ -2,10 +2,10 @@ import {
     FC, memo, useCallback, useMemo,
 } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { converterActions } from 'redux/slices/converterSlice';
+import { converterActions } from 'store/slices/converterSlice';
 import { ConverterCoinType } from 'types/converter';
 import { useSearchParams } from 'react-router-dom';
-import { selectConverterCoinFrom, selectConverterCoinTo } from 'redux/selectors/converterSelectors';
+import { selectConverterCoinFrom, selectConverterCoinTo } from 'store/selectors/converterSelectors';
 
 import classnames from 'classnames';
 import classes from './CoinItem.module.scss';

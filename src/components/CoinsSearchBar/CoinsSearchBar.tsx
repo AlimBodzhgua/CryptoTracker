@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/redux';
 import { useDebounce } from 'hooks/useDebounce';
-import { selectCoins } from 'redux/selectors/coinsSelectors';
-import { coinsActions } from 'redux/slices/coinsSlice';
+import { selectCoins } from 'store/selectors/coinsSelectors';
+import { coinsActions } from 'store/slices/coinsSlice';
 import { Input } from 'components/UI/Input/Input';
 
 import SearchIcon from 'assets/icons/search.svg';

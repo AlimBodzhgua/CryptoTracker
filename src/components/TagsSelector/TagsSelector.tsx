@@ -1,9 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 import { TagType } from 'types/coin';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { coinsActions } from 'redux/slices/coinsSlice';
-import { fetchCoins } from 'redux/actions/coinsActions';
-import { selectCoinsTag } from 'redux/selectors/coinsSelectors';
+import { coinsActions } from 'store/slices/coinsSlice';
+import { fetchCoins } from 'store/actions/coinsActions';
+import { selectCoinsTag } from 'store/selectors/coinsSelectors';
 
 import classnames from 'classnames';
 import classes from './TagsSelector.module.scss';

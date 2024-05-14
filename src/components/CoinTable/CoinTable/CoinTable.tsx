@@ -5,7 +5,7 @@ import {
     selectCoinsError,
     selectSearchedFilteredCoins,
     selectCoinsPageNumber,
-} from 'redux/selectors/coinsSelectors';
+} from 'store/selectors/coinsSelectors';
 import { useAppSelector } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
 import classnames from 'classnames';

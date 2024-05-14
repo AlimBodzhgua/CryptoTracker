@@ -1,8 +1,8 @@
 import { FC, memo, useCallback } from 'react';
 import { NotationType } from 'types/coin';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { coinsActions } from 'redux/slices/coinsSlice';
-import { selectCoinsPriceNotation } from 'redux/selectors/coinsSelectors';
+import { coinsActions } from 'store/slices/coinsSlice';
+import { selectCoinsPriceNotation } from 'store/selectors/coinsSelectors';
 import { useTranslation } from 'react-i18next';
 
 import classnames from 'classnames';

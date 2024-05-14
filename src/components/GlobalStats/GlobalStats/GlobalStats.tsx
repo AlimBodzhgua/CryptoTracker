@@ -5,7 +5,7 @@ import {
     selectCoinsGlobalStats,
     selectCoinsError,
     selectCoinsGlobalStatsData,
-} from 'redux/selectors/coinsSelectors';
+} from 'store/selectors/coinsSelectors';
 import { Message } from 'components/UI/Message/Message';
 import { useTranslation } from 'react-i18next';
 import { useFormatter } from 'hooks/useFormatter';

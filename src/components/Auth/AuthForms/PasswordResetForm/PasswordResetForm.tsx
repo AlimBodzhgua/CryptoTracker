@@ -1,11 +1,11 @@
 import { FC, memo, useState } from 'react';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
-import { resetUserPassword } from 'redux/actions/userActions';
+import { resetUserPassword } from 'store/actions/userActions';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Input } from 'components/UI/Input/Input';
-import { selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { selectUserIsLoading } from 'store/selectors/userSelectors';
 
 import EmailIcon from 'assets/icons/email.svg';
 

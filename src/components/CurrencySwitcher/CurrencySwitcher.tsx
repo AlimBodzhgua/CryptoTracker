@@ -2,7 +2,7 @@ import React, { memo, useCallback } from 'react';
 import { useAppDispatch } from 'hooks/redux';
 import { CurrencyType } from 'types/currency';
 import { Currencies } from 'constants/currencies';
-import { currencyActions } from 'redux/slices/currencySlice';
+import { currencyActions } from 'store/slices/currencySlice';
 import classnames from 'classnames';
 import classes from './CurrencySwitcher.module.scss';
 
@@ -23,6 +23,7 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = memo((props) =>
         <select
             className={classnames(classes.CurrencySwitcher, className)}
             onChange={onCurrencySelect}
+            data-testid='currency-switcher'
         >
             <option
                 value={Currencies.USD}

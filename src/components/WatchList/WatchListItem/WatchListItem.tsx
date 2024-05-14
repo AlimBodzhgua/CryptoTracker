@@ -4,7 +4,7 @@ import {
 import { ICoin } from 'types/coin';
 import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { useAppDispatch } from 'hooks/redux';
-import { removeWatchListCoin } from 'redux/actions/userActions';
+import { removeWatchListCoin } from 'store/actions/userActions';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';

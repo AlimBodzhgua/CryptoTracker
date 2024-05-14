@@ -1,17 +1,17 @@
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { FC, useEffect } from 'react';
-import { fetchCurrency } from 'redux/actions/currencyActions';
+import { fetchCurrency } from 'store/actions/currencyActions';
 import {
     selectCurrencyKurs,
     selectCurrentCurrency,
     selectTargetCurrency,
-} from 'redux/selectors/currencySelectors';
-import { coinsActions } from 'redux/slices/coinsSlice';
-import { currencyActions } from 'redux/slices/currencySlice';
+} from 'store/selectors/currencySelectors';
+import { coinsActions } from 'store/slices/coinsSlice';
+import { currencyActions } from 'store/slices/currencySlice';
 import { AppRouter } from 'router/AppRouter';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { IUser } from 'types/user';
-import { initUserAuth } from 'redux/actions/userActions';
+import { initUserAuth } from 'store/actions/userActions';
 import 'styles/index.scss';
 
 export const App: FC = () => {

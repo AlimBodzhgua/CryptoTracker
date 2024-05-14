@@ -7,14 +7,14 @@ import React, {
     memo,
 } from 'react';
 import { Input } from 'components/UI/Input/Input';
-import { selectUser, selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { selectUser, selectUserIsLoading } from 'store/selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import {
     sendEmailVerificationMessage,
     updateUserProfile,
-} from 'redux/actions/userActions';
+} from 'store/actions/userActions';
 
 import { AppImage } from 'components/UI/AppImage/AppImage';
 import { ProfileCardSkeleton } from './ProfileCardSkeleton';

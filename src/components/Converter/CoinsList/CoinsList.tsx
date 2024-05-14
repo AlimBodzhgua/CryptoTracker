@@ -2,8 +2,8 @@ import {
     FC, useEffect, memo, useCallback,
 } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { selectConverterCoins } from 'redux/selectors/converterSelectors';
-import { fetchConverterCoins } from 'redux/actions/converterActions';
+import { selectConverterCoins } from 'store/selectors/converterSelectors';
+import { fetchConverterCoins } from 'store/actions/converterActions';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

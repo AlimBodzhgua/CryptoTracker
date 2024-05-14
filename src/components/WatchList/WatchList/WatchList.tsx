@@ -15,13 +15,13 @@ import {
 } from '@dnd-kit/core';
 import { SortableContext } from '@dnd-kit/sortable';
 import { restrictToParentElement } from '@dnd-kit/modifiers';
-import { userActions } from 'redux/slices/userSlice';
+import { userActions } from 'store/slices/userSlice';
 import {
     selectUserError,
     selectUserIsLoading,
     selectUserWatchListCoins,
-} from 'redux/selectors/userSelectors';
-import { updateWatchList } from 'redux/actions/userActions';
+} from 'store/selectors/userSelectors';
+import { updateWatchList } from 'store/actions/userActions';
 import { WatchListSkeleton } from './WatchListSkeleton';
 import { WatchListItem } from '../WatchListItem/WatchListItem';
 

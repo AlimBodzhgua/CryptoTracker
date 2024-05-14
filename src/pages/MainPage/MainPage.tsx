@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { GlobalStats } from 'components/GlobalStats';
 import { Page } from 'components/UI/Page/Page';
 import { useAppDispatch } from 'hooks/redux';
-import { fetchGlobalStats } from 'redux/actions/coinsActions';
+import { fetchGlobalStats } from 'store/actions/coinsActions';
 
 import classnames from 'classnames';
 import classes from './MainPage.module.scss';

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { selectCurrentCurrency } from 'redux/selectors/currencySelectors';
+import { selectCurrentCurrency } from 'store/selectors/currencySelectors';
 import { useTranslation } from 'react-i18next';
 import { NotationType } from 'types/coin';
-import { selectCoinsPriceNotation } from 'redux/selectors/coinsSelectors';
+import { selectCoinsPriceNotation } from 'store/selectors/coinsSelectors';
 import { useAppSelector } from './redux';
 
 export const useFormatter = (

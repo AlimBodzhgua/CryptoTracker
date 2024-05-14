@@ -4,19 +4,19 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { Input } from 'components/UI/Input/Input';
-import { selectUser } from 'redux/selectors/userSelectors';
+import { selectUser } from 'store/selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import {
     selecetConverterResult,
     selectConverterCoinFrom,
     selectConverterCoinTo,
     selectConverterIsLoading,
-} from 'redux/selectors/converterSelectors';
-import { converterActions } from 'redux/slices/converterSlice';
-import { convertCoins } from 'redux/actions/converterActions';
+} from 'store/selectors/converterSelectors';
+import { converterActions } from 'store/slices/converterSlice';
+import { convertCoins } from 'store/actions/converterActions';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import { HistoryModal } from 'components/History/HistoryModal/HistoryModal';
-import { addHistory } from 'redux/actions/userActions';
+import { addHistory } from 'store/actions/userActions';
 import { CoinSelector } from '../CoinSelector/CoinSelector';
 
 import HistoryIcon from 'assets/icons/history.svg';

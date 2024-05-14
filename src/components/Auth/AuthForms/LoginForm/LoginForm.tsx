@@ -6,11 +6,11 @@ import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { signInUser, signInWithGoogle } from 'redux/actions/userActions';
+import { signInUser, signInWithGoogle } from 'store/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
-import { selectUserError, selectUserIsLoading } from 'redux/selectors/userSelectors';
+import { selectUserError, selectUserIsLoading } from 'store/selectors/userSelectors';
 import { useSearchParams } from 'react-router-dom';
-import { userActions } from 'redux/slices/userSlice';
+import { userActions } from 'store/slices/userSlice';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';

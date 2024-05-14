@@ -4,8 +4,8 @@ import {
 import { ICoin } from 'types/coin';
 import { useFormatter } from 'hooks/useFormatter';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { addWatchListCoin, removeWatchListCoin } from 'redux/actions/userActions';
-import { selectUser, selectUserMounted, selectUserWatchListIds } from 'redux/selectors/userSelectors';
+import { addWatchListCoin, removeWatchListCoin } from 'store/actions/userActions';
+import { selectUser, selectUserMounted, selectUserWatchListIds } from 'store/selectors/userSelectors';
 import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
 
 import StarIcon from 'assets/icons/star.svg';

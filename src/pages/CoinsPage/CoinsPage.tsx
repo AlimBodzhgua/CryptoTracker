@@ -3,12 +3,12 @@ import { CoinTable } from 'components/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { fetchCoins, fetchNextCoins, resetCoinsSettings } from 'redux/actions/coinsActions';
+import { fetchCoins, fetchNextCoins, resetCoinsSettings } from 'store/actions/coinsActions';
 import { TagsSelector } from 'components/TagsSelector/TagsSelector';
 import { PriceNotationSelector } from 'components/PriceNotationSelector/PriceNotationSelector';
 import { Button } from 'components/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
-import { selectCoins, selectCoinsPageNumber } from 'redux/selectors/coinsSelectors';
+import { selectCoins, selectCoinsPageNumber } from 'store/selectors/coinsSelectors';
 
 import ResetIcon from 'assets/icons/reset.svg';
 

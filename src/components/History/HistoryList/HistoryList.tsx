@@ -5,9 +5,9 @@ import {
     selectUserConversionHistory,
     selectUserError,
     selectUserIsLoading,
-} from 'redux/selectors/userSelectors';
+} from 'store/selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { clearHistory } from 'redux/actions/userActions';
+import { clearHistory } from 'store/actions/userActions';
 import { Message } from 'components/UI/Message/Message';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import classnames from 'classnames';

@@ -4,7 +4,7 @@ import {
 } from 'firebase/firestore';
 import { auth, googleProvider, db } from 'config/firebase/firebase';
 import { createHistoryDoc, getUserDataObject } from 'utils/utils';
-import { StateSchema } from 'redux/config/StateSchema';
+import { StateSchema } from 'store/config/StateSchema';
 import { HistoryType } from 'types/converter';
 import { FirebaseError } from 'firebase/app';
 import { IUser } from 'types/user';

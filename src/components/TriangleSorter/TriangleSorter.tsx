@@ -4,8 +4,8 @@ import {
 import { FieldNameType, SortDirectionType } from 'types/coin';
 import { coinsSorter } from 'utils/utils';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { selectCoins } from 'redux/selectors/coinsSelectors';
-import { coinsActions } from 'redux/slices/coinsSlice';
+import { selectCoins } from 'store/selectors/coinsSelectors';
+import { coinsActions } from 'store/slices/coinsSlice';
 import { useSearchParams } from 'react-router-dom';
 
 import classnames from 'classnames';

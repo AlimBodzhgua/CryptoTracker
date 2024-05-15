@@ -21,9 +21,9 @@ export const WatchListSkeleton: FC<WatchListSkeletonProps> = ({
 				.fill(0)
 				.map((_, index) => (
 					<Skeleton
-						width="100%"
-						height="50px"
-						radius="5px"
+						width='100%'
+						height='50px'
+						radius='5px'
 						// eslint-disable-next-line
 						key={index}
 						className={classes.listSkeleton}

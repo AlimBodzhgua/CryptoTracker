@@ -194,7 +194,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 					theme={ButtonTheme.clear}
 					onClick={onMoveToRegister}
 					className={classes.registerBtn}
-					type="reset"
+					type='reset'
 				>
 					{t('Sign Up')}
 				</Button>

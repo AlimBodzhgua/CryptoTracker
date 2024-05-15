@@ -30,9 +30,7 @@ export const Page: FC<PageProps> = (props) => {
 	const { children, onScrollEnd, className, withAutoScrollTopBtn } = props;
 	const { pathname } = useLocation();
 	const dispatch = useAppDispatch();
-	const scrollPosition = useAppSelector((state) =>
-		selectScrollByPath(state, pathname),
-	);
+	const scrollPosition = useAppSelector((state) => selectScrollByPath(state, pathname));
 	const [scrollAppearance, setScrollAppearance] = useState<{
 		position: number;
 		showBtn: boolean;
@@ -70,8 +68,8 @@ export const Page: FC<PageProps> = (props) => {
 		if (scrollTop >= scrollAppearance.position && withAutoScrollTopBtn) {
 			setScrollAppearance({ ...scrollAppearance, showBtn: true });
 		} else if (
-			scrollTop <= scrollAppearance.position &&
-			withAutoScrollTopBtn
+			scrollTop <= scrollAppearance.position
+			&& withAutoScrollTopBtn
 		) {
 			setScrollAppearance({ ...scrollAppearance, showBtn: false });
 		}

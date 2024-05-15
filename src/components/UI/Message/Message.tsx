@@ -23,14 +23,14 @@ export const Message: FC<MessageProps> = memo((props) => {
 
 	const title = useMemo(() => {
 		switch (type) {
-			case 'warn':
-				return t('Warning!');
-			case 'error':
-				return t('An error occured.');
-			case 'success':
-				return t('Success.');
-			default:
-				return t('success');
+		case 'warn':
+			return t('Warning!');
+		case 'error':
+			return t('An error occured.');
+		case 'success':
+			return t('Success.');
+		default:
+			return t('success');
 		}
 	}, [type]);
 

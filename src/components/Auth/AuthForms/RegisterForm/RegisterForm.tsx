@@ -81,13 +81,13 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 		<form
 			onSubmit={handleSubmit(onSubmit)}
 			className={classnames(classes.RegisterForm, className)}
-			data-testid="register-form"
+			data-testid='register-form'
 		>
 			<h2 className={classes.title}>{title}</h2>
 			<Controller
 				control={control}
-				name="email"
-				defaultValue=""
+				name='email'
+				defaultValue=''
 				rules={{ required: true }}
 				render={({ field: { value, onChange } }) => (
 					<Input
@@ -107,8 +107,8 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 
 			<Controller
 				control={control}
-				name="password"
-				defaultValue=""
+				name='password'
+				defaultValue=''
 				rules={{ required: true, minLength: 6 }}
 				render={({ field: { value, onChange } }) => (
 					<Input
@@ -142,7 +142,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 			<Button
 				className={classes.button}
 				disabled={isLoading}
-				type="submit"
+				type='submit'
 			>
 				{t('Register')}
 			</Button>
@@ -152,7 +152,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 					theme={ButtonTheme.clear}
 					onClick={onMoveToLogin}
 					className={classes.loginBtn}
-					type="reset"
+					type='reset'
 				>
 					{t('Sign In')}
 				</Button>

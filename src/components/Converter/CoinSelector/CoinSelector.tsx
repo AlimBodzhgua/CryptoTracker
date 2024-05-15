@@ -33,7 +33,7 @@ export const CoinSelector: FC<CoinSelectorProps> = memo((props) => {
 	return (
 		<>
 			<div
-				role="button"
+				role='button'
 				className={classnames(classes.coinsSelector, className)}
 				onClick={onShowCoinList}
 				tabIndex={0}

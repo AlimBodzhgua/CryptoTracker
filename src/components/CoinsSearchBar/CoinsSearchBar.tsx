@@ -65,8 +65,8 @@ export const CoinsSearchBar: React.FC<CoinsSearchBarProps> = memo((props) => {
 
 	return (
 		<Input
-			type="text"
-			placeholder="Search Coins..."
+			type='text'
+			placeholder='Search Coins...'
 			value={searchQuery}
 			onChange={onSearch}
 			ref={inputRef}

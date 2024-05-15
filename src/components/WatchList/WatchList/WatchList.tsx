@@ -20,11 +20,11 @@ import {
 	selectUserWatchListCoins,
 } from 'store/selectors/userSelectors';
 import { updateWatchList } from 'store/actions/userActions';
+import classnames from 'classnames';
+import StarIcon from 'assets/icons/starSelected.svg';
+
 import { WatchListSkeleton } from './WatchListSkeleton';
 import { WatchListItem } from '../WatchListItem/WatchListItem';
-
-import StarIcon from 'assets/icons/starSelected.svg';
-import classnames from 'classnames';
 import classes from './WatchList.module.scss';
 
 interface WatchListProps {
@@ -80,7 +80,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 	if (error) {
 		return (
 			<Message
-				type="error"
+				type='error'
 				text={t('Error fetcthing watchlist coins')}
 				withIcon
 			/>

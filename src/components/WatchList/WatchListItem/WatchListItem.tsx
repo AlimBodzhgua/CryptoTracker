@@ -6,12 +6,11 @@ import { removeWatchListCoin } from 'store/actions/userActions';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { SortableItem } from 'lib/components/SortableItem';
-import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
-
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 import InfoIcon from 'assets/icons/info.svg';
-
 import classnames from 'classnames';
+
+import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
 import classes from './WatchListItem.module.scss';
 
 interface WatchListItemProps {
@@ -31,10 +30,7 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 		setIsLoading(true);
 		const { meta } = await dispatch(removeWatchListCoin(coin.uuid));
 
-		if (
-			meta.requestStatus === 'fulfilled' ||
-			meta.requestStatus === 'rejected'
-		) {
+		if (meta.requestStatus === 'fulfilled' || meta.requestStatus === 'rejected') {
 			setIsLoading(false);
 		}
 	}, [dispatch]);

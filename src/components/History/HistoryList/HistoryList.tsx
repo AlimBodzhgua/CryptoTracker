@@ -30,20 +30,19 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 		dispatch(clearHistory());
 	}, [dispatch]);
 
-	const renderListSkeleton = useCallback(
-		() =>
-			new Array(3).fill(0).map((_, index) => (
-				<Skeleton
-					width="100%"
-					height="50px"
-					radius="4px"
-					// eslint-disable-next-line react/no-array-index-key
-					key={index}
-					className={classes.skeletonItem}
-				/>
-			)),
-		[],
-	);
+	const renderListSkeleton = useCallback(() => Array(3)
+		.fill(0)
+		.map((_, index) => (
+			<Skeleton
+				width='100%'
+				height='50px'
+				radius='4px'
+				// eslint-disable-next-line react/no-array-index-key
+				key={index}
+				className={classes.skeletonItem}
+			/>),
+	// eslint-disable-next-line
+	), []);
 
 	const renderHistoryContent = useCallback(() => {
 		if (history.length) {
@@ -62,7 +61,7 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 		return (
 			<Message
 				withIcon
-				type="error"
+				type='error'
 				text={t('Error loading history, try to reload the page')}
 			/>
 		);

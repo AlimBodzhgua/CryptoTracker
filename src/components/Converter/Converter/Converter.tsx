@@ -124,9 +124,9 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 						value={amount}
 						onChange={onAmountChange}
 						addonAfter={
-							<CoinSelector coin={coinFrom} listType="from" />
+							<CoinSelector coin={coinFrom} listType='from' />
 						}
-						type="number"
+						type='number'
 					/>
 				</div>
 
@@ -145,7 +145,7 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 						fieldClassName={classes.inputField}
 						readOnly
 						addonAfter={
-							<CoinSelector coin={coinTo} listType="to" />
+							<CoinSelector coin={coinTo} listType='to' />
 						}
 						value={result}
 					/>
@@ -154,7 +154,7 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 			<div className={classes.rowInfo}>
 				<span />
 				{isLoading ? (
-					<Skeleton width="70%" radius="45px" height="33px" />
+					<Skeleton width='70%' radius='45px' height='33px' />
 				) : (
 					<div>
 						{`${amount} ${coinFrom.symbol} ≈ ${formatter.format(result)} ${coinTo.symbol}`}

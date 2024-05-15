@@ -24,7 +24,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 			className={classnames(classes.Sidebar, className, {
 				[classes.collapsed]: collapsed,
 			})}
-			data-testid="sidebar"
+			data-testid='sidebar'
 		>
 			<h1 className={classes.header}>Coin Cap</h1>
 			<div className={classes.menu}>
@@ -40,7 +40,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 				className={classes.toggleBtn}
 				onClick={onToggle}
 				theme={ButtonTheme.clear}
-				data-testid="toggle-button"
+				data-testid='toggle-button'
 			>
 				{collapsed ? (
 					<RightIcon className={classes.arrowIcon} />

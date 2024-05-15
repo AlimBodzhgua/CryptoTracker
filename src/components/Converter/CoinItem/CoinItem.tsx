@@ -44,7 +44,7 @@ export const CoinItem: FC<CoinItemProps> = memo(({ coin, className }) => {
 		<li className={classnames(classes.coinItemWrapper, className)}>
 			<div
 				onClick={onSelectCoin}
-				role="button"
+				role='button'
 				className={classes.coinItem}
 				tabIndex={0}
 			>

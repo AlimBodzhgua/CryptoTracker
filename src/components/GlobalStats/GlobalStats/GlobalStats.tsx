@@ -35,8 +35,8 @@ export const GlobalStats: FC<StatsProps> = memo(({ className }) => {
 		return (
 			<div className={classes.Stats}>
 				<Message
-					type="error"
-					text="Error fetching global stats, try to reload the page"
+					type='error'
+					text='Error fetching global stats, try to reload the page'
 					withIcon
 				/>
 			</div>

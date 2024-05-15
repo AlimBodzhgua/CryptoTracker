@@ -18,11 +18,11 @@ import {
 
 import { AppImage } from 'components/UI/AppImage/AppImage';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
-import { ProfileCardSkeleton } from './ProfileCardSkeleton';
 import UserDefaultImage from 'assets/userDefaultImage.jpg';
 import ErrorIcon from 'assets/icons/error.svg';
-
 import classnames from 'classnames';
+
+import { ProfileCardSkeleton } from './ProfileCardSkeleton';
 import classes from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -117,7 +117,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 			<AppImage
 				src={user!.imageUrl.length ? user!.imageUrl : UserDefaultImage}
 				className={classes.profileImage}
-				fallback={<Skeleton width="185" height="205" />}
+				fallback={<Skeleton width='185' height='205' />}
 			/>
 
 			<div className={classes.data}>

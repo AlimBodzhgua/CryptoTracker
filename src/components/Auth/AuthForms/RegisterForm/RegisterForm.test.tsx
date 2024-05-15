@@ -18,7 +18,8 @@ describe('RegisterForm', () => {
 		const signIn = screen.getByText('Sign In');
 		expect(signIn).toBeInTheDocument();
 
-		waitFor(() => fireEvent.click(signIn)).then(() => expect(window.location.href).toHaveTextContent('?modal=login'));
+		waitFor(() => fireEvent.click(signIn))
+			.then(() => expect(window.location.href).toHaveTextContent('?modal=login'));
 	});
 
 	test('Error messages on empty fields', () => {
@@ -47,6 +48,7 @@ describe('RegisterForm', () => {
 		fireEvent.change(password, { target: { value: 'user123567' } });
 		expect(email).toHaveValue('user@mail.ru');
 		expect(password).toHaveValue('user123567');
-		waitFor(() => fireEvent.click(screen.getByText('Register'))).then(() => expect(onSuccess).toHaveBeenCalled());
+		waitFor(() => fireEvent.click(screen.getByText('Register')))
+			.then(() => expect(onSuccess).toHaveBeenCalled());
 	});
 });

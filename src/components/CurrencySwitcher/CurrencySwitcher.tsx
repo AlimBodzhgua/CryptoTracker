@@ -23,7 +23,7 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = memo((props) =>
 		<select
 			className={classnames(classes.CurrencySwitcher, className)}
 			onChange={onCurrencySelect}
-			data-testid="currency-switcher"
+			data-testid='currency-switcher'
 		>
 			{Object.values(Currencies).map((currency) => (
 				<option
@@ -35,5 +35,5 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = memo((props) =>
 				</option>
 			))}
 		</select>
-	)
+	);
 });

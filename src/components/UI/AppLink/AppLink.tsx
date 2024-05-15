@@ -9,7 +9,11 @@ export interface AppLinkProps extends NavLinkProps {
 }
 
 export const AppLink: React.FC<AppLinkProps> = memo((props) => {
-	const { children, className, ...otherProps } = props;
+	const {
+		children,
+		className,
+		...otherProps
+	} = props;
 
 	return (
 		<NavLink

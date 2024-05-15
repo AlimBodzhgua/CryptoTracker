@@ -31,7 +31,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
 	if (error) {
 		return (
 			<Message
-				type="error"
+				type='error'
 				text={t(
 					'Error fetching data, try to reload the page, or visiti the page later',
 				)}

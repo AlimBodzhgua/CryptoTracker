@@ -80,7 +80,7 @@ export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
 		<div
 			className={classnames(classes.TriangleSorter, className)}
 			onClick={onToggleSortDirection}
-			role="button"
+			role='button'
 			tabIndex={0}
 		>
 			<span

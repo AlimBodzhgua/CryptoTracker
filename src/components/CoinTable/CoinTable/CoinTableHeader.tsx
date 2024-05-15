@@ -52,12 +52,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 					</div>
 				</th>
 				<th className={classes.colHeader}>
-					<div
-						className={classnames(
-							classes.headerItem,
-							classes.firstColumn,
-						)}
-					>
+					<div className={classes.headerItem}>
 						<span>{t('Name')}</span>
 						<TriangleSorter
 							sortField={SortField.name}
@@ -96,7 +91,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 						/>
 					</div>
 				</th>
-				<th className={classes.colHeader}>
+				<th className={classes.colHeader} colSpan={-1}>
 					<div className={classes.headerItem}>
 						<span>{t('Market cap')}</span>
 						<TriangleSorter

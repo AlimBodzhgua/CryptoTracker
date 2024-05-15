@@ -89,8 +89,8 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
 
 	return (
 		<tr className={classnames(classes.CoinItem, className)}>
-			<th className={classes.rank}>{coin.rank}</th>
-			<th className={classes.bigColumn}>
+			<td className={classes.rank}>{coin.rank}</td>
+			<td className={classes.bigColumn}>
 				<img
 					src={coin.iconUrl}
 					className={classes.icon}
@@ -98,9 +98,9 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
 				/>
 				<div className={classes.name}>{coin.name}</div>
 				<div className={classes.symbol}>{coin.symbol}</div>
-			</th>
-			<th>{formatter.format(Number(coin.price))}</th>
-			<th
+			</td>
+			<td>{formatter.format(Number(coin.price))}</td>
+			<td
 				className={
 					coin.change.startsWith('-')
 						? classes.negative
@@ -108,16 +108,16 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
 				}
 			>
 				{coin.change}%
-			</th>
-			<th>{formatter.format(Number(coin['24hVolume']))}</th>
-			<th>{formatter.format(Number(coin.marketCap))}</th>
-			<th>
+			</td>
+			<td>{formatter.format(Number(coin['24hVolume']))}</td>
+			<td>{formatter.format(Number(coin.marketCap))}</td>
+			<td>
 				{isLoading ? (
 					<LoaderRing className={classes.loader} />
 				) : (
 					renderWatchListAction()
 				)}
-			</th>
+			</td>
 		</tr>
 	);
 });

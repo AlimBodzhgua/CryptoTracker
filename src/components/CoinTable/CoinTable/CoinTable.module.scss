@@ -35,22 +35,18 @@
 	padding: 15px 0;
 	border-bottom: 1px solid var(--table-border-color);
 	color: grey;
-
 }
 
 .colHeader:nth-child(1) {
 	border-right: 1px solid black;
+	justify-content: start;
+	padding-left: 12px;
 }
 
 .headerItem {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.firstColumn {
-	justify-content: start;
-	padding-left: 12px;
 }
 
 .errorMsg {

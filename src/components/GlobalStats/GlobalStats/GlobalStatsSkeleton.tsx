@@ -6,9 +6,8 @@ import classes from './GlobalStats.module.scss';
 export const GlobalStatsSkeleton: FC = memo(() => {
 	const { t } = useTranslation();
 
-	const renderListSkeletons = useCallback(() => Array(3)
-		.fill(0)
-		.map((_, index) => (
+	const renderListSkeletons = useCallback(() => (
+		Array(3).fill(0).map((_, index) => (
 			<Skeleton
 				// eslint-disable-next-line
 				key={index}
@@ -16,8 +15,8 @@ export const GlobalStatsSkeleton: FC = memo(() => {
 				height='32px'
 				radius='6px'
 				className={classes.listSkeleton}
-			/>),
-	// eslint-disable-next-line
+			/>
+		))
 	), []);
 
 	return (

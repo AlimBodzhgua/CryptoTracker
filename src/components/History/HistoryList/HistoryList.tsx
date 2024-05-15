@@ -30,18 +30,17 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 		dispatch(clearHistory());
 	}, [dispatch]);
 
-	const renderListSkeleton = useCallback(() => Array(3)
-		.fill(0)
-		.map((_, index) => (
+	const renderListSkeleton = useCallback(() => (
+		Array(3).fill(0).map((_, index) => (
 			<Skeleton
-				width='100%'
-				height='50px'
-				radius='4px'
-				// eslint-disable-next-line react/no-array-index-key
+				// eslint-disable-next-line
 				key={index}
-				className={classes.skeletonItem}
-			/>),
-	// eslint-disable-next-line
+				width='240px'
+				height='32px'
+				radius='6px'
+				className={classes.listSkeleton}
+			/>
+		))
 	), []);
 
 	const renderHistoryContent = useCallback(() => {

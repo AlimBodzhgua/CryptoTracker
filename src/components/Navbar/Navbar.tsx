@@ -10,15 +10,12 @@ interface NavbarProps {
 	className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = memo(({ className }) => {
-
-    return (
-        <nav className={classnames(classes.Navbar, className)}>
-            <div className={classes.actions}>
-                <AuthActionsMenu />
-                <CurrencySwitcher />
-                <LangSwitcher />
-            </div>
-        </nav>
-    );
-});
+export const Navbar: FC<NavbarProps> = memo(({ className }) => (
+	<nav className={classnames(classes.Navbar, className)}>
+		<div className={classes.actions}>
+			<AuthActionsMenu />
+			<CurrencySwitcher />
+			<LangSwitcher />
+		</div>
+	</nav>
+));

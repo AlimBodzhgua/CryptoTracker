@@ -12,25 +12,19 @@ interface SidebarItemProps {
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = memo((props) => {
-    const {
-        item,
-        collapsed,
-        className,
-    } = props;
-    const { t } = useTranslation();
+	const { item, collapsed, className } = props;
+	const { t } = useTranslation();
 
-    return (
-        <AppLink
-            to={item.path}
-            className={classnames(
-                classes.SidebarItem,
-                className,
-                {[classes.collapsed]: collapsed}
-            )}
-            data-testid='sidebar-item'
-        >
-            <item.Icon className={classes.icon} />
-            <div className={classes.linkText}>{t(`${item.text}`)}</div>
-        </AppLink>
-    );
+	return (
+		<AppLink
+			to={item.path}
+			className={classnames(classes.SidebarItem, className, {
+				[classes.collapsed]: collapsed,
+			})}
+			data-testid="sidebar-item"
+		>
+			<item.Icon className={classes.icon} />
+			<div className={classes.linkText}>{t(`${item.text}`)}</div>
+		</AppLink>
+	);
 });

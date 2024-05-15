@@ -72,6 +72,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
         <form
             onSubmit={(handleSubmit(onSubmit))}
             className={classnames(classes.RegisterForm, className)}
+            data-testid='register-form'
         >
             <h2 className={classes.title}>{title}</h2>
             <Controller

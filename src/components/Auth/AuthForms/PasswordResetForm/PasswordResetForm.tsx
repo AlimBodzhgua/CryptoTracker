@@ -57,6 +57,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
         <form
             className={classnames(classes.PasswordResetForm, className)}
             onSubmit={handleSubmit(onSubmit)}
+            data-testid='reset-form'
         >
             <h2 className={classes.title}>{title}</h2>
             <Input

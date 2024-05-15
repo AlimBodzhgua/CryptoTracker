@@ -1,7 +1,5 @@
 import { FC, useCallback, useEffect, useState, memo } from 'react';
 import { Button, ButtonTheme } from 'components/UI/Button/Button';
-import { RegisterModal } from '../AuthModals/RegisterModal/RegisterModal';
-import { LoginModal } from '../AuthModals/LoginModal/LoginModal';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -9,13 +7,15 @@ import { selectUser } from 'store/selectors/userSelectors';
 import { signOutUser } from 'store/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import classnames from 'classnames';
+import { LoginModal } from '../AuthModals/LoginModal/LoginModal';
+import { RegisterModal } from '../AuthModals/RegisterModal/RegisterModal';
 import classes from './AuthActionsMenu.module.scss';
 
 interface AuthActionsMenuProps {
 	className?: string;
 }
 
-export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({className}) => {
+export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) => {
 	const { t } = useTranslation();
 	const [isRegisterModal, setIsRegisterModal] = useState<boolean>(false);
 	const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
@@ -26,7 +26,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({className}) => {
 
 	const onCloseRegisterModal = useCallback(() => {
 		setIsRegisterModal(false);
-		setSearchParams("");
+		setSearchParams('');
 	}, []);
 
 	const onOpenRegisterModal = useCallback(() => {
@@ -41,7 +41,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({className}) => {
 
 	const onCloseLoginModal = useCallback(() => {
 		setIsLoginModal(false);
-		setSearchParams("");
+		setSearchParams('');
 	}, []);
 
 	useEffect(() => {
@@ -56,7 +56,9 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({className}) => {
 	}, [searchParams]);
 
 	const onLogout = useCallback(async () => {
-		const confirm = window.confirm(t('Are you sure you want to logout?'));
+		const confirm = window.confirm(
+			t('Are you sure you want to logout?'),
+		);
 
 		if (confirm) {
 			const { meta } = await dispatch(signOutUser());

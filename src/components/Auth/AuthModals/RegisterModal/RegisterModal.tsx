@@ -14,25 +14,18 @@ interface RegisterModalProps {
 }
 
 export const RegisterModal: FC<RegisterModalProps> = (props) => {
-    const {
-        isOpen,
-        onClose,
-        className,
-    } = props;
-    const { t } = useTranslation();
+	const { isOpen, onClose, className } = props;
+	const { t } = useTranslation();
 
-    return (
-        <Modal
-            onClose={onClose}
-            isOpen={isOpen}
-            className={classnames(classes.RegisterModal, className)}
-        >
-            <Suspense fallback={<LoaderRing />}>
-                <RegisterFormAsync
-                    onSuccess={onClose}
-                    title={t('Register')}
-                />
-            </Suspense>
-        </Modal>
-    );
+	return (
+		<Modal
+			onClose={onClose}
+			isOpen={isOpen}
+			className={classnames(classes.RegisterModal, className)}
+		>
+			<Suspense fallback={<LoaderRing />}>
+				<RegisterFormAsync onSuccess={onClose} title={t('Register')} />
+			</Suspense>
+		</Modal>
+	);
 };

@@ -13,45 +13,44 @@ interface PriceNotationSelectorProps {
 }
 
 export const NotationList = {
-    compact: 'compact',
-    standard: 'standard',
-    scientific: 'scientific',
-    engineering: 'engineering',
+	compact: 'compact',
+	standard: 'standard',
+	scientific: 'scientific',
+	engineering: 'engineering',
 } as const;
 
 export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({ className }) => {
-    const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-    const priceNotation = useAppSelector(selectCoinsPriceNotation);
+	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
+	const priceNotation = useAppSelector(selectCoinsPriceNotation);
 
-    const onNotationSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedNotation = e.target.value as NotationType;
-        dispatch(coinsActions.setPriceNotation(selectedNotation));
-    }, [dispatch]);
+	const onNotationSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+		const selectedNotation = e.target.value as NotationType;
+		dispatch(coinsActions.setPriceNotation(selectedNotation));
+	}, [dispatch]);
 
-    return (
-        <select
-            className={classnames(classes.PriceNotationSelector, className)}
-            onChange={onNotationSelect}
-            value={priceNotation === undefined ? 'placeholder' : priceNotation}
-            data-testid='price-selector'
-
-        >
-            <option
-                value='placeholder'
-                hidden
-            >
-                {t('Price Notation')}
-            </option>
-            {Object.values(NotationList).map((notation) => (
-                <option
-                    key={notation}
-                    value={notation}
-                    className={classes.selectorOption}
-                >
-                    {notation}
-                </option>
-            ))}
-        </select>
-    );
+	return (
+		<select
+			className={classnames(classes.PriceNotationSelector, className)}
+			onChange={onNotationSelect}
+			value={priceNotation === undefined ? 'placeholder' : priceNotation}
+			data-testid='price-selector'
+		>
+			<option
+				value='placeholder'
+				hidden
+			>
+				{t('Price Notation')}
+			</option>
+			{Object.values(NotationList).map((notation) => (
+				<option
+					key={notation}
+					value={notation}
+					className={classes.selectorOption}
+				>
+					{notation}
+				</option>
+			))}
+		</select>
+	);
 });

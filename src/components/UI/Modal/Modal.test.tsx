@@ -2,15 +2,14 @@ import { fireEvent, screen } from '@testing-library/react';
 import { componentRender } from 'lib/tests/componentRender';
 import { Modal } from './Modal';
 
-
 describe('Modal', () => {
 	test('Component should render', () => {
 		componentRender(
 			<Modal
-				isOpen={true}
+				isOpen
 				onClose={jest.fn()}
 				children={<div>children</div>}
-			/>
+			/>,
 		);
 		expect(screen.getByTestId('modal')).toBeInTheDocument();
 	});
@@ -18,10 +17,10 @@ describe('Modal', () => {
 	test('Modal should be opened', () => {
 		componentRender(
 			<Modal
-				isOpen={true}
+				isOpen
 				onClose={jest.fn()}
 				children={<div>children</div>}
-			/>
+			/>,
 		);
 		expect(screen.getByTestId('modal')).toHaveClass('opened');
 	});
@@ -30,10 +29,10 @@ describe('Modal', () => {
 		const onClose = jest.fn();
 		componentRender(
 			<Modal
-				isOpen={true}
+				isOpen
 				onClose={onClose}
 				children={<div>children</div>}
-			/>
+			/>,
 		);
 		fireEvent.click(screen.getByTestId('modal'));
 		expect(onClose).toHaveBeenCalled();
@@ -43,17 +42,17 @@ describe('Modal', () => {
 		const onClose = jest.fn();
 		componentRender(
 			<Modal
-				isOpen={true}
+				isOpen
 				onClose={onClose}
 				children={<div>children</div>}
-			/>
+			/>,
 		);
 		fireEvent.keyDown(screen.getByTestId('modal'), {
-			key: "Escape",
-			code: "Escape",
+			key: 'Escape',
+			code: 'Escape',
 			keyCode: 27,
-			charCode: 27
-		})
+			charCode: 27,
+		});
 		expect(onClose).toHaveBeenCalled();
 	});
-})
+});

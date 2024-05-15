@@ -4,9 +4,8 @@ import {
 	useLayoutEffect,
 	useState,
 	ReactElement,
-    ImgHTMLAttributes,
+	ImgHTMLAttributes,
 } from 'react';
-
 
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 	src: string;
@@ -32,28 +31,24 @@ export const AppImage: FC<AppImageProps> = memo((props) => {
 	useLayoutEffect(() => {
 		const img = new Image();
 		img.src = src ?? '';
-		
+
 		img.onload = () => {
 			setIsLoading(false);
-		}
+		};
 
 		img.onerror = () => {
 			setIsLoading(false);
 			setHasError(true);
-		}
-
-	}, [])
-
+		};
+	}, []);
 
 	if (isLoading && fallback) {
 		return fallback;
 	}
 
-
 	if (hasError && errorFallback) {
 		return errorFallback;
 	}
-
 
 	return (
 		<img
@@ -62,5 +57,5 @@ export const AppImage: FC<AppImageProps> = memo((props) => {
 			className={className}
 			{...otherProps}
 		/>
-	)
-})
+	);
+});

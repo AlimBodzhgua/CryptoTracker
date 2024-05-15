@@ -10,23 +10,18 @@ interface SkeletonProps {
 }
 
 export const Skeleton: React.FC<SkeletonProps> = (props) => {
-    const {
-        width,
-        height,
-        radius,
-        className,
-    } = props;
+	const { width, height, radius, className } = props;
 
-    const style: CSSProperties = {
-        width,
-        height,
-        borderRadius: radius,
-    };
+	const style: CSSProperties = {
+		width,
+		height,
+		borderRadius: radius,
+	};
 
-    return (
-        <div
-            className={classnames(classes.Skeleton, className)}
-            style={style}
-        />
-    );
+	return (
+		<div
+			className={classnames(classes.Skeleton, className)}
+			style={style}
+		/>
+	);
 };

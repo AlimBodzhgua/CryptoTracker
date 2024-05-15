@@ -1,6 +1,4 @@
-import {
-    FC, ReactNode, useCallback, useEffect,
-} from 'react';
+import { FC, ReactNode, useCallback, useEffect } from 'react';
 import classnames from 'classnames';
 import { Portal } from '../Portal/Portal';
 
@@ -14,59 +12,59 @@ interface ModalProps {
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-    const {
-        isOpen,
-        onClose,
-        className,
-        children,
-    } = props;
+	const { isOpen, onClose, className, children } = props;
 
-    const closeHandler = useCallback(() => {
-        if (onClose) {
-            onClose();
-        }
-    }, [onClose]);
+	const closeHandler = useCallback(() => {
+		if (onClose) {
+			onClose();
+		}
+	}, [onClose]);
 
-    const onKeydown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            closeHandler();
-        }
-    }, []);
+	const onKeydown = useCallback((e: KeyboardEvent) => {
+		if (e.key === 'Escape') {
+			closeHandler();
+		}
+	}, []);
 
-    useEffect(() => {
-        if (isOpen) {
-            window.addEventListener('keydown', onKeydown);
-        }
+	useEffect(() => {
+		if (isOpen) {
+			window.addEventListener('keydown', onKeydown);
+		}
 
-        return () => window.removeEventListener('keydown', onKeydown);
-    }, [isOpen]);
+		return () => window.removeEventListener('keydown', onKeydown);
+	}, [isOpen]);
 
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
+	const onContentClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+	};
 
-    const onBackgroundClick = () => {
-    	closeHandler();
-    };
+	const onBackgroundClick = () => {
+		closeHandler();
+	};
 
-    return (
-        <Portal>
-            <div
-                className={classnames(classes.Modal, className, { [classes.opened]: isOpen }, 'app_modal')}
-                onClick={onBackgroundClick}
-                role='button'
-                tabIndex={-1}
-                data-testid='modal'
-            >
-                <div
-                    className={classes.content}
-                    onClick={onContentClick}
-                    role='button'
-                    tabIndex={0}
-                >
-                    {children}
-                </div>
-            </div>
-        </Portal>
-    );
+	return (
+		<Portal>
+			<div
+				className={classnames(
+					classes.Modal,
+					className,
+					{ [classes.opened]: isOpen },
+					'app_modal',
+				)}
+				onClick={onBackgroundClick}
+				role="button"
+				tabIndex={-1}
+				data-testid="modal"
+			>
+				<div
+					className={classes.content}
+					onClick={onContentClick}
+					role="button"
+					tabIndex={0}
+				>
+					{children}
+				</div>
+			</div>
+		</Portal>
+	);
 };

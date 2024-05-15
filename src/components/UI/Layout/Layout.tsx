@@ -5,11 +5,11 @@ import { Navbar } from 'components/Navbar/Navbar';
 import classes from './Layout.module.scss';
 
 export const Layout: React.FC = () => (
-    <div className={classes.Layout}>
-        <Sidebar />
-        <div className={classes.LayoutInner}>
-            <Navbar />
-            <Outlet />
-        </div>
-    </div>
+	<div className={classes.Layout}>
+		<Sidebar />
+		<div className={classes.LayoutInner}>
+			<Navbar />
+			<Outlet />
+		</div>
+	</div>
 );

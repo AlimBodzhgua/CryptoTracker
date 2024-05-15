@@ -9,9 +9,9 @@ interface ConverterPageProps {
 }
 
 const ConverterPage: FC<ConverterPageProps> = memo(({ className }) => (
-    <Page className={classnames(classes.ConverterPage, className)}>
-        <Converter />
-    </Page>
+	<Page className={classnames(classes.ConverterPage, className)}>
+		<Converter />
+	</Page>
 ));
 
 export default ConverterPage;

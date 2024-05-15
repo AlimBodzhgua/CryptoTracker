@@ -12,18 +12,18 @@ interface MainPageProps {
 }
 
 const MainPage: FC<MainPageProps> = ({ className }) => {
-    const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchGlobalStats());
-        }
-    }, [dispatch]);
+	useEffect(() => {
+		if (__PROJECT__ !== 'storybook') {
+			dispatch(fetchGlobalStats());
+		}
+	}, [dispatch]);
 
-    return (
-        <Page className={classnames(classes.MainPage, className)}>
-            <GlobalStats />
-        </Page>
+	return (
+		<Page className={classnames(classes.MainPage, className)}>
+			<GlobalStats />
+		</Page>
  	);
 };
 

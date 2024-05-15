@@ -13,22 +13,22 @@ interface WatchListPageProps {
 }
 
 const WatchListPage: FC<WatchListPageProps> = ({ className }) => {
-    const dispatch = useAppDispatch();
-    const userMounted = useAppSelector(selectUserMounted);
+	const dispatch = useAppDispatch();
+	const userMounted = useAppSelector(selectUserMounted);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            if (userMounted) {
-                dispatch(fetchWatchListCoins());
-            }
-        }
-    }, [dispatch, userMounted]);
+	useEffect(() => {
+		if (__PROJECT__ !== 'storybook') {
+			if (userMounted) {
+				dispatch(fetchWatchListCoins());
+			}
+		}
+	}, [dispatch, userMounted]);
 
-    return (
-        <Page className={classnames(classes.WatchListPage, className)}>
-            <WatchList />
-        </Page>
-    );
+	return (
+		<Page className={classnames(classes.WatchListPage, className)}>
+			<WatchList />
+		</Page>
+	);
 };
 
 export default WatchListPage;

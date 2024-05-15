@@ -3,7 +3,7 @@ import { CoinTable } from 'components/CoinTable';
 import { Page } from 'components/UI/Page/Page';
 import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { fetchCoins, fetchNextCoins, resetCoinsSettings } from 'store/actions/coinsActions';
+import { fetchCoins, fetchNextCoins, resetCoinsSettings} from 'store/actions/coinsActions';
 import { TagsSelector } from 'components/TagsSelector/TagsSelector';
 import { PriceNotationSelector } from 'components/PriceNotationSelector/PriceNotationSelector';
 import { Button } from 'components/UI/Button/Button';
@@ -20,46 +20,46 @@ interface CoinsPageProps {
 }
 
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
-    const dispatch = useAppDispatch();
-    const page = useAppSelector(selectCoinsPageNumber);
-    const coins = useAppSelector(selectCoins);
-    const [_, setSearchParams] = useSearchParams();
+	const dispatch = useAppDispatch();
+	const page = useAppSelector(selectCoinsPageNumber);
+	const coins = useAppSelector(selectCoins);
+	const [_, setSearchParams] = useSearchParams();
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            (!coins.length) && dispatch(fetchCoins({ page }));
-        }
-    }, [dispatch]);
+	useEffect(() => {
+		if (__PROJECT__ !== 'storybook') {
+			!coins.length && dispatch(fetchCoins({ page }));
+		}
+	}, [dispatch]);
 
-    const loadNextCoins = useCallback(() => {
-        dispatch(fetchNextCoins());
-    }, [dispatch]);
+	const loadNextCoins = useCallback(() => {
+		dispatch(fetchNextCoins());
+	}, [dispatch]);
 
-    const resetSettings = useCallback(() => {
-        dispatch(resetCoinsSettings(setSearchParams));
-    }, [dispatch]);
+	const resetSettings = useCallback(() => {
+		dispatch(resetCoinsSettings(setSearchParams));
+	}, [dispatch]);
 
-    return (
-        <Page
-            className={classnames(classes.CoinsPage, className)}
-            onScrollEnd={loadNextCoins}
-            withAutoScrollTopBtn
-        >
-            <div className={classes.header}>
-                <CoinsSearchBar />
-                <div className={classes.actions}>
-                    <TagsSelector />
-                    <PriceNotationSelector />
-                    <Button
-                        className={classes.resetBtn}
-                        onClick={resetSettings}
-                    >
-                        <ResetIcon className={classes.resetIcon} />
-                    </Button>
-                </div>
-            </div>
-            <CoinTable />
-        </Page>
-    );
+	return (
+		<Page
+			className={classnames(classes.CoinsPage, className)}
+			onScrollEnd={loadNextCoins}
+			withAutoScrollTopBtn
+		>
+			<div className={classes.header}>
+				<CoinsSearchBar />
+				<div className={classes.actions}>
+					<TagsSelector />
+					<PriceNotationSelector />
+					<Button
+						className={classes.resetBtn}
+						onClick={resetSettings}
+					>
+						<ResetIcon className={classes.resetIcon} />
+					</Button>
+				</div>
+			</div>
+			<CoinTable />
+		</Page>
+	);
 };
 export default CoinsPage;

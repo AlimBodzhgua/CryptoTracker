@@ -10,10 +10,10 @@ interface ProfilePageProps {
 }
 
 const ProfilePage: React.FC<ProfilePageProps> = ({ className }) => (
-    <Page className={classnames(classes.ProfilePage, className)}>
-        <h1 className={classes.header}>Profile</h1>
-        <ProfileCard />
-    </Page>
+	<Page className={classnames(classes.ProfilePage, className)}>
+		<h1 className={classes.header}>Profile</h1>
+		<ProfileCard />
+	</Page>
 );
 
 export default ProfilePage;

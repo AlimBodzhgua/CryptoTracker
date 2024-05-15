@@ -1,9 +1,9 @@
 import { FC, Suspense } from 'react';
 import { Modal } from 'components/UI/Modal/Modal';
 import { LoaderRing } from 'components/UI/LoaderRing/LoaderRing';
+import classnames from 'classnames';
 import { HistoryListAsync } from '../HistoryList/HistoryList.async';
 
-import classnames from 'classnames';
 import classes from './HistoryModal.module.scss';
 
 interface HistoryModalProps {
@@ -13,21 +13,21 @@ interface HistoryModalProps {
 }
 
 export const HistoryModal: FC<HistoryModalProps> = (props) => {
-    const {
-        isOpen,
-        onClose,
-        className,
-    } = props;
+	const {
+		isOpen,
+		onClose,
+		className,
+	} = props;
 
-    return (
-        <Modal
-            className={classnames(classes.HistoryModal, className)}
-            isOpen={isOpen}
-            onClose={onClose}
-        >
-            <Suspense fallback={<LoaderRing />}>
-                <HistoryListAsync />
-            </Suspense>
-        </Modal>
-    );
+	return (
+		<Modal
+			className={classnames(classes.HistoryModal, className)}
+			isOpen={isOpen}
+			onClose={onClose}
+		>
+			<Suspense fallback={<LoaderRing />}>
+				<HistoryListAsync />
+			</Suspense>
+		</Modal>
+	);
 };

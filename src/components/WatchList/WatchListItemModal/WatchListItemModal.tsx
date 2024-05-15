@@ -13,20 +13,20 @@ interface WatchListItemModalProps {
 }
 
 export const WatchListItemModal: FC<WatchListItemModalProps> = (props) => {
-    const {
-        coin,
-        isOpen,
-        onClose,
-        className,
-    } = props;
+	const {
+		coin,
+		isOpen,
+		onClose,
+		className,
+	} = props;
 
-    return (
-        <Modal
-            onClose={onClose}
-            isOpen={isOpen}
-            className={classnames(className)}
-        >
-            <WatchListItemOverview coin={coin} />
-        </Modal>
-    );
+	return (
+		<Modal
+			onClose={onClose}
+			isOpen={isOpen}
+			className={classnames(className)}
+		>
+			<WatchListItemOverview coin={coin} />
+		</Modal>
+	);
 };

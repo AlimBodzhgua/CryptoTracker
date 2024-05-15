@@ -2,7 +2,6 @@ import { fireEvent, screen } from '@testing-library/react';
 import { componentRender } from 'lib/tests/componentRender';
 import { LangSwitcher } from './LangSwitcher';
 
-
 describe('LangSwitcher', () => {
 	test('Component should render', () => {
 		componentRender(<LangSwitcher />);
@@ -14,6 +13,6 @@ describe('LangSwitcher', () => {
 		fireEvent.click(screen.getByTestId('switch-button'));
 
 		expect(screen.getByText(/ru/i)).toHaveClass('activeRu');
-		expect(screen.getByText(/en/i)).toHaveClass('inactiveEn');		
+		expect(screen.getByText(/en/i)).toHaveClass('inactiveEn');
 	});
-})
+});

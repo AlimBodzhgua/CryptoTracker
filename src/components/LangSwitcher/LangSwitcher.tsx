@@ -11,39 +11,43 @@ interface LangSwitcherProps {
 }
 
 export const LangSwitcher: FC<LangSwitcherProps> = memo(({ className }) => {
-    const { i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
-    const toggleLanguage = () => {
-        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
-    };
+	const toggleLanguage = () => {
+		i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+	};
 
-    return (
-        <Button
-            onClick={toggleLanguage}
-            className={classnames(classes.LangSwitcher, className)}
-            theme={ButtonTheme.clear}
-            data-testid='switch-button'
-        >
-            <GlobeIcon className={classes.icon} />
-            <div className={classes.languages}>
-                <span
-                    className={classnames(
-                        classes.language,
-                        i18n.language === 'ru' ? classes.activeRu : classes.inactiveRu,
-                    )}
-                >
-                    Ru
-                </span>
-                <span className={classes.separator} />
-                <span
-                    className={classnames(
-                        classes.language,
-                        i18n.language === 'en' ? classes.activeEn : classes.inactiveEn,
-                    )}
-                >
-                    En
-                </span>
-            </div>
-        </Button>
-    );
+	return (
+		<Button
+			onClick={toggleLanguage}
+			className={classnames(classes.LangSwitcher, className)}
+			theme={ButtonTheme.clear}
+			data-testid="switch-button"
+		>
+			<GlobeIcon className={classes.icon} />
+			<div className={classes.languages}>
+				<span
+					className={classnames(
+						classes.language,
+						i18n.language === 'ru'
+							? classes.activeRu
+							: classes.inactiveRu,
+					)}
+				>
+					Ru
+				</span>
+				<span className={classes.separator} />
+				<span
+					className={classnames(
+						classes.language,
+						i18n.language === 'en'
+							? classes.activeEn
+							: classes.inactiveEn,
+					)}
+				>
+					En
+				</span>
+			</div>
+		</Button>
+	);
 });

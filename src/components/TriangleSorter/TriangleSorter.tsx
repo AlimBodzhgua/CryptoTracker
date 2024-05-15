@@ -1,5 +1,5 @@
 import {
-    FC, useEffect, useState, memo, useMemo,
+	FC, useEffect, useState, memo, useMemo,
 } from 'react';
 import { FieldNameType, SortDirectionType } from 'types/coin';
 import { coinsSorter } from 'utils/utils';
@@ -19,72 +19,86 @@ interface TriangleSorterProps {
 }
 
 const SortDirection = {
-    ascending: 'ascending',
-    descending: 'descending',
+	ascending: 'ascending',
+	descending: 'descending',
 } as const;
 
 export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
-    const {
-        sortField,
-        activeTriangle,
-        setActiveTriangle,
-        className,
-    } = props;
-    const [sortDirection, setSortDirection] = useState<SortDirectionType>(SortDirection.ascending);
-    const [searchParams, setSearchParams] = useSearchParams();
-    const coins = useAppSelector(selectCoins);
-    const dispatch = useAppDispatch();
+	const {
+		sortField,
+		activeTriangle,
+		setActiveTriangle,
+		className,
+	} = props;
+	const [sortDirection, setSortDirection] = useState<SortDirectionType>(
+		SortDirection.ascending,
+	);
+	const [searchParams, setSearchParams] = useSearchParams();
+	const coins = useAppSelector(selectCoins);
+	const dispatch = useAppDispatch();
 
-    const isActive = useMemo(() => (
-        activeTriangle === sortField
-    ), [activeTriangle]);
+	const isActive = useMemo(
+		() => activeTriangle === sortField,
+		[activeTriangle],
+	);
 
-    useEffect(() => {
-        if (searchParams.has('by')) {
-            const sortValues: string[] = Object.values(SortDirection);
-            const paramSortValue = searchParams.get('by');
+	useEffect(() => {
+		if (searchParams.has('by')) {
+			const sortValues: string[] = Object.values(SortDirection);
+			const paramSortValue = searchParams.get('by');
 
-            if (sortValues.includes(paramSortValue!)) {
-                setSortDirection(paramSortValue as SortDirectionType);
-            } else {
-                throw Error('Such url does not exist');
-            }
-        }
-    }, []);
+			if (sortValues.includes(paramSortValue!)) {
+				setSortDirection(paramSortValue as SortDirectionType);
+			} else {
+				throw Error('Such url does not exist');
+			}
+		}
+	}, []);
 
-    useEffect(() => {
-        if (isActive) {
-            const sortedCoins = coinsSorter(coins, sortDirection, sortField);
-            dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
-            const searchParams = new URLSearchParams({ field: sortField, by: sortDirection });
-            setSearchParams(searchParams);
-        }
-    }, [sortDirection, isActive]);
+	useEffect(() => {
+		if (isActive) {
+			const sortedCoins = coinsSorter(coins, sortDirection, sortField);
+			dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
+			const searchParams = new URLSearchParams({
+				field: sortField,
+				by: sortDirection,
+			});
+			setSearchParams(searchParams);
+		}
+	}, [sortDirection, isActive]);
 
-    const onToggleSortDirection = () => {
-        setActiveTriangle(sortField);
-        setSortDirection(sortDirection === SortDirection.ascending
-            ? SortDirection.descending
-            : SortDirection.ascending);
-    };
+	const onToggleSortDirection = () => {
+		setActiveTriangle(sortField);
+		setSortDirection(
+			sortDirection === SortDirection.ascending
+				? SortDirection.descending
+				: SortDirection.ascending,
+		);
+	};
 
-    return (
-        <div
-            className={classnames(classes.TriangleSorter, className)}
-            onClick={onToggleSortDirection}
-            role='button'
-            tabIndex={0}
-        >
-            <span className={classnames(
-                classes.topAngle,
-                sortDirection === SortDirection.descending && isActive ? classes.active : undefined,
-            )}
-            />
-            <span className={classnames(
-                classes.botAngle,
-                sortDirection === SortDirection.ascending && isActive ? classes.active : undefined,
-            )}
-            />
-        </div>
-    );
+	return (
+		<div
+			className={classnames(classes.TriangleSorter, className)}
+			onClick={onToggleSortDirection}
+			role="button"
+			tabIndex={0}
+		>
+			<span
+				className={classnames(
+					classes.topAngle,
+					sortDirection === SortDirection.descending && isActive
+						? classes.active
+						: undefined,
+				)}
+			/>
+			<span
+				className={classnames(
+					classes.botAngle,
+					sortDirection === SortDirection.ascending && isActive
+						? classes.active
+						: undefined,
+				)}
+			/>
+		</div>
+	);
 });

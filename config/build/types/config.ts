@@ -1,6 +1,6 @@
-export type BuildMode = "production" | "development";
+export type BuildMode = 'production' | 'development';
 
-export type projectType = "frontend" | "storybook";
+export type projectType = 'frontend' | 'storybook';
 
 export interface BuildPaths {
     entry: string;

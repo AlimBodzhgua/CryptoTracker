@@ -7,39 +7,39 @@ import { SuspenseDecorator } from '../../src/config/storybook/SuspenseDecorator'
 import '../../src/config/i18n/i18n';
 
 const preview: Preview = {
-    parameters: {
-        controls: {
-            matchers: {
-                color: /(background|color)$/i,
-                date: /Date$/i,
-            },
-        },
-    },
-    globalTypes: {
-        locale: {
-            name: 'locale',
-            description: 'Internationalization locale',
-            toolbar: {
-                icon: 'globe',
-                items: [
-                    { value: 'en', title: 'English' },
-                    { value: 'ru', title: 'Russian' },
-                ],
-                showName: true,
-            },
-        },
-    },
-    decorators: [
-        BrowserDecorator,
-        StyleDecorator,
-        I18nDecorator,
-        SuspenseDecorator,
-        StoreDecorator({
-            user: {},
-            currency: {},
-            coins: {},
-        }),
-    ],
+	parameters: {
+		controls: {
+			matchers: {
+				color: /(background|color)$/i,
+				date: /Date$/i,
+			},
+		},
+	},
+	globalTypes: {
+		locale: {
+			name: 'locale',
+			description: 'Internationalization locale',
+			toolbar: {
+				icon: 'globe',
+				items: [
+					{ value: 'en', title: 'English' },
+					{ value: 'ru', title: 'Russian' },
+				],
+				showName: true,
+			},
+		},
+	},
+	decorators: [
+		BrowserDecorator,
+		StyleDecorator,
+		I18nDecorator,
+		SuspenseDecorator,
+		StoreDecorator({
+			user: {},
+			currency: {},
+			coins: {},
+		}),
+	],
 };
 
 export default preview;

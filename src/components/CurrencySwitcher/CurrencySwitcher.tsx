@@ -11,29 +11,29 @@ interface CurrencySwitcherProps {
 }
 
 export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = memo((props) => {
-    const { className } = props;
-    const dispatch = useAppDispatch();
+	const { className } = props;
+	const dispatch = useAppDispatch();
 
-    const onCurrencySelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-        const targetCurrency = e.target.value as CurrencyType;
-        dispatch(currencyActions.setTargetCurrency(targetCurrency));
-    }, [dispatch]);
+	const onCurrencySelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+		const targetCurrency = e.target.value as CurrencyType;
+		dispatch(currencyActions.setTargetCurrency(targetCurrency));
+	}, [dispatch]);
 
-    return (
-        <select
-            className={classnames(classes.CurrencySwitcher, className)}
-            onChange={onCurrencySelect}
-            data-testid='currency-switcher'
-        >
-            {Object.values(Currencies).map((currency) => (
-                <option
-                    value={currency}
-                    className={classes.CurrencyOption}
-                    key={currency}
-                >
-                    {currency}
-                </option>
-            ))}
-        </select>
-    );
+	return (
+		<select
+			className={classnames(classes.CurrencySwitcher, className)}
+			onChange={onCurrencySelect}
+			data-testid="currency-switcher"
+		>
+			{Object.values(Currencies).map((currency) => (
+				<option
+					value={currency}
+					className={classes.CurrencyOption}
+					key={currency}
+				>
+					{currency}
+				</option>
+			))}
+		</select>
+	)
 });

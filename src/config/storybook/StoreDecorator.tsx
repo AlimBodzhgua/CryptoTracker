@@ -5,11 +5,11 @@ import { StateSchema } from 'store/config/StateSchema';
 import { createReduxStore } from '../../store/config/store';
 
 export const StoreDecorator = (state: DeepPartial<StateSchema>): Decorator => {
-    const store = createReduxStore(state as StateSchema);
+	const store = createReduxStore(state as StateSchema);
 
-    return (Story) => (
-        <Provider store={store}>
-            <Story />
-        </Provider>
-    );
+	return (Story) => (
+		<Provider store={store}>
+			<Story />
+		</Provider>
+	);
 };

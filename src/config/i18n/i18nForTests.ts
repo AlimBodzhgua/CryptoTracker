@@ -2,13 +2,13 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 i18n
-    .use(initReactI18next)
-    .init({
-        lng: 'en',
-        fallbackLng: 'en',
-        debug: false,
+	.use(initReactI18next)
+	.init({
+		lng: 'en',
+		fallbackLng: 'en',
+		debug: false,
 
-        resources: { en: { translationsNS: {} } },
-    });
+		resources: { en: { translationsNS: {} } },
+	});
 
 export default i18n;

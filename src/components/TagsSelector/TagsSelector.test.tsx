@@ -1,8 +1,6 @@
 import { screen } from '@testing-library/react';
 import { componentRender } from 'lib/tests/componentRender';
-import { TagsSelector } from './TagsSelector';
-import { TagList } from './TagsSelector';
-
+import { TagsSelector, TagList } from './TagsSelector';
 
 describe('TagsSelector', () => {
 	test('Component should render', () => {
@@ -15,6 +13,6 @@ describe('TagsSelector', () => {
 
 		Object.values(TagList).forEach((tag) => {
 			expect(screen.getByText(tag)).toBeInTheDocument();
-		})
+		});
 	});
-})
+});

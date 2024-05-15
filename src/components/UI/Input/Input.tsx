@@ -36,13 +36,13 @@ export const Input = memo(
 			<div
 				className={classnames(classes.Input, className)}
 				style={style}
-				data-testid="inputWrapper"
+				data-testid='inputWrapper'
 			>
 				{addonBefore}
 				<input
 					className={classnames(classes.InputField, fieldClassName)}
 					ref={ref}
-					data-testid="inputField"
+					data-testid='inputField'
 					{...otherProps}
 					{...focusProps}
 				/>

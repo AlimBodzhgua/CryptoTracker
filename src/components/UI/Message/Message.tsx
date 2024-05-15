@@ -37,19 +37,19 @@ export const Message: FC<MessageProps> = memo((props) => {
 	return (
 		<div
 			className={classnames(classes.Message, classes[type], className)}
-			data-testid="message"
+			data-testid='message'
 		>
 			{type === 'warn' && withIcon && (
 				<WarningIcon
 					className={classnames(classes.icon, classes.warnIcon)}
-					data-testid="icon"
+					data-testid='icon'
 				/>
 			)}
 			{type === 'error' && withIcon && (
-				<ErrorIcon className={classes.icon} data-testid="icon" />
+				<ErrorIcon className={classes.icon} data-testid='icon' />
 			)}
 			{type === 'success' && withIcon && (
-				<SuccessIcon className={classes.icon} data-testid="icon" />
+				<SuccessIcon className={classes.icon} data-testid='icon' />
 			)}
 			<h2 className={classes.title}>{title}</h2>
 			<div className={classes.text}>{text}</div>

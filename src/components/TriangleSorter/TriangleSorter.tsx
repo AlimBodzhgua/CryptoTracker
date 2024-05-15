@@ -82,6 +82,7 @@ export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
 			onClick={onToggleSortDirection}
 			role='button'
 			tabIndex={0}
+			data-testid='sorter'
 		>
 			<span
 				className={classnames(

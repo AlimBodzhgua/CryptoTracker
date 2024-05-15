@@ -11,11 +11,11 @@ const root = createRoot(document.getElementById('root')!);
 const store = createReduxStore();
 
 root.render(
-    <ErrorBoundary>
-        <BrowserRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </BrowserRouter>
-    </ErrorBoundary>,
+	<ErrorBoundary>
+		<BrowserRouter>
+			<Provider store={store}>
+				<App />
+			</Provider>
+		</BrowserRouter>
+	</ErrorBoundary>,
 );

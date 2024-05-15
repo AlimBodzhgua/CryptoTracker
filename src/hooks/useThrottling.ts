@@ -1,7 +1,6 @@
 import { useCallback, useRef } from 'react';
 import { setTimeout } from 'timers';
 
-
 export const useThrottle = (callback: (...args: any[]) => void, delay: number) => {
 	const throttleRef = useRef(false);
 
@@ -10,11 +9,9 @@ export const useThrottle = (callback: (...args: any[]) => void, delay: number) =
 			callback(...args);
 			throttleRef.current = true;
 
-
 			setTimeout(() => {
 				throttleRef.current = false;
-			}, delay)
+			}, delay);
 		}
-	}, [callback, delay])
-
-}
+	}, [callback, delay]);
+};

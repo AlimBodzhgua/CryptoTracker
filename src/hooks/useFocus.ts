@@ -6,12 +6,12 @@ interface focusProps {
 }
 
 export const useFocus = ():[boolean, focusProps] => {
-    const [isFocused, setIsFocused] = useState<boolean>(false);
+	const [isFocused, setIsFocused] = useState<boolean>(false);
 
-    const focus: focusProps = {
-        onFocus: () => setIsFocused(true),
-        onBlur: () => setIsFocused(false),
-    };
+	const focus: focusProps = {
+		onFocus: () => setIsFocused(true),
+		onBlur: () => setIsFocused(false),
+	};
 
-    return [isFocused, focus];
+	return [isFocused, focus];
 };

@@ -7,14 +7,14 @@ export interface useInfiniteScrollOptions {
 }
 
 export const useInfiniteScroll = (options: useInfiniteScrollOptions) => {
-    const { triggerRef, wrapperRef, callback } = options;
-    const observer = useRef<IntersectionObserver | null>(null);
+	const { triggerRef, wrapperRef, callback } = options;
+	const observer = useRef<IntersectionObserver | null>(null);
 
-    useEffect(() => {
-        const wrapperElement = wrapperRef.current;
-        const triggerElement = triggerRef.current;
+	useEffect(() => {
+		const wrapperElement = wrapperRef.current;
+		const triggerElement = triggerRef.current;
 
-        if (callback) {
+		if (callback) {
 	        const options = {
 	            root: wrapperElement,
 	            rootMargin: '0px',
@@ -28,12 +28,12 @@ export const useInfiniteScroll = (options: useInfiniteScrollOptions) => {
 	        }, options);
 
 	        observer.current.observe(triggerElement);
-        }
+		}
 
-        return () => {
+		return () => {
         	if (observer.current && triggerElement) {
 	            observer.current?.unobserve(triggerElement);
 	        }
-        };
-    }, [triggerRef, wrapperRef]);
+		};
+	}, [triggerRef, wrapperRef]);
 };

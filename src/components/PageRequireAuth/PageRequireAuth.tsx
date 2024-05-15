@@ -9,19 +9,19 @@ interface PageRequireAuthProps {
 }
 
 export const PageRequireAuth: FC<PageRequireAuthProps> = ({ className }) => {
-    const { t } = useTranslation();
+	const { t } = useTranslation();
 
-    return (
-        <Page className={classnames(classes.PageRequierAuth, className)}>
-            <h1 className={classes.header}>
-                {t('This page require auth.')}
-            </h1>
-            <div className={classes.redirectText}>
-                {t('Soon you will redirect to the main page.')}
-            </div>
-            <div className={classes.text}>
-                {t('Please register or log in your account to access the page.')}
-            </div>
-        </Page>
-    );
+	return (
+		<Page className={classnames(classes.PageRequierAuth, className)}>
+			<h1 className={classes.header}>
+				{t('This page require auth.')}
+			</h1>
+			<div className={classes.redirectText}>
+				{t('Soon you will redirect to the main page.')}
+			</div>
+			<div className={classes.text}>
+				{t('Please register or log in your account to access the page.')}
+			</div>
+		</Page>
+	);
 };

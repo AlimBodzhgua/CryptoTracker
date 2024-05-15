@@ -18,9 +18,7 @@ export const convertCoins = createAsyncThunk<
 			// eslint-disable-next-line max-len
 			const link = `https://api.coinconvert.net/convert/${data.coinFrom.symbol}/${data.coinTo.symbol}?amount=${data.amount}`;
 			const response = await axios.get(link);
-			if (response.data.status === 'success') {
-				return response.data[`${data.coinTo.symbol}`];
-			}
+			return response.data[`${data.coinTo.symbol}`];
 		} catch (error) {
 			return rejectWithValue(JSON.stringify(error));
 		}

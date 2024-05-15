@@ -27,7 +27,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 
 	useEffect(() => {
 		if (__PROJECT__ !== 'storybook') {
-			!coins.length && dispatch(fetchCoins({ page }));
+			if (!coins.length) dispatch(fetchCoins({ page }));
 		}
 	}, [dispatch]);
 

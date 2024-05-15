@@ -117,7 +117,7 @@ export const signOutUser = createAsyncThunk<
 	'signOutUser',
 	async (_, { rejectWithValue }) => {
 		try {
-			await signOut(auth);
+			return await signOut(auth);
 		} catch (error) {
 			return rejectWithValue(JSON.stringify(error));
 		}
@@ -132,7 +132,7 @@ export const resetUserPassword = createAsyncThunk<
 	'resetPassword',
 	async (email, { rejectWithValue }) => {
 		try {
-			await sendPasswordResetEmail(auth, email);
+			return await sendPasswordResetEmail(auth, email);
 		} catch (error) {
 			return rejectWithValue(JSON.stringify(error));
 		}
@@ -147,7 +147,7 @@ export const sendEmailVerificationMessage = createAsyncThunk<
 	'resetPassword',
 	async (_, { rejectWithValue }) => {
 		try {
-			await sendEmailVerification(auth.currentUser!);
+			return await sendEmailVerification(auth.currentUser!);
 		} catch (error) {
 			return rejectWithValue(JSON.stringify(error));
 		}
@@ -217,11 +217,11 @@ export const clearHistory = createAsyncThunk<
     }
 >(
 	'clearHistory',
-	async (_, { rejectWithValue, getState }) => {
+	(_, { rejectWithValue, getState }) => {
 		const user = selectUser(getState());
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
-			await updateDoc(userDocRef, {
+			return updateDoc(userDocRef, {
 				conversionHistory: [],
 			});
 		} catch (error) {
@@ -328,19 +328,18 @@ export const updateWatchList = createAsyncThunk<
     }
 >(
 	'updateWatchList',
-	async (_, { rejectWithValue, getState }) => {
+	(_, { rejectWithValue, getState }) => {
 		const watchListIds = selectUserWatchListIds(getState());
 		const watchListCoins = selectUserWatchListCoins(getState());
 		const user = selectUser(getState());
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
-			await updateDoc(userDocRef, {
+			return updateDoc(userDocRef, {
 				watchList: {
 					ids: watchListIds,
 					coins: watchListCoins,
 				},
 			});
-			localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
 		} catch (error) {
 			return rejectWithValue(JSON.stringify(error));
 		}

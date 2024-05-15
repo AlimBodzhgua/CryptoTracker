@@ -12,19 +12,19 @@ export const convertCoins = createAsyncThunk<
 	},
 	{ rejectValue: string }
 >(
-    'convertCoins',
-    async (data, { rejectWithValue }) => {
-        try {
-            // eslint-disable-next-line max-len
-            const link = `https://api.coinconvert.net/convert/${data.coinFrom.symbol}/${data.coinTo.symbol}?amount=${data.amount}`;
-            const response = await axios.get(link);
-            if (response.data.status === 'success') {
-                return response.data[`${data.coinTo.symbol}`];
-            }
-        } catch (error) {
-            return rejectWithValue(JSON.stringify(error));
-        }
-    },
+	'convertCoins',
+	async (data, { rejectWithValue }) => {
+		try {
+			// eslint-disable-next-line max-len
+			const link = `https://api.coinconvert.net/convert/${data.coinFrom.symbol}/${data.coinTo.symbol}?amount=${data.amount}`;
+			const response = await axios.get(link);
+			if (response.data.status === 'success') {
+				return response.data[`${data.coinTo.symbol}`];
+			}
+		} catch (error) {
+			return rejectWithValue(JSON.stringify(error));
+		}
+	},
 );
 
 export const fetchConverterCoins = createAsyncThunk<
@@ -32,18 +32,18 @@ export const fetchConverterCoins = createAsyncThunk<
 	void,
 	{rejectValue: string}
 >(
-    'fetchConverterCoins',
-    async (_, { rejectWithValue }) => {
-        try {
-            const limit = 20;
-            const response = await coinApi.get('/coins', {
-                params: {
-                    limit,
-                },
-            });
-            return response.data.data.coins;
-        } catch (error) {
-            return rejectWithValue(JSON.stringify(error));
-        }
-    },
+	'fetchConverterCoins',
+	async (_, { rejectWithValue }) => {
+		try {
+			const limit = 20;
+			const response = await coinApi.get('/coins', {
+				params: {
+					limit,
+				},
+			});
+			return response.data.data.coins;
+		} catch (error) {
+			return rejectWithValue(JSON.stringify(error));
+		}
+	},
 );

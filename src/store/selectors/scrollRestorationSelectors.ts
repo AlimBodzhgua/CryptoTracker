@@ -4,4 +4,4 @@ export const selectScroll = (state: StateSchema) => state.scrollRestoration.scro
 
 export const selectScrollByPath = (state: StateSchema, path: string) => (
 	state.scrollRestoration.scroll[path] || 0
-)
+);

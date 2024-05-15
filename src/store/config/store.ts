@@ -7,20 +7,20 @@ import { coinsReducer } from '../slices/coinsSlice';
 import { StateSchema } from './StateSchema';
 
 export const createReduxStore = (initialState?: StateSchema) => {
-    const rootReducer: ReducersMapObject<StateSchema> = {
-        coins: coinsReducer,
-        currency: currencyReducer,
-        user: userReducer,
-        converter: converterReducer,
-        scrollRestoration: scrollRestorationReducer,
-    };
+	const rootReducer: ReducersMapObject<StateSchema> = {
+		coins: coinsReducer,
+		currency: currencyReducer,
+		user: userReducer,
+		converter: converterReducer,
+		scrollRestoration: scrollRestorationReducer,
+	};
 
-    const store = configureStore({
-        reducer: rootReducer,
-        preloadedState: initialState,
-    });
+	const store = configureStore({
+		reducer: rootReducer,
+		preloadedState: initialState,
+	});
 
-    return store;
+	return store;
 };
 
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

@@ -23,40 +23,40 @@ export enum AppRoutes {
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
-    [AppRoutes.MAIN]: '/',
-    [AppRoutes.COINS]: '/coins',
-    [AppRoutes.WATCH_LIST]: '/watchlist',
-    [AppRoutes.PROFILE]: '/profile',
-    [AppRoutes.CONVERTER]: '/converter',
+	[AppRoutes.MAIN]: '/',
+	[AppRoutes.COINS]: '/coins',
+	[AppRoutes.WATCH_LIST]: '/watchlist',
+	[AppRoutes.PROFILE]: '/profile',
+	[AppRoutes.CONVERTER]: '/converter',
 
-    [AppRoutes.NOT_FOUND]: '*',
+	[AppRoutes.NOT_FOUND]: '*',
 };
 
 export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
-    [AppRoutes.MAIN]: {
-        path: RoutePath.main,
-        element: <MainPage />,
-    },
-    [AppRoutes.COINS]: {
-        path: RoutePath.coins,
-        element: <CoinsPage />,
-    },
-    [AppRoutes.WATCH_LIST]: {
-        path: RoutePath.watchlist,
-        element: <WatchListPage />,
-        authRequire: true,
-    },
-    [AppRoutes.PROFILE]: {
-        path: RoutePath.profile,
-        element: <ProfilePage />,
-        authRequire: true,
-    },
-    [AppRoutes.CONVERTER]: {
-        path: RoutePath.converter,
-        element: <ConverterPage />,
-    },
-    [AppRoutes.NOT_FOUND]: {
-        path: RoutePath.not_found,
-        element: <NotFoundPage />,
-    },
+	[AppRoutes.MAIN]: {
+		path: RoutePath.main,
+		element: <MainPage />,
+	},
+	[AppRoutes.COINS]: {
+		path: RoutePath.coins,
+		element: <CoinsPage />,
+	},
+	[AppRoutes.WATCH_LIST]: {
+		path: RoutePath.watchlist,
+		element: <WatchListPage />,
+		authRequire: true,
+	},
+	[AppRoutes.PROFILE]: {
+		path: RoutePath.profile,
+		element: <ProfilePage />,
+		authRequire: true,
+	},
+	[AppRoutes.CONVERTER]: {
+		path: RoutePath.converter,
+		element: <ConverterPage />,
+	},
+	[AppRoutes.NOT_FOUND]: {
+		path: RoutePath.not_found,
+		element: <NotFoundPage />,
+	},
 };

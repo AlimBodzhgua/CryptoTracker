@@ -9,15 +9,15 @@ export const fetchCurrency = createAsyncThunk<
 	void,
 	{rejectValue: string}
 >(
-    'fetchCurrency',
-    async (_, { rejectWithValue }) => {
-        try {
-            const response = await axios.get(`
+	'fetchCurrency',
+	async (_, { rejectWithValue }) => {
+		try {
+			const response = await axios.get(`
                 https://api.freecurrencyapi.com/v1/latest?apikey=${API_KEY}&currencies=EUR%2CRUB
             `);
-            return response.data.data;
-        } catch (e) {
-            return rejectWithValue(JSON.stringify(e));
-        }
-    },
+			return response.data.data;
+		} catch (e) {
+			return rejectWithValue(JSON.stringify(e));
+		}
+	},
 );

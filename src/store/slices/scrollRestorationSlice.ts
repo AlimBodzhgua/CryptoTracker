@@ -7,17 +7,17 @@ export interface ScrollRestorationStateSchema {
 }
 
 const initialState: ScrollRestorationStateSchema = {
-    scroll: {},
+	scroll: {},
 };
 
 export const scrollRestorationSlice = createSlice({
-    name: 'scrollRestoration',
-    initialState,
-    reducers: {
-        setScroll: (state, action: PayloadAction<{path: string, position: number}>) => {
-            state.scroll[action.payload.path] = action.payload.position;
-        },
-    }
+	name: 'scrollRestoration',
+	initialState,
+	reducers: {
+		setScroll: (state, action: PayloadAction<{path: string, position: number}>) => {
+			state.scroll[action.payload.path] = action.payload.position;
+		},
+	},
 });
 
 export const { reducer: scrollRestorationReducer } = scrollRestorationSlice;

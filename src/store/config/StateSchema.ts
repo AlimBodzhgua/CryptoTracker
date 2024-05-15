@@ -4,7 +4,6 @@ import { CurrencySchema } from 'store/slices/currencySlice';
 import { UserStateSchema } from 'store/slices/userSlice';
 import { ScrollRestorationStateSchema } from 'store/slices/scrollRestorationSlice';
 
-
 export interface StateSchema {
 	coins: CoinsStateSchema,
 	currency: CurrencySchema,

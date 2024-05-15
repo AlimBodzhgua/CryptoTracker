@@ -2,18 +2,18 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IUser } from 'types/user';
 import { arrayMove } from '@dnd-kit/sortable';
 import {
-    signUpUser,
-    signInUser,
-    signOutUser,
-    resetUserPassword,
-    signInWithGoogle,
-    updateUserProfile,
-    addHistory,
-    clearHistory,
-    addWatchListCoin,
-    removeWatchListCoin,
-    fetchWatchListCoins,
-    initUserAuth,
+	signUpUser,
+	signInUser,
+	signOutUser,
+	resetUserPassword,
+	signInWithGoogle,
+	updateUserProfile,
+	addHistory,
+	clearHistory,
+	addWatchListCoin,
+	removeWatchListCoin,
+	fetchWatchListCoins,
+	initUserAuth,
 } from '../actions/userActions';
 
 export interface UserStateSchema {
@@ -25,16 +25,16 @@ export interface UserStateSchema {
 }
 
 const initialState:UserStateSchema = {
-    isLoading: false,
-    error: undefined,
-    authData: null,
-    _mounted: false,
+	isLoading: false,
+	error: undefined,
+	authData: null,
+	_mounted: false,
 };
 
 export const userSlice = createSlice({
-    name: 'userSLice',
-    initialState,
-    reducers: {
+	name: 'userSLice',
+	initialState,
+	reducers: {
     	changeUserImageUrl: (state, action: PayloadAction<string>) => {
     		if (state.authData) {
 	    		state.authData.imageUrl = action.payload;
@@ -50,10 +50,10 @@ export const userSlice = createSlice({
 	    		state.authData.watchList.ids.push(action.payload);
     		}
     	},
-        clearError: (state) => {
-            state.error = undefined;
-        },
-        moveWatchList: (state, action: PayloadAction<{activeId: string, overId: string}>) => {
+		clearError: (state) => {
+			state.error = undefined;
+		},
+		moveWatchList: (state, action: PayloadAction<{activeId: string, overId: string}>) => {
         	if (state.authData) {
         		const watchListIds = state.authData.watchList.ids;
         		const watchListCoins = state.authData.watchList.coins;
@@ -66,9 +66,9 @@ export const userSlice = createSlice({
 		        newIndex = watchListCoins.findIndex((coin) => coin.uuid === action.payload.overId);
 		        state.authData.watchList.coins = arrayMove(watchListCoins, oldIndex, newIndex);
         	}
-        },
-    },
-    extraReducers: (builder) => {
+		},
+	},
+	extraReducers: (builder) => {
     	builder
     		// initUserAuth
 	    	.addCase(initUserAuth.pending, (state) => {
@@ -218,20 +218,20 @@ export const userSlice = createSlice({
 	    		state.error = action.payload;
 	    	})
 	    	// fetchWatchListCoins
-            .addCase(fetchWatchListCoins.pending, (state) => {
-                state.isLoading = true;
-            })
-            .addCase(fetchWatchListCoins.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.payload;
-            })
-            .addCase(fetchWatchListCoins.fulfilled, (state, action) => {
-                state.isLoading = false;
-                if (state.authData) {
+			.addCase(fetchWatchListCoins.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(fetchWatchListCoins.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+			.addCase(fetchWatchListCoins.fulfilled, (state, action) => {
+				state.isLoading = false;
+				if (state.authData) {
 	                state.authData.watchList.coins = action.payload;
-                }
-            });
-    },
+				}
+			});
+	},
 });
 
 export const { actions: userActions } = userSlice;

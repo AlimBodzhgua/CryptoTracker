@@ -22,34 +22,34 @@ export const selectCoinsPageHasMore = (state: StateSchema) => state.coins.hasMor
 export const selectCoinsGlobalStats = (state: StateSchema) => state.coins.globalStats;
 
 export const selectCoinsGlobalStatsData = createSelector(
-    selectCoinsGlobalStats,
-    (data) => {
-        const globalDataList = [
-            {
-                title: 'Btc Dominance',
-                value: data?.btcDominance,
-            },
-            {
-                title: 'Total 24hVolume',
-                value: data?.total24hVolume,
-            },
-            {
-                title: 'Total MarketCap',
-                value: data?.totalMarketCap,
-            },
-            {
-                title: 'Total Exchanges',
-                value: data?.totalExchanges,
-            },
-            {
-                title: 'Total Markets',
-                value: data?.totalMarkets,
-            },
-            {
-                title: 'Total Coins',
-                value: data?.totalCoins,
-            },
-        ];
-        return globalDataList;
-    },
+	selectCoinsGlobalStats,
+	(data) => {
+		const globalDataList = [
+			{
+				title: 'Btc Dominance',
+				value: data?.btcDominance,
+			},
+			{
+				title: 'Total 24hVolume',
+				value: data?.total24hVolume,
+			},
+			{
+				title: 'Total MarketCap',
+				value: data?.totalMarketCap,
+			},
+			{
+				title: 'Total Exchanges',
+				value: data?.totalExchanges,
+			},
+			{
+				title: 'Total Markets',
+				value: data?.totalMarkets,
+			},
+			{
+				title: 'Total Coins',
+				value: data?.totalCoins,
+			},
+		];
+		return globalDataList;
+	},
 );

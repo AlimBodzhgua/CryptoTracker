@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
 import { MemoryRouter } from 'react-router-dom';
-import { StateSchema } from 'store/config/StateSchema';;
-import { createReduxStore } from '../../store/config/store';
+import { StateSchema } from 'store/config/StateSchema';
 import i18nForTests from 'config/i18n/i18nForTests';
+import { createReduxStore } from '../../store/config/store';
 
 export interface renderWithRouterOptions {
 	route?: string;
@@ -13,22 +13,22 @@ export interface renderWithRouterOptions {
 }
 
 export function componentRender(
-    component: ReactNode,
-    options: renderWithRouterOptions = {},
+	component: ReactNode,
+	options: renderWithRouterOptions = {},
 ) {
-    const {
-        route = '/',
-        initialState,
-    } = options;
-    const store = createReduxStore(initialState as StateSchema);
+	const {
+		route = '/',
+		initialState,
+	} = options;
+	const store = createReduxStore(initialState as StateSchema);
 
-    return render(
-        <MemoryRouter initialEntries={[route]}>
-            <Provider store={store}>
-                <I18nextProvider i18n={i18nForTests}>
-                    {component}
-                </I18nextProvider>
-            </Provider>
-        </MemoryRouter>,
-    );
+	return render(
+		<MemoryRouter initialEntries={[route]}>
+			<Provider store={store}>
+				<I18nextProvider i18n={i18nForTests}>
+					{component}
+				</I18nextProvider>
+			</Provider>
+		</MemoryRouter>,
+	);
 }

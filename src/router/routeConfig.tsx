@@ -1,62 +1,46 @@
-import { lazy } from 'react';
-import { RouteProps } from 'react-router-dom';
+import { AppRouteProps } from 'types/router';
+import { CoinsPage } from 'pages/CoinsPage/CoinsPage.async';
+import { ProfilePage } from 'pages/ProfilePage/ProfilePage.async';
+import { WatchListPage } from 'pages/WatchListPage/WatchListPage.async';
+import { MainPage } from 'pages/MainPage/MainPage.async';
+import { ConverterPage } from 'pages/ConverterPage/ConverterPage.async';
+import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 
-const MainPage = lazy(() => import('pages/MainPage/MainPage'));
-const WatchListPage = lazy(() => import('pages/WatchListPage/WatchListPage'));
-const CoinsPage = lazy(() => import('pages/CoinsPage/CoinsPage'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
-const ProfilePage = lazy(() => import('pages/ProfilePage/ProfilePage'));
-const ConverterPage = lazy(() => import('pages/ConverterPage/ConverterPage'));
-
-export type AppRouteProps = RouteProps & {
-	authRequire?: boolean;
-}
-
-export enum AppRoutes {
-	MAIN = 'main',
-	COINS = 'coins',
-	WATCH_LIST = 'watchlist',
-    PROFILE = 'profile',
-    CONVERTER = 'converter',
-
-	NOT_FOUND = 'not_found',
-}
-
-export const RoutePath: Record<AppRoutes, string> = {
-	[AppRoutes.MAIN]: '/',
-	[AppRoutes.COINS]: '/coins',
-	[AppRoutes.WATCH_LIST]: '/watchlist',
-	[AppRoutes.PROFILE]: '/profile',
-	[AppRoutes.CONVERTER]: '/converter',
-
-	[AppRoutes.NOT_FOUND]: '*',
-};
+import {
+	AppRoutes,
+	getRouteCoins,
+	getRouteConverter,
+	getRouteMain,
+	getRouteNotFound,
+	getRouteProfile,
+	getRouteWatchList,
+} from './router';
 
 export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
 	[AppRoutes.MAIN]: {
-		path: RoutePath.main,
+		path: getRouteMain(),
 		element: <MainPage />,
 	},
 	[AppRoutes.COINS]: {
-		path: RoutePath.coins,
+		path: getRouteCoins(),
 		element: <CoinsPage />,
 	},
 	[AppRoutes.WATCH_LIST]: {
-		path: RoutePath.watchlist,
+		path: getRouteWatchList(),
 		element: <WatchListPage />,
 		authRequire: true,
 	},
 	[AppRoutes.PROFILE]: {
-		path: RoutePath.profile,
+		path: getRouteProfile(),
 		element: <ProfilePage />,
 		authRequire: true,
 	},
 	[AppRoutes.CONVERTER]: {
-		path: RoutePath.converter,
+		path: getRouteConverter(),
 		element: <ConverterPage />,
 	},
 	[AppRoutes.NOT_FOUND]: {
-		path: RoutePath.not_found,
+		path: getRouteNotFound(),
 		element: <NotFoundPage />,
 	},
 };

@@ -1,6 +1,6 @@
 import { FC, ChangeEvent, useCallback, useState, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { Input } from 'components/UI/Input/Input';
 import { selectUser } from 'store/selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -102,8 +102,8 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 					<HistoryIcon className={classes.historyIcon} />
 					<Button
 						className={classes.historyBtn}
-						theme={ButtonTheme.clear}
-						size={ButtonSize.big}
+						theme='clear'
+						size='big'
 						onClick={onShowHistory}
 					>
 						{t('History')}
@@ -132,7 +132,7 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 
 				<Button
 					className={classes.switchBtn}
-					theme={ButtonTheme.clear}
+					theme='clear'
 					onClick={onSwitch}
 				>
 					<SwitchIcon className={classes.switchIcon} />

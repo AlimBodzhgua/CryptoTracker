@@ -1,5 +1,5 @@
 import { FC, memo, useState } from 'react';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { resetUserPassword } from 'store/actions/userActions';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -71,7 +71,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 				<p className={classes.message}>
 					{t('An email has been sent to you to reset your password.')}
 					<Button
-						theme={ButtonTheme.clear}
+						theme='clear'
 						className={classes.loginBtn}
 						onClick={onSuccess}
 					>
@@ -81,7 +81,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 			)}
 			<div className={classes.resetActions}>
 				<Button
-					theme={ButtonTheme.secondary}
+					theme='secondary'
 					type='submit'
 					className={classes.resetBtn}
 					disabled={isLoading}
@@ -89,7 +89,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 					{t('Reset')}
 				</Button>
 				<Button
-					theme={ButtonTheme.secondary}
+					theme='secondary'
 					className={classes.cancelBtn}
 					onClick={onCancel}
 					disabled={isLoading}

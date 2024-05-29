@@ -1,6 +1,6 @@
 import { FC, useState, memo, useCallback } from 'react';
 import { ICoin } from 'types/coin';
-import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { useAppDispatch } from 'hooks/redux';
 import { removeWatchListCoin } from 'store/actions/userActions';
 import { useTranslation } from 'react-i18next';
@@ -63,8 +63,8 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 				</div>
 				<div className={classes.itemActions}>
 					<Button
-						theme={ButtonTheme.primary}
-						size={ButtonSize.small}
+						theme='primary'
+						size='small'
 						onClick={onOpenOverviewModal}
 						className={classes.infoBtn}
 					>
@@ -77,13 +77,13 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 						onClose={onCloseOverviewModal}
 					/>
 					<Button
-						theme={ButtonTheme.clear}
+						theme='clear'
 						onClick={onRemoveFromWatchList}
 					>
 						<StarSelectedIcon className={classes.starIcon} />
 					</Button>
 					<Button
-						theme={ButtonTheme.clear}
+						theme='clear'
 						className={classes.dndBtn}
 					>
 						<span>&#x2022;</span>

@@ -9,7 +9,7 @@ import React, {
 import { Input } from 'components/UI/Input/Input';
 import { selectUser, selectUserIsLoading } from 'store/selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import {
 	sendEmailVerificationMessage,
@@ -94,8 +94,8 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 				<p className={classes.errorMsg}>
 					{t('Your email is not veified')}
 					<Button
-						theme={ButtonTheme.clear}
-						size={ButtonSize.small}
+						theme='clear'
+						size='small'
 						className={classes.verifyBtn}
 						onClick={onGetVerificationMessage}
 					>
@@ -182,7 +182,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 				{edit ? (
 					<>
 						<Button
-							theme={ButtonTheme.primary}
+							theme='primary'
 							className={classes.editBtn}
 							onClick={onCancel}
 							disabled={isLoading}
@@ -190,7 +190,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 							{t('Cancel')}
 						</Button>
 						<Button
-							theme={ButtonTheme.secondary}
+							theme='secondary'
 							className={classes.editBtn}
 							onClick={onSave}
 							disabled={isLoading}
@@ -200,7 +200,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 					</>
 				) : (
 					<Button
-						theme={ButtonTheme.primary}
+						theme='primary'
 						className={classes.editBtn}
 						onClick={onEdit}
 					>

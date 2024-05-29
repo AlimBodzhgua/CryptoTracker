@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 
 import GlobeIcon from 'assets/icons/globe.svg';
 import classnames from 'classnames';
@@ -21,7 +21,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = memo(({ className }) => {
 		<Button
 			onClick={toggleLanguage}
 			className={classnames(classes.LangSwitcher, className)}
-			theme={ButtonTheme.clear}
+			theme='clear'
 			data-testid='switch-button'
 		>
 			<GlobeIcon className={classes.icon} />

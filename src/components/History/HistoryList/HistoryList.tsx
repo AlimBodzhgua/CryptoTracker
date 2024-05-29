@@ -1,6 +1,6 @@
 import { FC, useCallback, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonSize } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import {
 	selectUserConversionHistory,
 	selectUserError,
@@ -11,8 +11,8 @@ import { clearHistory } from 'store/actions/userActions';
 import { Message } from 'components/UI/Message/Message';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
-import { HistoryItem } from '../HistoryItem/HistoryItem';
 
+import { HistoryItem } from '../HistoryItem/HistoryItem';
 import classes from './HistoryList.module.scss';
 
 interface HistoryListProps {
@@ -72,7 +72,7 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 				<h2 className={classes.title}>{t('Convertasion history')}</h2>
 				<Button
 					className={classes.clearBtn}
-					size={ButtonSize.small}
+					size='small'
 					onClick={onClear}
 					disabled={isLoading}
 				>

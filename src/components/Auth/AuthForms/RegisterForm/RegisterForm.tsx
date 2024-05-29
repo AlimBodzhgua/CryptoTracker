@@ -2,7 +2,7 @@ import { FC, useState, memo, useCallback } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'components/UI/Input/Input';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { signUpUser } from 'store/actions/userActions';
@@ -149,7 +149,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 			<div className={classes.haveAccount}>
 				{t('Already have an account?')}
 				<Button
-					theme={ButtonTheme.clear}
+					theme='clear'
 					onClick={onMoveToLogin}
 					className={classes.loginBtn}
 					type='reset'

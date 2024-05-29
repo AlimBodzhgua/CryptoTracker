@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ButtonSize, ButtonTheme } from './Button';
+import { Button } from './Button';
 
 const meta = {
 	title: 'UI-Kit/Button',
@@ -18,44 +18,44 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
 	args: {
 		children: 'button',
-		theme: ButtonTheme.primary,
+		theme: 'primary',
 	},
 };
 
 export const Secondary: Story = {
 	args: {
 		children: 'button',
-		theme: ButtonTheme.secondary,
+		theme: 'secondary',
 	},
 };
 
 export const Clear: Story = {
 	args: {
 		children: 'button',
-		theme: ButtonTheme.clear,
+		theme: 'clear',
 	},
 };
 
 export const SizeBig: Story = {
 	args: {
 		children: 'button',
-		theme: ButtonTheme.primary,
-		size: ButtonSize.big,
+		theme: 'primary',
+		size: 'big',
 	},
 };
 
 export const SizeMeduim: Story = {
 	args: {
 		children: 'button',
-		theme: ButtonTheme.primary,
-		size: ButtonSize.medium,
+		theme: 'primary',
+		size: 'medium',
 	},
 };
 
 export const SizeSmall: Story = {
 	args: {
 		children: 'button',
-		theme: ButtonTheme.primary,
-		size: ButtonSize.small,
+		theme: 'primary',
+		size: 'small',
 	},
 };

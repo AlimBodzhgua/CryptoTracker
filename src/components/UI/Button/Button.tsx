@@ -2,21 +2,8 @@ import React, { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import classnames from 'classnames';
 import classes from './Button.module.scss';
 
-export const ButtonTheme = {
-	primary: 'primary',
-	secondary: 'secondary',
-	clear: 'clear',
-} as const;
-
-export type ButtonThemeType = keyof typeof ButtonTheme;
-
-export const ButtonSize = {
-	small: 'small',
-	medium: 'medium',
-	big: 'big',
-} as const;
-
-export type ButtonSizeType = keyof typeof ButtonSize;
+export type ButtonThemeType = 'primary' | 'secondary' | 'clear';
+export type ButtonSizeType = 'small' | 'medium' | 'big';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
@@ -29,8 +16,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: React.FC<ButtonProps> = memo((props) => {
 	const {
 		children,
-		theme = ButtonTheme.primary,
-		size = ButtonSize.medium,
+		theme = 'primary',
+		size = 'medium',
 		className,
 		disabled,
 		...otherProps

@@ -2,7 +2,7 @@ import { FC, memo, useCallback, useMemo } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import {
 	DndContext,
@@ -122,7 +122,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 							</h4>
 							<Button
 								onClick={onNavigateToCoinsPage}
-								theme={ButtonTheme.secondary}
+								theme='secondary'
 							>
 								{t('Add coins')}
 							</Button>

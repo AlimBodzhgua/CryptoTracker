@@ -1,6 +1,6 @@
 import { FC, memo, useState } from 'react';
 import { sidebarList } from 'constants/sidebarList';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import LeftIcon from 'assets/icons/left_arrow.svg';
 import RightIcon from 'assets/icons/right_arrow.svg';
 
@@ -39,7 +39,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 			<Button
 				className={classes.toggleBtn}
 				onClick={onToggle}
-				theme={ButtonTheme.clear}
+				theme='clear'
 				data-testid='toggle-button'
 			>
 				{collapsed ? (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 
 import classnames from 'classnames';
 import classes from './PageError.module.scss';
@@ -21,7 +21,7 @@ export const PageError: React.FC<PageErrorProps> = (props) => {
 			<Button
 				className={classes.reload}
 				onClick={onReload}
-				theme={ButtonTheme.secondary}
+				theme='secondary'
 			>
 				{t('Reload the page')}
 			</Button>

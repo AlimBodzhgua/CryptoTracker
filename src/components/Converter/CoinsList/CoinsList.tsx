@@ -1,15 +1,13 @@
-import {
-	FC, useEffect, memo, useCallback,
-} from 'react';
+import { FC, useEffect, memo, useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { selectConverterCoins } from 'store/selectors/converterSelectors';
 import { fetchConverterCoins } from 'store/actions/converterActions';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
-import { CoinItem } from '../CoinItem/CoinItem';
 
+import { CoinItem } from '../CoinItem/CoinItem';
 import classes from './CoinsList.module.scss';
 
 interface CoinsListProps {
@@ -48,7 +46,7 @@ export const CoinsList: FC<CoinsListProps> = memo((props) => {
 			<div className={classes.header}>
 				<h2 className={classes.title}>{t('Select Coin')}</h2>
 				<Button
-					theme={ButtonTheme.clear}
+					theme='clear'
 					className={classes.close}
 					onClick={onClose}
 				>

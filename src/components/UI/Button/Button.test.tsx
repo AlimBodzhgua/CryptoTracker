@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import { Button, ButtonSize, ButtonTheme } from './Button';
+import { Button } from './Button';
 
 describe('Button', () => {
 	beforeEach(() => {
 		render(
 			<Button
-				theme={ButtonTheme.primary}
-				size={ButtonSize.medium}
+				theme={'primary'}
+				size={'medium'}
 				disabled
 			>
 				click

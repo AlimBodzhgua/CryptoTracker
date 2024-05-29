@@ -1,6 +1,6 @@
 import { FC, useState, memo, useCallback } from 'react';
 import { Input } from 'components/UI/Input/Input';
-import { Button, ButtonSize, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -169,8 +169,8 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				{t('Login')}
 			</Button>
 			<Button
-				theme={ButtonTheme.secondary}
-				size={ButtonSize.small}
+				theme='secondary'
+				size='small'
 				onClick={onLoginWithGoogle}
 				className={classes.googleBtn}
 				disabled={isLoading}
@@ -181,8 +181,8 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 			</Button>
 			<Button
 				onClick={onForgetPassword}
-				theme={ButtonTheme.clear}
-				size={ButtonSize.small}
+				theme='clear'
+				size='small'
 				className={classes.forgetBtn}
 				type='reset'
 			>
@@ -191,7 +191,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 			<div className={classes.notRegistered}>
 				{t('Don`t have an account?')}
 				<Button
-					theme={ButtonTheme.clear}
+					theme='clear'
 					onClick={onMoveToRegister}
 					className={classes.registerBtn}
 					type='reset'

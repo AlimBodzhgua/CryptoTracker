@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState, memo } from 'react';
-import { Button, ButtonTheme } from 'components/UI/Button/Button';
+import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -7,6 +7,7 @@ import { selectUser } from 'store/selectors/userSelectors';
 import { signOutUser } from 'store/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import classnames from 'classnames';
+
 import { LoginModal } from '../AuthModals/LoginModal/LoginModal';
 import { RegisterModal } from '../AuthModals/RegisterModal/RegisterModal';
 import classes from './AuthActionsMenu.module.scss';
@@ -76,7 +77,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 		>
 			{isAuth ? (
 				<Button
-					theme={ButtonTheme.clear}
+					theme='clear'
 					onClick={onLogout}
 					data-testid='logout-button'
 				>
@@ -85,7 +86,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 			) : (
 				<>
 					<Button
-						theme={ButtonTheme.clear}
+						theme='clear'
 						onClick={onOpenRegisterModal}
 						data-testid='signup-button'
 					>
@@ -97,7 +98,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 					/>
 
 					<Button
-						theme={ButtonTheme.clear}
+						theme='clear'
 						onClick={onOpenLoginModal}
 						data-testid='login-button'
 					>

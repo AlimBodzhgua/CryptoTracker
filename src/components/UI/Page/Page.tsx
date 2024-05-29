@@ -16,7 +16,8 @@ import { scrollRestorationActions } from 'store/slices/scrollRestorationSlice';
 import { selectScrollByPath } from 'store/selectors/scrollRestorationSelectors';
 import ArrowIcon from 'assets/icons/left_arrow.svg';
 import classnames from 'classnames';
-import { Button, ButtonTheme } from '../Button/Button';
+
+import { Button } from '../Button/Button';
 import classes from './Page.module.scss';
 
 interface PageProps {
@@ -91,7 +92,7 @@ export const Page: FC<PageProps> = (props) => {
 			) : null}
 			{scrollAppearance.showBtn && withAutoScrollTopBtn && (
 				<Button
-					theme={ButtonTheme.clear}
+					theme='clear'
 					className={classes.scrollBtn}
 					onClick={onScrollClick}
 				>

@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useState, memo } from 'react';
 import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { selectUser } from 'store/selectors/userSelectors';
 import { signOutUser } from 'store/actions/userActions';
@@ -22,28 +22,34 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 	const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
 	const dispatch = useAppDispatch();
 	const isAuth = useAppSelector(selectUser);
+	const { pathname } = useLocation();
 
 	const [searchParams, setSearchParams] = useSearchParams();
+	const modal = searchParams.get('modal');
 
-	const onCloseRegisterModal = useCallback(() => {
-		setIsRegisterModal(false);
-		setSearchParams('');
-	}, []);
+	useEffect(() => {
+		console.log(modal);
+	}, [modal]);
 
 	const onOpenRegisterModal = useCallback(() => {
 		setIsRegisterModal(true);
 		setSearchParams({ modal: 'register' });
-	}, []);
+	}, [pathname]);
+
+	const onCloseRegisterModal = useCallback(() => {
+		setIsRegisterModal(false);
+		setSearchParams('');
+	}, [pathname]);
 
 	const onOpenLoginModal = useCallback(() => {
 		setIsLoginModal(true);
 		setSearchParams({ modal: 'login' });
-	}, []);
+	}, [pathname]);
 
 	const onCloseLoginModal = useCallback(() => {
 		setIsLoginModal(false);
 		setSearchParams('');
-	}, []);
+	}, [pathname]);
 
 	useEffect(() => {
 		if (searchParams.has('modal', 'register')) {

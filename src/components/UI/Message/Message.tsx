@@ -1,4 +1,4 @@
-import { FC, useMemo, memo } from 'react';
+import { FC, useMemo, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import ErrorIcon from 'assets/icons/error_mark.svg';
@@ -21,7 +21,7 @@ export const Message: FC<MessageProps> = memo((props) => {
 	const { type, text, withIcon, className } = props;
 	const { t } = useTranslation();
 
-	const title = useMemo(() => {
+	const getTitle = useCallback(() => {
 		switch (type) {
 		case 'warn':
 			return t('Warning!');
@@ -51,7 +51,7 @@ export const Message: FC<MessageProps> = memo((props) => {
 			{type === 'success' && withIcon && (
 				<SuccessIcon className={classes.icon} data-testid='icon' />
 			)}
-			<h2 className={classes.title}>{title}</h2>
+			<h2 className={classes.title}>{getTitle()}</h2>
 			<div className={classes.text}>{text}</div>
 		</div>
 	);

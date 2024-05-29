@@ -1,6 +1,4 @@
-import {
-	FC, useEffect, useState, memo, useMemo,
-} from 'react';
+import { FC, useEffect, useState, memo } from 'react';
 import { FieldNameType, SortDirectionType } from 'types/coin';
 import { coinsSorter } from 'utils/utils';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -36,11 +34,7 @@ export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const coins = useAppSelector(selectCoins);
 	const dispatch = useAppDispatch();
-
-	const isActive = useMemo(
-		() => activeTriangle === sortField,
-		[activeTriangle],
-	);
+	const isActive = activeTriangle === sortField;
 
 	useEffect(() => {
 		if (searchParams.has('by')) {

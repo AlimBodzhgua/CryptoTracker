@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
 	selectCoinsIsLoading,
@@ -9,10 +9,10 @@ import {
 import { useAppSelector } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
 import classnames from 'classnames';
+
 import { CoinItem } from '../CoinItem/CoinItem';
 import { CoinTableHeader } from './CoinTableHeader';
 import { CoinTableSkeleton } from './CoinTableSkeleton';
-
 import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {
@@ -25,8 +25,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
 	const isLoading = useAppSelector(selectCoinsIsLoading);
 	const page = useAppSelector(selectCoinsPageNumber);
 	const error = useAppSelector(selectCoinsError);
-
-	const withHeader = useMemo(() => page === 0, [page]);
+	const withHeader = page === 0;
 
 	if (error) {
 		return (

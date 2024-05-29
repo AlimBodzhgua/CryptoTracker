@@ -20,16 +20,10 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 	const { t } = useTranslation();
 	const [isRegisterModal, setIsRegisterModal] = useState<boolean>(false);
 	const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
+	const [searchParams, setSearchParams] = useSearchParams();
 	const dispatch = useAppDispatch();
 	const isAuth = useAppSelector(selectUser);
 	const { pathname } = useLocation();
-
-	const [searchParams, setSearchParams] = useSearchParams();
-	const modal = searchParams.get('modal');
-
-	useEffect(() => {
-		console.log(modal);
-	}, [modal]);
 
 	const onOpenRegisterModal = useCallback(() => {
 		setIsRegisterModal(true);

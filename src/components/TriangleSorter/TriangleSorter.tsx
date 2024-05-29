@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { selectCoins } from 'store/selectors/coinsSelectors';
 import { coinsActions } from 'store/slices/coinsSlice';
 import { useSearchParams } from 'react-router-dom';
+import { SortDirection } from 'constants/sort';
 
 import classnames from 'classnames';
 import classes from './TriangleSorter.module.scss';
@@ -15,11 +16,6 @@ interface TriangleSorterProps {
 	setActiveTriangle: React.Dispatch<React.SetStateAction<FieldNameType>>;
 	className?: string;
 }
-
-const SortDirection = {
-	ascending: 'ascending',
-	descending: 'descending',
-} as const;
 
 export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
 	const {

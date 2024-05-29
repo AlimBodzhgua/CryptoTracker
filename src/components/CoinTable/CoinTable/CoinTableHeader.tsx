@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { TriangleSorter } from 'components/TriangleSorter/TriangleSorter';
 import { FieldNameType } from 'types/coin';
 import { useSearchParams } from 'react-router-dom';
+import { SortField } from 'constants/sort';
 
 import classnames from 'classnames';
 import classes from './CoinTable.module.scss';
@@ -11,14 +12,7 @@ interface CoinTableHeaderProps {
 	className?: string;
 }
 
-const SortField = {
-	rank: 'rank',
-	name: 'name',
-	price: 'price',
-	change: 'change',
-	'24hVolume': '24hVolume',
-	marketCap: 'marketCap',
-} as const;
+
 
 export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 	const { t } = useTranslation();

@@ -5,8 +5,8 @@ describe('Button', () => {
 	beforeEach(() => {
 		render(
 			<Button
-				theme={'primary'}
-				size={'medium'}
+				theme='primary'
+				size='medium'
 				disabled
 			>
 				click

@@ -1,17 +1,17 @@
 import { FC, useState, memo, useCallback } from 'react';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'components/UI/Input/Input';
 import { Button } from 'components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
 import { signUpUser } from 'store/actions/userActions';
+import { useSearchParams } from 'react-router-dom';
+import { userActions } from 'store/slices/userSlice';
 import {
 	selectUserError,
 	selectUserIsLoading,
 } from 'store/selectors/userSelectors';
-import { useSearchParams } from 'react-router-dom';
-import { userActions } from 'store/slices/userSlice';
 
 import EmailIcon from 'assets/icons/email.svg';
 import PasswordIcon from 'assets/icons/password.svg';
@@ -41,7 +41,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 	const error = useAppSelector(selectUserError);
 	const {
 		handleSubmit,
-		control,
+		register,
 		formState: { errors },
 	} = useForm<IFormInputs>({
 		mode: 'onBlur',
@@ -51,26 +51,23 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 		setShowPassword((prev) => !prev);
 	};
 
-	const onSubmit: SubmitHandler<IFormInputs> = useCallback(
-		async (e) => {
-			const { meta, payload } = await dispatch(
-				signUpUser({
-					email: e.email,
-					password: e.password,
-				}),
+	const onSubmit: SubmitHandler<IFormInputs> = useCallback(async (e) => {
+		const { meta, payload } = await dispatch(
+			signUpUser({
+				email: e.email,
+				password: e.password,
+			}),
+		);
+
+		if (meta.requestStatus === 'fulfilled') {
+			localStorage.setItem(
+				USER_LOCALSTORAGE_KEY,
+				JSON.stringify(payload),
 			);
 
-			if (meta.requestStatus === 'fulfilled') {
-				localStorage.setItem(
-					USER_LOCALSTORAGE_KEY,
-					JSON.stringify(payload),
-				);
-
-				if (onSuccess) onSuccess();
-			}
-		},
-		[dispatch, onSuccess],
-	);
+			if (onSuccess) onSuccess();
+		}
+	}, [dispatch, onSuccess]);
 
 	const onMoveToLogin = () => {
 		setSearchParams({ modal: 'login' });
@@ -84,48 +81,31 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 			data-testid='register-form'
 		>
 			<h2 className={classes.title}>{title}</h2>
-			<Controller
-				control={control}
-				name='email'
-				defaultValue=''
-				rules={{ required: true }}
-				render={({ field: { value, onChange } }) => (
-					<Input
-						addonBefore={<EmailIcon className={classes.icon} />}
-						placeholder={t('Enter email...')}
-						className={classes.inputField}
-						value={value}
-						onChange={onChange}
-					/>
-				)}
+			<Input
+				addonBefore={<EmailIcon className={classes.icon} />}
+				placeholder={t('Enter email...')}
+				className={classes.inputField}
+				{...register('email', { required: true })}
 			/>
+
 			{errors.email?.type === 'required' && (
 				<div className={classes.message}>
 					{t('Please enter your email.')}
 				</div>
 			)}
 
-			<Controller
-				control={control}
-				name='password'
-				defaultValue=''
-				rules={{ required: true, minLength: 6 }}
-				render={({ field: { value, onChange } }) => (
-					<Input
-						addonBefore={<PasswordIcon className={classes.icon} />}
-						addonAfter={
-							<EyeIcon
-								className={classes.iconRight}
-								onClick={onTogglePassword}
-							/>
-						}
-						placeholder={t('Enter password...')}
-						type={showPassword ? 'text' : 'password'}
-						className={classes.inputField}
-						value={value}
-						onChange={onChange}
+			<Input
+				addonBefore={<PasswordIcon className={classes.icon} />}
+				addonAfter={
+					<EyeIcon
+						className={classes.iconRight}
+						onClick={onTogglePassword}
 					/>
-				)}
+				}
+				placeholder={t('Enter password...')}
+				type={showPassword ? 'text' : 'password'}
+				className={classes.inputField}
+				{...register('password', { required: true })}
 			/>
 			{errors.password?.type === 'required' && (
 				<div className={classes.message}>

@@ -2,7 +2,7 @@ import { FC, useState, memo, useCallback } from 'react';
 import { Input } from 'components/UI/Input/Input';
 import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { SubmitHandler, useForm, Controller } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { signInUser, signInWithGoogle } from 'store/actions/userActions';
 import { USER_LOCALSTORAGE_KEY } from 'constants/localStorage';
@@ -44,7 +44,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 
 	const {
 		handleSubmit,
-		control,
+		register,
 		formState: { errors },
 	} = useForm<IFormInputs>({
 		mode: 'onSubmit',
@@ -54,26 +54,23 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 		setShowPassword((prev) => !prev);
 	};
 
-	const onSubmit: SubmitHandler<IFormInputs> = useCallback(
-		async (e) => {
-			const { meta, payload } = await dispatch(
-				signInUser({
-					email: e.email,
-					password: e.password,
-				}),
+	const onSubmit: SubmitHandler<IFormInputs> = useCallback(async (e) => {
+		const { meta, payload } = await dispatch(
+			signInUser({
+				email: e.email,
+				password: e.password,
+			}),
+		);
+
+		if (meta.requestStatus === 'fulfilled') {
+			localStorage.setItem(
+				USER_LOCALSTORAGE_KEY,
+				JSON.stringify(payload),
 			);
 
-			if (meta.requestStatus === 'fulfilled') {
-				localStorage.setItem(
-					USER_LOCALSTORAGE_KEY,
-					JSON.stringify(payload),
-				);
-
-				if (onSuccess) onSuccess();
-			}
-		},
-		[dispatch, onSuccess],
-	);
+			if (onSuccess) onSuccess();
+		}
+	}, [dispatch, onSuccess]);
 
 	const onForgetPassword = () => {
 		if (onForget) {
@@ -106,20 +103,11 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 			data-testid='login-form'
 		>
 			<h2 className={classes.title}>{title}</h2>
-			<Controller
-				control={control}
-				name='email'
-				defaultValue=''
-				rules={{ required: true }}
-				render={({ field: { value, onChange } }) => (
-					<Input
-						addonBefore={<EmailIcon className={classes.icon} />}
-						placeholder={t('Enter email...')}
-						className={classes.inputField}
-						value={value}
-						onChange={onChange}
-					/>
-				)}
+			<Input
+				addonBefore={<EmailIcon className={classes.icon} />}
+				placeholder={t('Enter email...')}
+				className={classes.inputField}
+				{...register('email', { required: true })}
 			/>
 			{errors.email?.type === 'required' && (
 				<div className={classes.message}>
@@ -127,27 +115,18 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				</div>
 			)}
 
-			<Controller
-				control={control}
-				name='password'
-				defaultValue=''
-				rules={{ required: true }}
-				render={({ field: { value, onChange } }) => (
-					<Input
-						addonBefore={<PasswordIcon className={classes.icon} />}
-						addonAfter={
-							<EyeIcon
-								className={classes.iconRight}
-								onClick={onToggleShowPassword}
-							/>
-						}
-						placeholder={t('Enter password...')}
-						type={showPassword ? 'text' : 'password'}
-						className={classes.inputField}
-						value={value}
-						onChange={onChange}
+			<Input
+				addonBefore={<PasswordIcon className={classes.icon} />}
+				addonAfter={
+					<EyeIcon
+						className={classes.iconRight}
+						onClick={onToggleShowPassword}
 					/>
-				)}
+				}
+				placeholder={t('Enter password...')}
+				type={showPassword ? 'text' : 'password'}
+				className={classes.inputField}
+				{...register('password', { required: true })}
 			/>
 			{errors.password?.type === 'required' && (
 				<div className={classes.message}>

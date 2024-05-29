@@ -28,7 +28,6 @@ export const fetchCoins = createAsyncThunk<
     }
 >(
 	'fetchCoins',
-	// eslint-disable-next-line default-param-last
 	async (props, { rejectWithValue, getState }) => {
 		const { page = 0 } = props;
 		const limit = selectCoinsPageLimit(getState());

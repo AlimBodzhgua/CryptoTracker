@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TriangleSorter } from 'components/TriangleSorter/TriangleSorter';
+import { ColumnToggleSort } from '../ColumnToggleSort/ColumnToggleSort';
 import { FieldNameType } from 'types/coin';
 import { useSearchParams } from 'react-router-dom';
 import { SortField } from 'constants/sort';
@@ -11,8 +11,6 @@ import classes from './CoinTable.module.scss';
 interface CoinTableHeaderProps {
 	className?: string;
 }
-
-
 
 export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 	const { t } = useTranslation();
@@ -38,7 +36,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				<th className={classes.colHeader}>
 					<div className={classes.headerItem}>
 						<span>#</span>
-						<TriangleSorter
+						<ColumnToggleSort
 							sortField={SortField.rank}
 							activeTriangle={activeTriangle}
 							setActiveTriangle={setActiveTriangle}
@@ -48,7 +46,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				<th className={classes.colHeader}>
 					<div className={classes.headerItem}>
 						<span>{t('Name')}</span>
-						<TriangleSorter
+						<ColumnToggleSort
 							sortField={SortField.name}
 							activeTriangle={activeTriangle}
 							setActiveTriangle={setActiveTriangle}
@@ -58,7 +56,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				<th className={classes.colHeader}>
 					<div className={classes.headerItem}>
 						<span>{t('Price')}</span>
-						<TriangleSorter
+						<ColumnToggleSort
 							sortField={SortField.price}
 							activeTriangle={activeTriangle}
 							setActiveTriangle={setActiveTriangle}
@@ -68,7 +66,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				<th className={classes.colHeader}>
 					<div className={classes.headerItem}>
 						<span>{t('Change')}</span>
-						<TriangleSorter
+						<ColumnToggleSort
 							sortField={SortField.change}
 							activeTriangle={activeTriangle}
 							setActiveTriangle={setActiveTriangle}
@@ -78,7 +76,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				<th className={classes.colHeader}>
 					<div className={classes.headerItem}>
 						<span>{t('24h volume')}</span>
-						<TriangleSorter
+						<ColumnToggleSort
 							sortField={SortField['24hVolume']}
 							activeTriangle={activeTriangle}
 							setActiveTriangle={setActiveTriangle}
@@ -88,7 +86,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				<th className={classes.colHeader} colSpan={-1}>
 					<div className={classes.headerItem}>
 						<span>{t('Market cap')}</span>
-						<TriangleSorter
+						<ColumnToggleSort
 							sortField={SortField.marketCap}
 							activeTriangle={activeTriangle}
 							setActiveTriangle={setActiveTriangle}

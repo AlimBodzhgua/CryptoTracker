@@ -8,16 +8,16 @@ import { useSearchParams } from 'react-router-dom';
 import { SortDirection } from 'constants/sort';
 
 import classnames from 'classnames';
-import classes from './TriangleSorter.module.scss';
+import classes from './ColumnToggleSort.module.scss';
 
-interface TriangleSorterProps {
+interface ColumnToggleSortProps {
 	sortField: FieldNameType;
 	activeTriangle: FieldNameType;
 	setActiveTriangle: React.Dispatch<React.SetStateAction<FieldNameType>>;
 	className?: string;
 }
 
-export const TriangleSorter: FC<TriangleSorterProps> = memo((props) => {
+export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 	const {
 		sortField,
 		activeTriangle,

@@ -1,11 +1,11 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { componentRender } from 'lib/tests/componentRender';
-import { TriangleSorter } from './TriangleSorter';
+import { ColumnToggleSort } from './ColumnToggleSort';
 
 describe('TriangleSorter', () => {
 	test('should render', () => {
 		componentRender(
-			<TriangleSorter
+			<ColumnToggleSort
 				sortField='price'
 				activeTriangle='rank'
 				setActiveTriangle={jest.fn()}
@@ -16,7 +16,7 @@ describe('TriangleSorter', () => {
 
 	test('should change sort', () => {
 		componentRender(
-			<TriangleSorter
+			<ColumnToggleSort
 				sortField='price'
 				activeTriangle='rank'
 				setActiveTriangle={jest.fn()}
@@ -28,7 +28,7 @@ describe('TriangleSorter', () => {
 
 	test('should change sort direction', () => {
 		componentRender(
-			<TriangleSorter
+			<ColumnToggleSort
 				sortField='price'
 				activeTriangle='rank'
 				setActiveTriangle={jest.fn()}

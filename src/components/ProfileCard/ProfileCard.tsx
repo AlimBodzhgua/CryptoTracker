@@ -1,7 +1,6 @@
 import React, {
 	ChangeEvent,
 	useCallback,
-	useEffect,
 	useId,
 	useState,
 	memo,
@@ -37,15 +36,8 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 	const id = useId();
 	const [edit, setEdit] = useState<boolean>(false);
 
-	const [login, setLogin] = useState<string>('');
-	const [imageUrl, setImageUrl] = useState<string>('');
-
-	useEffect(() => {
-		if (user) {
-			setLogin(user.login);
-			setImageUrl(user.imageUrl);
-		}
-	}, [user?.login, user?.imageUrl]);
+	const [login, setLogin] = useState<string | undefined>(user?.login);
+	const [imageUrl, setImageUrl] = useState<string | undefined>(user?.imageUrl);
 
 	const onEdit = useCallback(() => {
 		setEdit(true);
@@ -68,7 +60,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 	};
 
 	const onSave = useCallback(async () => {
-		if (user) {
+		if (user && imageUrl && login) {
 			const { meta } = await dispatch(
 				updateUserProfile({ imageUrl, login }),
 			);
@@ -115,7 +107,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 	return (
 		<div className={classnames(classes.ProfileCard, className)}>
 			<AppImage
-				src={user!.imageUrl.length ? user!.imageUrl : UserDefaultImage}
+				src={user ? user.imageUrl : UserDefaultImage}
 				className={classes.profileImage}
 				fallback={<Skeleton width='185' height='205' />}
 			/>
@@ -125,7 +117,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 					<label htmlFor={`${id}-id`} className={classes.dataItem}>
 						<span className={classes.dataText}>Id</span>
 						<Input
-							value={user!.id}
+							value={user?.id}
 							className={classes.dataInput}
 							id={`${id}-id`}
 							disabled
@@ -135,7 +127,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 					<label htmlFor={`${id}-email`} className={classes.dataItem}>
 						<span className={classes.dataText}>Email</span>
 						<Input
-							value={user!.email}
+							value={user?.email}
 							className={classes.dataInput}
 							id={`${id}-email`}
 							addonAfter={

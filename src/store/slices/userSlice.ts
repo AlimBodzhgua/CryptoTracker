@@ -50,6 +50,9 @@ export const userSlice = createSlice({
 	    		state.authData.watchList.ids.push(action.payload);
     		}
     	},
+		setMounted: (state) => {
+			state._mounted = true;
+		},
 		clearError: (state) => {
 			state.error = undefined;
 		},

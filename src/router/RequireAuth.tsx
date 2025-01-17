@@ -25,7 +25,7 @@ export const RequireAuth: FC<RequireAuthProps> = ({ children }) => {
 		return () => {
 			if (timer.current) clearTimeout(timer.current);
 		};
-	}, [authData]);
+	}, [authData, mounted]);
 
 	if (!authData && mounted) {
 		return <PageRequireAuth />;

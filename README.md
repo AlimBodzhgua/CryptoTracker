@@ -1,4 +1,4 @@
-# Coin Cap
+# Crypto Tracker
 
 React web application for cryptocurrency.
 

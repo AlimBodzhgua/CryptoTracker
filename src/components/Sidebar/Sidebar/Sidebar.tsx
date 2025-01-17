@@ -26,7 +26,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 			})}
 			data-testid='sidebar'
 		>
-			<h1 className={classes.header}>Coin Cap</h1>
+			<h1 className={classes.title}>Crypto Tracker</h1>
 			<div className={classes.menu}>
 				{sidebarList.map((item) => (
 					<SidebarItem

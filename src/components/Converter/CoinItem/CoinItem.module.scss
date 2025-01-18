@@ -1,38 +1,23 @@
-.coinItemWrapper {
+.CoinItem {
 	list-style-type: none;
-}
 
-.coinItem {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 
-	padding: 8px 12px;
-	margin-bottom: 2px;
-
 	background-color: #F5F6F7;
-	border-radius: 5px;
-	transition: background .2s linear;
+	padding: 8px 14px;
+	margin-bottom: 4px;
 
 	&:hover {
 		background-color: #EBEDEF;
-		cursor: pointer;
 	}
-
-	&::after {
-		content: '';
-		display: block;
-		background-color: rgb(2 20 49 / 8%);
-		width: calc(100% - 58px);
-		height: 2.5px;
-
-		position: absolute;
-		bottom: 0;
-		right: 0;
-	}
-
-	position: relative;
 }
 
+.coinInfo {
+	display: flex;
+}
+ 
 .icon {
 	width: 34px;
 	margin-right: 12px;

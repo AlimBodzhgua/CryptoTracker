@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useCallback, useState, memo, useEffect } from 'react';
+import { FC, ChangeEvent, useState, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'components/UI/Button/Button';
 import { Input } from 'components/UI/Input/Input';
@@ -15,11 +15,10 @@ import { convertCoins } from 'store/actions/converterActions';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import { HistoryModal } from 'components/History/HistoryModal/HistoryModal';
 import { addHistory } from 'store/actions/userActions';
-
 import HistoryIcon from 'assets/icons/history.svg';
 import SwitchIcon from 'assets/icons/switch.svg';
-
 import classnames from 'classnames';
+
 import { CoinSelector } from '../CoinSelector/CoinSelector';
 import classes from './Converter.module.scss';
 
@@ -40,12 +39,9 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 	const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
 	const [amount, setAmount] = useState<number>(0);
 
-	useEffect(
-		() => () => {
-			dispatch(converterActions.resetResult());
-		},
-		[],
-	);
+	useEffect(() => () => {
+		dispatch(converterActions.resetResult());
+	}, []);
 
 	const onAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setAmount(Number(e.target?.value));
@@ -65,25 +61,20 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 		setShowHistoryModal(false);
 	};
 
-	const onSwitch = useCallback(() => {
+	const onSwitch = () => {
 		dispatch(converterActions.switchCoins());
-	}, [dispatch]);
+	};
 
-	const addNewHistory = useCallback(
-		(convertResult: number) => {
-			dispatch(
-				addHistory({
-					coinFrom,
-					coinTo,
-					amount,
-					convertResult,
-				}),
-			);
-		},
-		[amount, coinFrom, coinTo, result],
-	);
+	const addNewHistory = (convertResult: number) => {
+		dispatch(addHistory({
+			coinFrom,
+			coinTo,
+			amount,
+			convertResult,
+		}));
+	};
 
-	const onConvert = useCallback(async () => {
+	const onConvert = async () => {
 		if (amount) {
 			const { meta, payload } = await dispatch(
 				convertCoins({ coinFrom, coinTo, amount }),
@@ -92,7 +83,7 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 				addNewHistory(payload as number);
 			}
 		}
-	}, [dispatch, amount, coinFrom, coinTo]);
+	};
 
 	return (
 		<div className={classnames(classes.Converter, className)}>

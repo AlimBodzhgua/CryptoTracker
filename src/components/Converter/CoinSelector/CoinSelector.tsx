@@ -1,10 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 import { ConverterCoinType, ConverterListType } from 'types/converter';
 import { useSearchParams } from 'react-router-dom';
-
+import classnames from 'classnames';
 import ArrowIcon from 'assets/icons/arrow.svg';
 
-import classnames from 'classnames';
 import { CoinsList } from '../CoinsList/CoinsList';
 import classes from './CoinSelector.module.scss';
 
@@ -22,31 +21,29 @@ export const CoinSelector: FC<CoinSelectorProps> = memo((props) => {
 	} = props;
 	const [_, setSearchParams] = useSearchParams();
 
-	const onShowCoinList = useCallback(() => {
+	const onShowList = useCallback(() => {
 		setSearchParams({ listType });
 	}, []);
 
-	const onHideCoinsList = useCallback(() => {
+	const onHideList = useCallback(() => {
 		setSearchParams('');
 	}, []);
 
 	return (
-		<>
-			<div
-				role='button'
-				className={classnames(classes.coinsSelector, className)}
-				onClick={onShowCoinList}
-				tabIndex={0}
-			>
-				<img
-					src={coin.iconUrl}
-					alt={coin.symbol}
-					className={classes.fromIcon}
-				/>
-				<div className={classes.fromSymbol}>{coin.symbol}</div>
-				<ArrowIcon className={classes.arrow} />
-			</div>
-			<CoinsList onHideCoinsList={onHideCoinsList} />
-		</>
+		<div
+			role='button'
+			className={classnames(classes.coinsSelector, className)}
+			onClick={onShowList}
+			tabIndex={0}
+		>
+			<img
+				src={coin.iconUrl}
+				alt={coin.symbol}
+				className={classes.fromIcon}
+			/>
+			<div className={classes.fromSymbol}>{coin.symbol}</div>
+			<ArrowIcon className={classes.arrow} />
+			<CoinsList onClose={onHideList} />
+		</div>
 	);
 });

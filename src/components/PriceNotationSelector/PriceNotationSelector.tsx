@@ -1,11 +1,11 @@
-import { FC, memo, useCallback } from 'react';
-import { NotationType } from 'types/coin';
+import { FC, memo } from 'react';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { coinsActions } from 'store/slices/coinsSlice';
 import { selectCoinsPriceNotation } from 'store/selectors/coinsSelectors';
 import { useTranslation } from 'react-i18next';
-
 import classnames from 'classnames';
+import type { NotationType } from 'types/coin';
+
 import classes from './PriceNotationSelector.module.scss';
 
 interface PriceNotationSelectorProps {
@@ -24,15 +24,15 @@ export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({ cla
 	const dispatch = useAppDispatch();
 	const priceNotation = useAppSelector(selectCoinsPriceNotation);
 
-	const onNotationSelect = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+	const onChangeNotation = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedNotation = e.target.value as NotationType;
 		dispatch(coinsActions.setPriceNotation(selectedNotation));
-	}, [dispatch]);
+	};
 
 	return (
 		<select
 			className={classnames(classes.PriceNotationSelector, className)}
-			onChange={onNotationSelect}
+			onChange={onChangeNotation}
 			value={priceNotation === undefined ? 'placeholder' : priceNotation}
 			data-testid='price-selector'
 		>

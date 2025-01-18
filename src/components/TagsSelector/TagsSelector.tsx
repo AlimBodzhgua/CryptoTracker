@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo } from 'react';
 import { TagType } from 'types/coin';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { coinsActions } from 'store/slices/coinsSlice';
@@ -27,22 +27,19 @@ export const TagList = {
 
 export const TagsSelector: FC<TagsSelectorProps> = memo(({ className }) => {
 	const dispatch = useAppDispatch();
-	const currentTag = useAppSelector(selectCoinsTag);
+	const tag = useAppSelector(selectCoinsTag);
 
-	const onTagSelect = useCallback(
-		(e: React.ChangeEvent<HTMLSelectElement>) => {
-			const selectedTag = e.target.value as TagType;
-			dispatch(coinsActions.setTag(selectedTag));
-			dispatch(fetchCoins({ page: 0 }));
-		},
-		[dispatch],
-	);
+	const onChangeTag = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const selectedTag = e.target.value as TagType;
+		dispatch(coinsActions.setTag(selectedTag));
+		dispatch(fetchCoins({ page: 0 }));
+	};
 
 	return (
 		<select
 			className={classnames(classes.TagsSelector, className)}
-			onChange={onTagSelect}
-			value={currentTag}
+			onChange={onChangeTag}
+			value={tag}
 			data-testid='tags-selector'
 		>
 			{Object.keys(TagList).map((tag) => (

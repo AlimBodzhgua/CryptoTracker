@@ -9,15 +9,15 @@ export const coinsSorter = (
 	fieldName: FieldNameType,
 ) => [...coins].sort((a, b) => {
 	if (fieldName === 'name') {
-		if (sortDirection === 'descending') {
+		if (sortDirection === 'asc') {
 			return a[`${fieldName}`].localeCompare(b[`${fieldName}`]);
 		}
 		return b[`${fieldName}`].localeCompare(a[`${fieldName}`]);
 	}
-	        if (sortDirection === 'descending') {
-	            return Number(a[`${fieldName}`]) > Number(b[`${fieldName}`]) ? -1 : 1;
+	        if (sortDirection === 'desc') {
+	            return Number(a[`${fieldName}`]) - Number(b[`${fieldName}`]);
 	        }
-	        return Number(a[`${fieldName}`]) < Number(b[`${fieldName}`]) ? -1 : 1;
+	        return Number(b[`${fieldName}`]) - Number(a[`${fieldName}`]);
 });
 
 export const createHistoryDoc = (

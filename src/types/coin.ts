@@ -1,4 +1,5 @@
 import { TagList } from 'components/TagsSelector/TagsSelector';
+import { SortDirection } from 'constants/sort';
 
 export interface ICoin {
 	uuid: string;
@@ -26,7 +27,7 @@ export interface IGlobalStats {
     newestCoins: Array<GlobalStatsCoin>,
 }
 
-export type SortDirectionType = 'descending' | 'ascending';
+export type SortDirectionType = keyof typeof SortDirection;
 
 export type FieldNameType = keyof Omit<ICoin, 'iconUrl' | 'symbol' | 'uuid'>;
 

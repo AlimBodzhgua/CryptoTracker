@@ -9,6 +9,6 @@ export const SortField = {
 } as const;
 
 export const SortDirection = {
-	ascending: 'ascending',
-	descending: 'descending',
+	asc: 'asc',
+	desc: 'desc',
 } as const;

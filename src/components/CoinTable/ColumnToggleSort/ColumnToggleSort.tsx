@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, memo } from 'react';
+import { FC, useState, memo } from 'react';
 import { FieldNameType, SortDirectionType } from 'types/coin';
 import { coinsSorter } from 'utils/utils';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -12,58 +12,33 @@ import classes from './ColumnToggleSort.module.scss';
 
 interface ColumnToggleSortProps {
 	sortField: FieldNameType;
-	activeTriangle: FieldNameType;
-	setActiveTriangle: React.Dispatch<React.SetStateAction<FieldNameType>>;
+	activeField: FieldNameType;
+	onActiveFieldChange: (field: FieldNameType) => void;
 	className?: string;
 }
 
 export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 	const {
 		sortField,
-		activeTriangle,
-		setActiveTriangle,
+		activeField,
+		onActiveFieldChange,
 		className,
 	} = props;
-	const [sortDirection, setSortDirection] = useState<SortDirectionType>(
-		SortDirection.ascending,
-	);
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [sortDirection, setSortDirection] = useState<SortDirectionType>(SortDirection.desc);
+	const [_, setSearchParams] = useSearchParams();
 	const coins = useAppSelector(selectCoins);
 	const dispatch = useAppDispatch();
-	const isActive = activeTriangle === sortField;
-
-	useEffect(() => {
-		if (searchParams.has('by')) {
-			const sortValues: string[] = Object.values(SortDirection);
-			const paramSortValue = searchParams.get('by');
-
-			if (sortValues.includes(paramSortValue!)) {
-				setSortDirection(paramSortValue as SortDirectionType);
-			} else {
-				throw Error('Such url does not exist');
-			}
-		}
-	}, []);
-
-	useEffect(() => {
-		if (isActive) {
-			const sortedCoins = coinsSorter(coins, sortDirection, sortField);
-			dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
-			const searchParams = new URLSearchParams({
-				field: sortField,
-				by: sortDirection,
-			});
-			setSearchParams(searchParams);
-		}
-	}, [sortDirection, isActive]);
+	const isActive = activeField === sortField;
 
 	const onToggleSortDirection = () => {
-		setActiveTriangle(sortField);
-		setSortDirection(
-			sortDirection === SortDirection.ascending
-				? SortDirection.descending
-				: SortDirection.ascending,
-		);
+		const nextDirection = sortDirection === SortDirection.asc ? SortDirection.desc : SortDirection.asc;
+		
+		const sortedCoins = coinsSorter(coins, nextDirection, sortField);
+		dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
+
+		setSearchParams({ field: sortField, sort: nextDirection });
+		onActiveFieldChange(sortField);
+		setSortDirection(nextDirection);
 	};
 
 	return (
@@ -76,20 +51,17 @@ export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 		>
 			<span
 				className={classnames(
-					classes.topAngle,
-					sortDirection === SortDirection.descending && isActive
-						? classes.active
-						: undefined,
+					classes.arrowUp,
+					{ [classes.active] : sortDirection === SortDirection.asc && isActive}
 				)}
 			/>
 			<span
 				className={classnames(
-					classes.botAngle,
-					sortDirection === SortDirection.ascending && isActive
-						? classes.active
-						: undefined,
+					classes.arrowDown,
+					{ [classes.active]: sortDirection === SortDirection.desc && isActive }
 				)}
 			/>
 		</div>
 	);
 });
+

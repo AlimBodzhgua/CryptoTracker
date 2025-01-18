@@ -99,7 +99,7 @@ export const resetCoinsSettings = createAsyncThunk<
 		const coins = selectCoins(getState());
 		dispatch(coinsActions.setTag('All Coins'));
 		setSearchParams('field=rank&by=ascending');
-		const sortedCoins = coinsSorter(coins, 'ascending', 'rank');
+		const sortedCoins = coinsSorter(coins, 'asc', 'rank');
 		dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
 		dispatch(coinsActions.setPriceNotation(undefined));
 	},

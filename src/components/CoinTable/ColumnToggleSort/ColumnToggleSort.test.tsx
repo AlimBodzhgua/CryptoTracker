@@ -7,8 +7,8 @@ describe('TriangleSorter', () => {
 		componentRender(
 			<ColumnToggleSort
 				sortField='price'
-				activeTriangle='rank'
-				setActiveTriangle={jest.fn()}
+				activeField='rank'
+				onActiveFieldChange={jest.fn()}
 			/>,
 		);
 		expect(screen.getByTestId('sorter')).toBeInTheDocument();
@@ -18,8 +18,8 @@ describe('TriangleSorter', () => {
 		componentRender(
 			<ColumnToggleSort
 				sortField='price'
-				activeTriangle='rank'
-				setActiveTriangle={jest.fn()}
+				activeField='rank'
+				onActiveFieldChange={jest.fn()}
 			/>,
 		);
 		waitFor(() => fireEvent.click(screen.getByTestId('sorter')))
@@ -30,8 +30,8 @@ describe('TriangleSorter', () => {
 		componentRender(
 			<ColumnToggleSort
 				sortField='price'
-				activeTriangle='rank'
-				setActiveTriangle={jest.fn()}
+				activeField='rank'
+				onActiveFieldChange={jest.fn()}
 			/>,
 		);
 		const sorter = screen.getByTestId('sorter');

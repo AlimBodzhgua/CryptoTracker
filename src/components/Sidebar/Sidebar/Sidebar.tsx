@@ -3,8 +3,8 @@ import { sidebarList } from 'constants/sidebarList';
 import { Button } from 'components/UI/Button/Button';
 import LeftIcon from 'assets/icons/left_arrow.svg';
 import RightIcon from 'assets/icons/right_arrow.svg';
-
 import classnames from 'classnames';
+
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import classes from './Sidebar.module.scss';
 
@@ -15,8 +15,8 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 	const [collapsed, setCollapsed] = useState<boolean>(false);
 
-	const onToggle = () => {
-		setCollapsed(!collapsed);
+	const onToggleCollapsed = () => {
+		setCollapsed(prev => !prev);
 	};
 
 	return (
@@ -38,7 +38,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 			</div>
 			<Button
 				className={classes.toggleBtn}
-				onClick={onToggle}
+				onClick={onToggleCollapsed}
 				theme='clear'
 				data-testid='toggle-button'
 			>

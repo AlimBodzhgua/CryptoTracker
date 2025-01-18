@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/redux';
 import { Message } from 'components/UI/Message/Message';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -14,18 +14,19 @@ import {
 import { SortableContext } from '@dnd-kit/sortable';
 import { restrictToParentElement } from '@dnd-kit/modifiers';
 import { userActions } from 'store/slices/userSlice';
+import { updateWatchList } from 'store/actions/userActions';
 import {
 	selectUserError,
 	selectUserIsLoading,
 	selectUserWatchListCoins,
 } from 'store/selectors/userSelectors';
-import { updateWatchList } from 'store/actions/userActions';
 import classnames from 'classnames';
 import StarIcon from 'assets/icons/starSelected.svg';
 
-import { WatchListSkeleton } from './WatchListSkeleton';
 import { WatchListItem } from '../WatchListItem/WatchListItem';
+import { WatchListSkeleton } from './WatchListSkeleton';
 import classes from './WatchList.module.scss';
+
 
 interface WatchListProps {
 	className?: string;
@@ -39,11 +40,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 	const error = useAppSelector(selectUserError);
 	const navigate = useNavigate();
 	const [searchParams, _] = useSearchParams();
-
-	const dragDisabled = useMemo(
-		() => !!searchParams.has('modal'),
-		[searchParams],
-	);
+	const dragDisabled = !!searchParams.has('modal');
 
 	const onNavigateToCoinsPage = () => {
 		navigate('/coins');
@@ -57,21 +54,16 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 		}),
 	);
 
-	const onWatchlistDragEnd = useCallback(
-		(e: DragEndEvent) => {
-			const { active, over } = e;
-			if (active.id !== over!.id) {
-				dispatch(
-					userActions.moveWatchList({
-						activeId: String(active.id),
-						overId: String(over!.id),
-					}),
-				);
-				dispatch(updateWatchList());
-			}
-		},
-		[dispatch],
-	);
+	const onWatchlistDragEnd = (e: DragEndEvent) => {
+		const { active, over } = e;
+		if (active.id !== over!.id) {
+			dispatch(userActions.moveWatchList({
+				activeId: String(active.id),
+				overId: String(over!.id),
+			}));
+			dispatch(updateWatchList());
+		}
+	};
 
 	if (isLoading) {
 		return <WatchListSkeleton />;
@@ -116,9 +108,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 								{t('Your watchlist is empty.')}
 							</h3>
 							<h4 className={classes.emptySubtitle}>
-								{t(
-									'You can add coins to watchlist on coins page.',
-								)}
+								{t('You can add coins to watchlist on coins page.')}
 							</h4>
 							<Button
 								onClick={onNavigateToCoinsPage}

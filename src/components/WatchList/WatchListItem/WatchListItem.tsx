@@ -26,14 +26,14 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 	const [_, setSearchParams] = useSearchParams();
 	const dispatch = useAppDispatch();
 
-	const onRemoveFromWatchList = useCallback(async () => {
+	const onRemoveFromWatchList = async() => {
 		setIsLoading(true);
 		const { meta } = await dispatch(removeWatchListCoin(coin.uuid));
 
 		if (meta.requestStatus === 'fulfilled' || meta.requestStatus === 'rejected') {
 			setIsLoading(false);
 		}
-	}, [dispatch]);
+	};
 
 	const onOpenOverviewModal = useCallback(() => {
 		setIsOverviewModal(true);

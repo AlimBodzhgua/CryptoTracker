@@ -3,6 +3,8 @@ import { ConverterCoinType } from 'types/converter';
 import axios from 'axios';
 import coinApi from 'api/coinApi';
 
+const BASE_CONVERTER_LINK = 'https://api.coinconvert.net/convert/COIN_FROM/COIN_TO?amount=AMOUNT';
+
 export const convertCoins = createAsyncThunk<
 	number,
 	{
@@ -15,8 +17,11 @@ export const convertCoins = createAsyncThunk<
 	'convertCoins',
 	async (data, { rejectWithValue }) => {
 		try {
-			// eslint-disable-next-line max-len
-			const link = `https://api.coinconvert.net/convert/${data.coinFrom.symbol}/${data.coinTo.symbol}?amount=${data.amount}`;
+			const link = BASE_CONVERTER_LINK
+				.replace('COIN_FROM', data.coinFrom.symbol)
+				.replace('COIN_TO', data.coinTo.symbol)
+				.replace('AMOUNT', String(data.amount))
+
 			const response = await axios.get(link);
 			return response.data[`${data.coinTo.symbol}`];
 		} catch (error) {
@@ -33,7 +38,7 @@ export const fetchConverterCoins = createAsyncThunk<
 	'fetchConverterCoins',
 	async (_, { rejectWithValue }) => {
 		try {
-			const limit = 20;
+			const limit = 50;
 			const response = await coinApi.get('/coins', {
 				params: {
 					limit,

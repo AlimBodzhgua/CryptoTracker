@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICoin, IGlobalStats } from 'types/coin';
 import { coinsSorter } from 'utils/utils';
 import { SetURLSearchParams } from 'react-router-dom';
+import type { ICoin, IGlobalStats } from 'types/coin';
 import coinApi from 'api/coinApi';
+
 import { StateSchema } from '../config/StateSchema';
 import {
 	selectCoins,
@@ -15,21 +16,16 @@ import {
 import { AppDispatch } from '../config/store';
 import { coinsActions } from '../slices/coinsSlice';
 
-interface FetchCoinsProps {
-    page?: number;
-}
+type PageNumber = number;
 
 export const fetchCoins = createAsyncThunk<
 	ICoin[],
-	FetchCoinsProps,
-	{
-        rejectValue: string,
-        state: StateSchema,
-    }
+	PageNumber,
+	{ rejectValue: string, state: StateSchema }
 >(
 	'fetchCoins',
-	async (props, { rejectWithValue, getState }) => {
-		const { page = 0 } = props;
+	async (page = 0, { rejectWithValue, getState }) => {
+
 		const limit = selectCoinsPageLimit(getState());
 		const tag = selectCoinsTag(getState());
 		try {
@@ -50,10 +46,7 @@ export const fetchCoins = createAsyncThunk<
 export const fetchNextCoins = createAsyncThunk<
     void,
     void,
-    {
-        state: StateSchema,
-        dispatch: AppDispatch,
-    }
+    { state: StateSchema, dispatch: AppDispatch }
 >(
 	'fetchNextCoins',
 	async (_, { dispatch, getState }) => {
@@ -63,7 +56,7 @@ export const fetchNextCoins = createAsyncThunk<
 
 		if (hasMore && !isLoading) {
 			dispatch(coinsActions.setPage(page + 1));
-			dispatch(fetchCoins({ page: page + 1 }));
+			dispatch(fetchCoins(page + 1 ));
 		}
 	},
 );
@@ -71,9 +64,7 @@ export const fetchNextCoins = createAsyncThunk<
 export const fetchGlobalStats = createAsyncThunk<
     IGlobalStats,
     void,
-    {
-        rejectValue: string,
-    }
+    { rejectValue: string }
 >(
 	'fetchGlobalStats',
 	async (_, { rejectWithValue }) => {
@@ -86,20 +77,18 @@ export const fetchGlobalStats = createAsyncThunk<
 	},
 );
 
+
 export const resetCoinsSettings = createAsyncThunk<
     void,
     SetURLSearchParams,
-    {
-        dispatch: AppDispatch,
-        state: StateSchema,
-    }
+    { dispatch: AppDispatch, state: StateSchema }
 >(
 	'resetCoinsSettings',
 	async (setSearchParams, { dispatch, getState }) => {
 		const coins = selectCoins(getState());
 		dispatch(coinsActions.setTag('All Coins'));
-		setSearchParams('field=rank&by=ascending');
-		const sortedCoins = coinsSorter(coins, 'asc', 'rank');
+		setSearchParams('field=rank&sort=desc');
+		const sortedCoins = coinsSorter(coins, 'desc', 'rank');
 		dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
 		dispatch(coinsActions.setPriceNotation(undefined));
 	},

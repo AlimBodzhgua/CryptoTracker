@@ -28,7 +28,7 @@ export const convertCoins = createAsyncThunk<
 export const fetchConverterCoins = createAsyncThunk<
 	ConverterCoinType[],
 	void,
-	{rejectValue: string}
+	{ rejectValue: string }
 >(
 	'fetchConverterCoins',
 	async (_, { rejectWithValue }) => {

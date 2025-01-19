@@ -43,7 +43,7 @@ export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 
 	return (
 		<div
-			className={classnames(classes.TriangleSorter, className)}
+			className={classnames(classes.ColumnToggleSort, className)}
 			onClick={onToggleSortDirection}
 			role='button'
 			tabIndex={0}

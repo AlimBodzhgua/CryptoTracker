@@ -10,11 +10,7 @@ import { selectUser, selectUserIsLoading } from 'store/selectors/userSelectors';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { Button } from 'components/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
-import {
-	sendEmailVerificationMessage,
-	updateUserProfile,
-} from 'store/actions/userActions';
-
+import { sendVerificationMessage, updateUserProfile } from 'store/actions/userActions';
 import { AppImage } from 'components/UI/AppImage/AppImage';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
 import UserDefaultImage from 'assets/userDefaultImage.jpg';
@@ -72,7 +68,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 	}, [login, imageUrl]);
 
 	const onGetVerificationMessage = useCallback(async () => {
-		const { meta } = await dispatch(sendEmailVerificationMessage());
+		const { meta } = await dispatch(sendVerificationMessage());
 		if (meta.requestStatus === 'fulfilled') {
 			alert(
 				'A confirmation message has been sent, confirm your email and re-login to your account',

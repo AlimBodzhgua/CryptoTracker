@@ -32,7 +32,7 @@ export const TagsSelector: FC<TagsSelectorProps> = memo(({ className }) => {
 	const onChangeTag = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedTag = e.target.value as TagType;
 		dispatch(coinsActions.setTag(selectedTag));
-		dispatch(fetchCoins({ page: 0 }));
+		dispatch(fetchCoins(0));
 	};
 
 	return (

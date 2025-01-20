@@ -10,13 +10,19 @@
 
 	background-color: rgb(0 0 0 / 60%);
 
-	display: none;
+	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	transform: scale(0);
 }
 
 .opened {
-	display: flex;
+	transform: scale(1);
+
+	.content {
+		transform: scale(1);
+	}
 }
 
 .content {
@@ -28,5 +34,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
 
+	transform: scale(0);
+	transition: transform .2s linear;
+}

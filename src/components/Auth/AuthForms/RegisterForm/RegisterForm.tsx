@@ -26,7 +26,7 @@ interface RegisterFormProps {
 	className?: string;
 }
 
-interface IFormInputs {
+type FormInputValues = {
 	email: string;
 	password: string;
 }
@@ -43,7 +43,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 		handleSubmit,
 		register,
 		formState: { errors },
-	} = useForm<IFormInputs>({
+	} = useForm<FormInputValues>({
 		mode: 'onBlur',
 	});
 
@@ -51,7 +51,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 		setShowPassword((prev) => !prev);
 	};
 
-	const onSubmit: SubmitHandler<IFormInputs> = useCallback(async (e) => {
+	const onSubmit: SubmitHandler<FormInputValues> = async (e) => {
 		const { meta, payload } = await dispatch(
 			signUpUser({
 				email: e.email,
@@ -60,14 +60,11 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 		);
 
 		if (meta.requestStatus === 'fulfilled') {
-			localStorage.setItem(
-				USER_LOCALSTORAGE_KEY,
-				JSON.stringify(payload),
-			);
+			localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload));
 
 			if (onSuccess) onSuccess();
 		}
-	}, [dispatch, onSuccess]);
+	};
 
 	const onMoveToLogin = () => {
 		setSearchParams({ modal: 'login' });

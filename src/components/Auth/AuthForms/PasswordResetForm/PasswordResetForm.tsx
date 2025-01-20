@@ -19,12 +19,17 @@ interface PasswordResetFormProps {
 	className?: string;
 }
 
-interface IFormInputs {
+type FormInputValues = {
 	email: string;
-}
+};
 
 const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
-	const { title, onSuccess, onCancel, className } = props;
+	const {
+		title,
+		onSuccess,
+		onCancel,
+		className,
+	} = props;
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -34,11 +39,11 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 		handleSubmit,
 		register,
 		formState: { errors },
-	} = useForm<IFormInputs>({
+	} = useForm<FormInputValues>({
 		mode: 'onSubmit',
 	});
 
-	const onSubmit: SubmitHandler<IFormInputs> = async (e) => {
+	const onSubmit: SubmitHandler<FormInputValues> = async (e) => {
 		const { meta } = await dispatch(resetUserPassword(e.email));
 
 		if (meta.requestStatus === 'fulfilled') {

@@ -28,7 +28,7 @@ interface LoginFormProps {
 	className?: string;
 }
 
-interface IFormInputs {
+type FormInputValues = {
 	email: string;
 	password: string;
 }
@@ -46,7 +46,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 		handleSubmit,
 		register,
 		formState: { errors },
-	} = useForm<IFormInputs>({
+	} = useForm<FormInputValues>({
 		mode: 'onSubmit',
 	});
 
@@ -54,23 +54,17 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 		setShowPassword((prev) => !prev);
 	};
 
-	const onSubmit: SubmitHandler<IFormInputs> = useCallback(async (e) => {
+	const onSubmit: SubmitHandler<FormInputValues> = async (e) => {
 		const { meta, payload } = await dispatch(
-			signInUser({
-				email: e.email,
-				password: e.password,
-			}),
+			signInUser({ email: e.email, password: e.password }),
 		);
 
 		if (meta.requestStatus === 'fulfilled') {
-			localStorage.setItem(
-				USER_LOCALSTORAGE_KEY,
-				JSON.stringify(payload),
-			);
+			localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload));
 
 			if (onSuccess) onSuccess();
 		}
-	}, [dispatch, onSuccess]);
+	};
 
 	const onForgetPassword = () => {
 		if (onForget) {

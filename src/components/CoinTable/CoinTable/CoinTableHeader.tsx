@@ -43,64 +43,52 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 		<thead className={classnames(classes.header, className)}>
 			<tr className={classes.row}>
 				<th className={classes.colHeader}>
-					<div className={classes.headerItem}>
-						<span>#</span>
-						<ColumnToggleSort
-							sortField={SortField.rank}
-							activeField={activeField}
-							onActiveFieldChange={onActiveFieldChange}
-						/>
-					</div>
+					<ColumnToggleSort
+						columnTitle={'#'}
+						sortField={SortField.rank}
+						activeField={activeField}
+						onActiveFieldChange={onActiveFieldChange}
+					/>
 				</th>
 				<th className={classes.colHeader}>
-					<div className={classes.headerItem}>
-						<span>{t('Name')}</span>
-						<ColumnToggleSort
-							sortField={SortField.name}
-							activeField={activeField}
-							onActiveFieldChange={onActiveFieldChange}
-						/>
-					</div>
+					<ColumnToggleSort
+						columnTitle={t('Name')}
+						sortField={SortField.name}
+						activeField={activeField}
+						onActiveFieldChange={onActiveFieldChange}
+					/>
 				</th>
 				<th className={classes.colHeader}>
-					<div className={classes.headerItem}>
-						<span>{t('Price')}</span>
-						<ColumnToggleSort
-							sortField={SortField.price}
-							activeField={activeField}
-							onActiveFieldChange={onActiveFieldChange}
-						/>
-					</div>
+					<ColumnToggleSort
+						columnTitle={t('Price')}
+						sortField={SortField.price}
+						activeField={activeField}
+						onActiveFieldChange={onActiveFieldChange}
+					/>
 				</th>
 				<th className={classes.colHeader}>
-					<div className={classes.headerItem}>
-						<span>{t('Change')}</span>
-						<ColumnToggleSort
-							sortField={SortField.change}
-							activeField={activeField}
-							onActiveFieldChange={onActiveFieldChange}
-						/>
-					</div>
+					<ColumnToggleSort
+						columnTitle={t('Change')}
+						sortField={SortField.change}
+						activeField={activeField}
+						onActiveFieldChange={onActiveFieldChange}
+					/>
 				</th>
 				<th className={classes.colHeader}>
-					<div className={classes.headerItem}>
-						<span>{t('24h volume')}</span>
-						<ColumnToggleSort
-							sortField={SortField['24hVolume']}
-							activeField={activeField}
-							onActiveFieldChange={onActiveFieldChange}
-						/>
-					</div>
+					<ColumnToggleSort
+						columnTitle={t('24h volume')}
+						sortField={SortField['24hVolume']}
+						activeField={activeField}
+						onActiveFieldChange={onActiveFieldChange}
+					/>
 				</th>
 				<th className={classes.colHeader} colSpan={-1}>
-					<div className={classes.headerItem}>
-						<span>{t('Market cap')}</span>
-						<ColumnToggleSort
-							sortField={SortField.marketCap}
-							activeField={activeField}
-							onActiveFieldChange={onActiveFieldChange}
-						/>
-					</div>
+					<ColumnToggleSort
+						columnTitle={t('Market cap')}
+						sortField={SortField.marketCap}
+						activeField={activeField}
+						onActiveFieldChange={onActiveFieldChange}
+					/>
 				</th>
 				<th className={classes.colHeader}>
 					<span>=</span>

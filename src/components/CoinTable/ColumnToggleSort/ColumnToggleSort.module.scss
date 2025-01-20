@@ -1,15 +1,23 @@
 
 .ColumnToggleSort {
 	display: flex;
-	flex-direction: column;
-	align-self: center;
-
-	margin-left: 8px;
-	margin-bottom: -4px;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 0 10px;
 
 	&:hover {
 		cursor: pointer;
 	}
+
+	&:nth-child(2) {
+		background-color: #fff;
+	}
+}
+
+.arrows {
+	display: flex;
+	flex-direction: column;
 }
 
 .arrowUp {

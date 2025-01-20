@@ -11,6 +11,7 @@ import classnames from 'classnames';
 import classes from './ColumnToggleSort.module.scss';
 
 interface ColumnToggleSortProps {
+	columnTitle: string;
 	sortField: FieldNameType;
 	activeField: FieldNameType;
 	onActiveFieldChange: (field: FieldNameType) => void;
@@ -19,6 +20,7 @@ interface ColumnToggleSortProps {
 
 export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 	const {
+		columnTitle,
 		sortField,
 		activeField,
 		onActiveFieldChange,
@@ -49,18 +51,21 @@ export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 			tabIndex={0}
 			data-testid='sorter'
 		>
-			<span
-				className={classnames(
-					classes.arrowUp,
-					{ [classes.active] : sortDirection === SortDirection.asc && isActive}
-				)}
-			/>
-			<span
-				className={classnames(
-					classes.arrowDown,
-					{ [classes.active]: sortDirection === SortDirection.desc && isActive }
-				)}
-			/>
+			<div>{columnTitle}</div>
+			<div className={classes.arrows}>
+				<span
+					className={classnames(
+						classes.arrowUp,
+						{ [classes.active] : sortDirection === SortDirection.asc && isActive}
+					)}
+				/>
+				<span
+					className={classnames(
+						classes.arrowDown,
+						{ [classes.active]: sortDirection === SortDirection.desc && isActive }
+					)}
+				/>
+			</div>
 		</div>
 	);
 });

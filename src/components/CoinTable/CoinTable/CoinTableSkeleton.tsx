@@ -27,34 +27,22 @@ export const CoinTableSkeleton: FC<CoinTableSkeletonProps> = memo((props) => {
 							</div>
 						</th>
 						<th className={classes.colHeader}>
-							<div className={classes.headerItem}>
-								<span>{t('Name')}</span>
-							</div>
+							<span>{t('Name')}</span>
 						</th>
 						<th className={classes.colHeader}>
-							<div className={classes.headerItem}>
-								<span>{t('Price')}</span>
-							</div>
+							<span>{t('Price')}</span>
 						</th>
 						<th className={classes.colHeader}>
-							<div className={classes.headerItem}>
-								<span>{t('Change')}</span>
-							</div>
+							<span>{t('Change')}</span>
 						</th>
 						<th className={classes.colHeader}>
-							<div className={classes.headerItem}>
-								<span>{t('24h volume')}</span>
-							</div>
+							<span>{t('24h volume')}</span>
 						</th>
 						<th className={classes.colHeader} colSpan={-1}>
-							<div className={classes.headerItem}>
-								<span>{t('Market cap')}</span>
-							</div>
+							<span>{t('Market cap')}</span>
 						</th>
 						<th className={classes.colHeader}>
-							<div className={classes.headerItem}>
-								<span>=</span>
-							</div>
+							<span>=</span>
 						</th>
 					</tr>
 				</thead>

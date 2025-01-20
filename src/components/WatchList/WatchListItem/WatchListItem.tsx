@@ -26,7 +26,7 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 	const [_, setSearchParams] = useSearchParams();
 	const dispatch = useAppDispatch();
 
-	const onRemoveFromWatchList = async() => {
+	const onRemoveFromWatchList = async () => {
 		setIsLoading(true);
 		const { meta } = await dispatch(removeWatchListCoin(coin.uuid));
 

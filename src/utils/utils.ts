@@ -7,7 +7,7 @@ export const coinsSorter = (
 	coins: ICoin[],
 	sortDirection: SortDirectionType,
 	fieldName: FieldNameType,
-) =>
+) => (
 	[...coins].sort((a, b) => {
 		if (fieldName === 'name') {
 			if (sortDirection === 'asc') {
@@ -19,7 +19,8 @@ export const coinsSorter = (
 			return Number(a[`${fieldName}`]) - Number(b[`${fieldName}`]);
 		}
 		return Number(b[`${fieldName}`]) - Number(a[`${fieldName}`]);
-	});
+	})
+);
 
 export const createHistoryDoc = (
 	coinFrom: ConverterCoinType,

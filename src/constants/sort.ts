@@ -1,4 +1,3 @@
-
 export const SortField = {
 	rank: 'rank',
 	name: 'name',

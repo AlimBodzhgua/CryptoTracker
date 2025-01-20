@@ -16,7 +16,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 	const [collapsed, setCollapsed] = useState<boolean>(false);
 
 	const onToggleCollapsed = () => {
-		setCollapsed(prev => !prev);
+		setCollapsed((prev) => !prev);
 	};
 
 	return (

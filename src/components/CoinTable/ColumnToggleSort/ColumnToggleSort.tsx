@@ -38,7 +38,7 @@ export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 
 	const onToggleSortDirection = () => {
 		const nextDirection = sortDirection === SortDirection.asc ? SortDirection.desc : SortDirection.asc;
-		
+
 		const sortedCoins = coinsSorter(coins, nextDirection, sortField);
 		dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
 
@@ -60,17 +60,16 @@ export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 				<span
 					className={classnames(
 						classes.arrowUp,
-						{ [classes.active] : sortDirection === SortDirection.asc && isActive}
+						{ [classes.active]: sortDirection === SortDirection.asc && isActive },
 					)}
 				/>
 				<span
 					className={classnames(
 						classes.arrowDown,
-						{ [classes.active]: sortDirection === SortDirection.desc && isActive }
+						{ [classes.active]: sortDirection === SortDirection.desc && isActive },
 					)}
 				/>
 			</div>
 		</div>
 	);
 });
-

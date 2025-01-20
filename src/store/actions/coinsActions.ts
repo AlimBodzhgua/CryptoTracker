@@ -24,8 +24,7 @@ export const fetchCoins = createAsyncThunk<
 	{ rejectValue: string, state: StateSchema }
 >(
 	'fetchCoins',
-	async (page = 0, { rejectWithValue, getState }) => {
-
+	async (page, { rejectWithValue, getState }) => {
 		const limit = selectCoinsPageLimit(getState());
 		const tag = selectCoinsTag(getState());
 		try {
@@ -56,7 +55,7 @@ export const fetchNextCoins = createAsyncThunk<
 
 		if (hasMore && !isLoading) {
 			dispatch(coinsActions.setPage(page + 1));
-			dispatch(fetchCoins(page + 1 ));
+			dispatch(fetchCoins(page + 1));
 		}
 	},
 );
@@ -76,7 +75,6 @@ export const fetchGlobalStats = createAsyncThunk<
 		}
 	},
 );
-
 
 export const resetCoinsSettings = createAsyncThunk<
     void,

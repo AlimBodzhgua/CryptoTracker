@@ -20,7 +20,7 @@ export const convertCoins = createAsyncThunk<
 			const link = BASE_CONVERTER_LINK
 				.replace('COIN_FROM', data.coinFrom.symbol)
 				.replace('COIN_TO', data.coinTo.symbol)
-				.replace('AMOUNT', String(data.amount))
+				.replace('AMOUNT', String(data.amount));
 
 			const response = await axios.get(link);
 			return response.data[`${data.coinTo.symbol}`];

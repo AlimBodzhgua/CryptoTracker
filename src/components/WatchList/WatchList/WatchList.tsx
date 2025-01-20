@@ -27,7 +27,6 @@ import { WatchListItem } from '../WatchListItem/WatchListItem';
 import { WatchListSkeleton } from './WatchListSkeleton';
 import classes from './WatchList.module.scss';
 
-
 interface WatchListProps {
 	className?: string;
 }

@@ -73,8 +73,12 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 	};
 
 	const mapToMatchedIcon = useMemo<Record<SelectionType, ReactElement>>(() => ({
-		selected: <StarSelectedIcon className={classes.starIconSelected} onClick={onRemoveCoinFromWatchList}/>,
-		unselected: <StarIcon className={classes.starIcon} onClick={onAddCoinToWatchList}/>,
+		selected: (
+			<StarSelectedIcon className={classes.starIconSelected} onClick={onRemoveCoinFromWatchList} />
+		),
+		unselected: (
+			<StarIcon className={classes.starIcon} onClick={onAddCoinToWatchList} />
+		),
 	}), [onRemoveCoinFromWatchList, onAddCoinToWatchList]);
 
 	return (

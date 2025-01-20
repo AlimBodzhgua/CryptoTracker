@@ -22,7 +22,7 @@ export const CoinsSearchBar: FC<CoinsSearchBarProps> = memo((props) => {
 	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const searchResult = useMemo(
-		() => coins.filter((coin) =>coin.name.toLowerCase().includes(searchQuery.toLowerCase())),
+		() => coins.filter((coin) => coin.name.toLowerCase().includes(searchQuery.toLowerCase())),
 		[debouncedValue, coins],
 	);
 

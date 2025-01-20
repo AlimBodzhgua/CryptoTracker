@@ -113,7 +113,6 @@ export const signOutUser = createAsyncThunk<void, void, { rejectValue: string }>
 	},
 );
 
-
 export const resetUserPassword = createAsyncThunk<void, UserEmail, { rejectValue: string }>(
 	'users/resetPassword',
 	async (email, { rejectWithValue }) => {
@@ -158,7 +157,6 @@ export const updateUserProfile = createAsyncThunk<
 		}
 	},
 );
-
 
 export const addHistory = createAsyncThunk<
     HistoryType,

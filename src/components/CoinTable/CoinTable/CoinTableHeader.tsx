@@ -27,10 +27,9 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 		if (searchParams.has('field') || searchParams.has('sort')) {
 			const sortField = searchParams.get('field') as FieldNameType || 'rank';
 			const sortDirection = searchParams.get('sort') as SortDirectionType || 'asc';
-			
+
 			const sortedCoins = coinsSorter(coins, sortDirection, sortField);
 			dispatch(coinsActions.setSearchedFilteredCoins(sortedCoins));
-			
 			setActiveField(sortField);
 		}
 	}, []);
@@ -44,7 +43,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 			<tr className={classes.row}>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						title={'#'}
+						title='#'
 						sortField={SortField.rank}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}

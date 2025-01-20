@@ -1,9 +1,9 @@
 import { FC, memo } from 'react';
 import { Skeleton } from 'components/UI/Skeleton/Skeleton';
-
-import classnames from 'classnames';
-import classes from './CoinTable.module.scss';
 import { useTranslation } from 'react-i18next';
+import classnames from 'classnames';
+
+import classes from './CoinTable.module.scss';
 
 interface CoinTableSkeletonProps {
 	withHeader: boolean;
@@ -53,7 +53,7 @@ export const CoinTableSkeleton: FC<CoinTableSkeletonProps> = memo((props) => {
 						</th>
 						<th className={classes.colHeader}>
 							<div className={classes.headerItem}>
-								<span>{t('Actions')}</span>
+								<span>=</span>
 							</div>
 						</th>
 					</tr>
@@ -73,7 +73,7 @@ export const CoinTableSkeleton: FC<CoinTableSkeletonProps> = memo((props) => {
 							</td>
 						))}
 						<td key={index}>
-							<Skeleton width={35} height={25} radius='5px' />
+							<Skeleton width={30} height={25} radius='5px' />
 						</td>
 					</tr>
 				))}

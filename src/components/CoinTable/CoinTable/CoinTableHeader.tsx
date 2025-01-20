@@ -103,9 +103,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 					</div>
 				</th>
 				<th className={classes.colHeader}>
-					<div className={classes.headerItem}>
-						<span>{t('Actions')}</span>
-					</div>
+					<span>=</span>
 				</th>
 			</tr>
 		</thead>

@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { StoreDecorator } from 'config/storybook/StoreDecorator';
-import { CoinItem } from './CoinItem';
+import { CoinTableRow } from './CoinTableRow';
 
 const meta = {
-	title: 'components/CoinItem',
-	component: CoinItem,
+	title: 'components/CoinTableRow',
+	component: CoinTableRow,
 	parameters: {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
 	argTypes: {},
-} satisfies Meta<typeof CoinItem>;
+} satisfies Meta<typeof CoinTableRow>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

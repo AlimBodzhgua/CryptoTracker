@@ -17,14 +17,14 @@ import StarIcon from 'assets/icons/star.svg';
 import StarSelectedIcon from 'assets/icons/starSelected.svg';
 
 import classnames from 'classnames';
-import classes from './CoinItem.module.scss';
+import classes from './CoinTableRow.module.scss';
 
-interface CoinItemProps {
+interface CoinTableRowProps {
 	coin: ICoin;
 	className?: string;
 }
 
-export const CoinItem: FC<CoinItemProps> = memo((props) => {
+export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 	const {
 		coin,
 		className,
@@ -88,7 +88,7 @@ export const CoinItem: FC<CoinItemProps> = memo((props) => {
 	), [isInWatchList, onRemoveCoinFromWatchList, onAddCoinToWatchList]);
 
 	return (
-		<tr className={classnames(classes.CoinItem, className)}>
+		<tr className={classnames(classes.CoinTableRow, className)}>
 			<td className={classes.rank}>{coin.rank}</td>
 			<td className={classes.bigColumn}>
 				<img

@@ -18,20 +18,6 @@
 
 }
 
-.collapsed {
-	.icon {
-		width: 28px;
-		height: 28px;
-		transform: translateX(5px);
-	}
-	
-	.linkText {
-		width: 0;
-		height: 0;
-		opacity: 0;
-	}
-}
-
 .icon {
 	fill: #fff;
 	padding: 0;
@@ -50,4 +36,18 @@
 .linkText {
 	opacity: 1;
 	transition: opacity .1s linear;
+}
+
+.collapsed {
+	.icon {
+		width: 28px;
+		height: 28px;
+		transform: translateX(5px);
+	}
+	
+	.linkText {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
 }

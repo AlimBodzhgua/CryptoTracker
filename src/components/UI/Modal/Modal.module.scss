@@ -17,14 +17,6 @@
 	transform: scale(0);
 }
 
-.opened {
-	transform: scale(1);
-
-	.content {
-		transform: scale(1);
-	}
-}
-
 .content {
 	background-color: #252525;
 	color: #fff;
@@ -37,4 +29,12 @@
 
 	transform: scale(0);
 	transition: transform .2s linear;
+}
+
+.opened {
+	transform: scale(1);
+
+	.content {
+		transform: scale(1);
+	}
 }

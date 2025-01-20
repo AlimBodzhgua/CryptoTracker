@@ -17,6 +17,14 @@
 	transition: min-width .3s linear, width .3s linear;
 }
 
+.title {
+	font-size: 22px;
+	font-weight: 800;
+	color: #fff;
+	text-align: center;
+	line-height: 1.4;
+}
+
 .collapsed {
 	min-width: var(--sidebar-width-collapsed);
 	width: var(--sidebar-width-collapsed);
@@ -24,14 +32,6 @@
 	.title {
 		font-size: 16px;
 	}
-}
-
-.title {
-	font-size: 22px;
-	font-weight: 800;
-	color: #fff;
-	text-align: center;
-	line-height: 1.4;
 }
 
 .menu {

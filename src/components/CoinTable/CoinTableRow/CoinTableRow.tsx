@@ -102,12 +102,12 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 			<td>{formatter.format(Number(coin.price))}</td>
 			<td
 				className={
-					coin.change.startsWith('-')
+					coin.change?.startsWith('-')
 						? classes.negative
 						: classes.positive
 				}
 			>
-				{coin.change}%
+				{coin.change ? `${coin.change}%` : '-'}
 			</td>
 			<td>{formatter.format(Number(coin['24hVolume']))}</td>
 			<td>{formatter.format(Number(coin.marketCap))}</td>

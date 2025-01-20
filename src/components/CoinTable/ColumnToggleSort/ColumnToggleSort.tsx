@@ -10,19 +10,23 @@ import { SortDirection } from 'constants/sort';
 import classnames from 'classnames';
 import classes from './ColumnToggleSort.module.scss';
 
+type TitlePosition = 'left' | 'middle' | 'right';
+
 interface ColumnToggleSortProps {
-	columnTitle: string;
+	title: string;
 	sortField: FieldNameType;
 	activeField: FieldNameType;
 	onActiveFieldChange: (field: FieldNameType) => void;
+	position?: TitlePosition;
 	className?: string;
 }
 
 export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 	const {
-		columnTitle,
+		title,
 		sortField,
 		activeField,
+		position = 'middle',
 		onActiveFieldChange,
 		className,
 	} = props;
@@ -45,13 +49,13 @@ export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 
 	return (
 		<div
-			className={classnames(classes.ColumnToggleSort, className)}
+			className={classnames(classes.ColumnToggleSort, classes[position], className)}
 			onClick={onToggleSortDirection}
 			role='button'
 			tabIndex={0}
 			data-testid='sorter'
 		>
-			<div>{columnTitle}</div>
+			<div>{title}</div>
 			<div className={classes.arrows}>
 				<span
 					className={classnames(

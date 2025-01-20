@@ -44,7 +44,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 			<tr className={classes.row}>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						columnTitle={'#'}
+						title={'#'}
 						sortField={SortField.rank}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -52,7 +52,8 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						columnTitle={t('Name')}
+						title={t('Name')}
+						position='left'
 						sortField={SortField.name}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -60,7 +61,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						columnTitle={t('Price')}
+						title={t('Price')}
 						sortField={SortField.price}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -68,7 +69,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						columnTitle={t('Change')}
+						title={t('Change')}
 						sortField={SortField.change}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -76,7 +77,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						columnTitle={t('24h volume')}
+						title={t('24h volume')}
 						sortField={SortField['24hVolume']}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -84,7 +85,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader} colSpan={-1}>
 					<ColumnToggleSort
-						columnTitle={t('Market cap')}
+						title={t('Market cap')}
 						sortField={SortField.marketCap}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}

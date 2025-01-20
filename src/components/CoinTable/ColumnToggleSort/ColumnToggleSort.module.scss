@@ -15,6 +15,18 @@
 	}
 }
 
+.middle {
+	justify-content: center;
+}
+
+.left {
+	justify-content: start;
+}
+
+.right {
+	justify-content: flex-end;
+}
+
 .arrows {
 	display: flex;
 	flex-direction: column;

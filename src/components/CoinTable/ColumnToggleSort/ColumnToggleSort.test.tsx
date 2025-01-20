@@ -6,7 +6,7 @@ describe('TriangleSorter', () => {
 	test('should render', () => {
 		componentRender(
 			<ColumnToggleSort
-				columnTitle='price'
+				title='price'
 				sortField='price'
 				activeField='rank'
 				onActiveFieldChange={jest.fn()}
@@ -18,7 +18,7 @@ describe('TriangleSorter', () => {
 	test('should change sort', () => {
 		componentRender(
 			<ColumnToggleSort
-				columnTitle='price'
+				title='price'
 				sortField='price'
 				activeField='rank'
 				onActiveFieldChange={jest.fn()}
@@ -31,7 +31,7 @@ describe('TriangleSorter', () => {
 	test('should change sort direction', () => {
 		componentRender(
 			<ColumnToggleSort
-				columnTitle='price'
+				title='price'
 				sortField='price'
 				activeField='rank'
 				onActiveFieldChange={jest.fn()}

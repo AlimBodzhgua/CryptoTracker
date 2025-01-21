@@ -16,7 +16,7 @@ import {
 	initUserAuth,
 } from '../actions/userActions';
 
-export interface UserStateSchema {
+export interface UserState {
 	isLoading: boolean;
 	error?: string;
 	_mounted: boolean;
@@ -24,7 +24,7 @@ export interface UserStateSchema {
 	authData: IUser | null;
 }
 
-const initialState:UserStateSchema = {
+const initialState: UserState = {
 	isLoading: false,
 	error: undefined,
 	authData: null,

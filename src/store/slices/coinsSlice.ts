@@ -5,7 +5,7 @@ import {
 } from 'types/coin';
 import { fetchCoins, fetchGlobalStats } from '../actions/coinsActions';
 
-export interface CoinsStateSchema {
+export interface CoinsState {
 	coins: ICoin[];
     searchedFilteredCoins: ICoin[];
     globalStats?: IGlobalStats;
@@ -21,7 +21,7 @@ export interface CoinsStateSchema {
     hasMore: boolean;
 }
 
-const initialState: CoinsStateSchema = {
+const initialState: CoinsState = {
 	coins: [],
 	searchedFilteredCoins: [],
 	globalStats: undefined,

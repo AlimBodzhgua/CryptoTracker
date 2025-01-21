@@ -4,7 +4,7 @@ import { SetURLSearchParams } from 'react-router-dom';
 import type { ICoin, IGlobalStats } from 'types/coin';
 import coinApi from 'api/coinApi';
 
-import { StateSchema } from '../config/StateSchema';
+import { AppState } from '../config/AppState';
 import {
 	selectCoins,
 	selectCoinsIsLoading,
@@ -21,7 +21,7 @@ type PageNumber = number;
 export const fetchCoins = createAsyncThunk<
 	ICoin[],
 	PageNumber,
-	{ rejectValue: string, state: StateSchema }
+	{ rejectValue: string, state: AppState }
 >(
 	'fetchCoins',
 	async (page, { rejectWithValue, getState }) => {
@@ -45,7 +45,7 @@ export const fetchCoins = createAsyncThunk<
 export const fetchNextCoins = createAsyncThunk<
     void,
     void,
-    { state: StateSchema, dispatch: AppDispatch }
+    { state: AppState, dispatch: AppDispatch }
 >(
 	'fetchNextCoins',
 	async (_, { dispatch, getState }) => {
@@ -79,7 +79,7 @@ export const fetchGlobalStats = createAsyncThunk<
 export const resetCoinsSettings = createAsyncThunk<
     void,
     SetURLSearchParams,
-    { dispatch: AppDispatch, state: StateSchema }
+    { dispatch: AppDispatch, state: AppState }
 >(
 	'resetCoinsSettings',
 	async (setSearchParams, { dispatch, getState }) => {

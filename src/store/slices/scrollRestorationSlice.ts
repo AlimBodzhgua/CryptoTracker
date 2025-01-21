@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type ScrollRestorationType = Record<string, number>;
+type ScrollPage = string;
+type scrollPosition = number;
+type ScrollRestorationType = Record<ScrollPage, scrollPosition>;
 
-export interface ScrollRestorationStateSchema {
+export interface ScrollRestorationState {
 	scroll: ScrollRestorationType;
 }
 
-const initialState: ScrollRestorationStateSchema = {
+const initialState: ScrollRestorationState = {
 	scroll: {},
 };
 
@@ -14,7 +16,7 @@ export const scrollRestorationSlice = createSlice({
 	name: 'scrollRestoration',
 	initialState,
 	reducers: {
-		setScroll: (state, action: PayloadAction<{path: string, position: number}>) => {
+		setScroll: (state, action: PayloadAction<{ path: ScrollPage, position: scrollPosition }>) => {
 			state.scroll[action.payload.path] = action.payload.position;
 		},
 	},

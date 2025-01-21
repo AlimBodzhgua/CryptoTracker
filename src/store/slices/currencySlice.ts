@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrencyType, IKurs } from 'types/currency';
 import { fetchCurrency } from '../actions/currencyActions';
 
-export interface CurrencySchema {
+export interface CurrencyState {
 	currentCurrency: CurrencyType;
 	targetCurrency?: CurrencyType;
     kurs?: IKurs;
@@ -10,7 +10,7 @@ export interface CurrencySchema {
 	isLoading: boolean;
 }
 
-const initialState: CurrencySchema = {
+const initialState: CurrencyState = {
 	currentCurrency: 'USD',
 	targetCurrency: undefined,
 	kurs: undefined,

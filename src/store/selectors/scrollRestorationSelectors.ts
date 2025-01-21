@@ -1,7 +1,7 @@
-import { StateSchema } from '../config/StateSchema';
+import { AppState } from '../config/AppState';
 
-export const selectScroll = (state: StateSchema) => state.scrollRestoration.scroll;
+export const selectScroll = (state: AppState) => state.scrollRestoration.scroll;
 
-export const selectScrollByPath = (state: StateSchema, path: string) => (
+export const selectScrollByPath = (state: AppState, path: string) => (
 	state.scrollRestoration.scroll[path] || 0
 );

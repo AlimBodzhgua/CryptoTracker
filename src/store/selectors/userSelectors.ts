@@ -1,13 +1,13 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { StateSchema } from '../config/StateSchema';
+import { AppState } from '../config/AppState';
 
-export const selectUser = (state: StateSchema) => state.user.authData;
+export const selectUser = (state: AppState) => state.user.authData;
 
-export const selectUserIsLoading = (state: StateSchema) => state.user.isLoading;
+export const selectUserIsLoading = (state: AppState) => state.user.isLoading;
 
-export const selectUserError = (state: StateSchema) => state.user.error;
+export const selectUserError = (state: AppState) => state.user.error;
 
-export const selectUserMounted = (state: StateSchema) => state.user._mounted;
+export const selectUserMounted = (state: AppState) => state.user._mounted;
 
 export const selectUserConversionHistory = createSelector(
 	selectUser,

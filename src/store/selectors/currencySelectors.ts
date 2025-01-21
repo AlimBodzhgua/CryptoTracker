@@ -1,7 +1,7 @@
-import { StateSchema } from '../config/StateSchema';
+import { AppState } from '../config/AppState';
 
-export const selectCurrentCurrency = (state: StateSchema) => state.currency.currentCurrency || 'USD';
+export const selectCurrentCurrency = (state: AppState) => state.currency.currentCurrency || 'USD';
 
-export const selectTargetCurrency = (state: StateSchema) => state.currency.targetCurrency;
+export const selectTargetCurrency = (state: AppState) => state.currency.targetCurrency;
 
-export const selectCurrencyKurs = (state: StateSchema) => state.currency.kurs;
+export const selectCurrencyKurs = (state: AppState) => state.currency.kurs;

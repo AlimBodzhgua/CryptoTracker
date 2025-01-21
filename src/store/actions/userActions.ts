@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setDoc, doc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore';
 import { auth, googleProvider, db } from 'config/firebase/firebase';
 import { createHistoryDoc, getUserDataObject } from 'utils/utils';
-import { StateSchema } from 'store/config/StateSchema';
+import { AppState } from 'store/config/AppState';
 import { FirebaseError } from 'firebase/app';
 import {
 	createUserWithEmailAndPassword,
@@ -140,7 +140,7 @@ type UpdateProfileType = Pick<IUser, 'imageUrl' | 'login'>
 export const updateUserProfile = createAsyncThunk<
 	UpdateProfileType,
 	UpdateProfileType,
-    { rejectValue: string, state: StateSchema }
+    { rejectValue: string, state: AppState }
 >(
 	'user/updateProfile',
 	async (data, { rejectWithValue, getState }) => {
@@ -161,7 +161,7 @@ export const updateUserProfile = createAsyncThunk<
 export const addHistory = createAsyncThunk<
     HistoryType,
     HistoryType,
-    { rejectValue: string, state: StateSchema }
+    { rejectValue: string, state: AppState }
 >(
 	'user/addHistory',
 	async (history, { rejectWithValue, getState }) => {
@@ -186,7 +186,7 @@ export const addHistory = createAsyncThunk<
 export const clearHistory = createAsyncThunk<
     void,
     void,
-    { rejectValue: string, state: StateSchema }
+    { rejectValue: string, state: AppState }
 >(
 	'user/clearHistory',
 	(_, { rejectWithValue, getState }) => {
@@ -205,7 +205,7 @@ export const clearHistory = createAsyncThunk<
 export const addWatchListCoin = createAsyncThunk<
 	CoinUId,
     CoinUId,
-    { rejectValue: string, state: StateSchema }
+    { rejectValue: string, state: AppState }
 >(
 	'user/addWatchListCoin',
 	async (uuid, { rejectWithValue, getState }) => {
@@ -230,7 +230,7 @@ export const addWatchListCoin = createAsyncThunk<
 export const removeWatchListCoin = createAsyncThunk<
     CoinUId,
     CoinUId,
-    { rejectValue: string, state: StateSchema }
+    { rejectValue: string, state: AppState }
 >(
 	'user/removeWatchListCoin',
 	async (uuid, { rejectWithValue, getState }) => {
@@ -258,7 +258,7 @@ export const removeWatchListCoin = createAsyncThunk<
 export const fetchWatchListCoins = createAsyncThunk<
     ICoin[],
     void,
-    { rejectValue: string, state: StateSchema }
+    { rejectValue: string, state: AppState }
 >(
 	'user/fetchWatchListCoins',
 	async (_, { rejectWithValue, getState }) => {
@@ -286,7 +286,7 @@ export const fetchWatchListCoins = createAsyncThunk<
 export const updateWatchList = createAsyncThunk<
     void,
     void,
-    { rejectValue: string, state: StateSchema }
+    { rejectValue: string, state: AppState }
 >(
 	'user/updateWatchList',
 	(_, { rejectWithValue, getState }) => {

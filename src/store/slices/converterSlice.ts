@@ -3,13 +3,13 @@ import { initialConverterData } from 'constants/converter';
 import { ConverterCoinType, IConverter } from 'types/converter';
 import { convertCoins, fetchConverterCoins } from '../actions/converterActions';
 
-export interface ConverterStateSchema {
+export interface ConverterState {
 	converterData: IConverter;
 	isLoading: boolean;
 	error?: string;
 }
 
-const initialState: ConverterStateSchema = {
+const initialState: ConverterState = {
 	converterData: initialConverterData,
 	isLoading: false,
 	error: undefined,

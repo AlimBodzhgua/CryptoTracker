@@ -1,25 +1,25 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { StateSchema } from '../config/StateSchema';
+import { AppState } from '../config/AppState';
 
-export const selectCoins = (state: StateSchema) => state.coins.coins;
+export const selectCoins = (state: AppState) => state.coins.coins;
 
-export const selectCoinsTag = (state: StateSchema) => state.coins.tag;
+export const selectCoinsTag = (state: AppState) => state.coins.tag;
 
-export const selectCoinsPriceNotation = (state: StateSchema) => state.coins.priceNotation;
+export const selectCoinsPriceNotation = (state: AppState) => state.coins.priceNotation;
 
-export const selectSearchedFilteredCoins = (state: StateSchema) => state.coins.searchedFilteredCoins;
+export const selectSearchedFilteredCoins = (state: AppState) => state.coins.searchedFilteredCoins;
 
-export const selectCoinsIsLoading = (state: StateSchema) => state.coins.isLoading || false;
+export const selectCoinsIsLoading = (state: AppState) => state.coins.isLoading || false;
 
-export const selectCoinsError = (state: StateSchema) => state.coins.error || '';
+export const selectCoinsError = (state: AppState) => state.coins.error || '';
 
-export const selectCoinsPageLimit = (state: StateSchema) => state.coins.limit;
+export const selectCoinsPageLimit = (state: AppState) => state.coins.limit;
 
-export const selectCoinsPageNumber = (state: StateSchema) => state.coins.page;
+export const selectCoinsPageNumber = (state: AppState) => state.coins.page;
 
-export const selectCoinsPageHasMore = (state: StateSchema) => state.coins.hasMore;
+export const selectCoinsPageHasMore = (state: AppState) => state.coins.hasMore;
 
-export const selectCoinsGlobalStats = (state: StateSchema) => state.coins.globalStats;
+export const selectCoinsGlobalStats = (state: AppState) => state.coins.globalStats;
 
 export const selectCoinsGlobalStatsData = createSelector(
 	selectCoinsGlobalStats,

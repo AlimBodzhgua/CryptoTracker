@@ -47,9 +47,15 @@ export const GlobalStatsSkeleton: FC = memo(() => {
 			</div>
 			<div className={classes.listSection}>
 				<div className={classes.listWrapper}>
+					<h3 className={classes.listTitle}>
+						{t('Best performing coins')}
+					</h3>
 					{renderListSkeletons()}
 				</div>
 				<div className={classes.listWrapper}>
+					<h3 className={classes.listTitle}>
+						{t('Newest coins')}
+					</h3>
 					{renderListSkeletons()}
 				</div>
 			</div>

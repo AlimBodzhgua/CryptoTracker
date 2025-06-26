@@ -3,7 +3,7 @@ import { CoinsState } from 'features/coins-table';
 import { CurrencyState } from 'features/currency';
 import { UserState } from 'features/user';
 import { ScrollRestorationState } from 'features/page';
-import { GlobalStatsState } from 'features/GlobalStats';
+import { GlobalStatsState } from 'features/global-stats';
 
 export interface AppState {
 	coins: CoinsState,

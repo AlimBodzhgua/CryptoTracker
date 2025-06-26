@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Page } from 'features/page';
 import { useAppSelector } from 'shared/hooks/redux';
-import { GlobalStats } from 'features/GlobalStats';
+import { GlobalStats } from 'features/global-stats';
 import classnames from 'classnames';
 import { selectCurrentCurrency } from 'features/currency/model/selectors';
 import classes from './MainPage.module.scss';

@@ -2,12 +2,11 @@ import { FC, memo, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { useTranslation } from 'react-i18next';
 import { useFormatter } from 'shared/hooks/useFormatter';
-import { fetchGlobalStats } from 'features/GlobalStats/model/actions';
 import { CurrencyType } from 'shared/types/coin';
 import { Message } from 'shared/UI/Message/Message';
 import classnames from 'classnames';
 
-import { GlobalStatsSkeleton } from './GlobalStatsSkeleton';
+import { fetchGlobalStats } from '../../model/actions';
 import {
 	selectGlobalStatsError,
 	selectGlobalStatsIsLoading,
@@ -15,6 +14,7 @@ import {
 	selectCoinsGlobalStatsData,
 } from '../../model/selectors';
 import { List } from '../List/List';
+import { GlobalStatsSkeleton } from './GlobalStatsSkeleton';
 
 import classes from './GlobalStats.module.scss';
 

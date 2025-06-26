@@ -1,4 +1,3 @@
-import { createSelector } from '@reduxjs/toolkit';
 import { AppState } from 'app/store/config/AppState';
 
 export const selectCoins = (state: AppState) => state.coins.coins;

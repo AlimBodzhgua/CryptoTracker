@@ -22,7 +22,7 @@ import {
 	selectUserMounted,
 	selectUserWatchListCoins,
 } from '../../../model/userSelectors';
-import SelectedStarIcon from '../assets/starSelected.svg';
+import SelectedStarIcon from '../../../assets/starSelected.svg';
 
 import { WatchListItem } from '../WatchListItem/WatchListItem';
 import { WatchListSkeleton } from './WatchListSkeleton';

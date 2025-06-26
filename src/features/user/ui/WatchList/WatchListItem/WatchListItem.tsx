@@ -1,16 +1,16 @@
 import { FC, useState, memo, useCallback } from 'react';
-import { Coin } from 'shared/types/coin';
-import { Button } from 'shared/UI/Button/Button';
-import { useAppDispatch } from 'shared/hooks/redux';
-import { removeWatchListCoin } from 'features/user/model/userActions';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+import { Button } from 'shared/UI/Button/Button';
+import { useAppDispatch } from 'shared/hooks/redux';
 import { SortableItem } from 'shared/lib/components/SortableItem';
 import classnames from 'classnames';
+import type { Coin } from 'shared/types/coin';
 
+import { removeWatchListCoin } from '../../../model/userActions';
 import { WatchListItemModal } from '../WatchListItemModal/WatchListItemModal';
-import StarSelectedIcon from '../assets/starSelected.svg';
-import InfoIcon from '../assets/info.svg';
+import StarSelectedIcon from '../../../assets/starSelected.svg';
+import InfoIcon from '../../../assets/info.svg';
 import classes from './WatchListItem.module.scss';
 
 

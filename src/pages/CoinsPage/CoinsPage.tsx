@@ -1,16 +1,11 @@
-import { FC, useCallback, useEffect } from 'react';
-import { CoinTable } from 'components/CoinTable';
-import { Page } from 'components/UI/Page/Page';
-import { CoinsSearchBar } from 'components/CoinsSearchBar/CoinsSearchBar';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { fetchCoins, fetchNextCoins, resetCoinsSettings } from 'store/actions/coinsActions';
-import { TagsSelector } from 'components/TagsSelector/TagsSelector';
-import { PriceNotationSelector } from 'components/PriceNotationSelector/PriceNotationSelector';
-import { Button } from 'components/UI/Button/Button';
-import { useSearchParams } from 'react-router-dom';
-import { selectCoins, selectCoinsPageNumber } from 'store/selectors/coinsSelectors';
-
-import ResetIcon from 'assets/icons/reset.svg';
+import { FC } from 'react';
+import { CoinTable, useCoins } from 'features/coins-table';
+import { Page } from 'features/page';
+import { CoinsSearchBar } from 'features/coins-table';
+import { TagsSelector } from 'features/coins-table';
+import { PriceNotationSelector } from 'features/coins-table';
+import { Button } from 'shared/UI/Button/Button';
+import ResetIcon from './assets/reset.svg';
 
 import classnames from 'classnames';
 import classes from './CoinsPage.module.scss';
@@ -20,24 +15,7 @@ interface CoinsPageProps {
 }
 
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
-	const dispatch = useAppDispatch();
-	const page = useAppSelector(selectCoinsPageNumber);
-	const coins = useAppSelector(selectCoins);
-	const [_, setSearchParams] = useSearchParams();
-
-	useEffect(() => {
-		if (__PROJECT__ !== 'storybook') {
-			if (!coins.length) dispatch(fetchCoins(page));
-		}
-	}, [dispatch]);
-
-	const loadNextCoins = useCallback(() => {
-		dispatch(fetchNextCoins());
-	}, [dispatch]);
-
-	const resetSettings = useCallback(() => {
-		dispatch(resetCoinsSettings(setSearchParams));
-	}, [dispatch]);
+	const { loadNextCoins, resetSettings } = useCoins();
 
 	return (
 		<Page

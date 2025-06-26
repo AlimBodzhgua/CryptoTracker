@@ -1,6 +1,6 @@
 import React from 'react';
-import { ProfileCard } from 'components/ProfileCard/ProfileCard';
-import { Page } from 'components/UI/Page/Page';
+import { ProfileCard } from 'features/user';
+import { Page } from 'features/page';
 
 import classnames from 'classnames';
 import classes from './ProfilePage.module.scss';

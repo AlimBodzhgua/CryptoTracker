@@ -1,9 +1,9 @@
 import React from 'react';
-import { Page } from 'components/UI/Page/Page';
+import { PageLayout } from 'shared/UI/PageLayout/PageLayout';
 import classes from './NotFoundPage.module.scss';
 
 export const NotFoundPage: React.FC = () => (
-	<Page className={classes.NotFoundPage}>
+	<PageLayout className={classes.NotFoundPage}>
 		<h1>Page not found</h1>
-	</Page>
+	</PageLayout>
 );

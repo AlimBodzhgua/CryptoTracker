@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StoreDecorator } from 'config/storybook/StoreDecorator';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 
 import MainPage from './MainPage';
 
@@ -38,16 +38,16 @@ export const Primary: Story = {
 	args: {},
 	decorators: StoreDecorator({
 		coins: {
-			globalStats: {
-				btcDominance: 52.00039165980507,
-				totalCoins: 36973,
-				totalExchanges: 178,
-				totalMarkets: 43386,
-				total24hVolume: '61664704435',
-				totalMarketCap: '2623653892264',
-				bestCoins: coinList,
-				newestCoins: coinList,
-			},
+			// globalStats: {
+			// 	btcDominance: 52.00039165980507,
+			// 	totalCoins: 36973,
+			// 	totalExchanges: 178,
+			// 	totalMarkets: 43386,
+			// 	total24hVolume: '61664704435',
+			// 	totalMarketCap: '2623653892264',
+			// 	bestCoins: coinList,
+			// 	newestCoins: coinList,
+			// },
 		},
 	}),
 };

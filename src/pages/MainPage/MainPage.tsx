@@ -1,10 +1,9 @@
-import { FC, useEffect } from 'react';
-import { GlobalStats } from 'components/GlobalStats';
-import { Page } from 'components/UI/Page/Page';
-import { useAppDispatch } from 'hooks/redux';
-import { fetchGlobalStats } from 'store/actions/coinsActions';
-
+import { FC } from 'react';
+import { Page } from 'features/page';
+import { useAppSelector } from 'shared/hooks/redux';
+import { GlobalStats } from 'features/GlobalStats';
 import classnames from 'classnames';
+import { selectCurrentCurrency } from 'features/currency/model/selectors';
 import classes from './MainPage.module.scss';
 
 interface MainPageProps {
@@ -12,17 +11,11 @@ interface MainPageProps {
 }
 
 const MainPage: FC<MainPageProps> = ({ className }) => {
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		if (__PROJECT__ !== 'storybook') {
-			dispatch(fetchGlobalStats());
-		}
-	}, [dispatch]);
+	const currenctCurrency = useAppSelector(selectCurrentCurrency);
 
 	return (
 		<Page className={classnames(classes.MainPage, className)}>
-			<GlobalStats />
+			<GlobalStats currentCurrency={currenctCurrency}/>
 		</Page>
  	);
 };

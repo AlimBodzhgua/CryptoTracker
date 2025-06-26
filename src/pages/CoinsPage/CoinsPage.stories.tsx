@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StoreDecorator } from 'config/storybook/StoreDecorator';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 
 import CoinsPage from './CoinsPage';
 

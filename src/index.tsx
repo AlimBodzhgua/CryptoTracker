@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
-import { App } from './App';
-import { createReduxStore } from './store/config/store';
-import 'config/i18n/i18n';
+import ErrorBoundary from 'app/ErrorBoundary/ErrorBoundary';
+import { App } from './app/App';
+import { createReduxStore } from './app/store/config/store';
+import 'shared/config/i18n/i18n';
 
 const root = createRoot(document.getElementById('root')!);
 

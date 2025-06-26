@@ -9,7 +9,7 @@ import {
 	getRouteMain,
 	getRouteProfile,
 	getRouteWatchList,
-} from 'app/router/router';
+} from 'shared/constants/routes';
 import { SidebarItemType } from './types';
 
 export const sidebarList: SidebarItemType[] = [

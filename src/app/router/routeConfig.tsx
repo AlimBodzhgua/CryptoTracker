@@ -14,7 +14,7 @@ import {
 	getRouteNotFound,
 	getRouteProfile,
 	getRouteWatchList,
-} from './router';
+} from 'shared/constants/routes';
 
 export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
 	[AppRoutes.MAIN]: {

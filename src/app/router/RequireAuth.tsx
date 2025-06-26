@@ -3,7 +3,7 @@ import { FC, ReactNode, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { selectUser, selectUserMounted } from 'features/user/model/userSelectors';
 import { PageRequireAuth } from 'shared/UI/PageRequireAuth/PageRequireAuth';
-import { getRouteMain } from './router';
+import { getRouteMain } from 'shared/constants/routes';
 
 interface RequireAuthProps {
 	children: ReactNode;

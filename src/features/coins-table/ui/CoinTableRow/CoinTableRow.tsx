@@ -15,6 +15,7 @@ import type { Coin } from 'shared/types/coin';
 
 import StarIcon from '../../assets/star.svg';
 import StarSelectedIcon from '../../assets/starSelected.svg';
+import { selectCoinsPriceNotation } from '../../model/coinsSelectors';
 import classes from './CoinTableRow.module.scss';
 
 import classnames from 'classnames';
@@ -34,11 +35,12 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 	const [isInWatchList, setIsInWatchList] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const watchListIds = useAppSelector(selectUserWatchListIds);
+	const priceNotation = useAppSelector(selectCoinsPriceNotation);
 	const user = useAppSelector(selectUser);
 	const isUserMounted = useAppSelector(selectUserMounted);
 	const dispatch = useAppDispatch();
 	
-	const formatter = useFormatter({ currentCurrency: 'USD', notation: 'standard' });
+	const formatter = useFormatter({ currentCurrency: 'USD', notation: priceNotation });
 
 	useEffect(() => {
 		if (isUserMounted) {

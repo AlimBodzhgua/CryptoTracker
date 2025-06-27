@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { Converter } from 'features/coin-conveter';
+import { Converter } from 'features/coin-converter';
 import { Page } from 'features/page';
 import classnames from 'classnames';
 import classes from './ConverterPage.module.scss';

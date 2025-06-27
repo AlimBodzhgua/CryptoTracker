@@ -1,4 +1,4 @@
-import { ConverterState } from 'features/coin-conveter';
+import { ConverterState } from 'features/coin-converter';
 import { CoinsState } from 'features/coins-table';
 import { CurrencyState } from 'features/currency';
 import { UserState } from 'features/user';

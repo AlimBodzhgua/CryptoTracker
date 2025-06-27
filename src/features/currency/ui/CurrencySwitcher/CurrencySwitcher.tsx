@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { useAppDispatch } from 'shared/hooks/redux';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import classnames from 'classnames';
 import { CurrencyType } from '../../model/types';
 import { Currencies } from '../../model/constants';
@@ -16,7 +16,7 @@ export const CurrencySwitcher: FC<CurrencySwitcherProps> = memo((props) => {
 
 	const onChangeCurrency = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const targetCurrency = e.target.value as CurrencyType;
-		dispatch(currencyActions.setTargetCurrency(targetCurrency));
+		dispatch(currencyActions.setCurrentCurrency(targetCurrency));
 	};
 
 	return (

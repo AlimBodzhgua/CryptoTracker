@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { Kurs } from './types';
 import axios from 'axios';
 
-const API_KEY = process.env.CURRENCY_API || '';
+const API_KEY = process.env.CURRENCY_API_KEY || '';
 const CURRENCY_LINK = process.env.CURRENCY_LINK?.replace('API_KEY', API_KEY) || '';
 
 export const fetchCurrency = createAsyncThunk<
@@ -14,7 +14,13 @@ export const fetchCurrency = createAsyncThunk<
 	async (_, { rejectWithValue }) => {
 		try {
 			const response = await axios.get(CURRENCY_LINK);
-			return response.data.data;
+			
+			const kurs = {
+				RUB: response.data.data['RUB'],
+				EUR: response.data.data['EUR'],
+			} satisfies Kurs;
+
+			return kurs;
 		} catch (e) {
 			return rejectWithValue(JSON.stringify(e));
 		}

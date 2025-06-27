@@ -3,16 +3,19 @@ import { fetchCurrency } from './actions';
 import type { CurrencyType, Kurs } from './types';
 
 export interface CurrencyState {
+
+	prevCurrency?: CurrencyType;
 	currentCurrency: CurrencyType;
-	targetCurrency?: CurrencyType;
+
 	kurs?: Kurs;
 	error?: string;
 	isLoading: boolean;
 }
 
 const initialState: CurrencyState = {
+	prevCurrency: undefined,
 	currentCurrency: 'USD',
-	targetCurrency: undefined,
+
 	kurs: undefined,
 	error: undefined,
 	isLoading: false,
@@ -22,19 +25,23 @@ export const currencySlice = createSlice({
 	name: 'currency',
 	initialState,
 	reducers: {
-		setTargetCurrency: (state, action: PayloadAction<CurrencyType>) => {
-			state.targetCurrency = action.payload;
+		setPrevCurrency: (state, action: PayloadAction<CurrencyType>) => {
+			state.prevCurrency = action.payload;
+		},
+		setCurrentCurrency: (state, action: PayloadAction<CurrencyType>) => {
+			state.prevCurrency = state.currentCurrency;
+			state.currentCurrency = action.payload;
 		},
 		resetCurrentCurrency: (state) => {
-			if (state.targetCurrency) {
-				state.currentCurrency = state.targetCurrency;
-				state.targetCurrency = undefined;
+			if (state.currentCurrency) {
+				state.currentCurrency = state.currentCurrency;
+				state.prevCurrency = undefined;
 			}
 		},
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(fetchCurrency.pending, (state, action) => {
+			.addCase(fetchCurrency.pending, (state) => {
 				state.isLoading = true;
 			})
 			.addCase(fetchCurrency.fulfilled, (state, action) => {

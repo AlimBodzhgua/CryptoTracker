@@ -66,37 +66,33 @@ export const coinsSlice = createSlice({
 		setSearchedFilteredCoins: (state, action: PayloadAction<Coin[]>) => {
 			state.searchedFilteredCoins = action.payload;
 		},
-		changeCoinsCurrency: (state, action: PayloadAction<{
-            kurs: Kurs,
-            currentCurrency: CurrencyType,
-            targetCurrency: CurrencyType | undefined
-        }>) => {
-			if (action.payload.currentCurrency === 'USD') {
+		changeCurrency: (
+			state,
+			action: PayloadAction<{
+				kurs: Kurs;
+				prevCurrency: CurrencyType;
+				targetCurrency: CurrencyType | undefined;
+			}>,
+		) => {
+			if (action.payload.prevCurrency === 'USD') {
 				// USD -> RUB/EUR
 				const currency = action.payload.targetCurrency === 'EUR' ? 'EUR' : 'RUB';
 				const currencyPrice = action.payload.kurs[currency];
+
 				state.coins = state.coins.map((coin) => ({
 					...coin,
 					price: String(Number(coin.price) * currencyPrice),
 					marketCap: String(Number(coin.marketCap) * currencyPrice),
 					'24hVolume': String(Number(coin['24hVolume']) * currencyPrice),
 				}));
-
-				// if (state.globalStats) {
-				// 	state.globalStats.btcDominance *= currencyPrice;
-				// 	state.globalStats.totalMarketCap = String(
-				// 		Number(state.globalStats.totalMarketCap) * currencyPrice,
-				// 	);
-				// 	state.globalStats.total24hVolume = String(
-				// 		Number(state.globalStats.total24hVolume) * currencyPrice,
-				// 	);
-				// }
 			} else if (
-				(action.payload.currentCurrency === 'EUR' || action.payload.currentCurrency === 'RUB')
-                && (action.payload.targetCurrency === 'EUR' || action.payload.targetCurrency === 'RUB')
+				(action.payload.prevCurrency === 'EUR' ||
+					action.payload.prevCurrency === 'RUB') &&
+				(action.payload.targetCurrency === 'EUR' ||
+					action.payload.targetCurrency === 'RUB')
 			) {
 				// (RUB/EUR -> USD -> RUB/EUR)
-				let currency = action.payload.currentCurrency;
+				let currency = action.payload.prevCurrency;
 				let currencyPrice = action.payload.kurs[currency];
 
 				state.coins = state.coins.map((coin) => ({
@@ -115,19 +111,9 @@ export const coinsSlice = createSlice({
 					marketCap: String(Number(coin.marketCap) * currencyPrice),
 					'24hVolume': String(Number(coin['24hVolume']) * currencyPrice),
 				}));
-
-				// if (state.globalStats) {
-				// 	state.globalStats.btcDominance *= currencyPrice;
-				// 	state.globalStats.totalMarketCap = String(
-				// 		Number(state.globalStats.totalMarketCap) * currencyPrice,
-				// 	);
-				// 	state.globalStats.total24hVolume = String(
-				// 		Number(state.globalStats.total24hVolume) * currencyPrice,
-				// 	);
-				// }
 			} else {
 				// ('RUB/EUR -> USD')
-				const currency = action.payload.currentCurrency;
+				const currency = action.payload.prevCurrency;
 				const currencyPrice = action.payload.kurs[currency];
 
 				state.coins = state.coins.map((coin) => ({
@@ -136,16 +122,6 @@ export const coinsSlice = createSlice({
 					marketCap: String(Number(coin.marketCap) / currencyPrice),
 					'24hVolume': String(Number(coin['24hVolume']) / currencyPrice),
 				}));
-
-				// if (state.globalStats) {
-				// 	state.globalStats.btcDominance /= currencyPrice;
-				// 	state.globalStats.totalMarketCap = String(
-				// 		Number(state.globalStats.totalMarketCap) / currencyPrice,
-				// 	);
-				// 	state.globalStats.total24hVolume = String(
-				// 		Number(state.globalStats.total24hVolume) / currencyPrice,
-				// 	);
-				// }
 			}
 		},
 	},
@@ -161,19 +137,7 @@ export const coinsSlice = createSlice({
 			.addCase(fetchCoins.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.coins = state.coins.concat(action.payload);
-			})
-		// fetchGlobalStats
-			// .addCase(fetchGlobalStats.pending, (state) => {
-			// 	state.isLoading = true;
-			// })
-			// .addCase(fetchGlobalStats.rejected, (state, action) => {
-			// 	state.isLoading = false;
-			// 	state.error = action.payload;
-			// })
-			// .addCase(fetchGlobalStats.fulfilled, (state, action) => {
-			// 	state.isLoading = false;
-			// 	state.globalStats = action.payload;
-			// });
+			});
 	},
 });
 

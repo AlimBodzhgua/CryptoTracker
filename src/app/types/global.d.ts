@@ -30,7 +30,7 @@ type DeepPartial<T> = T extends object ? {
 declare namespace NodeJS {
 	interface ProcessEnv {
 		readonly API_KEY: string;
-		readonly CURRENCY_API: string;
+		readonly CURRENCY_API_KEY: string;
 		readonly CURRENCY_LINK: string;
 		readonly CONVERTER_LINK: string;
 

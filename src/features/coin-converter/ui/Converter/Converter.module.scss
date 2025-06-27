@@ -1,0 +1,122 @@
+
+.Converter {
+	background-color: #fff;
+	color: #000;
+	border-radius: 10px;
+
+	max-width: 530px;
+	max-height: 555px;
+	width: 100%;
+	height: 100%;
+
+	padding: 45px 30px;
+	display: flex;
+	flex-direction: column;
+
+	position: relative;
+	z-index: 10;
+	overflow: hidden;
+}
+
+
+.header {
+	display: flex;
+	justify-content: space-between;
+
+	margin-bottom: 25px;
+}
+
+.history {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.historyIcon {
+	width: 22px;
+	height: 22px;
+
+	margin-right: 4px;
+}
+
+.historyBtn {
+	color: #737E8D;
+}
+
+.body {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.converterItem {
+	margin-bottom: 20px;
+}
+
+.itemTitle {
+	margin-bottom: 15px;
+}
+
+.itemField {
+	margin: 0;
+	height: 66px;
+	font-size: 18px;
+
+	background-color: #f1f1f4!important;
+
+	.inputField {
+		background-color: #f1f1f4;
+		color: #000;
+		font-weight: 800;
+		font-size: 20px;
+	}
+}
+
+
+.switchBtn {
+	align-self: center;
+}
+
+.switchIcon {
+	transition: fill .2s ease-in-out;
+	fill: #fff;
+
+	&:hover {
+		fill: #E6E6E6;
+	}
+}
+
+
+.rowInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+
+	margin: 4px 0 10px;
+
+	div {
+		padding: 8px 16px;
+		border-radius: 45px;
+		background-color: #e6e6e6;
+		width: 65%;
+
+		text-align: center;
+		font-weight: 600;
+	}
+
+	span {
+		width: 33%;
+		height: 1px;
+
+		background-color: #e6e6e6;
+	}
+}
+
+
+.convertBtn {
+	width: 100%;
+	height: 44px;
+
+	margin-top: auto;	
+}

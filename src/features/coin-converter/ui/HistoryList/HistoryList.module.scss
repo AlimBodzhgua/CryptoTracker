@@ -1,0 +1,27 @@
+.HistoryList {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+	min-width: 440px;
+	max-height: 520px;
+	padding: 0 5px;
+	overflow-y: auto;
+}
+
+.heaeder {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+
+	margin-bottom: 14px;
+}
+
+.skeletonItem {
+	margin-bottom: 10px;
+}
+
+.clearBtn {
+	background-color: var(--orange-color);
+	border-radius: 0;
+}

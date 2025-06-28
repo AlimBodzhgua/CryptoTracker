@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import classnames from 'classnames';
 
-import { selectUser } from '../../model/userSelectors';
+import { userSelectors } from '../../model/userSlice';
 import { signOutUser } from '../../model/userActions';
 import { LoginModal } from '../AuthModals/LoginModal/LoginModal';
 import { RegisterModal } from '../AuthModals/RegisterModal/RegisterModal';
@@ -21,8 +21,8 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 	const [isRegisterModal, setIsRegisterModal] = useState<boolean>(false);
 	const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
 	const [searchParams, setSearchParams] = useSearchParams();
+	const isAuth = useAppSelector(userSelectors.selectUser);
 	const dispatch = useAppDispatch();
-	const isAuth = useAppSelector(selectUser);
 	const { pathname } = useLocation();
 
 	const onOpenRegisterModal = useCallback(() => {

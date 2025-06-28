@@ -7,11 +7,7 @@ import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
 
 import { clearHistory } from '../../model/userActions';
-import {
-	selectUserConversionHistory,
-	selectUserError,
-	selectUserIsLoading,
-} from '../../model/userSelectors';
+import { userSelectors } from '../../model/userSlice';
 import { HistoryItem } from '../HistoryItem/HistoryItem';
 import classes from './HistoryList.module.scss';
 
@@ -22,9 +18,9 @@ interface HistoryListProps {
 const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const history = useAppSelector(selectUserConversionHistory);
-	const isLoading = useAppSelector(selectUserIsLoading);
-	const error = useAppSelector(selectUserError);
+	const history = useAppSelector(userSelectors.selectUserConversionHistory);
+	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
+	const error = useAppSelector(userSelectors.selectUserError);
 
 	const onClear = useCallback(async () => {
 		dispatch(clearHistory());

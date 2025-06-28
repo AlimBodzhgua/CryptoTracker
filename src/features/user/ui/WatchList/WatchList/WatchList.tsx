@@ -16,12 +16,7 @@ import { restrictToParentElement } from '@dnd-kit/modifiers';
 import classnames from 'classnames';
 import { userActions } from '../../../model/userSlice';
 import { fetchWatchListCoins, updateWatchList } from '../../../model/userActions';
-import {
-	selectUserError,
-	selectUserIsLoading,
-	selectUserMounted,
-	selectUserWatchListCoins,
-} from '../../../model/userSelectors';
+import { userSelectors } from '../../../model/userSlice';
 import SelectedStarIcon from '../../../assets/starSelected.svg';
 
 import { WatchListItem } from '../WatchListItem/WatchListItem';
@@ -35,13 +30,13 @@ interface WatchListProps {
 export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const watchListCoins = useAppSelector(selectUserWatchListCoins);
-	const isLoading = useAppSelector(selectUserIsLoading);
-	const error = useAppSelector(selectUserError);
+	const watchListCoins = useAppSelector(userSelectors.selectUserWatchListCoins);
+	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
+	const error = useAppSelector(userSelectors.selectUserError);
+	const userMounted = useAppSelector(userSelectors.selectUserMounted);
 	const navigate = useNavigate();
 	const [searchParams, _] = useSearchParams();
 	const dragDisabled = !!searchParams.has('modal');
-	const userMounted = useAppSelector(selectUserMounted);
 
 	useEffect(() => {
 		if (__PROJECT__ !== 'storybook' && userMounted) {

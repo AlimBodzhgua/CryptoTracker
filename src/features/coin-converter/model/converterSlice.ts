@@ -16,7 +16,7 @@ const initialState: ConverterState = {
 };
 
 export const converterSlice = createSlice({
-	name: 'converterSlice',
+	name: 'converter',
 	initialState,
 	reducers: {
 		setCoinFrom: (state, action: PayloadAction<ConverterCoinType>) => {

@@ -34,7 +34,7 @@ const initialState: CoinsState = {
 };
 
 export const coinsSlice = createSlice({
-	name: 'coinSlice',
+	name: 'coins',
 	initialState,
 	reducers: {
 		setCoins: (state, action: PayloadAction<Coin[]>) => {

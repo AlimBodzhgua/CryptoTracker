@@ -10,7 +10,7 @@ import classnames from 'classnames';
 
 import { signUpUser } from '../../../model/userActions';
 import { userActions } from '../../../model/userSlice';
-import { selectUserError, selectUserIsLoading } from '../../../model/userSelectors';
+import { userSelectors } from '../../../model/userSlice';
 
 import EmailIcon from '../../../assets/email.svg';
 import PasswordIcon from '../../../assets/password.svg';
@@ -35,8 +35,8 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 	const [showPassword, setShowPassword] = useState<boolean>(false);
 	const [_, setSearchParams] = useSearchParams();
 	const dispatch = useAppDispatch();
-	const isLoading = useAppSelector(selectUserIsLoading);
-	const error = useAppSelector(selectUserError);
+	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
+	const error = useAppSelector(userSelectors.selectUserError);
 	const {
 		handleSubmit,
 		register,

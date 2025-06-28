@@ -8,10 +8,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import classnames from 'classnames';
 import { signInUser, signInWithGoogle } from '../../../model/userActions';
-import {
-	selectUserError,
-	selectUserIsLoading,
-} from '../../../model/userSelectors';
+import { userSelectors } from '../../../model/userSlice';
 import { userActions } from '../../../model/userSlice';
 
 import EmailIcon from '../../../assets/email.svg';
@@ -39,8 +36,8 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 	const [showPassword, setShowPassword] = useState<boolean>(false);
 	const [_, setSearchParams] = useSearchParams();
 	const dispatch = useAppDispatch();
-	const isLoading = useAppSelector(selectUserIsLoading);
-	const error = useAppSelector(selectUserError);
+	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
+	const error = useAppSelector(userSelectors.selectUserError);
 
 	const {
 		handleSubmit,

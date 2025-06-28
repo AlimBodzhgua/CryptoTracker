@@ -5,11 +5,7 @@ import {
 	addWatchListCoin,
 	removeWatchListCoin,
 } from 'features/user/model/userActions';
-import {
-	selectUser,
-	selectUserMounted,
-	selectUserWatchListIds,
-} from 'features/user/model/userSelectors';
+import { userSelectors } from 'features/user/model/userSlice';
 import { LoaderRing } from 'shared/UI/LoaderRing/LoaderRing';
 import type { Coin } from 'shared/types/coin';
 
@@ -34,10 +30,10 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 	} = props;
 	const [isInWatchList, setIsInWatchList] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const watchListIds = useAppSelector(selectUserWatchListIds);
+	const watchListIds = useAppSelector(userSelectors.selectUserWatchListIds);
+	const isUserMounted = useAppSelector(userSelectors.selectUserMounted);
+	const user = useAppSelector(userSelectors.selectUser);
 	const priceNotation = useAppSelector(selectCoinsPriceNotation);
-	const user = useAppSelector(selectUser);
-	const isUserMounted = useAppSelector(selectUserMounted);
 	const dispatch = useAppDispatch();
 	
 	const formatter = useFormatter({ currentCurrency: 'USD', notation: priceNotation });

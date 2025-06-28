@@ -1,7 +1,7 @@
 import { useAppSelector } from 'shared/hooks/redux';
 import { FC, ReactNode, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { selectUser, selectUserMounted } from 'features/user/model/userSelectors';
+import { userSelectors } from 'features/user';
 import { PageRequireAuth } from 'shared/UI/PageRequireAuth/PageRequireAuth';
 import { getRouteMain } from 'shared/constants/routes';
 
@@ -10,8 +10,8 @@ interface RequireAuthProps {
 }
 
 export const RequireAuth: FC<RequireAuthProps> = ({ children }) => {
-	const authData = useAppSelector(selectUser);
-	const mounted = useAppSelector(selectUserMounted);
+	const authData = useAppSelector(userSelectors.selectUser);
+	const mounted = useAppSelector(userSelectors.selectUserMounted);
 	const navigate = useNavigate();
 	const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 

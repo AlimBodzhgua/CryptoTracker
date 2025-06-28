@@ -5,8 +5,7 @@ import { Button } from 'shared/UI/Button/Button';
 import { HistoryModal } from 'features/user';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import { selectUser } from 'features/user/model/userSelectors';
-import { addHistory } from 'features/user/model/userActions';
+import { userSelectors, addHistory } from 'features/user';
 import { ConversionResult } from 'features/coin-converter';
 import classnames from 'classnames';
 import classes from './ConverterPage.module.scss';
@@ -19,7 +18,7 @@ interface ConverterPageProps {
 
 const ConverterPage: FC<ConverterPageProps> = memo(({ className }) => {
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
+	const user = useAppSelector((state) => userSelectors.selectUser);
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 	const { t } = useTranslation();
 

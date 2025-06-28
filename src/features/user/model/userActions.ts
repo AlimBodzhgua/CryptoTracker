@@ -15,11 +15,7 @@ import {
 import type { HistoryType, User } from './types';
 import type { Coin } from 'shared/types/coin';
 import coinApi from 'shared/api/coinApi';
-import {
-	selectUser,
-	selectUserWatchListCoins,
-	selectUserWatchListIds,
-} from './userSelectors';
+import { userSelectors } from './userSlice';
 
 type UserId = string;
 type UserEmail = string;
@@ -143,7 +139,7 @@ export const updateUserProfile = createAsyncThunk<
 >(
 	'user/updateProfile',
 	async (data, { rejectWithValue, getState }) => {
-		const user = selectUser(getState());
+		const user = userSelectors.selectUser(getState());
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
 			await updateDoc(userDocRef, {
@@ -164,7 +160,7 @@ export const addHistory = createAsyncThunk<
 >(
 	'user/addHistory',
 	async (history, { rejectWithValue, getState }) => {
-		const user = selectUser(getState());
+		const user = userSelectors.selectUser(getState());
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
 			await updateDoc(userDocRef, {
@@ -189,7 +185,7 @@ export const clearHistory = createAsyncThunk<
 >(
 	'user/clearHistory',
 	(_, { rejectWithValue, getState }) => {
-		const user = selectUser(getState());
+		const user = userSelectors.selectUser(getState());
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
 			return updateDoc(userDocRef, {
@@ -208,9 +204,9 @@ export const addWatchListCoin = createAsyncThunk<
 >(
 	'user/addWatchListCoin',
 	async (uuid, { rejectWithValue, getState }) => {
-		const user = selectUser(getState());
-		const watchListCoins = selectUserWatchListCoins(getState());
-		const watchListIds = selectUserWatchListIds(getState());
+		const user = userSelectors.selectUser(getState());
+		const watchListCoins = userSelectors.selectUserWatchListCoins(getState());
+		const watchListIds = userSelectors.selectUserWatchListIds(getState());
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
 			await updateDoc(userDocRef, {
@@ -233,9 +229,9 @@ export const removeWatchListCoin = createAsyncThunk<
 >(
 	'user/removeWatchListCoin',
 	async (uuid, { rejectWithValue, getState }) => {
-		const user = selectUser(getState());
-		const watchListCoins = selectUserWatchListCoins(getState());
-		const watchListIds = selectUserWatchListIds(getState());
+		const user = userSelectors.selectUser(getState());
+		const watchListCoins = userSelectors.selectUserWatchListCoins(getState());
+		const watchListIds = userSelectors.selectUserWatchListIds(getState());
 
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
@@ -261,7 +257,7 @@ export const fetchWatchListCoins = createAsyncThunk<
 >(
 	'user/fetchWatchListCoins',
 	async (_, { rejectWithValue, getState }) => {
-		const watchListIds = selectUserWatchListIds(getState());
+		const watchListIds = userSelectors.selectUserWatchListIds(getState());
 		try {
 			if (watchListIds.length) {
 				const response = await coinApi.get('/coins', {
@@ -289,9 +285,9 @@ export const updateWatchList = createAsyncThunk<
 >(
 	'user/updateWatchList',
 	(_, { rejectWithValue, getState }) => {
-		const watchListIds = selectUserWatchListIds(getState());
-		const watchListCoins = selectUserWatchListCoins(getState());
-		const user = selectUser(getState());
+		const watchListIds = userSelectors.selectUserWatchListIds(getState());
+		const watchListCoins = userSelectors.selectUserWatchListCoins(getState());
+		const user = userSelectors.selectUser(getState());
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
 			return updateDoc(userDocRef, {

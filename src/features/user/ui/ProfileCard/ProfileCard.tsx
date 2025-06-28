@@ -13,7 +13,7 @@ import { AppImage } from 'shared/UI/AppImage/AppImage';
 import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
 
-import { selectUser, selectUserIsLoading } from '../../model/userSelectors';
+import { userSelectors } from '../../model/userSlice';
 import { sendVerificationMessage, updateUserProfile } from '../../model/userActions';
 
 import UserDefaultImage from '../../assets/userDefaultImage.jpg';
@@ -29,8 +29,8 @@ interface ProfileCardProps {
 export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
-	const isLoading = useAppSelector(selectUserIsLoading);
+	const user = useAppSelector(userSelectors.selectUser);
+	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
 	const id = useId();
 	const [edit, setEdit] = useState<boolean>(false);
 

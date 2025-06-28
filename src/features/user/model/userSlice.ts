@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit';
 import { User } from './types';
 import { arrayMove } from '@dnd-kit/sortable';
 import {
@@ -32,8 +32,27 @@ const initialState: UserState = {
 };
 
 export const userSlice = createSlice({
-	name: 'userSLice',
+	name: 'user',
 	initialState,
+	selectors: {
+		selectUser: (state) => state.authData,
+		selectUserIsLoading: (state) => state.isLoading,
+		selectUserError: (state) => state.error,
+		selectUserMounted: (state) => state._mounted,
+
+		selectUserConversionHistory: createSelector(
+			(state: UserState) => state.authData,
+			(authData) => authData?.conversionHistory || [],
+		),
+		selectUserWatchListCoins: createSelector(
+			(state: UserState) => state.authData,
+			(authData) => authData?.watchList.coins || [],
+		),
+		selectUserWatchListIds: createSelector(
+			(state: UserState) => state.authData,
+			(authData) => authData?.watchList.ids || [],
+		),
+	},
 	reducers: {
     	changeUserImageUrl: (state, action: PayloadAction<string>) => {
     		if (state.authData) {
@@ -239,3 +258,4 @@ export const userSlice = createSlice({
 
 export const { actions: userActions } = userSlice;
 export const { reducer: userReducer } = userSlice;
+export const { selectors: userSelectors } = userSlice;

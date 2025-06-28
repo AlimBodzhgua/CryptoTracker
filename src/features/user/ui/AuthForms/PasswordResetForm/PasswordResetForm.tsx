@@ -7,7 +7,7 @@ import { Input } from 'shared/UI/Input/Input';
 import classnames from 'classnames';
 
 import { resetUserPassword } from '../../../model/userActions';
-import { selectUserIsLoading } from '../../../model/userSelectors';
+import { userSelectors } from '../../../model/userSlice';
 import EmailIcon from '../../../assets/email.svg';
 import classes from './PasswordResetForm.module.scss';
 
@@ -33,7 +33,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
-	const isLoading = useAppSelector(selectUserIsLoading);
+	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
 
 	const {
 		handleSubmit,

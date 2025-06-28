@@ -16,7 +16,7 @@ const initialState: GlobalStatsState = {
 }
 
 export const globalStatsSlice = createSlice({
-	name: 'globalStatsSlice',
+	name: 'globalStats',
 	initialState,
 	reducers: {
 		changeCurrency: (

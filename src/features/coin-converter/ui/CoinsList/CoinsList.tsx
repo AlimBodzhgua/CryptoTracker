@@ -1,12 +1,12 @@
-import { FC, useEffect, memo, useCallback } from 'react';
+import { FC, useEffect, memo } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import { selectConverterCoins } from 'features/coin-converter/model/selectors';
-import { fetchConverterCoins } from 'features/coin-converter/model/actions';
 import { Button } from 'shared/UI/Button/Button';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
 
+import { selectConverterCoins } from '../../model/selectors';
+import { fetchConverterCoins } from '../../model/actions';
 import { CoinItem } from '../CoinItem/CoinItem';
 import classes from './CoinsList.module.scss';
 

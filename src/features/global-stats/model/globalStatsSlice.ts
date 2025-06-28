@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchGlobalStats } from './actions';
 import { GlobalStats } from './types';
 import type { CurrencyType, Kurs } from 'shared/types/coin';
@@ -18,6 +18,24 @@ const initialState: GlobalStatsState = {
 export const globalStatsSlice = createSlice({
 	name: 'globalStats',
 	initialState,
+	selectors: {
+		selectGlobalStats: (state) => state.data,
+		selectGlobalStatsIsLoading: (state) => state.isLoading,
+		selectGlobalStatsError: (state) => state.error,
+		selectCoinsGlobalStatsData: createSelector(
+			(state) => state.data,
+			(data) => {
+				return [
+					{ title: 'Btc Dominance', value: data?.btcDominance },
+					{ title: 'Total 24hVolume', value: data?.total24hVolume },
+					{ title: 'Total MarketCap', value: data?.totalMarketCap },
+					{ title: 'Total Exchanges', value: data?.totalExchanges },
+					{ title: 'Total Markets', value: data?.totalMarkets },
+					{ title: 'Total Coins', value: data?.totalCoins },
+				];
+			},
+		),
+	},
 	reducers: {
 		changeCurrency: (
 			state,
@@ -95,3 +113,4 @@ export const globalStatsSlice = createSlice({
 
 export const { reducer: globalStatsReducer } = globalStatsSlice;
 export const { actions: globalStatsActions } = globalStatsSlice;
+export const { selectors: globalStatsSelectors } = globalStatsSlice;

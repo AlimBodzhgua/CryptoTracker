@@ -7,12 +7,7 @@ import { Message } from 'shared/UI/Message/Message';
 import classnames from 'classnames';
 
 import { fetchGlobalStats } from '../../model/actions';
-import {
-	selectGlobalStatsError,
-	selectGlobalStatsIsLoading,
-	selectGlobalStats,
-	selectCoinsGlobalStatsData,
-} from '../../model/selectors';
+import { globalStatsSelectors } from '../../model/globalStatsSlice';
 import { List } from '../List/List';
 import { GlobalStatsSkeleton } from './GlobalStatsSkeleton';
 
@@ -26,10 +21,10 @@ interface StatsProps {
 export const GlobalStats: FC<StatsProps> = memo((props) => {
 	const { className, currentCurrency } = props;
 	const { t } = useTranslation();
-	const stats = useAppSelector(selectGlobalStats);
-	const statsData = useAppSelector(selectCoinsGlobalStatsData);
-	const isLoading = useAppSelector(selectGlobalStatsIsLoading);
-	const error = useAppSelector(selectGlobalStatsError);
+	const stats = useAppSelector(globalStatsSelectors.selectGlobalStats);
+	const statsData = useAppSelector(globalStatsSelectors.selectCoinsGlobalStatsData);
+	const isLoading = useAppSelector(globalStatsSelectors.selectGlobalStatsIsLoading);
+	const error = useAppSelector(globalStatsSelectors.selectGlobalStatsError);
 	const formatter = useFormatter({ currentCurrency, notation: 'standard' });
 	const dispatch = useAppDispatch();
 

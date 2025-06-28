@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
 import { componentRender } from 'shared/lib/tests/componentRender';
-import { TagsSelector, TagList } from './TagsSelector';
+import { TagList } from '../../model/constants';
+import { TagsSelector } from './TagsSelector';
 
 describe('TagsSelector', () => {
 	test('Component should render', () => {

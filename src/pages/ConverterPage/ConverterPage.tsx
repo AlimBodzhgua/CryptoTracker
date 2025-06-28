@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { selectUser } from 'features/user/model/userSelectors';
 import { addHistory } from 'features/user/model/userActions';
-import { ConversionResult, ConverterCoinType } from 'shared/types/converter';
+import { ConversionResult } from 'features/coin-converter';
 import classnames from 'classnames';
 import classes from './ConverterPage.module.scss';
 import HistoryIcon from './assets/history.svg';

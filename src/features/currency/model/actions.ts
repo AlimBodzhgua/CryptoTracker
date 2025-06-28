@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { Kurs } from './types';
+import type { Kurs } from 'shared/types/coin';
 import axios from 'axios';
 
 const API_KEY = process.env.CURRENCY_API_KEY || '';

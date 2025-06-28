@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
-import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
+import { useAppDispatch } from 'shared/hooks/redux';
 import classnames from 'classnames';
-import { CurrencyType } from '../../model/types';
+import type { CurrencyType } from 'shared/types/coin';
 import { Currencies } from '../../model/constants';
 import { currencyActions } from '../../model/currencySlice';
 import classes from './CurrencySwitcher.module.scss';

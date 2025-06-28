@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { CurrencyType, Kurs } from 'shared/types/coin';
 import { fetchCurrency } from './actions';
-import type { CurrencyType, Kurs } from './types';
 
 export interface CurrencyState {
-
 	prevCurrency?: CurrencyType;
 	currentCurrency: CurrencyType;
 

@@ -25,3 +25,10 @@ export type HistoryType = Omit<Converter, 'converterCoins'> & {
 	amount: number;
 	id?: string;
 };
+
+export type ConversionResult = {
+	coinFrom: ConverterCoinType,
+	coinTo: ConverterCoinType,
+	amount: number,
+	result: number,
+}

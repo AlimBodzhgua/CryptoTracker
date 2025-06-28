@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NotationType } from 'shared/types/coin';
-import { CurrencyType } from 'features/currency/model/types';
+import type { CurrencyType, NotationType } from '../types/coin';
 
 type FormatterParams = {
 	notation: NotationType;

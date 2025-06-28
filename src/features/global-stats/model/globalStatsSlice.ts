@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchGlobalStats } from './actions';
 import { GlobalStats } from './types';
-import { CurrencyType, Kurs } from 'shared/types/coin';
+import type { CurrencyType, Kurs } from 'shared/types/coin';
 
 export interface GlobalStatsState {
 	data?: GlobalStats;

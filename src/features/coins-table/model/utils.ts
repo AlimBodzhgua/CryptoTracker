@@ -1,4 +1,5 @@
-import type { Coin, FieldNameType, SortDirectionType } from 'shared/types/coin';
+import type { Coin } from 'shared/types/coin';
+import { SortDirectionType, FieldNameType } from './types';
 
 export const coinsSorter = (
 	coins: Coin[],

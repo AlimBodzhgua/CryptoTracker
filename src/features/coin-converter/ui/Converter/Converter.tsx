@@ -14,11 +14,11 @@ import {
 	selectConverterIsLoading,
 } from '../../model/selectors';
 import { converterActions } from '../../model/converterSlice';
+import type { ConversionResult } from '../../model/types';
 import SwitchIcon from '../../assets/switch.svg';
 
 import { CoinSelector } from '../CoinSelector/CoinSelector';
 import classes from './Converter.module.scss';
-import type { ConversionResult } from 'shared/types/converter';
 
 interface ConverterProps {
 	className?: string;

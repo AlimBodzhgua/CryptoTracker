@@ -1,29 +1,17 @@
 import { FC, memo } from 'react';
-import { TagType } from 'shared/types/coin';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
+import classnames from 'classnames';
+
+import { selectCoinsTag } from '../../model/coinsSelectors';
 import { coinsActions } from '../../model/coinsSlice';
 import { fetchCoins } from '../../model/coinsActions';
-import { selectCoinsTag } from '../../model/coinsSelectors';
-
-import classnames from 'classnames';
+import { TagList } from '../../model/constants';
+import { TagType } from '../../model/types';
 import classes from './TagsSelector.module.scss';
 
 interface TagsSelectorProps {
 	className?: string;
 }
-
-export const TagList = {
-	'All Coins': 'All Coins',
-	defi: 'defi',
-	stablecoin: 'stablecoin',
-	exchange: 'exchange',
-	staking: 'staking',
-	web3: 'web3',
-	nft: 'nft',
-	dex: 'dex',
-	meme: 'meme',
-	wrapped: 'wrapped',
-} as const;
 
 export const TagsSelector: FC<TagsSelectorProps> = memo(({ className }) => {
 	const dispatch = useAppDispatch();

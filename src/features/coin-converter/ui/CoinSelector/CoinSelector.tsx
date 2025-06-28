@@ -1,9 +1,9 @@
 import { FC, memo, useCallback } from 'react';
-import { ConverterCoinType, ConverterListType } from 'shared/types/converter';
 import { useSearchParams } from 'react-router-dom';
 import classnames from 'classnames';
 import ArrowIcon from 'assets/icons/arrow.svg';
 
+import { ConverterCoinType, ConverterListType } from '../../model/types';
 import { CoinsList } from '../CoinsList/CoinsList';
 import classes from './CoinSelector.module.scss';
 

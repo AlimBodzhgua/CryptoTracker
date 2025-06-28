@@ -1,13 +1,13 @@
 import { FC, useState, memo } from 'react';
-import { FieldNameType, SortDirectionType } from 'shared/types/coin';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { useSearchParams } from 'react-router-dom';
-import { SortDirection } from 'shared/constants/sort';
 import classnames from 'classnames';
 
-import { coinsSorter } from '../../model/utils';
 import { selectCoins } from '../../model/coinsSelectors';
 import { coinsActions } from '../../model/coinsSlice';
+import { SortDirection } from '../../model/constants';
+import { coinsSorter } from '../../model/utils';
+import { SortDirectionType, FieldNameType } from '../../model/types';
 import classes from './ColumnToggleSort.module.scss';
 
 type TitlePosition = 'left' | 'middle' | 'right';

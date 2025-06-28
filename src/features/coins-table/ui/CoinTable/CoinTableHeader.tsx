@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FieldNameType, SortDirectionType } from 'shared/types/coin';
 import { useSearchParams } from 'react-router-dom';
-import { SortField } from 'shared/constants/sort';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import classnames from 'classnames';
 
+import { SortDirectionType, FieldNameType } from '../../model/types';
+import { SortField } from '../../model/constants';
 import { coinsSorter } from '../../model/utils';
 import { coinsActions } from '../../model/coinsSlice';
 import { selectCoins } from '../../model/coinsSelectors';

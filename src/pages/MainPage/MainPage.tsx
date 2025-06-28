@@ -3,7 +3,7 @@ import { Page } from 'features/page';
 import { useAppSelector } from 'shared/hooks/redux';
 import { GlobalStats } from 'features/global-stats';
 import classnames from 'classnames';
-import { selectCurrentCurrency } from 'features/currency/model/selectors';
+import { currencySelectors } from 'features/currency';
 import classes from './MainPage.module.scss';
 
 interface MainPageProps {
@@ -11,7 +11,7 @@ interface MainPageProps {
 }
 
 const MainPage: FC<MainPageProps> = ({ className }) => {
-	const currenctCurrency = useAppSelector(selectCurrentCurrency);
+	const currenctCurrency = useAppSelector(currencySelectors.selectCurrentCurrency);
 
 	return (
 		<Page className={classnames(classes.MainPage, className)}>

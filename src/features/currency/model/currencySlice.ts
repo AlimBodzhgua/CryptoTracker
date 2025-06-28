@@ -23,6 +23,11 @@ const initialState: CurrencyState = {
 export const currencySlice = createSlice({
 	name: 'currency',
 	initialState,
+	selectors: {
+		selectCurrentCurrency: (state) => state.currentCurrency,
+		selectPrevCurrency: (state) => state.prevCurrency,
+		selectCurrencyKurs: (state) => state.kurs,
+	},
 	reducers: {
 		setPrevCurrency: (state, action: PayloadAction<CurrencyType>) => {
 			state.prevCurrency = action.payload;
@@ -56,3 +61,4 @@ export const currencySlice = createSlice({
 
 export const { reducer: currencyReducer } = currencySlice;
 export const { actions: currencyActions } = currencySlice;
+export const { selectors: currencySelectors } = currencySlice;

@@ -1,13 +1,13 @@
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import { selectCurrencyKurs, selectCurrentCurrency, selectPrevCurrency } from './selectors';
+import { currencySelectors } from './currencySlice';
 import { useEffect } from 'react';
 import { fetchCurrency } from './actions';
 
 export const useCurrency = () => {
 	const dispatch = useAppDispatch();
-	const prevCurrency = useAppSelector(selectPrevCurrency);
-	const currentCurrency = useAppSelector(selectCurrentCurrency);
-	const kurs = useAppSelector(selectCurrencyKurs);
+	const prevCurrency = useAppSelector(currencySelectors.selectPrevCurrency);
+	const currentCurrency = useAppSelector(currencySelectors.selectCurrentCurrency);
+	const kurs = useAppSelector(currencySelectors.selectCurrencyKurs);
 
 	useEffect(() => {
 		dispatch(fetchCurrency());

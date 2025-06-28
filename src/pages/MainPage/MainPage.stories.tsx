@@ -37,17 +37,17 @@ const coinList = [
 export const Primary: Story = {
 	args: {},
 	decorators: StoreDecorator({
-		coins: {
-			// globalStats: {
-			// 	btcDominance: 52.00039165980507,
-			// 	totalCoins: 36973,
-			// 	totalExchanges: 178,
-			// 	totalMarkets: 43386,
-			// 	total24hVolume: '61664704435',
-			// 	totalMarketCap: '2623653892264',
-			// 	bestCoins: coinList,
-			// 	newestCoins: coinList,
-			// },
+		globalStats: {
+			data: {
+				btcDominance: 52.00039165980507,
+				totalCoins: 36973,
+				totalExchanges: 178,
+				totalMarkets: 43386,
+				total24hVolume: '61664704435',
+				totalMarketCap: '2623653892264',
+				bestCoins: coinList,
+				newestCoins: coinList,
+			},
 		},
 	}),
 };
@@ -55,7 +55,7 @@ export const Primary: Story = {
 export const WithError: Story = {
 	args: {},
 	decorators: StoreDecorator({
-		coins: {
+		globalStats: {
 			isLoading: false,
 			error: 'Error message',
 		},
@@ -65,7 +65,7 @@ export const WithError: Story = {
 export const IsLoading: Story = {
 	args: {},
 	decorators: StoreDecorator({
-		coins: {
+		globalStats: {
 			isLoading: true,
 		},
 	}),

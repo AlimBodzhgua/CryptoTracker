@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
 
-import { selectConverterCoins } from '../../model/selectors';
+import { converterSelectors } from '../../model/converterSlice';
 import { fetchConverterCoins } from '../../model/actions';
 import { CoinItem } from '../CoinItem/CoinItem';
 import classes from './CoinsList.module.scss';
@@ -23,7 +23,7 @@ export const CoinsList: FC<CoinsListProps> = memo((props) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const [searchParams] = useSearchParams();
-	const coins = useAppSelector(selectConverterCoins);
+	const coins = useAppSelector(converterSelectors.selectConverterCoins);
 	const isShow = searchParams.has('listType');
 
 	useEffect(() => {

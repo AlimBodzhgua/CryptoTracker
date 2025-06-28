@@ -6,14 +6,8 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
 
-import { convertCoins } from '../../model/actions';
-import {
-	selecetConverterResult,
-	selectConverterCoinFrom,
-	selectConverterCoinTo,
-	selectConverterIsLoading,
-} from '../../model/selectors';
-import { converterActions } from '../../model/converterSlice';
+import { convertCoins } from '../../model/actions';;
+import { converterActions, converterSelectors } from '../../model/converterSlice';
 import type { ConversionResult } from '../../model/types';
 import SwitchIcon from '../../assets/switch.svg';
 
@@ -34,10 +28,10 @@ export const Converter: FC<ConverterProps> = memo((props) => {
 	} = props;
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const coinFrom = useAppSelector(selectConverterCoinFrom);
-	const coinTo = useAppSelector(selectConverterCoinTo);
-	const result = useAppSelector(selecetConverterResult);
-	const isLoading = useAppSelector(selectConverterIsLoading);
+	const coinFrom = useAppSelector(converterSelectors.selectConverterCoinFrom);
+	const coinTo = useAppSelector(converterSelectors.selectConverterCoinTo);
+	const result = useAppSelector(converterSelectors.selecetConverterResult);
+	const isLoading = useAppSelector(converterSelectors.selectConverterIsLoading);
 	const formatter = Intl.NumberFormat('ru', { maximumSignificantDigits: 8 });
 
 	const [amount, setAmount] = useState<number>(0);

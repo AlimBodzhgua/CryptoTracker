@@ -1,12 +1,11 @@
 import { FC, memo, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-
-import { converterActions } from '../../model/converterSlice';
-import { selectConverterCoinFrom, selectConverterCoinTo } from '../../model/selectors';
-import type { ConverterCoinType } from '../../model/types';
-import CheckMarkIcon from '../../assets/check_mark.svg';
 import classnames from 'classnames';
+
+import { converterActions, converterSelectors } from '../../model/converterSlice';
+import type { ConverterCoinType, ConverterListType } from '../../model/types';
+import CheckMarkIcon from '../../assets/check_mark.svg';
 import classes from './CoinItem.module.scss';
 
 interface CoinItemProps {
@@ -14,14 +13,13 @@ interface CoinItemProps {
 	coin: ConverterCoinType;
 }
 
-type ConverterListType = 'from' | 'to';
 
 export const CoinItem: FC<CoinItemProps> = memo((props) => {
 	const { coin, className } = props;
 	const dispatch = useAppDispatch();
 	const [searchParams, setSearchParams] = useSearchParams();
-	const coinFrom = useAppSelector(selectConverterCoinFrom);
-	const coinTo = useAppSelector(selectConverterCoinTo);
+	const coinFrom = useAppSelector(converterSelectors.selectConverterCoinFrom);
+	const coinTo = useAppSelector(converterSelectors.selectConverterCoinTo);
 	const listType = searchParams.get('listType') as ConverterListType;
 
 	const markedCoin = useMemo<Record<ConverterListType, boolean>>(

@@ -18,6 +18,14 @@ const initialState: ConverterState = {
 export const converterSlice = createSlice({
 	name: 'converter',
 	initialState,
+	selectors: {
+		selectConverterCoinFrom: (state) => state.converterData.coinFrom,
+		selectConverterCoinTo: (state) => state.converterData.coinTo,
+		selectConverterCoins: (state) => state.converterData.converterCoins,
+		selecetConverterResult: (state) => state.converterData.convertResult,
+		selectConverterIsLoading: (state) => state.isLoading,
+		selectConverterError: (state) => state.error,
+	},
 	reducers: {
 		setCoinFrom: (state, action: PayloadAction<ConverterCoinType>) => {
 			state.converterData.convertResult = 0;
@@ -50,7 +58,7 @@ export const converterSlice = createSlice({
 				state.error = action.payload;
 				state.isLoading = false;
 			})
-		// FetchConverterCoins
+			// fetchConverterCoins
 			.addCase(fetchConverterCoins.pending, (state) => {
 				state.isLoading = true;
 			})
@@ -67,3 +75,4 @@ export const converterSlice = createSlice({
 
 export const { reducer: converterReducer } = converterSlice;
 export const { actions: converterActions } = converterSlice;
+export const { selectors: converterSelectors } = converterSlice;

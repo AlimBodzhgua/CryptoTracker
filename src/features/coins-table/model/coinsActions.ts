@@ -1,20 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { coinsSorter } from './utils';
 import { SetURLSearchParams } from 'react-router-dom';
+import coinApi from 'shared/api/coinApi';
 import type { Coin } from 'shared/types/coin';
 import type { AppState } from 'app/store/config/AppState';
 import type { AppDispatch } from 'app/store/config/store';
-import coinApi from 'shared/api/coinApi';
-
-import {
-	selectCoins,
-	selectCoinsIsLoading,
-	selectCoinsPageHasMore,
-	selectCoinsPageLimit,
-	selectCoinsPageNumber,
-	selectCoinsTag,
-} from './coinsSelectors';
-import { coinsActions } from './coinsSlice';
+import { coinsSorter } from './utils';
+import { coinsActions, coinsSelectors } from './coinsSlice';
 
 type PageNumber = number;
 
@@ -25,8 +16,8 @@ export const fetchCoins = createAsyncThunk<
 >(
 	'fetchCoins',
 	async (page, { rejectWithValue, getState }) => {
-		const limit = selectCoinsPageLimit(getState());
-		const tag = selectCoinsTag(getState());
+		const limit = coinsSelectors.selectCoinsPageLimit(getState());
+		const tag = coinsSelectors.selectCoinsTag(getState());
 		try {
 			const response = await coinApi.get('/coins', {
 				params: {
@@ -49,9 +40,9 @@ export const fetchNextCoins = createAsyncThunk<
 >(
 	'fetchNextCoins',
 	async (_, { dispatch, getState }) => {
-		const page = selectCoinsPageNumber(getState());
-		const hasMore = selectCoinsPageHasMore(getState());
-		const isLoading = selectCoinsIsLoading(getState());
+		const page = coinsSelectors.selectCoinsPageNumber(getState());
+		const hasMore = coinsSelectors.selectCoinsPageHasMore(getState());
+		const isLoading = coinsSelectors.selectCoinsIsLoading(getState());
 
 		if (hasMore && !isLoading) {
 			dispatch(coinsActions.setPage(page + 1));
@@ -67,7 +58,7 @@ export const resetCoinsSettings = createAsyncThunk<
 >(
 	'resetCoinsSettings',
 	async (setSearchParams, { dispatch, getState }) => {
-		const coins = selectCoins(getState());
+		const coins = coinsSelectors.selectCoins(getState());
 		dispatch(coinsActions.setTag('All Coins'));
 		setSearchParams('field=rank&sort=desc');
 		const sortedCoins = coinsSorter(coins, 'desc', 'rank');

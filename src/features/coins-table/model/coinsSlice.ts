@@ -36,6 +36,17 @@ const initialState: CoinsState = {
 export const coinsSlice = createSlice({
 	name: 'coins',
 	initialState,
+	selectors: {
+		selectCoins: (state) => state.coins,
+		selectCoinsTag: (state) => state.tag,
+		selectCoinsPriceNotation: (state) => state.priceNotation,
+		selectSearchedFilteredCoins: (state) => state.searchedFilteredCoins,
+		selectCoinsIsLoading: (state) => state.isLoading || false,
+		selectCoinsError: (state) => state.error || '',
+		selectCoinsPageLimit: (state) => state.limit,
+		selectCoinsPageNumber: (state) => state.page,
+		selectCoinsPageHasMore: (state) => state.hasMore,
+	},
 	reducers: {
 		setCoins: (state, action: PayloadAction<Coin[]>) => {
 			state.coins = action.payload;
@@ -144,3 +155,4 @@ export const coinsSlice = createSlice({
 
 export const { reducer: coinsReducer } = coinsSlice;
 export const { actions: coinsActions } = coinsSlice;
+export const { selectors: coinsSelectors } = coinsSlice;

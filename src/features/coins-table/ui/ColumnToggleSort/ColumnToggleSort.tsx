@@ -3,8 +3,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { useSearchParams } from 'react-router-dom';
 import classnames from 'classnames';
 
-import { selectCoins } from '../../model/coinsSelectors';
-import { coinsActions } from '../../model/coinsSlice';
+import { coinsActions, coinsSelectors } from '../../model/coinsSlice';
 import { SortDirection } from '../../model/constants';
 import { coinsSorter } from '../../model/utils';
 import { SortDirectionType, FieldNameType } from '../../model/types';
@@ -32,7 +31,7 @@ export const ColumnToggleSort: FC<ColumnToggleSortProps> = memo((props) => {
 	} = props;
 	const [sortDirection, setSortDirection] = useState<SortDirectionType>(SortDirection.desc);
 	const [_, setSearchParams] = useSearchParams();
-	const coins = useAppSelector(selectCoins);
+	const coins = useAppSelector(coinsSelectors.selectCoins);
 	const dispatch = useAppDispatch();
 	const isActive = activeField === sortField;
 

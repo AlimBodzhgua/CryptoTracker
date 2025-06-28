@@ -1,13 +1,13 @@
 import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import { selectCoins, selectCoinsPageNumber } from './coinsSelectors';
+import { coinsSelectors } from './coinsSlice';
 import { useSearchParams } from 'react-router-dom';
 import { fetchCoins, fetchNextCoins, resetCoinsSettings } from './coinsActions';
 
 export const useCoins = () => {
 	const dispatch = useAppDispatch();
-	const page = useAppSelector(selectCoinsPageNumber);
-	const coins = useAppSelector(selectCoins);
+	const page = useAppSelector(coinsSelectors.selectCoinsPageNumber);
+	const coins = useAppSelector(coinsSelectors.selectCoins);
 	const [_, setSearchParams] = useSearchParams();
 
 	useEffect(() => {

@@ -4,12 +4,7 @@ import { useAppSelector } from 'shared/hooks/redux';
 import { Message } from 'shared/UI/Message/Message';
 import classnames from 'classnames';
 
-import {
-	selectCoinsIsLoading,
-	selectCoinsError,
-	selectSearchedFilteredCoins,
-	selectCoinsPageNumber,
-} from '../../model/coinsSelectors';
+import { coinsSelectors } from '../../model/coinsSlice';
 import { CoinTableRow } from '../CoinTableRow/CoinTableRow';
 import { CoinTableHeader } from './CoinTableHeader';
 import { CoinTableSkeleton } from './CoinTableSkeleton';
@@ -21,10 +16,10 @@ interface CoinTableProps {
 
 export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
 	const { t } = useTranslation();
-	const searchedFilteredCoins = useAppSelector(selectSearchedFilteredCoins);
-	const isLoading = useAppSelector(selectCoinsIsLoading);
-	const page = useAppSelector(selectCoinsPageNumber);
-	const error = useAppSelector(selectCoinsError);
+	const searchedFilteredCoins = useAppSelector(coinsSelectors.selectSearchedFilteredCoins);
+	const isLoading = useAppSelector(coinsSelectors.selectCoinsIsLoading);
+	const page = useAppSelector(coinsSelectors.selectCoinsPageNumber);
+	const error = useAppSelector(coinsSelectors.selectCoinsError);
 	const withHeader = page === 0;
 
 	if (error) {

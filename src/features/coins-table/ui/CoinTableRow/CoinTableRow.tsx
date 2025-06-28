@@ -11,7 +11,7 @@ import type { Coin } from 'shared/types/coin';
 
 import StarIcon from '../../assets/star.svg';
 import StarSelectedIcon from '../../assets/starSelected.svg';
-import { selectCoinsPriceNotation } from '../../model/coinsSelectors';
+import { coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinTableRow.module.scss';
 
 import classnames from 'classnames';
@@ -33,7 +33,7 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 	const watchListIds = useAppSelector(userSelectors.selectUserWatchListIds);
 	const isUserMounted = useAppSelector(userSelectors.selectUserMounted);
 	const user = useAppSelector(userSelectors.selectUser);
-	const priceNotation = useAppSelector(selectCoinsPriceNotation);
+	const priceNotation = useAppSelector(coinsSelectors.selectCoinsPriceNotation);
 	const dispatch = useAppDispatch();
 	
 	const formatter = useFormatter({ currentCurrency: 'USD', notation: priceNotation });

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
 import type { NotationType } from 'shared/types/coin';
 import { coinsActions } from '../../model/coinsSlice';
-import { selectCoinsPriceNotation } from '../../model/coinsSelectors';
+import { coinsSelectors } from '../../model/coinsSlice';
 
 import classes from './PriceNotationSelector.module.scss';
 
@@ -22,7 +22,7 @@ export const NotationList = {
 export const PriceNotationSelector: FC<PriceNotationSelectorProps> = memo(({ className }) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const priceNotation = useAppSelector(selectCoinsPriceNotation);
+	const priceNotation = useAppSelector(coinsSelectors.selectCoinsPriceNotation);
 
 	const onChangeNotation = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedNotation = e.target.value as NotationType;

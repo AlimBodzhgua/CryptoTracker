@@ -5,8 +5,7 @@ import { Input } from 'shared/UI/Input/Input';
 import classnames from 'classnames';
 
 import SearchIcon from '../../assets/search.svg';
-import { selectCoins } from '../../model/coinsSelectors';
-import { coinsActions } from '../../model/coinsSlice';
+import { coinsActions, coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinsSearchBar.module.scss';
 
 interface CoinsSearchBarProps {
@@ -17,7 +16,7 @@ export const CoinsSearchBar: FC<CoinsSearchBarProps> = memo((props) => {
 	const { className } = props;
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const dispatch = useAppDispatch();
-	const coins = useAppSelector(selectCoins);
+	const coins = useAppSelector(coinsSelectors.selectCoins);
 	const debouncedValue = useDebounce<string>(searchQuery);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 

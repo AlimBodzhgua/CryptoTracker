@@ -7,8 +7,7 @@ import classnames from 'classnames';
 import { SortDirectionType, FieldNameType } from '../../model/types';
 import { SortField } from '../../model/constants';
 import { coinsSorter } from '../../model/utils';
-import { coinsActions } from '../../model/coinsSlice';
-import { selectCoins } from '../../model/coinsSelectors';
+import { coinsActions, coinsSelectors } from '../../model/coinsSlice';
 import { ColumnToggleSort } from '../ColumnToggleSort/ColumnToggleSort';
 import classes from './CoinTable.module.scss';
 
@@ -19,7 +18,7 @@ interface CoinTableHeaderProps {
 export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 	const { t } = useTranslation();
 	const [activeField, setActiveField] = useState<FieldNameType>(SortField.rank);
-	const coins = useAppSelector(selectCoins);
+	const coins = useAppSelector(coinsSelectors.selectCoins);
 	const dispatch = useAppDispatch();
 	const [searchParams] = useSearchParams();
 

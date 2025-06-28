@@ -24,7 +24,6 @@ export type User = {
 
 export type Converter = {
 	converterCoins: ConverterCoinType[];
-	
 }
 
 export type HistoryType = {

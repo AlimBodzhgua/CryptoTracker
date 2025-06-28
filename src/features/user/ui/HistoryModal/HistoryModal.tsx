@@ -3,7 +3,6 @@ import { Modal } from 'shared/UI/Modal/Modal';
 import { LoaderRing } from 'shared/UI/LoaderRing/LoaderRing';
 import classnames from 'classnames';
 import { HistoryListAsync } from '../HistoryList/HistoryList.async';
-
 import classes from './HistoryModal.module.scss';
 
 interface HistoryModalProps {

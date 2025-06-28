@@ -1,17 +1,17 @@
 import { FC, useCallback, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/UI/Button/Button';
-import {
-	selectUserConversionHistory,
-	selectUserError,
-	selectUserIsLoading,
-} from 'features/user/model/userSelectors';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import { clearHistory } from 'features/user/model/userActions';
 import { Message } from 'shared/UI/Message/Message';
 import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
 
+import { clearHistory } from '../../model/userActions';
+import {
+	selectUserConversionHistory,
+	selectUserError,
+	selectUserIsLoading,
+} from '../../model/userSelectors';
 import { HistoryItem } from '../HistoryItem/HistoryItem';
 import classes from './HistoryList.module.scss';
 

@@ -1,14 +1,10 @@
-import { FC, ChangeEvent, useState, memo, useEffect } from 'react';
+import { FC, ChangeEvent, useState, memo, useEffect, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/UI/Button/Button';
 import { Input } from 'shared/UI/Input/Input';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
-import { HistoryModal } from 'features/coin-converter/ui/HistoryModal/HistoryModal';
-
-import { selectUser } from 'features/user/model/userSelectors';
-import { addHistory } from 'features/user/model/userActions';
 
 import { convertCoins } from '../../model/actions';
 import {
@@ -18,27 +14,32 @@ import {
 	selectConverterIsLoading,
 } from '../../model/selectors';
 import { converterActions } from '../../model/converterSlice';
-import HistoryIcon from '../../assets/history.svg';
 import SwitchIcon from '../../assets/switch.svg';
 
 import { CoinSelector } from '../CoinSelector/CoinSelector';
 import classes from './Converter.module.scss';
+import type { ConversionResult } from 'shared/types/converter';
 
 interface ConverterProps {
 	className?: string;
+	headerRightContent?: ReactNode;
+	onSuccessConvert?: (data: ConversionResult) => void;
 }
 
-export const Converter: FC<ConverterProps> = memo(({ className }) => {
+export const Converter: FC<ConverterProps> = memo((props) => {
+	const {
+		headerRightContent,
+		onSuccessConvert,
+		className,
+	} = props;
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
 	const coinFrom = useAppSelector(selectConverterCoinFrom);
 	const coinTo = useAppSelector(selectConverterCoinTo);
 	const result = useAppSelector(selecetConverterResult);
 	const isLoading = useAppSelector(selectConverterIsLoading);
 	const formatter = Intl.NumberFormat('ru', { maximumSignificantDigits: 8 });
 
-	const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
 	const [amount, setAmount] = useState<number>(0);
 
 	useEffect(() => () => {
@@ -49,31 +50,8 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 		setAmount(Number(e.target?.value));
 	};
 
-	const onShowHistory = () => {
-		if (!user) {
-			alert(
-				t('Only the user can see the history of previous conversions'),
-			);
-		} else {
-			setShowHistoryModal(true);
-		}
-	};
-
-	const onCloseHistoryModal = () => {
-		setShowHistoryModal(false);
-	};
-
 	const onSwitch = () => {
 		dispatch(converterActions.switchCoins());
-	};
-
-	const addNewHistory = (convertResult: number) => {
-		dispatch(addHistory({
-			coinFrom,
-			coinTo,
-			amount,
-			convertResult,
-		}));
 	};
 
 	const onConvert = async () => {
@@ -81,8 +59,8 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 			const { meta, payload } = await dispatch(
 				convertCoins({ coinFrom, coinTo, amount }),
 			);
-			if (meta.requestStatus === 'fulfilled' && user) {
-				addNewHistory(payload as number);
+			if (meta.requestStatus === 'fulfilled' && onSuccessConvert) {
+				onSuccessConvert({ coinFrom, coinTo, amount, result: payload as number });
 			}
 		}
 	};
@@ -91,21 +69,7 @@ export const Converter: FC<ConverterProps> = memo(({ className }) => {
 		<div className={classnames(classes.Converter, className)}>
 			<div className={classes.header}>
 				<h1 className={classes.title}>Converter</h1>
-				<div className={classes.history}>
-					<HistoryIcon className={classes.historyIcon} />
-					<Button
-						className={classes.historyBtn}
-						theme='clear'
-						size='big'
-						onClick={onShowHistory}
-					>
-						{t('History')}
-					</Button>
-					<HistoryModal
-						isOpen={showHistoryModal}
-						onClose={onCloseHistoryModal}
-					/>
-				</div>
+				{headerRightContent}
 			</div>
 
 			<div className={classes.body}>

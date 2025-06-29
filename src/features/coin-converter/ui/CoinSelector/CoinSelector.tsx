@@ -1,7 +1,7 @@
 import { FC, memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classnames from 'classnames';
-import ArrowIcon from 'assets/icons/arrow.svg';
+import ArrowIcon from '../../assets/arrow.svg';
 
 import { ConverterCoinType, ConverterListType } from '../../model/types';
 import { CoinsList } from '../CoinsList/CoinsList';

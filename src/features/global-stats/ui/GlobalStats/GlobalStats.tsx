@@ -15,11 +15,12 @@ import classes from './GlobalStats.module.scss';
 
 interface StatsProps {
 	className?: string;
+	afterFetch?: () => void;
 	currentCurrency: CurrencyType;
 }
 
 export const GlobalStats: FC<StatsProps> = memo((props) => {
-	const { className, currentCurrency } = props;
+	const { className, afterFetch, currentCurrency } = props;
 	const { t } = useTranslation();
 	const stats = useAppSelector(globalStatsSelectors.selectGlobalStats);
 	const statsData = useAppSelector(globalStatsSelectors.selectCoinsGlobalStatsData);
@@ -30,7 +31,9 @@ export const GlobalStats: FC<StatsProps> = memo((props) => {
 
 	useEffect(() => {
 		if (__PROJECT__ !== 'storybook') {
-			dispatch(fetchGlobalStats());
+			dispatch(fetchGlobalStats()).then(() => {
+				if (afterFetch) afterFetch();
+			});
 		}
 	}, [dispatch]);
 

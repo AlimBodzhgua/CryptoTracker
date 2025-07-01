@@ -19,7 +19,7 @@ import { userSelectors } from './userSlice';
 
 type UserId = string;
 type UserEmail = string;
-type CoinUId = string;
+type CoinUid = string;
 
 export const initUserAuth = createAsyncThunk<User, UserId, { rejectValue: string }>(
 	'user/initAuth',
@@ -198,8 +198,8 @@ export const clearHistory = createAsyncThunk<
 );
 
 export const addWatchListCoin = createAsyncThunk<
-	CoinUId,
-    CoinUId,
+	CoinUid,
+    CoinUid,
     { rejectValue: string, state: AppState }
 >(
 	'user/addWatchListCoin',
@@ -223,8 +223,8 @@ export const addWatchListCoin = createAsyncThunk<
 );
 
 export const removeWatchListCoin = createAsyncThunk<
-    CoinUId,
-    CoinUId,
+    CoinUid,
+    CoinUid,
     { rejectValue: string, state: AppState }
 >(
 	'user/removeWatchListCoin',

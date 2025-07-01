@@ -11,6 +11,7 @@ import type { Coin } from 'shared/types/coin';
 
 import StarIcon from '../../assets/star.svg';
 import StarSelectedIcon from '../../assets/starSelected.svg';
+import type { CoinSelectionType } from '../../model/types';
 import { coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinTableRow.module.scss';
 
@@ -21,13 +22,8 @@ interface CoinTableRowProps {
 	className?: string;
 }
 
-type SelectionType = 'selected' | 'unselected';
-
 export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
-	const {
-		coin,
-		className,
-	} = props;
+	const { coin, className } = props;
 	const [isInWatchList, setIsInWatchList] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const watchListIds = useAppSelector(userSelectors.selectUserWatchListIds);
@@ -71,7 +67,7 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 		}
 	};
 
-	const mapToMatchedIcon = useMemo<Record<SelectionType, ReactElement>>(() => ({
+	const mapToMatchedIcon = useMemo<Record<CoinSelectionType, ReactElement>>(() => ({
 		selected: (
 			<StarSelectedIcon className={classes.starIconSelected} onClick={onRemoveCoinFromWatchList} />
 		),

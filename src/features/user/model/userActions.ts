@@ -207,6 +207,7 @@ export const addWatchListCoin = createAsyncThunk<
 		const user = userSelectors.selectUser(getState());
 		const watchListCoins = userSelectors.selectUserWatchListCoins(getState());
 		const watchListIds = userSelectors.selectUserWatchListIds(getState());
+
 		try {
 			const userDocRef = doc(db, 'users', user!.id);
 			await updateDoc(userDocRef, {

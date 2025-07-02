@@ -1,3 +1,4 @@
+export { AddToWatchListButton } from './ui/AddToWatchListButton/AddToWatchListButton';
 export { addHistory } from './model/userActions';
 export { userActions, userSelectors } from './model/userSlice';
 export { AuthActionsMenu } from './ui/AuthActionsMenu/AuthActionsMenu';

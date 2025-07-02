@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'shared/hooks/redux';
 import { Message } from 'shared/UI/Message/Message';
@@ -11,10 +11,11 @@ import { CoinTableSkeleton } from './CoinTableSkeleton';
 import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {
+	renderActionColumn?: (coinId: string) => ReactNode;
 	className?: string;
 }
 
-export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
+export const CoinTable: FC<CoinTableProps> = memo(({ className, renderActionColumn }) => {
 	const { t } = useTranslation();
 	const searchedFilteredCoins = useAppSelector(coinsSelectors.selectSearchedFilteredCoins);
 	const isLoading = useAppSelector(coinsSelectors.selectCoinsIsLoading);
@@ -43,17 +44,18 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className }) => {
 						<CoinTableHeader />
 						<tbody>
 							{searchedFilteredCoins.map((coin) => (
-								<CoinTableRow coin={coin} key={coin.uuid} />
+								<CoinTableRow
+									coin={coin}
+									key={coin.uuid}
+									renderActionColumn={renderActionColumn}
+								/>
 							))}
 						</tbody>
 					</>
 				) : null}
 			</table>
 			{isLoading && (
-				<CoinTableSkeleton
-					withHeader={withHeader}
-					className={classes.tableSkeleton}
-				/>
+				<CoinTableSkeleton withHeader={withHeader} className={classes.tableSkeleton} />
 			)}
 		</>
 	);

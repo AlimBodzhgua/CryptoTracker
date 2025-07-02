@@ -33,3 +33,5 @@ export type HistoryType = {
 	amount: number;
 	id?: string;
 };
+
+export type WatchlistState = 'selected' | 'unselected';

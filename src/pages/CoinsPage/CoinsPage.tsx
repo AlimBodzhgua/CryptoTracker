@@ -1,16 +1,19 @@
 import { FC } from 'react';
-import { CoinTable, useCoins } from 'features/coins-table';
-import { Page } from 'features/page';
-import { CoinsSearchBar } from 'features/coins-table';
-import { TagsSelector } from 'features/coins-table';
-import { PriceNotationSelector } from 'features/coins-table';
 import { Button } from 'shared/UI/Button/Button';
 import { useAppDispatch } from 'shared/hooks/redux';
-import type { CurrencyType } from 'shared/types/coin';
+import {
+	CoinTable,
+	useCoins,
+	TagsSelector,
+	PriceNotationSelector,
+	CoinsSearchBar,
+} from 'features/coins-table';
+import { Page } from 'features/page';
+import { AddToWatchListButton } from 'features/user';
 import { currencyActions } from 'features/currency';
 import { CURRENCY_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
+import type { CurrencyType } from 'shared/types/coin';
 import classnames from 'classnames';
-
 import ResetIcon from './assets/reset.svg';
 import classes from './CoinsPage.module.scss';
 
@@ -29,7 +32,6 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 			dispatch(currencyActions.setCurrentCurrency(currency as CurrencyType));
 		}
 	}
-
 
 	return (
 		<Page
@@ -50,7 +52,9 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 					</Button>
 				</div>
 			</div>
-			<CoinTable />
+			<CoinTable
+				renderActionColumn={(coinId) => <AddToWatchListButton coinId={coinId}/>}
+			/>
 		</Page>
 	);
 };

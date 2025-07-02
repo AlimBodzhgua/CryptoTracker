@@ -1,80 +1,23 @@
-import { FC, memo, ReactElement, useEffect, useMemo, useState } from 'react';
+import { FC, memo, ReactNode } from 'react';
 import { useFormatter } from 'shared/hooks/useFormatter';
-import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import {
-	addWatchListCoin,
-	removeWatchListCoin,
-} from 'features/user/model/userActions';
-import { userSelectors } from 'features/user/model/userSlice';
-import { LoaderRing } from 'shared/UI/LoaderRing/LoaderRing';
+import { useAppSelector } from 'shared/hooks/redux';
+import classnames from 'classnames';
 import type { Coin } from 'shared/types/coin';
 
-import StarIcon from '../../assets/star.svg';
-import StarSelectedIcon from '../../assets/starSelected.svg';
-import type { CoinSelectionType } from '../../model/types';
 import { coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinTableRow.module.scss';
 
-import classnames from 'classnames';
 
 interface CoinTableRowProps {
 	coin: Coin;
 	className?: string;
+	renderActionColumn?: (coinId: string) => ReactNode;
 }
 
 export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
-	const { coin, className } = props;
-	const [isInWatchList, setIsInWatchList] = useState<boolean>(false);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const watchListIds = useAppSelector(userSelectors.selectUserWatchListIds);
-	const isUserMounted = useAppSelector(userSelectors.selectUserMounted);
-	const user = useAppSelector(userSelectors.selectUser);
+	const { coin, renderActionColumn, className } = props;
 	const priceNotation = useAppSelector(coinsSelectors.selectCoinsPriceNotation);
-	const dispatch = useAppDispatch();
-	
 	const formatter = useFormatter({ currentCurrency: 'USD', notation: priceNotation });
-
-	useEffect(() => {
-		if (isUserMounted) {
-			const find = watchListIds.find((id) => id === coin.uuid);
-			setIsInWatchList(!!find);
-		}
-	}, [isUserMounted]);
-
-	const onAddCoinToWatchList = async () => {
-		if (user) {
-			setIsLoading(true);
-			const { meta } = await dispatch(addWatchListCoin(coin.uuid));
-
-			if (meta.requestStatus === 'fulfilled') {
-				setIsLoading(false);
-				setIsInWatchList(true);
-			} else if (meta.requestStatus === 'rejected') {
-				setIsLoading(false);
-			}
-		}
-	};
-
-	const onRemoveCoinFromWatchList = async () => {
-		setIsLoading(true);
-		const { meta } = await dispatch(removeWatchListCoin(coin.uuid));
-
-		if (meta.requestStatus === 'fulfilled') {
-			setIsInWatchList(false);
-			setIsLoading(false);
-		} else if (meta.requestStatus === 'rejected') {
-			setIsLoading(false);
-		}
-	};
-
-	const mapToMatchedIcon = useMemo<Record<CoinSelectionType, ReactElement>>(() => ({
-		selected: (
-			<StarSelectedIcon className={classes.starIconSelected} onClick={onRemoveCoinFromWatchList} />
-		),
-		unselected: (
-			<StarIcon className={classes.starIcon} onClick={onAddCoinToWatchList} />
-		),
-	}), [onRemoveCoinFromWatchList, onAddCoinToWatchList]);
 
 	return (
 		<tr className={classnames(classes.CoinTableRow, className)}>
@@ -91,11 +34,7 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 			<td>{formatter.format(Number(coin['24hVolume']))}</td>
 			<td>{formatter.format(Number(coin.marketCap))}</td>
 			<td>
-				{isLoading ? (
-					<LoaderRing className={classes.loader} />
-				) : (
-					mapToMatchedIcon[isInWatchList ? 'selected' : 'unselected']
-				)}
+				{renderActionColumn && renderActionColumn(coin.uuid)}
 			</td>
 		</tr>
 	);

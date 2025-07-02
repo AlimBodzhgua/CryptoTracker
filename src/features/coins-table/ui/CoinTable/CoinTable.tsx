@@ -2,6 +2,7 @@ import { FC, memo, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'shared/hooks/redux';
 import { Message } from 'shared/UI/Message/Message';
+import type { CurrencyType } from 'shared/types/coin';
 import classnames from 'classnames';
 
 import { coinsSelectors } from '../../model/coinsSlice';
@@ -12,10 +13,16 @@ import classes from './CoinTable.module.scss';
 
 interface CoinTableProps {
 	renderActionColumn?: (coinId: string) => ReactNode;
+	currency: CurrencyType;
 	className?: string;
 }
 
-export const CoinTable: FC<CoinTableProps> = memo(({ className, renderActionColumn }) => {
+export const CoinTable: FC<CoinTableProps> = memo((props) => {
+	const {
+		currency,
+		renderActionColumn,
+		className,
+	} = props;
 	const { t } = useTranslation();
 	const searchedFilteredCoins = useAppSelector(coinsSelectors.selectSearchedFilteredCoins);
 	const isLoading = useAppSelector(coinsSelectors.selectCoinsIsLoading);
@@ -47,6 +54,7 @@ export const CoinTable: FC<CoinTableProps> = memo(({ className, renderActionColu
 								<CoinTableRow
 									coin={coin}
 									key={coin.uuid}
+									currency={currency}
 									renderActionColumn={renderActionColumn}
 								/>
 							))}

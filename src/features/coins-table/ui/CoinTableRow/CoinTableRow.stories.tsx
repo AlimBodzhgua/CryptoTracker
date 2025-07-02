@@ -25,6 +25,7 @@ const sparkline = [
 
 export const Primary: Story = {
 	args: {
+		currency: 'USD',
     	coin: {
 			uuid: 'Qwsogvtv82FCd',
 			symbol: 'BTC',
@@ -42,6 +43,7 @@ export const Primary: Story = {
 
 export const InWatchList: Story = {
 	args: {
+		currency: 'USD',
 		coin: {
 			uuid: 'Qwsogvtv82FCd',
 			symbol: 'BTC',

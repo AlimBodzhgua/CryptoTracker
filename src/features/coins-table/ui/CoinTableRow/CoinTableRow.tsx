@@ -2,7 +2,7 @@ import { FC, memo, ReactNode } from 'react';
 import { useFormatter } from 'shared/hooks/useFormatter';
 import { useAppSelector } from 'shared/hooks/redux';
 import classnames from 'classnames';
-import type { Coin } from 'shared/types/coin';
+import type { Coin, CurrencyType } from 'shared/types/coin';
 
 import { coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinTableRow.module.scss';
@@ -11,13 +11,19 @@ import classes from './CoinTableRow.module.scss';
 interface CoinTableRowProps {
 	coin: Coin;
 	className?: string;
+	currency: CurrencyType;
 	renderActionColumn?: (coinId: string) => ReactNode;
 }
 
 export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
-	const { coin, renderActionColumn, className } = props;
+	const {
+		coin,
+		currency,
+		renderActionColumn,
+		className,
+	} = props;
 	const priceNotation = useAppSelector(coinsSelectors.selectCoinsPriceNotation);
-	const formatter = useFormatter({ currentCurrency: 'USD', notation: priceNotation });
+	const formatter = useFormatter({ currentCurrency: currency, notation: priceNotation });
 
 	return (
 		<tr className={classnames(classes.CoinTableRow, className)}>

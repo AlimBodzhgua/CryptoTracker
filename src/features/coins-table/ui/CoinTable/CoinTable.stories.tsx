@@ -54,6 +54,7 @@ const coinsList = [
 export const Primary: Story = {
 	args: {
 		className: classes.fullWidth,
+		currency: 'USD',
 	},
 	decorators: StoreDecorator({
 		coins: {
@@ -66,7 +67,7 @@ export const Primary: Story = {
 };
 
 export const WithError: Story = {
-	args: {},
+	args: { currency: 'USD' },
 	decorators: StoreDecorator({
 		coins: {
 			isLoading: false,
@@ -76,7 +77,7 @@ export const WithError: Story = {
 };
 
 export const IsLoading: Story = {
-	args: {},
+	args: { currency: 'USD' },
 	decorators: StoreDecorator({
 		coins: {
 			isLoading: true,
@@ -88,7 +89,7 @@ export const IsLoading: Story = {
 };
 
 export const FetchNextData: Story = {
-	args: {},
+	args: { currency: 'USD', },
 	decorators: StoreDecorator({
 		coins: {
 			isLoading: true,
@@ -102,6 +103,7 @@ export const FetchNextData: Story = {
 export const WithCoinInWatchList: Story = {
 	args: {
 		className: classes.fullWidth,
+		currency: 'USD',
 	},
 	decorators: StoreDecorator({
 		coins: {

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Button } from 'shared/UI/Button/Button';
-import { useAppDispatch } from 'shared/hooks/redux';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import {
 	CoinTable,
 	useCoins,
@@ -10,7 +10,7 @@ import {
 } from 'features/coins-table';
 import { Page } from 'features/page';
 import { AddToWatchListButton } from 'features/user';
-import { currencyActions } from 'features/currency';
+import { currencyActions, currencySelectors } from 'features/currency';
 import { CURRENCY_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import type { CurrencyType } from 'shared/types/coin';
 import classnames from 'classnames';
@@ -23,6 +23,7 @@ interface CoinsPageProps {
 
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 	const { loadNextCoins, resetSettings } = useCoins({ afterFetch });
+	const currency = useAppSelector(currencySelectors.selectCurrentCurrency);
 	const dispatch = useAppDispatch();
 
 	function afterFetch() {
@@ -53,6 +54,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 				</div>
 			</div>
 			<CoinTable
+				currency={currency}
 				renderActionColumn={(coinId) => <AddToWatchListButton coinId={coinId}/>}
 			/>
 		</Page>

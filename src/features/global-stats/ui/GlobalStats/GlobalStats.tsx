@@ -8,7 +8,7 @@ import classnames from 'classnames';
 
 import { fetchGlobalStats } from '../../model/actions';
 import { globalStatsSelectors } from '../../model/globalStatsSlice';
-import { List } from '../List/List';
+import { CoinsList } from '../CoinsList/CoinsList';
 import { GlobalStatsSkeleton } from './GlobalStatsSkeleton';
 
 import classes from './GlobalStats.module.scss';
@@ -73,13 +73,13 @@ export const GlobalStats: FC<StatsProps> = memo((props) => {
 							<h3 className={classes.listTitle}>
 								{t('Best performing coins')}
 							</h3>
-							<List coins={stats.bestCoins} />
+							<CoinsList coins={stats.bestCoins} />
 						</div>
 						<div className={classes.listWrapper}>
 							<h3 className={classes.listTitle}>
 								{t('Newest coins')}
 							</h3>
-							<List coins={stats.newestCoins} />
+							<CoinsList coins={stats.newestCoins} />
 						</div>
 					</>
 				)}

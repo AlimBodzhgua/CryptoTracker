@@ -1,20 +1,20 @@
 import { FC, memo } from 'react';
 import classnames from 'classnames';
 import type { GlobalStatsCoin } from '../../model/types';
-import classes from './List.module.scss';
+import classes from './CoinsList.module.scss';
 
-interface ListProps {
+interface CoinsListProps {
 	coins: Array<GlobalStatsCoin>;
 	className?: string;
 }
-export const List: FC<ListProps> = memo((props) => {
+export const CoinsList: FC<CoinsListProps> = memo((props) => {
 	const {
 		coins,
 		className,
 	} = props;
 
 	return (
-		<ul className={classnames(classes.List, className)}>
+		<ul className={classnames(classes.CoinsList, className)}>
 			{coins.map((coin) => (
 				<li className={classes.listItem} key={coin.iconUrl}>
 					<img

@@ -89,7 +89,7 @@ export const IsLoading: Story = {
 };
 
 export const FetchNextData: Story = {
-	args: { currency: 'USD', },
+	args: { currency: 'USD' },
 	decorators: StoreDecorator({
 		coins: {
 			isLoading: true,

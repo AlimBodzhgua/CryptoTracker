@@ -21,8 +21,7 @@ export const createReduxStore = (initialState?: AppState) => {
 	const store = configureStore({
 		reducer: rootReducer,
 		preloadedState: initialState,
-		middleware: (getDefaultMiddleware) => 
-			getDefaultMiddleware().prepend(listenerMiddleware.middleware),
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(listenerMiddleware.middleware),
 	});
 
 	return store;

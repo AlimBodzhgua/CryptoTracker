@@ -8,15 +8,13 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import classnames from 'classnames';
 import { signInUser, signInWithGoogle } from '../../../model/userActions';
-import { userSelectors } from '../../../model/userSlice';
-import { userActions } from '../../../model/userSlice';
+import { userSelectors, userActions } from '../../../model/userSlice';
 
 import EmailIcon from '../../../assets/email.svg';
 import PasswordIcon from '../../../assets/password.svg';
 import EyeIcon from '../../../assets/eye.svg';
 import GoogleIcon from '../../../assets/google.svg';
 import classes from './LoginForm.module.scss';
-
 
 interface LoginFormProps {
 	onSuccess?: () => void;

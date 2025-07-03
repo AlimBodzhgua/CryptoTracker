@@ -1,19 +1,19 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { CurrencyType, Kurs } from 'shared/types/coin';
 import { fetchGlobalStats } from './actions';
 import { GlobalStats } from './types';
-import type { CurrencyType, Kurs } from 'shared/types/coin';
 
 export interface GlobalStatsState {
 	data?: GlobalStats;
 	isLoading: boolean;
-	error?: string; 
+	error?: string;
 }
 
 const initialState: GlobalStatsState = {
 	data: undefined,
 	isLoading: false,
 	error: undefined,
-}
+};
 
 export const globalStatsSlice = createSlice({
 	name: 'globalStats',
@@ -24,16 +24,14 @@ export const globalStatsSlice = createSlice({
 		selectGlobalStatsError: (state) => state.error,
 		selectCoinsGlobalStatsData: createSelector(
 			(state) => state.data,
-			(data) => {
-				return [
-					{ title: 'Btc Dominance', value: data?.btcDominance },
-					{ title: 'Total 24hVolume', value: data?.total24hVolume },
-					{ title: 'Total MarketCap', value: data?.totalMarketCap },
-					{ title: 'Total Exchanges', value: data?.totalExchanges },
-					{ title: 'Total Markets', value: data?.totalMarkets },
-					{ title: 'Total Coins', value: data?.totalCoins },
-				];
-			},
+			(data) => [
+				{ title: 'Btc Dominance', value: data?.btcDominance },
+				{ title: 'Total 24hVolume', value: data?.total24hVolume },
+				{ title: 'Total MarketCap', value: data?.totalMarketCap },
+				{ title: 'Total Exchanges', value: data?.totalExchanges },
+				{ title: 'Total Markets', value: data?.totalMarkets },
+				{ title: 'Total Coins', value: data?.totalCoins },
+			],
 		),
 	},
 	reducers: {
@@ -60,14 +58,12 @@ export const globalStatsSlice = createSlice({
 					);
 				}
 			} else if (
-				(action.payload.prevCurrency === 'EUR' ||
-					action.payload.prevCurrency === 'RUB') &&
-				(action.payload.targetCurrency === 'EUR' ||
-					action.payload.targetCurrency === 'RUB')
+				(action.payload.prevCurrency === 'EUR' || action.payload.prevCurrency === 'RUB')
+				&& (action.payload.targetCurrency === 'EUR' || action.payload.targetCurrency === 'RUB')
 			) {
 				// (RUB/EUR -> USD -> RUB/EUR)
-				let currency = action.payload.prevCurrency;
-				let currencyPrice = action.payload.kurs[currency];
+				const currency = action.payload.prevCurrency;
+				const currencyPrice = action.payload.kurs[currency];
 
 				if (state.data) {
 					state.data.btcDominance *= currencyPrice;

@@ -1,4 +1,3 @@
-
 export type ConverterCoinType = {
 	name: string;
 	symbol: string;

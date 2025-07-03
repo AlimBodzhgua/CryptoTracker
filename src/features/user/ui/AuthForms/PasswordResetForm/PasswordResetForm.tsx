@@ -11,7 +11,6 @@ import { userSelectors } from '../../../model/userSlice';
 import EmailIcon from '../../../assets/email.svg';
 import classes from './PasswordResetForm.module.scss';
 
-
 interface PasswordResetFormProps {
 	title?: string;
 	onSuccess?: () => void;

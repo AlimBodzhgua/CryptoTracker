@@ -22,17 +22,18 @@ interface CoinsPageProps {
 }
 
 const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
-	const { loadNextCoins, resetSettings } = useCoins({ afterFetch });
 	const currency = useAppSelector(currencySelectors.selectCurrentCurrency);
 	const dispatch = useAppDispatch();
 
-	function afterFetch() {
+	const afterFetch = () => {
 		const currency = localStorage.getItem(CURRENCY_LOCALSTORAGE_KEY);
 
 		if (currency && currency !== 'USD') {
 			dispatch(currencyActions.setCurrentCurrency(currency as CurrencyType));
 		}
-	}
+	};
+
+	const { loadNextCoins, resetSettings } = useCoins({ afterFetch });
 
 	return (
 		<Page
@@ -45,17 +46,14 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 				<div className={classes.actions}>
 					<TagsSelector />
 					<PriceNotationSelector />
-					<Button
-						className={classes.resetBtn}
-						onClick={resetSettings}
-					>
+					<Button className={classes.resetBtn} onClick={resetSettings}>
 						<ResetIcon className={classes.resetIcon} />
 					</Button>
 				</div>
 			</div>
 			<CoinTable
 				currency={currency}
-				renderActionColumn={(coinId) => <AddToWatchListButton coinId={coinId}/>}
+				renderActionColumn={(coinId) => <AddToWatchListButton coinId={coinId} />}
 			/>
 		</Page>
 	);

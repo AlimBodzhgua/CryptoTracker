@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
-import LockIcon from './assets/lock.svg'
+import LockIcon from './assets/lock.svg';
 import classes from './PageRequireAuth.module.scss';
 import { PageLayout } from '../PageLayout/PageLayout';
 
@@ -14,7 +14,7 @@ export const PageRequireAuth: FC<PageRequireAuthProps> = ({ className }) => {
 
 	return (
 		<PageLayout className={classnames(classes.PageRequierAuth, className)}>
-			<LockIcon className={classes.lockIcon}/>
+			<LockIcon className={classes.lockIcon} />
 			<h2 className={classes.header}>
 				{t('This page require auth.')}
 			</h2>

@@ -9,14 +9,12 @@ import { useSearchParams } from 'react-router-dom';
 import classnames from 'classnames';
 
 import { signUpUser } from '../../../model/userActions';
-import { userActions } from '../../../model/userSlice';
-import { userSelectors } from '../../../model/userSlice';
+import { userActions, userSelectors } from '../../../model/userSlice';
 
 import EmailIcon from '../../../assets/email.svg';
 import PasswordIcon from '../../../assets/password.svg';
-import EyeIcon from '../../../assets//eye.svg';
+import EyeIcon from '../../../assets/eye.svg';
 import classes from './RegisterForm.module.scss';
-
 
 interface RegisterFormProps {
 	onSuccess?: () => void;

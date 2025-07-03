@@ -14,9 +14,8 @@ import {
 import { SortableContext } from '@dnd-kit/sortable';
 import { restrictToParentElement } from '@dnd-kit/modifiers';
 import classnames from 'classnames';
-import { userActions } from '../../../model/userSlice';
 import { fetchWatchListCoins, updateWatchList } from '../../../model/userActions';
-import { userSelectors } from '../../../model/userSlice';
+import { userSelectors, userActions } from '../../../model/userSlice';
 import SelectedStarIcon from '../../../assets/starSelected.svg';
 
 import { WatchListItem } from '../WatchListItem/WatchListItem';
@@ -44,7 +43,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 		}
 	}, [dispatch, userMounted]);
 
-	const onNavigateToCoinsPage = () =>navigate('/coins');
+	const onNavigateToCoinsPage = () => navigate('/coins');
 
 	const sensors = useSensors(
 		useSensor(PointerSensor, {

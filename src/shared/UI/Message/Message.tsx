@@ -1,11 +1,10 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import classnames from 'classnames';
 
 import ErrorIcon from './assets/error_mark.svg';
 import SuccessIcon from './assets/success.svg';
 import WarningIcon from './assets/error.svg';
-
-import classnames from 'classnames';
 import classes from './Message.module.scss';
 
 type MessageType = 'error' | 'warn' | 'success';

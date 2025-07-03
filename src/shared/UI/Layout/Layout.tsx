@@ -11,13 +11,15 @@ export const Layout: React.FC = () => (
 	<div className={classes.Layout}>
 		<Sidebar />
 		<div className={classes.LayoutInner}>
-			<Header elements={
-				<>
-					<AuthActionsMenu />
-					<CurrencySwitcher />
-					<LangSwitcher /> 
-				</>
-			}/>
+			<Header
+				elements={
+					<>
+						<AuthActionsMenu />
+						<CurrencySwitcher />
+						<LangSwitcher />
+					</>
+				}
+			/>
 			<Outlet />
 		</div>
 	</div>

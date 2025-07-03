@@ -37,7 +37,6 @@ export const GlobalStats: FC<StatsProps> = memo((props) => {
 		}
 	}, [dispatch]);
 
-
 	if (isLoading) {
 		return <GlobalStatsSkeleton />;
 	}

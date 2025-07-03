@@ -2,11 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import coinApi from 'shared/api/coinApi';
 import type { GlobalStats } from './types';
 
-export const fetchGlobalStats = createAsyncThunk<
-	GlobalStats,
-	void,
-	{ rejectValue: string }
->(
+export const fetchGlobalStats = createAsyncThunk<GlobalStats, void, { rejectValue: string }>(
 	'fetchGlobalStats',
 	async (_, { rejectWithValue }) => {
 		try {

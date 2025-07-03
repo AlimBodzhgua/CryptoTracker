@@ -18,21 +18,24 @@ startAppListening({
 	effect: async (action, { getState, dispatch }) => {
 		const prevCurrency = currencySelectors.selectPrevCurrency(getState());
 		const { meta, payload } = await dispatch(fetchCurrency());
-		
+
 		if (meta.requestStatus === 'fulfilled') {
-			const kurs = payload as Kurs; 
+			const kurs = payload as Kurs;
 
-			dispatch(coinsSlice.actions.changeCurrency({
-				kurs: kurs,
-				prevCurrency: prevCurrency!,
-				targetCurrency: action.payload,
-			}))
-			dispatch(globalStatsSlice.actions.changeCurrency({
-				kurs: kurs,
-				prevCurrency: prevCurrency!,
-				targetCurrency: action.payload,
-			}))
+			dispatch(
+				coinsSlice.actions.changeCurrency({
+					kurs,
+					prevCurrency: prevCurrency!,
+					targetCurrency: action.payload,
+				}),
+			);
+			dispatch(
+				globalStatsSlice.actions.changeCurrency({
+					kurs,
+					prevCurrency: prevCurrency!,
+					targetCurrency: action.payload,
+				}),
+			);
 		}
-
-	}
-})
+	},
+});

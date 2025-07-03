@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
 
-import { convertCoins } from '../../model/actions';;
+import { convertCoins } from '../../model/actions';
 import { converterActions, converterSelectors } from '../../model/converterSlice';
 import type { ConversionResult } from '../../model/types';
 import SwitchIcon from '../../assets/switch.svg';

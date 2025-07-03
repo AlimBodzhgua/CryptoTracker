@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setDoc, doc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore';
 import { auth, googleProvider, db } from 'shared/config/firebase/firebase';
-import { createHistoryDoc, getUserDataObject } from './utils';
 import { AppState } from 'app/store/config/AppState';
 import { FirebaseError } from 'firebase/app';
 import {
@@ -12,9 +11,11 @@ import {
 	signInWithPopup,
 	signOut,
 } from 'firebase/auth';
-import type { HistoryType, User } from './types';
 import type { Coin } from 'shared/types/coin';
 import coinApi from 'shared/api/coinApi';
+
+import type { HistoryType, User } from './types';
+import { createHistoryDoc, getUserDataObject } from './utils';
 import { userSelectors } from './userSlice';
 
 type UserId = string;

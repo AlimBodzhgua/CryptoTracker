@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
-import type { HistoryType } from '../../model/types';
-
 import classnames from 'classnames';
+
+import type { HistoryType } from '../../model/types';
 import classes from './HistoryItem.module.scss';
 
 interface HistoryItemProps {

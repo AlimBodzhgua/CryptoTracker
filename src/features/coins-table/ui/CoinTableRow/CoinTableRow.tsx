@@ -7,7 +7,6 @@ import type { Coin, CurrencyType } from 'shared/types/coin';
 import { coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinTableRow.module.scss';
 
-
 interface CoinTableRowProps {
 	coin: Coin;
 	className?: string;

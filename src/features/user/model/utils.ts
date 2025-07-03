@@ -1,5 +1,5 @@
-import type { ConverterCoinType, User } from './types';
 import type { UserCredential } from 'firebase/auth';
+import type { ConverterCoinType, User } from './types';
 
 export const createHistoryDoc = (
 	coinFrom: ConverterCoinType,

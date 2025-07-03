@@ -3,8 +3,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
 import type { NotationType } from 'shared/types/coin';
-import { coinsActions } from '../../model/coinsSlice';
-import { coinsSelectors } from '../../model/coinsSlice';
+import { coinsSelectors, coinsActions } from '../../model/coinsSlice';
 
 import classes from './PriceNotationSelector.module.scss';
 

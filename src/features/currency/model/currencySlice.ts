@@ -36,12 +36,6 @@ export const currencySlice = createSlice({
 			state.prevCurrency = state.currentCurrency;
 			state.currentCurrency = action.payload;
 		},
-		resetCurrentCurrency: (state) => {
-			if (state.currentCurrency) {
-				state.currentCurrency = state.currentCurrency;
-				state.prevCurrency = undefined;
-			}
-		},
 	},
 	extraReducers: (builder) => {
 		builder

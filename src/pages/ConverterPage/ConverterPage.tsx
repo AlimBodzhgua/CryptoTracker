@@ -1,16 +1,13 @@
 import { FC, memo, useState } from 'react';
-import { Converter } from 'features/coin-converter';
 import { Page } from 'features/page';
 import { Button } from 'shared/UI/Button/Button';
-import { HistoryModal } from 'features/user';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import { userSelectors, addHistory } from 'features/user';
-import { ConversionResult } from 'features/coin-converter';
+import { userSelectors, addHistory, HistoryModal } from 'features/user';
+import { Converter, ConversionResult } from 'features/coin-converter';
 import classnames from 'classnames';
 import classes from './ConverterPage.module.scss';
 import HistoryIcon from './assets/history.svg';
-
 
 interface ConverterPageProps {
 	className?: string;

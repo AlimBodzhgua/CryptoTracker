@@ -15,7 +15,7 @@ interface MainPageProps {
 const MainPage: FC<MainPageProps> = ({ className }) => {
 	const currenctCurrency = useAppSelector(currencySelectors.selectCurrentCurrency);
 	const dispatch = useAppDispatch();
-	
+
 	const afterFetch = useCallback(() => {
 		const currency = localStorage.getItem(CURRENCY_LOCALSTORAGE_KEY);
 

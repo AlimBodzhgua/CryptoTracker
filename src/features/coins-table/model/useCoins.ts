@@ -1,12 +1,12 @@
 import { useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
-import { coinsActions, coinsSelectors } from './coinsSlice';
 import { useSearchParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { fetchCoins, fetchNextCoins, resetCoinsSettings } from './coinsActions';
+import { coinsSelectors } from './coinsSlice';
 
 type UseCoinsParams = {
 	afterFetch: () => void;
-}
+};
 
 export const useCoins = ({ afterFetch }: UseCoinsParams) => {
 	const dispatch = useAppDispatch();
@@ -30,5 +30,5 @@ export const useCoins = ({ afterFetch }: UseCoinsParams) => {
 		dispatch(resetCoinsSettings(setSearchParams));
 	}, [dispatch]);
 
-	return { fetchCoins, loadNextCoins, resetSettings }
-}
+	return { fetchCoins, loadNextCoins, resetSettings };
+};

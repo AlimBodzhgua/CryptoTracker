@@ -19,4 +19,3 @@ export const coinsSorter = (
 		return Number(b[`${fieldName}`]) - Number(a[`${fieldName}`]);
 	})
 );
-

@@ -2,9 +2,9 @@ import { FC, memo } from 'react';
 import { Coin } from 'shared/types/coin';
 import { useTranslation } from 'react-i18next';
 import { useFormatter } from 'shared/hooks/useFormatter';
-import { Chart } from '../Chart/Chart';
-
 import classnames from 'classnames';
+
+import { Chart } from '../Chart/Chart';
 import classes from './WatchListItemOverview.module.scss';
 
 interface WatchListItemOverviewProps {

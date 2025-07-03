@@ -13,7 +13,6 @@ import StarSelectedIcon from '../../../assets/starSelected.svg';
 import InfoIcon from '../../../assets/info.svg';
 import classes from './WatchListItem.module.scss';
 
-
 interface WatchListItemProps {
 	coin: Coin;
 	className?: string;

@@ -21,7 +21,6 @@ export interface CoinsState {
 const initialState: CoinsState = {
 	coins: [],
 	searchedFilteredCoins: [],
-	//globalStats: undefined,
 	tag: 'All Coins',
 	priceNotation: undefined,
 
@@ -98,10 +97,8 @@ export const coinsSlice = createSlice({
 					'24hVolume': String(Number(coin['24hVolume']) * currencyPrice),
 				}));
 			} else if (
-				(action.payload.prevCurrency === 'EUR' ||
-					action.payload.prevCurrency === 'RUB') &&
-				(action.payload.targetCurrency === 'EUR' ||
-					action.payload.targetCurrency === 'RUB')
+				(action.payload.prevCurrency === 'EUR' || action.payload.prevCurrency === 'RUB')
+				&& (action.payload.targetCurrency === 'EUR' || action.payload.targetCurrency === 'RUB')
 			) {
 				// (RUB/EUR -> USD -> RUB/EUR)
 				let currency = action.payload.prevCurrency;

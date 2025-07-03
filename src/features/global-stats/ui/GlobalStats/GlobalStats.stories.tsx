@@ -49,8 +49,8 @@ export const Primary: Story = {
 				totalMarketCap: '2623653892264',
 				bestCoins: coinList,
 				newestCoins: coinList,
-			}
-		}
+			},
+		},
 	}),
 };
 

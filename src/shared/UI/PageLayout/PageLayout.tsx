@@ -10,9 +10,5 @@ interface PageLayoutProps {
 export const PageLayout: FC<PageLayoutProps> = (props) => {
 	const { children, className } = props;
 
-	return (
-		<main className={classnames(classes.PageLayout, className)}>
-			{children}
-		</main>
-	)
-}
+	return <main className={classnames(classes.PageLayout, className)}>{children}</main>;
+};

@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/hooks/redux';
+import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import { userActions } from './userSlice';
 import { initUserAuth } from './userActions';
-import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import type { User } from './types';
 
-export const useInitUser  = () => {
+export const useInitUser = () => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		//dispatch(fetchCurrency());
 		const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
 		if (user) {
 			const authData = JSON.parse(user) as User;
@@ -18,4 +17,4 @@ export const useInitUser  = () => {
 			dispatch(userActions.setMounted());
 		}
 	}, [dispatch]);
-}
+};

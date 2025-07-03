@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { ConverterCoinType } from './types';
 import axios from 'axios';
 import coinApi from 'shared/api/coinApi';
+import type { ConverterCoinType } from './types';
 
 export const convertCoins = createAsyncThunk<
 	number,

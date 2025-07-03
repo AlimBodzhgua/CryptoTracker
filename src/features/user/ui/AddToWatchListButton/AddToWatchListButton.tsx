@@ -24,7 +24,7 @@ export const AddToWatchListButton:FC<AddToWatchListButtonProps> = memo((props) =
 
 	useEffect(() => {
 		if (isUserMounted) {
-			const isWatched = watchListIds.includes(coinId)
+			const isWatched = watchListIds.includes(coinId);
 			setIsInWatchList(isWatched);
 		}
 	}, [isUserMounted]);
@@ -72,14 +72,9 @@ export const AddToWatchListButton:FC<AddToWatchListButtonProps> = memo((props) =
 		),
 	}), [onRemoveCoinFromWatchList, onAddCoinToWatchList]);
 
-
-	return (
-		<>
-			{isLoading ? (
-				<LoaderRing className={classes.loader} />
-			) : (
-				mapToMatchedIcon[isInWatchList ? 'selected' : 'unselected']
-			)}
-		</>
+	return isLoading ? (
+		<LoaderRing className={classes.loader} />
+	) : (
+		mapToMatchedIcon[isInWatchList ? 'selected' : 'unselected']
 	);
 });

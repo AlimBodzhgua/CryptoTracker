@@ -13,7 +13,6 @@ interface CoinItemProps {
 	coin: ConverterCoinType;
 }
 
-
 export const CoinItem: FC<CoinItemProps> = memo((props) => {
 	const { coin, className } = props;
 	const dispatch = useAppDispatch();

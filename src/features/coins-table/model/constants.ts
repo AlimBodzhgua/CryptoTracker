@@ -12,7 +12,6 @@ export const SortDirection = {
 	desc: 'desc',
 } as const;
 
-
 export const TagList = {
 	'All Coins': 'All Coins',
 	defi: 'defi',

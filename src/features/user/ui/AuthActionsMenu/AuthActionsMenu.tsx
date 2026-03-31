@@ -57,9 +57,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 	}, [searchParams]);
 
 	const onLogout = useCallback(async () => {
-		const confirm = window.confirm(
-			t('Are you sure you want to logout?'),
-		);
+		const confirm = window.confirm(t('messages.logout_confirmation'));
 
 		if (confirm) {
 			const { meta } = await dispatch(signOutUser());
@@ -81,7 +79,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 					onClick={onLogout}
 					data-testid='logout-button'
 				>
-					{t('Logout')}
+					{t('buttons.logout')}
 				</Button>
 			) : (
 				<>
@@ -90,7 +88,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 						onClick={onOpenRegisterModal}
 						data-testid='signup-button'
 					>
-						{t('Sign up')}
+						{t('buttons.sign_up')}
 					</Button>
 					<RegisterModal
 						isOpen={isRegisterModal}
@@ -102,7 +100,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 						onClick={onOpenLoginModal}
 						data-testid='login-button'
 					>
-						{t('Login')}
+						{t('buttons.login')}
 					</Button>
 					<LoginModal
 						isOpen={isLoginModal}

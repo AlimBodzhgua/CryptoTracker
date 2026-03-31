@@ -82,7 +82,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 		() => (
 			<div className={classes.error}>
 				<p className={classes.errorMsg}>
-					{t('Your email is not verified')}
+					{t('messages.email_not_verified')}
 					<Button
 						theme='clear'
 						size='small'
@@ -123,7 +123,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 					</label>
 
 					<label htmlFor={`${id}-email`} className={classes.dataItem}>
-						<span className={classes.dataText}>Email</span>
+						<span className={classes.dataText}>{t('profile.email')}</span>
 						<Input
 							value={user?.email}
 							className={classes.dataInput}
@@ -138,9 +138,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 
 				<div className={classes.dataWrapper}>
 					<label htmlFor={`${id}-login`} className={classes.dataItem}>
-						<span className={classes.dataText}>Login</span>
+						<span className={classes.dataText}>{t('profile.login')}</span>
 						<Input
-							placeholder={t('Enter your login')}
+							placeholder={t('placeholders.enter_login')}
 							className={classes.dataInput}
 							fieldClassName={
 								edit ? classes.inputField : undefined
@@ -152,9 +152,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 						/>
 					</label>
 					<label htmlFor={`${id}-image`} className={classes.dataItem}>
-						<span className={classes.dataText}>Image url</span>
+						<span className={classes.dataText}>{t('profile.image_url')}</span>
 						<Input
-							placeholder={t('Enter your image url')}
+							placeholder={t('placeholders.enter_image_url')}
 							className={classes.dataInput}
 							fieldClassName={
 								edit ? classes.inputField : undefined
@@ -177,7 +177,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 							onClick={onCancel}
 							disabled={isLoading}
 						>
-							{t('Cancel')}
+							{t('buttons.cancel')}
 						</Button>
 						<Button
 							theme='secondary'
@@ -185,7 +185,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 							onClick={onSave}
 							disabled={isLoading}
 						>
-							{t('Save')}
+							{t('buttons.save')}
 						</Button>
 					</>
 				) : (
@@ -194,7 +194,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 						className={classes.editBtn}
 						onClick={onEdit}
 					>
-						{t('Edit')}
+						{t('buttons.edit')}
 					</Button>
 				)}
 			</div>

@@ -19,28 +19,28 @@ type ActiveFormType = 'loginForm' | 'resetForm';
 export const LoginModal: FC<LoginModalProps> = (props) => {
 	const { isOpen, onClose, className } = props;
 	const { t } = useTranslation();
-	const [activeForm, setAcitveForm] = useState<ActiveFormType>('loginForm');
+	const [activeForm, setActiveForm] = useState<ActiveFormType>('loginForm');
 
 	const onForget = useCallback(() => {
-		setAcitveForm('resetForm');
+		setActiveForm('resetForm');
 	}, []);
 
 	const backToLoginForm = useCallback(() => {
-		setAcitveForm('loginForm');
+		setActiveForm('loginForm');
 	}, []);
 
 	const ActiveForms: Record<ActiveFormType, JSX.Element> = useMemo(
 		() => ({
 			loginForm: (
 				<LoginFormAsync
-					title={t('Login')}
+					title={t('forms.login')}
 					onSuccess={onClose}
 					onForget={onForget}
 				/>
 			),
 			resetForm: (
 				<PasswordResetFormAsync
-					title={t('Password Reset')}
+					title={t('forms.password_reset')}
 					onSuccess={backToLoginForm}
 					onCancel={backToLoginForm}
 				/>

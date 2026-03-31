@@ -24,7 +24,7 @@ export const RegisterModal: FC<RegisterModalProps> = (props) => {
 			className={classnames(classes.RegisterModal, className)}
 		>
 			<Suspense fallback={<LoaderRing />}>
-				<RegisterFormAsync onSuccess={onClose} title={t('Register')} />
+				<RegisterFormAsync onSuccess={onClose} title={t('forms.register')} />
 			</Suspense>
 		</Modal>
 	);

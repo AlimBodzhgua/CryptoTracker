@@ -62,13 +62,13 @@ export const Converter: FC<ConverterProps> = memo((props) => {
 	return (
 		<div className={classnames(classes.Converter, className)}>
 			<div className={classes.header}>
-				<h1 className={classes.title}>Converter</h1>
+				<h1 className={classes.title}>{t('converter.title')}</h1>
 				{headerRightContent}
 			</div>
 
 			<div className={classes.body}>
 				<div className={classes.converterItem}>
-					<h4 className={classes.itemTitle}>From</h4>
+					<h4 className={classes.itemTitle}>{t('converter.from')}</h4>
 					<Input
 						className={classes.itemField}
 						fieldClassName={classes.inputField}
@@ -90,7 +90,7 @@ export const Converter: FC<ConverterProps> = memo((props) => {
 				</Button>
 
 				<div className={classes.converterItem}>
-					<h4 className={classes.itemTitle}>To</h4>
+					<h4 className={classes.itemTitle}>{t('converter.to')}</h4>
 					<Input
 						className={classes.itemField}
 						fieldClassName={classes.inputField}
@@ -118,7 +118,7 @@ export const Converter: FC<ConverterProps> = memo((props) => {
 				onClick={onConvert}
 				disabled={isLoading}
 			>
-				{t('Convert')}
+				{t('buttons.convert')}
 			</Button>
 		</div>
 	);

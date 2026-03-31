@@ -50,7 +50,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						title={t('Name')}
+						title={t('coin_fields.name')}
 						position='left'
 						sortField={SortField.name}
 						activeField={activeField}
@@ -59,7 +59,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						title={t('Price')}
+						title={t('coin_fields.price')}
 						sortField={SortField.price}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -67,7 +67,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						title={t('Change')}
+						title={t('coin_fields.change')}
 						sortField={SortField.change}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -75,7 +75,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader}>
 					<ColumnToggleSort
-						title={t('24h volume')}
+						title={t('coin_fields.change_24h')}
 						sortField={SortField['24hVolume']}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}
@@ -83,7 +83,7 @@ export const CoinTableHeader: FC<CoinTableHeaderProps> = ({ className }) => {
 				</th>
 				<th className={classes.colHeader} colSpan={-1}>
 					<ColumnToggleSort
-						title={t('Market cap')}
+						title={t('coin_fields.market_cap')}
 						sortField={SortField.marketCap}
 						activeField={activeField}
 						onActiveFieldChange={onActiveFieldChange}

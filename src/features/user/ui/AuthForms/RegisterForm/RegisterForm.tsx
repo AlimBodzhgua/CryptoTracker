@@ -76,14 +76,14 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 			<h2 className={classes.title}>{title}</h2>
 			<Input
 				addonBefore={<EmailIcon className={classes.icon} />}
-				placeholder={t('Enter email...')}
+				placeholder={t('placeholders.enter_email')}
 				className={classes.inputField}
 				{...register('email', { required: true })}
 			/>
 
 			{errors.email?.type === 'required' && (
 				<div className={classes.message}>
-					{t('Please enter your email.')}
+					{t('messages.please_enter_email')}
 				</div>
 			)}
 
@@ -95,14 +95,14 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 						onClick={onTogglePassword}
 					/>
 				}
-				placeholder={t('Enter password...')}
+				placeholder={t('placeholders.enter_password')}
 				type={showPassword ? 'text' : 'password'}
 				className={classes.inputField}
 				{...register('password', { required: true })}
 			/>
 			{errors.password?.type === 'required' && (
 				<div className={classes.message}>
-					{t('Please enter your password.')}
+					{t('messages.please_enter_password')}
 				</div>
 			)}
 
@@ -117,17 +117,17 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 				disabled={isLoading}
 				type='submit'
 			>
-				{t('Register')}
+				{t('buttons.register')}
 			</Button>
 			<div className={classes.haveAccount}>
-				{t('Already have an account?')}
+				{t('messages.already_have_account')}
 				<Button
 					theme='clear'
 					onClick={onMoveToLogin}
 					className={classes.loginBtn}
 					type='reset'
 				>
-					{t('Sign In')}
+					{t('buttons.sign_in')}
 				</Button>
 			</div>
 		</form>

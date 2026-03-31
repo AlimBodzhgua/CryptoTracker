@@ -16,7 +16,7 @@ export const WatchListSkeleton: FC<WatchListSkeletonProps> = ({
 
 	return (
 		<ul className={classnames(classes.WatchList, className)}>
-			<h2 className={classes.title}>{t('Your watchlist coins')}</h2>
+			<h2 className={classes.title}>{t('watchlist.title')}</h2>
 			{Array(9)
 				.fill(0)
 				.map((_, index) => (

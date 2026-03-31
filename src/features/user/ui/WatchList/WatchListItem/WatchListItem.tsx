@@ -69,7 +69,7 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 						className={classes.infoBtn}
 					>
 						<InfoIcon className={classes.infoIcon} />
-						<div>{t('overview')}</div>
+						<div>{t('buttons.overview')}</div>
 					</Button>
 					<WatchListItemModal
 						coin={coin}

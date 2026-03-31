@@ -25,12 +25,12 @@ export const globalStatsSlice = createSlice({
 		selectCoinsGlobalStatsData: createSelector(
 			(state) => state.data,
 			(data) => [
-				{ title: 'Btc Dominance', value: data?.btcDominance },
-				{ title: 'Total 24hVolume', value: data?.total24hVolume },
-				{ title: 'Total MarketCap', value: data?.totalMarketCap },
-				{ title: 'Total Exchanges', value: data?.totalExchanges },
-				{ title: 'Total Markets', value: data?.totalMarkets },
-				{ title: 'Total Coins', value: data?.totalCoins },
+				{ title: 'market.btc_dominance', value: data?.btcDominance },
+				{ title: 'market.total_24h_volume', value: data?.total24hVolume },
+				{ title: 'market.total_market_cap', value: data?.totalMarketCap },
+				{ title: 'market.total_exchanges', value: data?.totalExchanges },
+				{ title: 'market.total_markets', value: data?.totalMarkets },
+				{ title: 'market.total_coins', value: data?.totalCoins },
 			],
 		),
 	},

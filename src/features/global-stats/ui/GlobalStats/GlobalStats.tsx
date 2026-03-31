@@ -45,7 +45,7 @@ export const GlobalStats: FC<StatsProps> = memo((props) => {
 		return (
 			<Message
 				type='error'
-				text='Error fetching global stats, try to reload the page'
+				text={t('market.error')}
 				withIcon
 			/>
 		);
@@ -70,13 +70,13 @@ export const GlobalStats: FC<StatsProps> = memo((props) => {
 					<>
 						<div className={classes.listWrapper}>
 							<h3 className={classes.listTitle}>
-								{t('Best performing coins')}
+								{t('market.best_performing')}
 							</h3>
 							<CoinsList coins={stats.bestCoins} />
 						</div>
 						<div className={classes.listWrapper}>
 							<h3 className={classes.listTitle}>
-								{t('Newest coins')}
+								{t('market.newest_coins')}
 							</h3>
 							<CoinsList coins={stats.newestCoins} />
 						</div>

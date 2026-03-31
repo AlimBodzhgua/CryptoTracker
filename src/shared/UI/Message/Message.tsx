@@ -17,19 +17,24 @@ interface MessageProps {
 }
 
 export const Message: FC<MessageProps> = memo((props) => {
-	const { type, text, withIcon, className } = props;
+	const {
+		type,
+		text,
+		withIcon,
+		className,
+	} = props;
 	const { t } = useTranslation();
 
 	const getTitle = useCallback(() => {
 		switch (type) {
 		case 'warn':
-			return t('Warning!');
+			return t('status.warning');
 		case 'error':
-			return t('An error occurred.');
+			return t('status.error');
 		case 'success':
-			return t('Success.');
+			return t('status.success');
 		default:
-			return t('success');
+			return t('status.success');
 		}
 	}, [type]);
 

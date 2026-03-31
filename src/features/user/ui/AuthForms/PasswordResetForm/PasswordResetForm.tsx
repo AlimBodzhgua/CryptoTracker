@@ -62,7 +62,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 			<Input
 				addonBefore={<EmailIcon className={classes.icon} />}
 				className={classes.inputField}
-				placeholder={t('Enter you email...')}
+				placeholder={t('placeholders.enter_email')}
 				{...register('email', { required: true })}
 			/>
 
@@ -90,7 +90,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 					className={classes.resetBtn}
 					disabled={isLoading}
 				>
-					{t('Reset')}
+					{t('buttons.reset')}
 				</Button>
 				<Button
 					theme='secondary'
@@ -98,7 +98,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 					onClick={onCancel}
 					disabled={isLoading}
 				>
-					{t('Cancel')}
+					{t('buttons.cancel')}
 				</Button>
 			</div>
 		</form>

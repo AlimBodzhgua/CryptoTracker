@@ -35,11 +35,9 @@ export const CoinTable: FC<CoinTableProps> = memo((props) => {
 	if (error) {
 		return (
 			<Message
-				type='error'
-				text={t(
-					'Error fetching data, try to reload the page, or visit the page later',
-				)}
 				withIcon
+				type='error'
+				text={t('errors.fetching_data')}
 				className={classes.errorMsg}
 			/>
 		);
@@ -48,7 +46,7 @@ export const CoinTable: FC<CoinTableProps> = memo((props) => {
 	return (
 		<>
 			<table className={classnames(classes.table, className)}>
-				{searchedFilteredCoins.length ? (
+				{!!searchedFilteredCoins.length &&(
 					<>
 						<CoinTableHeader />
 						<tbody>
@@ -62,7 +60,7 @@ export const CoinTable: FC<CoinTableProps> = memo((props) => {
 							))}
 						</tbody>
 					</>
-				) : null}
+				)}
 			</table>
 			{isLoading && (
 				<CoinTableSkeleton withHeader={withHeader} className={classes.tableSkeleton} />

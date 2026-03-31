@@ -14,27 +14,27 @@ import { SidebarItemType } from './types';
 
 export const sidebarList: SidebarItemType[] = [
 	{
-		text: 'Main',
+		text: 'navigation.main',
 		path: getRouteMain(),
 		Icon: MainLogo,
 	},
 	{
-		text: 'Coins',
+		text: 'navigation.coins',
 		path: getRouteCoins(),
 		Icon: CoinLogo,
 	},
 	{
-		text: 'Watchlist',
+		text: 'navigation.watchlist',
 		path: getRouteWatchList(),
 		Icon: NewsLogo,
 	},
 	{
-		text: 'Converter',
+		text: 'navigation.converter',
 		path: getRouteConverter(),
 		Icon: ConverterLogo,
 	},
 	{
-		text: 'Profile',
+		text: 'navigation.profile',
 		path: getRouteProfile(),
 		Icon: ProfileLogo,
 	},

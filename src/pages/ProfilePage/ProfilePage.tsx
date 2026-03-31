@@ -1,4 +1,5 @@
-import React from 'react';
+import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ProfileCard } from 'features/user';
 import { Page } from 'features/page';
 
@@ -9,11 +10,15 @@ interface ProfilePageProps {
 	className?: string;
 }
 
-const ProfilePage: React.FC<ProfilePageProps> = ({ className }) => (
-	<Page className={classnames(classes.ProfilePage, className)}>
-		<h1 className={classes.header}>Profile</h1>
-		<ProfileCard />
-	</Page>
-);
+const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
+	const { t } = useTranslation();
+
+	return (
+		<Page className={classnames(classes.ProfilePage, className)}>
+			<h1 className={classes.header}>{t('profile.title')}</h1>
+			<ProfileCard />
+		</Page>
+	);
+};
 
 export default ProfilePage;

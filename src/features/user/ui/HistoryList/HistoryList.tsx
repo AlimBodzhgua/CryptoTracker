@@ -47,7 +47,7 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 		}
 		return (
 			<h3 className={classes.emptyMsg}>
-				{t('Convertasion list is empty')}
+				{t('converter.history_empty')}
 			</h3>
 		);
 	}, [history]);
@@ -57,30 +57,26 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 			<Message
 				withIcon
 				type='error'
-				text={t('Error loading history, try to reload the page')}
+				text={t('converter.error_loading_history')}
 			/>
 		);
 	}
 
 	return (
 		<>
-			<div className={classes.heaeder}>
-				<h2 className={classes.title}>{t('Convertasion history')}</h2>
+			<div className={classes.header}>
+				<h2 className={classes.title}>{t('converter.history_title')}</h2>
 				<Button
 					className={classes.clearBtn}
 					size='small'
 					onClick={onClear}
 					disabled={isLoading}
 				>
-					{t('clear')}
+					{t('buttons.clear')}
 				</Button>
 			</div>
 			<ul className={classnames(classes.HistoryList, className)}>
-				{isLoading ? (
-					<>{renderListSkeleton()}</>
-				) : (
-					<>{renderHistoryContent()}</>
-				)}
+				{isLoading ? renderListSkeleton() : renderHistoryContent()}
 			</ul>
 		</>
 	);

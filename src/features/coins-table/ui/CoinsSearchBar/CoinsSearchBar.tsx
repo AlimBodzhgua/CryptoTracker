@@ -1,4 +1,5 @@
 import { FC, useState, useEffect, memo, useCallback, useRef, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from 'shared/hooks/redux';
 import { useDebounce } from 'shared/hooks/useDebounce';
 import { Input } from 'shared/UI/Input/Input';
@@ -14,6 +15,7 @@ interface CoinsSearchBarProps {
 
 export const CoinsSearchBar: FC<CoinsSearchBarProps> = memo((props) => {
 	const { className } = props;
+	const { t } = useTranslation();
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const dispatch = useAppDispatch();
 	const coins = useAppSelector(coinsSelectors.selectCoins);
@@ -62,7 +64,7 @@ export const CoinsSearchBar: FC<CoinsSearchBarProps> = memo((props) => {
 	return (
 		<Input
 			type='text'
-			placeholder='Search Coins...'
+			placeholder={t('placeholders.search_coins')}
 			value={searchQuery}
 			onChange={onSearch}
 			ref={inputRef}

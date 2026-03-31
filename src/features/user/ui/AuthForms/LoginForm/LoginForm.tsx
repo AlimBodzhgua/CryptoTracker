@@ -94,13 +94,13 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 			<h2 className={classes.title}>{title}</h2>
 			<Input
 				addonBefore={<EmailIcon className={classes.icon} />}
-				placeholder={t('Enter email...')}
+				placeholder={t('placeholders.enter_email')}
 				className={classes.inputField}
 				{...register('email', { required: true })}
 			/>
 			{errors.email?.type === 'required' && (
 				<div className={classes.message}>
-					{t('Please enter your email.')}
+					{t('messages.please_enter_email')}
 				</div>
 			)}
 
@@ -112,20 +112,20 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 						onClick={onToggleShowPassword}
 					/>
 				}
-				placeholder={t('Enter password...')}
+				placeholder={t('placeholders.enter_password')}
 				type={showPassword ? 'text' : 'password'}
 				className={classes.inputField}
 				{...register('password', { required: true })}
 			/>
 			{errors.password?.type === 'required' && (
 				<div className={classes.message}>
-					{t('Please enter your password.')}
+					{t('messages.please_enter_password')}
 				</div>
 			)}
 
 			{error && (
 				<div className={classes.message}>
-					{t('Wrong password or email.')}
+					{t('messages.wrong_password_or_email')}
 				</div>
 			)}
 
@@ -134,7 +134,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				type='submit'
 				disabled={isLoading}
 			>
-				{t('Login')}
+				{t('buttons.login')}
 			</Button>
 			<Button
 				theme='secondary'
@@ -145,7 +145,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				type='reset'
 			>
 				<GoogleIcon className={classes.googleIcon} />
-				{t('Log In with Google')}
+				{t('buttons.login_google')}
 			</Button>
 			<Button
 				onClick={onForgetPassword}
@@ -154,17 +154,17 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				className={classes.forgetBtn}
 				type='reset'
 			>
-				{t('Forgot Password?')}
+				{t('buttons.forgot_password?')}
 			</Button>
 			<div className={classes.notRegistered}>
-				{t('Don`t have an account?')}
+				{t('messages.no_account')}
 				<Button
 					theme='clear'
 					onClick={onMoveToRegister}
 					className={classes.registerBtn}
 					type='reset'
 				>
-					{t('Sign Up')}
+					{t('buttons.sign_up')}
 				</Button>
 			</div>
 		</form>

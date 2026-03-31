@@ -20,7 +20,7 @@ export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props
 	return (
 		<div className={classnames(classes.WatchListItemOverview, className)}>
 			<div className={classes.rank}>
-				rank #
+				{t('market.rank')} #
 				{coin.rank}
 			</div>
 			<div className={classes.headerData}>
@@ -32,14 +32,14 @@ export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props
 				{formatter.format(Number(coin.price))}
 			</div>
 			<div className={classes.stats}>
-				<h2 className={classes.statsTitle}>{t('Market Stats')}</h2>
+				<h2 className={classes.statsTitle}>{t('market.stats_title')}</h2>
 				<div className={classes.statsInfo}>
 					<div className={classes.statsItem}>
-						<div className={classes.statsItemTitle}>{t('Market cap')}</div>
+						<div className={classes.statsItemTitle}>{t('coin_fields.market_cap')}</div>
 						<div>{formatter.format(Number(coin.marketCap))}</div>
 					</div>
 					<div className={classes.statsItem}>
-						<div className={classes.statsItemTitle}>{t('Change 24h')}</div>
+						<div className={classes.statsItemTitle}>{t('coin_fields.change_24h')}</div>
 						<div className={
 							coin.change.startsWith('-') ? classes.negative : classes.positive
 						}
@@ -49,7 +49,7 @@ export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props
 						</div>
 					</div>
 					<div className={classes.statsItem}>
-						<div className={classes.statsItemTitle}>{t('24h volume')}</div>
+						<div className={classes.statsItemTitle}>{t('coin_fields.volume_24h')}</div>
 						<div>{formatter.format(Number(coin['24hVolume']))}</div>
 					</div>
 				</div>

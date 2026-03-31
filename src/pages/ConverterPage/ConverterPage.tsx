@@ -23,7 +23,7 @@ const ConverterPage: FC<ConverterPageProps> = memo(({ className }) => {
 
 	const onShowHistory = () => {
 		if (!user) {
-			alert(t('Only the user can see the history of previous conversions'));
+			alert(t('converter.only_user_can_see'));
 		} else setIsOpenModal(true);
 	};
 
@@ -49,7 +49,7 @@ const ConverterPage: FC<ConverterPageProps> = memo(({ className }) => {
 							size='big'
 							onClick={onShowHistory}
 						>
-							{t('History')}
+							{t('buttons.history')}
 						</Button>
 						<HistoryModal
 							isOpen={isOpenModal}

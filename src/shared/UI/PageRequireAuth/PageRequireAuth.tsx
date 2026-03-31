@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
 import LockIcon from './assets/lock.svg';
@@ -16,13 +16,13 @@ export const PageRequireAuth: FC<PageRequireAuthProps> = ({ className }) => {
 		<PageLayout className={classnames(classes.PageRequierAuth, className)}>
 			<LockIcon className={classes.lockIcon} />
 			<h2 className={classes.header}>
-				{t('This page require auth.')}
+				{t('messages.require_auth')}
 			</h2>
 			<div className={classes.redirectText}>
-				{t('Soon you will redirect to the main page.')}
+				{t('messages.redirect_to_main')}
 			</div>
 			<div className={classes.text}>
-				{t('Please register or log in your account to access the page.')}
+				{t('messages.register_or_login_account')}
 			</div>
 		</PageLayout>
 	);

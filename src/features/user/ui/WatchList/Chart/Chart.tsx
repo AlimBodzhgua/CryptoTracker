@@ -59,7 +59,7 @@ export const Chart: FC<ChartProps> = (props) => {
 
 	return (
 		<div className={classnames(classes.Chart, className)}>
-			<h1 className={classes.chartTitle}>{t('Last 24 hour chart')}</h1>
+			<h1 className={classes.chartTitle}>{t('market.last_chart')}</h1>
 			<div ref={chartContainerRef} />
 		</div>
 	);

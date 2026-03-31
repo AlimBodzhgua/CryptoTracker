@@ -70,11 +70,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 
 	if (error) {
 		return (
-			<Message
-				type='error'
-				text={t('Error fetching watchlist coins')}
-				withIcon
-			/>
+			<Message type='error' text={t('watchlist.error')} withIcon />
 		);
 	}
 
@@ -92,7 +88,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 					{watchListCoins.length ? (
 						<>
 							<h2 className={classes.title}>
-								{t('Your watchlist coins')}
+								{t('watchlist.title')}
 							</h2>
 							{watchListCoins.map((coin) => (
 								<WatchListItem coin={coin} key={coin.uuid} />
@@ -104,16 +100,16 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 								<SelectedStarIcon className={classes.starIcon} />
 							</div>
 							<h3 className={classes.emptyTitle}>
-								{t('Your watchlist is empty.')}
+								{t('watchlist.empty')}
 							</h3>
 							<h4 className={classes.emptySubtitle}>
-								{t('You can add coins to watchlist on coins page.')}
+								{t('watchlist.empty_description')}
 							</h4>
 							<Button
 								onClick={onNavigateToCoinsPage}
 								theme='secondary'
 							>
-								{t('Add coins')}
+								{t('buttons.add_coins')}
 							</Button>
 						</div>
 					)}

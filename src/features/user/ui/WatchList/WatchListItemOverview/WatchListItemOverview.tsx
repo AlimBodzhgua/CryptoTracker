@@ -39,7 +39,7 @@ export const WatchListItemOverview: FC<WatchListItemOverviewProps> = memo((props
 						<div>{formatter.format(Number(coin.marketCap))}</div>
 					</div>
 					<div className={classes.statsItem}>
-						<div className={classes.statsItemTitle}>{t('Сhange 24h')}</div>
+						<div className={classes.statsItemTitle}>{t('Change 24h')}</div>
 						<div className={
 							coin.change.startsWith('-') ? classes.negative : classes.positive
 						}

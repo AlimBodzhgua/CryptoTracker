@@ -82,14 +82,14 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 		() => (
 			<div className={classes.error}>
 				<p className={classes.errorMsg}>
-					{t('Your email is not veified')}
+					{t('Your email is not verified')}
 					<Button
 						theme='clear'
 						size='small'
 						className={classes.verifyBtn}
 						onClick={onGetVerificationMessage}
 					>
-						{t('click to get veification mail')}
+						{t('click to get verification mail')}
 					</Button>
 				</p>
 				<ErrorIcon className={classes.errorIcon} />

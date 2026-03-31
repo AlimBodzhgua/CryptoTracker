@@ -25,7 +25,7 @@ export const Message: FC<MessageProps> = memo((props) => {
 		case 'warn':
 			return t('Warning!');
 		case 'error':
-			return t('An error occured.');
+			return t('An error occurred.');
 		case 'success':
 			return t('Success.');
 		default:

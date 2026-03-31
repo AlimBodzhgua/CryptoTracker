@@ -1,8 +1,10 @@
-import { FC, memo, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
+import type { CurrencyType } from 'shared/types/coin';
+
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'shared/hooks/redux';
 import { Message } from 'shared/UI/Message/Message';
-import type { CurrencyType } from 'shared/types/coin';
 import classnames from 'classnames';
 
 import { coinsSelectors } from '../../model/coinsSlice';
@@ -35,7 +37,7 @@ export const CoinTable: FC<CoinTableProps> = memo((props) => {
 			<Message
 				type='error'
 				text={t(
-					'Error fetching data, try to reload the page, or visiti the page later',
+					'Error fetching data, try to reload the page, or visit the page later',
 				)}
 				withIcon
 				className={classes.errorMsg}

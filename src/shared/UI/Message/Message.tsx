@@ -1,4 +1,5 @@
-import { FC, memo, useCallback } from 'react';
+import type { FC } from 'react';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
 
@@ -25,18 +26,11 @@ export const Message: FC<MessageProps> = memo((props) => {
 	} = props;
 	const { t } = useTranslation();
 
-	const getTitle = useCallback(() => {
-		switch (type) {
-		case 'warn':
-			return t('status.warning');
-		case 'error':
-			return t('status.error');
-		case 'success':
-			return t('status.success');
-		default:
-			return t('status.success');
-		}
-	}, [type]);
+	const mapToTitle = useMemo<Record<MessageType, string>>(() => ({
+		error: t('status.error'),
+		warn: t('status.warning'),
+		success: t('status.success'),
+	}), [t]);
 
 	return (
 		<div
@@ -55,7 +49,7 @@ export const Message: FC<MessageProps> = memo((props) => {
 			{type === 'success' && withIcon && (
 				<SuccessIcon className={classes.icon} data-testid='icon' />
 			)}
-			<h2 className={classes.title}>{getTitle()}</h2>
+			<h2 className={classes.title}>{mapToTitle[type]}</h2>
 			<div className={classes.text}>{text}</div>
 		</div>
 	);

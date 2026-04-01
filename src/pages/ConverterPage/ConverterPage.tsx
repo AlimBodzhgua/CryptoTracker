@@ -1,4 +1,5 @@
-import { FC, memo, useState } from 'react';
+import type { FC } from 'react';
+import { useCallback, useState } from 'react';
 import { Page } from 'features/page';
 import { Button } from 'shared/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
@@ -13,13 +14,13 @@ interface ConverterPageProps {
 	className?: string;
 }
 
-const ConverterPage: FC<ConverterPageProps> = memo(({ className }) => {
+const ConverterPage: FC<ConverterPageProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
 	const user = useAppSelector((state) => userSelectors.selectUser);
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 	const { t } = useTranslation();
 
-	const onCloseHistory = () => setIsOpenModal(false);
+	const onCloseHistory = () => useCallback(() => setIsOpenModal(false), []);
 
 	const onShowHistory = () => {
 		if (!user) {
@@ -27,14 +28,14 @@ const ConverterPage: FC<ConverterPageProps> = memo(({ className }) => {
 		} else setIsOpenModal(true);
 	};
 
-	const addNewHistory = (data: ConversionResult) => {
+	const addNewHistory = useCallback((data: ConversionResult) => {
 		dispatch(addHistory({
 			coinFrom: data.coinFrom,
 			coinTo: data.coinTo,
 			amount: data.amount,
 			convertResult: data.result,
 		}));
-	};
+	}, [dispatch]);
 
 	return (
 		<Page className={classnames(classes.ConverterPage, className)}>
@@ -60,6 +61,6 @@ const ConverterPage: FC<ConverterPageProps> = memo(({ className }) => {
 			/>
 		</Page>
 	);
-});
+};
 
 export default ConverterPage;

@@ -8,7 +8,7 @@ export const NotFoundPage: FC = () => {
 
 	return (
 		<PageLayout className={classes.NotFoundPage}>
-			<h1>{('errors.not_found_page')}</h1>
+			<h1>{t('errors.not_found_page')}</h1>
 		</PageLayout>
 	);
 };

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Page } from 'features/page';
 import { WatchList } from 'features/user/ui/WatchList';
 
@@ -9,8 +9,7 @@ interface WatchListPageProps {
 	className?: string;
 }
 
-const WatchListPage: FC<WatchListPageProps> = (props) => {
-	const { className } = props;
+const WatchListPage: FC<WatchListPageProps> = ({ className }) => {
 	return (
 		<Page className={classnames(classes.WatchListPage, className)}>
 			<WatchList />
@@ -19,3 +18,4 @@ const WatchListPage: FC<WatchListPageProps> = (props) => {
 };
 
 export default WatchListPage;
+

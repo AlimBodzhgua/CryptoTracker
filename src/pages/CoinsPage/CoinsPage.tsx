@@ -1,4 +1,6 @@
-import { FC } from 'react';
+import type { FC } from 'react';
+import type { CurrencyType } from 'shared/types/coin';
+
 import { Button } from 'shared/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import {
@@ -12,7 +14,6 @@ import { Page } from 'features/page';
 import { AddToWatchListButton } from 'features/user';
 import { currencyActions, currencySelectors } from 'features/currency';
 import { CURRENCY_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
-import type { CurrencyType } from 'shared/types/coin';
 import classnames from 'classnames';
 import ResetIcon from './assets/reset.svg';
 import classes from './CoinsPage.module.scss';
@@ -25,7 +26,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 	const currency = useAppSelector(currencySelectors.selectCurrentCurrency);
 	const dispatch = useAppDispatch();
 
-	const afterFetch = () => {
+	const initCurrency = () => {
 		const currency = localStorage.getItem(CURRENCY_LOCALSTORAGE_KEY);
 
 		if (currency && currency !== 'USD') {
@@ -33,7 +34,7 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 		}
 	};
 
-	const { loadNextCoins, resetSettings } = useCoins({ afterFetch });
+	const { loadNextCoins, resetSettings } = useCoins({ afterFetch: initCurrency });
 
 	return (
 		<Page

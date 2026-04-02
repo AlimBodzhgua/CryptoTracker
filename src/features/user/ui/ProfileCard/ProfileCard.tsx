@@ -1,10 +1,6 @@
-import React, {
-	ChangeEvent,
-	useCallback,
-	useId,
-	useState,
-	memo,
-} from 'react';
+import type { FC, ChangeEvent } from 'react';
+
+import { useId, useState } from 'react';
 import { Input } from 'shared/UI/Input/Input';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { Button } from 'shared/UI/Button/Button';
@@ -26,28 +22,26 @@ interface ProfileCardProps {
 	className?: string;
 }
 
-export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
+export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(userSelectors.selectUser);
 	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
 	const id = useId();
-	const [edit, setEdit] = useState<boolean>(false);
+	const [isEdit, setIsEdit] = useState<boolean>(false);
 
 	const [login, setLogin] = useState<string | undefined>(user?.login);
 	const [imageUrl, setImageUrl] = useState<string | undefined>(user?.imageUrl);
 
-	const onEdit = useCallback(() => {
-		setEdit(true);
-	}, []);
+	const onEdit = () => setIsEdit(true);
 
-	const onCancel = useCallback(() => {
+	const onCancel = () => {
 		if (user) {
 			setLogin(user.login);
 			setImageUrl(user.imageUrl);
 		}
-		setEdit(false);
-	}, []);
+		setIsEdit(false);
+	};
 
 	const onLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setLogin(e.target.value);
@@ -57,45 +51,42 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 		setImageUrl(e.target.value);
 	};
 
-	const onSave = useCallback(async () => {
+	const onSave = async () => {
 		if (user && imageUrl && login) {
 			const { meta } = await dispatch(
 				updateUserProfile({ imageUrl, login }),
 			);
 
 			if (meta.requestStatus === 'fulfilled') {
-				setEdit(false);
+				setIsEdit(false);
 			}
 		}
-	}, [login, imageUrl]);
+	};
 
-	const onGetVerificationMessage = useCallback(async () => {
+	const onGetVerificationMessage = async () => {
 		const { meta } = await dispatch(sendVerificationMessage());
 		if (meta.requestStatus === 'fulfilled') {
 			alert(
 				'A confirmation message has been sent, confirm your email and re-login to your account',
 			);
 		}
-	}, [dispatch]);
+	};
 
-	const renderErrorIcon = useCallback(
-		() => (
-			<div className={classes.error}>
-				<p className={classes.errorMsg}>
-					{t('messages.email_not_verified')}
-					<Button
-						theme='clear'
-						size='small'
-						className={classes.verifyBtn}
-						onClick={onGetVerificationMessage}
-					>
-						{t('click to get verification mail')}
-					</Button>
-				</p>
-				<ErrorIcon className={classes.errorIcon} />
-			</div>
-		),
-		[],
+	const renderErrorIcon = () => (
+		<div className={classes.error}>
+			<p className={classes.errorMsg}>
+				{t('messages.email_not_verified')}
+				<Button
+					theme='clear'
+					size='small'
+					className={classes.verifyBtn}
+					onClick={onGetVerificationMessage}
+				>
+					{t('messages.click_to_verify')}
+				</Button>
+			</p>
+			<ErrorIcon className={classes.errorIcon} />
+		</div>
 	);
 
 	if (isLoading) {
@@ -143,9 +134,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 							placeholder={t('placeholders.enter_login')}
 							className={classes.dataInput}
 							fieldClassName={
-								edit ? classes.inputField : undefined
+								isEdit ? classes.inputField : undefined
 							}
-							disabled={!edit}
+							disabled={!isEdit}
 							value={login}
 							onChange={onLoginChange}
 							id={`${id}-login`}
@@ -157,9 +148,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 							placeholder={t('placeholders.enter_image_url')}
 							className={classes.dataInput}
 							fieldClassName={
-								edit ? classes.inputField : undefined
+								isEdit ? classes.inputField : undefined
 							}
-							disabled={!edit}
+							disabled={!isEdit}
 							value={imageUrl}
 							onChange={onImageUrlChange}
 							id={`${id}-image`}
@@ -169,7 +160,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 			</div>
 
 			<div className={classes.profileActions}>
-				{edit ? (
+				{isEdit ? (
 					<>
 						<Button
 							theme='red'
@@ -200,4 +191,4 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 			</div>
 		</div>
 	);
-});
+};

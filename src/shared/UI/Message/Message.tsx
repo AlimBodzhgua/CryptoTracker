@@ -49,7 +49,7 @@ export const Message: FC<MessageProps> = memo((props) => {
 			{type === 'success' && withIcon && (
 				<SuccessIcon className={classes.icon} data-testid='icon' />
 			)}
-			<h2 className={classes.title}>{mapToTitle[type]}</h2>
+			<h1 className={classes.title}>{mapToTitle[type]}</h1>
 			<div className={classes.text}>{text}</div>
 		</div>
 	);

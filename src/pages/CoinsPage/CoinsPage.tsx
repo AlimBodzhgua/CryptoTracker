@@ -42,13 +42,13 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 			onScrollEnd={loadNextCoins}
 			withAutoScrollTopBtn
 		>
-			<div className={classes.header}>
+			<div className={classes.topBar}>
 				<CoinsSearchBar />
 				<div className={classes.actions}>
 					<TagsSelector />
 					<PriceNotationSelector />
 					<Button className={classes.resetBtn} onClick={resetSettings}>
-						<ResetIcon className={classes.resetIcon} />
+						<ResetIcon className={classes.resetIcon}/>
 					</Button>
 				</div>
 			</div>

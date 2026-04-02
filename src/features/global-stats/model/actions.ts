@@ -7,6 +7,7 @@ export const fetchGlobalStats = createAsyncThunk<GlobalStats, void, { rejectValu
 	async (_, { rejectWithValue }) => {
 		try {
 			const response = await coinApi.get('/stats');
+			console.log(response.data)
 			return response.data.data as GlobalStats;
 		} catch (error) {
 			return rejectWithValue(JSON.stringify(error));

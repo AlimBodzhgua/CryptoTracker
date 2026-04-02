@@ -7,12 +7,12 @@
 .listItem {
 	display: flex;
 	align-items: center;
-	margin-bottom: 12px;
+	margin-bottom: 15px;
 }
 
 .icon {
-	width: 30px;
-	margin-right: 10px;
+	width: 38px;
+	margin-right: 12px;
 }
 
 .itemData {
@@ -24,10 +24,11 @@
 
 .name {
 	margin-right: 5px;
-
 	font-size: 18px;
+	margin-bottom: 4px;
 }
 
 .symbol {
 	font-size: 14px;
+	font-weight: 800;
 }

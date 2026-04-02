@@ -27,7 +27,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	const [isFocused, focusProps] = useFocus();
 
 	const style: CSSProperties = {
-		backgroundColor: isFocused ? '#717171' : '#454545',
+		borderColor: isFocused ? '#6366F1' : '##1F2330',
+		boxShadow: isFocused ? '0 0 0 3px rgba(99, 102, 241, 0.15)' : 'none',
 	};
 
 	return (

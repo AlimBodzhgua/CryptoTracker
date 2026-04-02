@@ -1,4 +1,5 @@
-import { FC, useState, useEffect, memo, useCallback, useRef, useMemo } from 'react';
+import type { FC } from 'react';
+import { useState, useEffect, memo, useCallback, useRef, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from 'shared/hooks/redux';
 import { useDebounce } from 'shared/hooks/useDebounce';

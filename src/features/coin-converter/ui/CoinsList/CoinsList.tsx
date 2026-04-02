@@ -40,8 +40,8 @@ export const CoinsList: FC<CoinsListProps> = memo((props) => {
 			className={classnames(classes.CoinsList, className, { [classes.isShow]: isShow })}
 		>
 			<div className={classes.header}>
-				<h2 className={classes.title}>{t('Select Coin')}</h2>
-				<Button theme='clear' className={classes.close} onClick={onClose}>
+				<h2 className={classes.title}>{t('converter.select_coin')}</h2>
+				<Button theme='clear' size='small' className={classes.close} onClick={onClose}>
 					&times;
 				</Button>
 			</div>

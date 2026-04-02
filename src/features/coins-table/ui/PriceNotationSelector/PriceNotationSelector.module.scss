@@ -1,29 +1,26 @@
 
 .PriceNotationSelector {
-	background-color: #454545;
-	border: none;
-	height: 45px;
-	width: 125px;
+	background-color: #1A1E2A;
 
-	font-family: inherit;
-	font-weight: 600;
-	color: #fff;
-	padding: 0 8px;
+	border: 1px solid #1F2330;
+	border-radius: 12px;
 
-	&:focus {
-		outline: none;
-	}
+	padding: 13px 16px;
+	color: var(--primary-text-color);
+	font-size: 15px;
+	min-width: 160px;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
 
-	&:hover {
-		cursor: pointer;
-	}
-
+.PriceNotationSelector:focus {
+	outline: none;
+	border-color: var(--accent-color);
 }
 
 .selectorOption {
 	margin: 2px 4px;
 
 	font-family: inherit;
-	font-size: 16px;
-	border: none;
+	font-size: 18px;
 }

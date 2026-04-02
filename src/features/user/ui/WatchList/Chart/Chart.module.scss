@@ -1,16 +1,13 @@
 .Chart {
-	display: flex;
-	flex-direction: column;
-
+	border-top: 1px solid #0F121A;
+	background-color: #0F121A;
+	padding-top: 16px;
 	overflow: hidden;
-	border-radius: 8px;
+	border-radius: 16px;
 }
 
 .chartTitle {
-	font-size: 24px;
-	font-weight: 600;
-	color: #fff;
-
-	margin: 5px 0;
-	text-align: center;
+	margin: 0 0 20px 14px;
+	font-size: 22px;
+	color: var(--primary-text-color);
 }

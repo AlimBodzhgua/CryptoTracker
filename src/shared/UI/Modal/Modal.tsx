@@ -1,7 +1,10 @@
-import { FC, ReactNode, useCallback, useEffect } from 'react';
+import type { FC, ReactNode } from 'react';
+
+import { useCallback, useEffect } from 'react';
 import classnames from 'classnames';
-import { Portal } from '../Portal/Portal';
+
 import classes from './Modal.module.scss';
+import { Portal } from '../Portal/Portal';
 
 interface ModalProps {
 	isOpen: boolean;
@@ -45,10 +48,8 @@ export const Modal: FC<ModalProps> = (props) => {
 		<Portal>
 			<div
 				className={classnames(
-					classes.Modal,
-					className,
+					classes.overlay,
 					{ [classes.opened]: isOpen },
-					'app_modal',
 				)}
 				onClick={onBackgroundClick}
 				role='button'
@@ -56,7 +57,7 @@ export const Modal: FC<ModalProps> = (props) => {
 				data-testid='modal'
 			>
 				<div
-					className={classes.content}
+					className={classnames(classes.modal, className)}
 					onClick={onContentClick}
 					role='button'
 					tabIndex={0}

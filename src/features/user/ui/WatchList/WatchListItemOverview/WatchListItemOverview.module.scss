@@ -4,60 +4,51 @@
 	flex-direction: column;
 	position: relative;
 
-	min-width: 500px;
-	background-color: #252525;
+	min-width: 540px;
+	background-color: #0d0d0d;
+	border-radius: 0 0 16px 16px;
 }
 
-.headerData {
+.header {
+	padding: 24px 32px;
+	border-bottom: 2px solid #1F2330;
 	display: flex;
-	flex-direction: row;
 	align-items: center;
-	gap: 8px;
+	justify-content: space-between;
+}
 
-	margin-bottom: 15px;
+.coinInfo {
+	display: flex;
+	align-items: center;
+	gap: 16px;
 }
 
 .icon {
-	width: 48px;
-	margin-right: 5px;
+	width: 56px;
+	height: 56px;
+	border-radius: 14px;
 }
 
 .name {
-	font-size: 32px;
-	margin-right: 5px;
-
-	color: #fff;
+	margin: 0;
+	font-size: 24px;
+	color: var(--primary-text-color);
 }
 
 .symbol {
-	font-size: 24px;
-	color: grey;
+	color: var(--secondary-text-color);
+	font-size: 16px;
 }
 
 .rank {
-	position: absolute;
-	right: 6px;
-	top: 10px;
-
 	padding: 6px 8px;
-	margin-bottom: 14px;
 
 	text-transform: uppercase;
 	font-size: 12px;
-	font-weight: 800;
+	font-weight: 600;
 
 	border-radius: 6px;
-
 	background-color: var(--orange-color);
-	display: block;
-	align-self: flex-start;
-}
-
-.price {
-	font-size: 24px;
-	color: #fff;
-
-	margin-bottom: 15px;
 }
 
 .stats {
@@ -66,39 +57,29 @@
 
 	padding: 16px 14px;
 
-	box-shadow: rgb(0 0 0 / 8%) 0 8px 12px;
-	border-radius: 8px;
 	background-color: #0d0d0d;
-	color: #fff;
-}
-
-.positive {
-	color: #9ac555;
-}
-
-.negative {
-	color: #e55161;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #1F2330;
 }
 
 .statsTitle {
-	margin-bottom: 10px;
+	margin-bottom: 14px;
 }
 
-.statsInfo {
+.statsSection {
 	display: flex;
 	justify-content: space-between;
-	flex-wrap: wrap;
-	font-size: 18px;
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
-.statsItem {
-	margin-right: 15px;
+.positive {
+	color: var(--color-green);
 }
 
-.statsItem:last-child {
-	margin-right: 0;
-}
-
-.statsItemTitle {
-	margin-bottom: 5px;
+.negative {
+	color: var(--color-red);
 }

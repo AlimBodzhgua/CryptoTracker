@@ -1,16 +1,32 @@
 .WatchList {
 	display: flex;
-	flex-direction: column;	
-
-	color: #fff;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20px;
+	width: 100%;
 }
 
 .listSkeleton {
 	margin-bottom: 12px;
 }
 
+.header {
+	margin-bottom: 32px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
 .title {
-	margin-bottom: 15px;
+	font-size: 28px;
+	font-weight: 600;
+	color: var(--primary-text-color);
+}
+
+.icon {
+	width: 32px;
+	height: 32px;
+	fill: #ffff;
 }
 
 .emptyMessage {
@@ -48,7 +64,7 @@
 
 .emptySubtitle {
 	font-size: 20px;
-	margin-bottom: 12px;
+	margin-bottom: 18px;
 
 	color: grey;
 }

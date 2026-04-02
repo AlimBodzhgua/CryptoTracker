@@ -17,11 +17,41 @@
 	margin-bottom: 14px;
 }
 
+.title {
+	font-size: 28px;
+	font-weight: 600;
+	color: var(--primary-text-color);
+}
+
+.emptyMsg {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	gap: 8px;
+	margin: 14px 0;
+}
+
+.emptyIcon {
+	fill: var(--secondary-text-color)
+}
+
+.emptyTitle {
+	font-size: 22px;
+	font-weight: 600;
+	color: var(--secondary-text-color);
+}
+
 .skeletonItem {
 	margin-bottom: 10px;
 }
 
 .clearBtn {
-	background-color: var(--orange-color);
-	border-radius: 0;
+	background-color: var(--accent-color);
+	transition: opacity .2s linear;
+
+	&:hover {
+		opacity: .8;
+	}
 }

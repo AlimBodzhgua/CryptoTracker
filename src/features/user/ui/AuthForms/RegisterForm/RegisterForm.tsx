@@ -115,6 +115,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 			<Button
 				className={classes.button}
 				disabled={isLoading}
+				theme='secondary'
 				type='submit'
 			>
 				{t('buttons.register')}
@@ -123,6 +124,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 				{t('messages.already_have_account')}
 				<Button
 					theme='clear'
+					size='small'
 					onClick={onMoveToLogin}
 					className={classes.loginBtn}
 					type='reset'

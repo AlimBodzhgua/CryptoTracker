@@ -102,7 +102,7 @@ export const Converter: FC<ConverterProps> = memo((props) => {
 					/>
 				</div>
 			</div>
-			<div className={classes.rowInfo}>
+			<div className={classes.resultRow}>
 				<span />
 				{isLoading ? (
 					<Skeleton width='70%' radius='45px' height='33px' />

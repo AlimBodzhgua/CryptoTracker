@@ -21,8 +21,8 @@ export const HistoryItem: FC<HistoryItemProps> = memo(({ item, className }) => {
 					className={classes.icon}
 				/>
 				<span>
-					<div>{item.coinFrom.symbol}</div>
-					<div>{item.coinFrom.name}</div>
+					<div className={classes.symbol}>{item.coinFrom.symbol}</div>
+					<div className={classes.name}>{item.coinFrom.name}</div>
 				</span>
 			</div>
 
@@ -33,8 +33,8 @@ export const HistoryItem: FC<HistoryItemProps> = memo(({ item, className }) => {
 
 			<div className={classes.coin}>
 				<span>
-					<div>{item.coinTo.symbol}</div>
-					<div>{item.coinTo.name}</div>
+					<div className={classes.symbol}>{item.coinTo.symbol}</div>
+					<div className={classes.name}>{item.coinTo.name}</div>
 				</span>
 				<img
 					src={item.coinTo.iconUrl}

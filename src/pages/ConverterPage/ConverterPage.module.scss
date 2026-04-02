@@ -5,19 +5,29 @@
 	align-items: center;
 }
 
-.history {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .historyIcon {
-	width: 22px;
-	height: 22px;
+	width: 23px;
+	height: 23px;
 
-	margin-right: 4px;
+	transition: fill .2s linear;
+	fill: #737E8D;
 }
 
 .historyBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	
+	padding: 10px 0;
 	color: #737E8D;
+	transition: color .2s linear;
+
+	&:hover {
+		color: #ffff;
+
+		.historyIcon {
+			fill: #fff;
+		}
+	}
 }

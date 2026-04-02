@@ -21,31 +21,43 @@
 }
 
 .primary,
-.secondary {
+.secondary,
+.white,
+.red {
 	border-radius: 8px;
 
 	font-weight: 600;
 }
 
 .primary {
-	color: #fff;
+	color: #ffff;
 	background-color: #363636;
 }
 
 .secondary {
-	color: #000;
+	color: #ffff;
+	background-color: var(--accent-color);
+}
+
+.white {
+	color: #000;;
 	background-color: #FDFDFD;
 }
 
+.red {
+	color: #ffff;
+	background-color: var(--orange-color);
+}
+
 .clear {
-	border: none!important;
-	padding: 2px!important;
-	background: none!important;
+	border: none;
+	padding: 0;
+	background: none;
 }
 
 .small {
 	font-size: 14px;
-	padding: 6px 20px;
+	padding: 6px 14px;
 	border-radius: 6px
 }
 

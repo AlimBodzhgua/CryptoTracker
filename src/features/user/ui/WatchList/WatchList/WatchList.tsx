@@ -1,4 +1,7 @@
-import { FC, memo, useEffect } from 'react';
+import type { FC } from 'react';
+import type { DragEndEvent } from '@dnd-kit/core';
+
+import { memo, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from 'shared/hooks/redux';
 import { Message } from 'shared/UI/Message/Message';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -6,7 +9,6 @@ import { Button } from 'shared/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 import {
 	DndContext,
-	DragEndEvent,
 	PointerSensor,
 	useSensor,
 	useSensors,
@@ -16,10 +18,12 @@ import { restrictToParentElement } from '@dnd-kit/modifiers';
 import classnames from 'classnames';
 import { fetchWatchListCoins, updateWatchList } from '../../../model/userActions';
 import { userSelectors, userActions } from '../../../model/userSlice';
-import SelectedStarIcon from '../../../assets/starSelected.svg';
 
 import { WatchListItem } from '../WatchListItem/WatchListItem';
 import { WatchListSkeleton } from './WatchListSkeleton';
+
+import SelectedStarIcon from '../../../assets/starSelected.svg';
+import StarIcon from '../../../assets/star.svg'
 import classes from './WatchList.module.scss';
 
 interface WatchListProps {
@@ -69,9 +73,7 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 	}
 
 	if (error) {
-		return (
-			<Message type='error' text={t('watchlist.error')} withIcon />
-		);
+		return <Message type='error' text={t('watchlist.error')} withIcon />;
 	}
 
 	return (
@@ -84,15 +86,19 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 				items={watchListCoins.map((item) => item.uuid)}
 				disabled={dragDisabled}
 			>
-				<ul className={classnames(classes.WatchList, className)}>
 					{watchListCoins.length ? (
 						<>
-							<h2 className={classes.title}>
-								{t('watchlist.title')}
-							</h2>
-							{watchListCoins.map((coin) => (
-								<WatchListItem coin={coin} key={coin.uuid} />
-							))}
+							<div className={classes.header}>
+								<StarIcon className={classes.icon}/>
+								<h2 className={classes.title}>
+									{t('watchlist.title')}
+								</h2>
+							</div>
+							<ul className={classnames(classes.WatchList, className)}>
+								{watchListCoins.map((coin) => (
+									<WatchListItem coin={coin} key={coin.uuid} />
+								))}
+							</ul>
 						</>
 					) : (
 						<div className={classes.emptyMessage}>
@@ -113,7 +119,6 @@ export const WatchList: FC<WatchListProps> = memo(({ className }) => {
 							</Button>
 						</div>
 					)}
-				</ul>
 			</SortableContext>
 		</DndContext>
 	);

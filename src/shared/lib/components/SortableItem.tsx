@@ -1,14 +1,18 @@
 import { useSortable } from '@dnd-kit/sortable';
-import { FC, ReactNode } from 'react';
+import { ComponentProps, FC, ReactNode } from 'react';
 import { CSS } from '@dnd-kit/utilities';
 
-interface SortableItemProps {
+interface SortableItemProps extends Omit<ComponentProps<'div'>, 'id'> {
 	id: number | string;
 	children: ReactNode;
 }
 
 export const SortableItem: FC<SortableItemProps> = (props) => {
-	const { id, children } = props;
+	const {
+		id,
+		children,
+		...otherProps
+	} = props;
 	const {
 		attributes,
 		listeners,
@@ -28,6 +32,7 @@ export const SortableItem: FC<SortableItemProps> = (props) => {
 			style={style}
 			{...attributes}
 			{...listeners}
+			{...otherProps}
 		>
 			{children}
 		</div>

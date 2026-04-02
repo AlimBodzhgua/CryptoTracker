@@ -1,14 +1,18 @@
 :root {
-	--navbar-height: 60px;
+	--header-height: 60px;
 	--sidebar-width: 220px;
 	--sidebar-width-collapsed: 90px;
 
+	--header-bg-color: #191919;
+	--sidebar-bg-color: #11141A;
+	--page-bg-color: #0A0B0F;
+	--bg-secondary: #161922;
 
-	--navbar-bg-color: #191919;
-	--sidebar-bg-color: #24484E;
-	--page-bg-color: #252525;
-	--table-bg-color: #191919;
-	--table-border-color: #080808;
+	--primary-text-color: #E2E8F0;
+	--secondary-text-color: #94A3B8;
 
+	--accent-color: #6366F1;
 	--orange-color: #FD4648;
+	--color-red: #EF4444;
+	--color-green: #22C55E;
 }

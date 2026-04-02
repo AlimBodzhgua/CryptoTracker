@@ -172,7 +172,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 				{edit ? (
 					<>
 						<Button
-							theme='primary'
+							theme='red'
 							className={classes.editBtn}
 							onClick={onCancel}
 							disabled={isLoading}
@@ -180,7 +180,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 							{t('buttons.cancel')}
 						</Button>
 						<Button
-							theme='secondary'
+							theme='white'
 							className={classes.editBtn}
 							onClick={onSave}
 							disabled={isLoading}
@@ -190,7 +190,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo(({ className }) => {
 					</>
 				) : (
 					<Button
-						theme='primary'
+						theme='secondary'
 						className={classes.editBtn}
 						onClick={onEdit}
 					>

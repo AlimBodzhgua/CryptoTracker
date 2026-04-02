@@ -26,11 +26,12 @@ export const Chart: FC<ChartProps> = (props) => {
 	useEffect(() => {
 		const chartOptions = {
 			layout: {
-				textColor: 'black',
-				background: { type: ColorType.Solid, color: 'white' },
+				textColor: '#E2E8F0',
+				background: { type: ColorType.Solid, color: '#0F121A' },
+				
 			},
 			height: 260,
-			width: 500,
+			width: 550,
 			localization: {
             	timeFormatter: (businessDayOrTimestamp) => {
 					if (isUTCTimestamp(businessDayOrTimestamp)) {

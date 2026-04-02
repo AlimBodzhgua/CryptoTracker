@@ -38,6 +38,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 			<Button
 				className={classes.toggleBtn}
 				onClick={onToggleCollapsed}
+				size='small'
 				theme='clear'
 				data-testid='toggle-button'
 			>

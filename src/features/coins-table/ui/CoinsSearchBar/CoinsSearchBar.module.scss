@@ -1,11 +1,22 @@
 
 .CoinsSearchBar {
-	height: fit-content;
-	width: fit-content;
+	width: 100%;
+	border: 1px solid #1F2330;
+	border-radius: 12px;
+	padding: 14px 20px 14px 28px;
+	color: var(--primary-text-color);
+	font-size: 15px;
+	transition: all 0.2s ease;
+}
+
+.search-input:focus {
+	outline: none;
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
 .icon {
-	stroke: #fff;
+	stroke: #ffff;
 }
 
 .hotkeyHelp {

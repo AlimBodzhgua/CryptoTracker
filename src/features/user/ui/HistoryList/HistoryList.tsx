@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import { clearHistory } from '../../model/userActions';
 import { userSelectors } from '../../model/userSlice';
 import { HistoryItem } from '../HistoryItem/HistoryItem';
+import EmptyBox from '../../empty-box.svg'
 import classes from './HistoryList.module.scss';
 
 interface HistoryListProps {
@@ -46,20 +47,15 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 			));
 		}
 		return (
-			<h3 className={classes.emptyMsg}>
-				{t('converter.history_empty')}
-			</h3>
+			<div className={classes.emptyMsg}>
+				<EmptyBox className={classes.emptyIcon}/>
+				<h3 className={classes.emptyTitle}>{t('converter.history_empty')}</h3>
+			</div>
 		);
 	}, [history]);
 
 	if (error) {
-		return (
-			<Message
-				withIcon
-				type='error'
-				text={t('converter.error_loading_history')}
-			/>
-		);
+		return <Message withIcon type='error' text={t('converter.error_loading_history')} />;
 	}
 
 	return (

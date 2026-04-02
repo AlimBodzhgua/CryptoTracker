@@ -1,6 +1,6 @@
 
 .CoinTableRow {
-	padding: 5px 6px;
+	padding: 6px 5px;
 	color: #fff;
 
 	td {
@@ -11,7 +11,7 @@
 	}
 
 	.rank {
-		border-right: 1px solid black;
+		border-right: 1px solid #1F2330;
 	}
 
 	.bigColumn {
@@ -78,4 +78,8 @@
 	.negative {
 		color: #e55161;
 	}
+}
+
+.CoinTableRow:nth-child(even) {
+	background-color: #1A1E2A;
 }

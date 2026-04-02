@@ -1,9 +1,10 @@
-import { FC, memo } from 'react';
-import { AppLink } from 'shared/UI/AppLink/AppLink';
-import { useTranslation } from 'react-i18next';
-import classnames from 'classnames';
-
+import type { FC } from 'react';
 import type { SidebarItemType } from '../../model/types';
+
+import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AppLink } from 'shared/UI/AppLink/AppLink';
+import classnames from 'classnames';
 import classes from './SidebarItem.module.scss';
 
 interface SidebarItemProps {

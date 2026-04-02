@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import classnames from 'classnames';
 import classes from './Button.module.scss';
 
-export type ButtonThemeType = 'primary' | 'secondary' | 'clear';
+export type ButtonThemeType = 'primary' | 'secondary' | 'white' | 'red' | 'clear';
 export type ButtonSizeType = 'small' | 'medium' | 'big';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

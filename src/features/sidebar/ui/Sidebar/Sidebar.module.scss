@@ -48,9 +48,10 @@
 .toggleBtn {
 	position: absolute;
 	bottom: 32px;
-	right: -32px;
-	background-color: var(--sidebar-bg-color)!important;
-	font-size: 34px;
+	right: -35px;
+	background-color: var(--sidebar-bg-color);
+	border-radius: 0;
+	padding: 10px 6px;
 
 	display: flex;
 	align-items: center;

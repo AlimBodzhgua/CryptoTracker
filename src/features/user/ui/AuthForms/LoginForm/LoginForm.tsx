@@ -131,13 +131,14 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 
 			<Button
 				className={classes.button}
+				theme='secondary'
 				type='submit'
 				disabled={isLoading}
 			>
 				{t('buttons.login')}
 			</Button>
 			<Button
-				theme='secondary'
+				theme='white'
 				size='small'
 				onClick={onLoginWithGoogle}
 				className={classes.googleBtn}
@@ -160,6 +161,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				{t('messages.no_account')}
 				<Button
 					theme='clear'
+					size='small'
 					onClick={onMoveToRegister}
 					className={classes.registerBtn}
 					type='reset'

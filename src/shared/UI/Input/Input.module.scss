@@ -3,13 +3,13 @@
 	align-items: center;
 
 	width: 100%;
-	background-color: #454545;
+	background-color: #1A1E2A;
 
 	padding: 10px;
 
 	font-size: 16px;
 	font-weight: 400;
-	color: #717171;
+	color: var(--primary-text-color);
 }
 
 .Input,
@@ -22,7 +22,7 @@
 
 .InputField {
 	border: none;
-	background-color: #454545;
+	background-color: #1A1E2A;
 	margin: 0 3px;
 	flex-grow: 1;
 
@@ -33,8 +33,6 @@
 
 	&:focus {
 		outline: none;
-		background-color: #717171;
-		color: #FDFDFD;
 
 		&::placeholder {
 			color: #FDFDFD;

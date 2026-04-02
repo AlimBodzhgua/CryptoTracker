@@ -42,14 +42,14 @@ const ConverterPage: FC<ConverterPageProps> = ({ className }) => {
 			<Converter
 				onSuccessConvert={addNewHistory}
 				headerRightContent={
-					<div className={classes.history}>
-						<HistoryIcon className={classes.historyIcon} />
+					<div>
 						<Button
 							className={classes.historyBtn}
 							theme='clear'
 							size='big'
 							onClick={onShowHistory}
 						>
+							<HistoryIcon className={classes.historyIcon} />
 							{t('buttons.history')}
 						</Button>
 						<HistoryModal

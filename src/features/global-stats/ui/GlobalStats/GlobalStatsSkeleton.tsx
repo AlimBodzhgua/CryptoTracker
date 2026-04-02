@@ -20,42 +20,48 @@ export const GlobalStatsSkeleton: FC = memo(() => {
 	), []);
 
 	return (
-		<div className={classes.Stats}>
-			<div className={classes.data}>
-				<div className={classes.dataTitle}>{t('Btc Dominance')}</div>
-				<Skeleton width='140px' height='22px' radius='6px' />
-			</div>
-			<div className={classes.data}>
-				<div className={classes.dataTitle}>{t('Total 24hVolume')}</div>
-				<Skeleton width='140px' height='22px' radius='6px' />
-			</div>
-			<div className={classes.data}>
-				<div className={classes.dataTitle}>{t('Total MarketCap')}</div>
-				<Skeleton width='140px' height='22px' radius='6px' />
-			</div>
-			<div className={classes.data}>
-				<div className={classes.dataTitle}>{t('Total Exchanges')}</div>
-				<Skeleton width='140px' height='22px' radius='6px' />
-			</div>
-			<div className={classes.data}>
-				<div className={classes.dataTitle}>{t('Total Markets')}</div>
-				<Skeleton width='140px' height='22px' radius='6px' />
-			</div>
-			<div className={classes.data}>
-				<div className={classes.dataTitle}>{t('Total Coins')}</div>
-				<Skeleton width='140px' height='22px' radius='6px' />
+		<div className={classes.GlobalStats}>
+			<div className={classes.dataSection}>
+				<div className={classes.dataItem}>
+					<div className={classes.dataTitle}>{t('Btc Dominance')}</div>
+					<Skeleton width='140px' height='22px' radius='6px' />
+				</div>
+				<div className={classes.dataItem}>
+					<div className={classes.dataTitle}>{t('Total 24hVolume')}</div>
+					<Skeleton width='140px' height='22px' radius='6px' />
+				</div>
+				<div className={classes.dataItem}>
+					<div className={classes.dataTitle}>{t('Total MarketCap')}</div>
+					<Skeleton width='140px' height='22px' radius='6px' />
+				</div>
+				<div className={classes.dataItem}>
+					<div className={classes.dataTitle}>{t('Total Exchanges')}</div>
+					<Skeleton width='140px' height='22px' radius='6px' />
+				</div>
+				<div className={classes.dataItem}>
+					<div className={classes.dataTitle}>{t('Total Markets')}</div>
+					<Skeleton width='140px' height='22px' radius='6px' />
+				</div>
+				<div className={classes.dataItem}>
+					<div className={classes.dataTitle}>{t('Total Coins')}</div>
+					<Skeleton width='140px' height='22px' radius='6px' />
+				</div>
 			</div>
 			<div className={classes.listSection}>
 				<div className={classes.listWrapper}>
-					<h3 className={classes.listTitle}>
-						{t('Best performing coins')}
-					</h3>
+					<div className={classes.listHeader}>
+						<h3 className={classes.listTitle}>
+							{t('Best performing coins')}
+						</h3>
+					</div>
 					{renderListSkeletons()}
 				</div>
 				<div className={classes.listWrapper}>
-					<h3 className={classes.listTitle}>
-						{t('Newest coins')}
-					</h3>
+					<div className={classes.listHeader}>
+						<h3 className={classes.listTitle}>
+							{t('Newest coins')}
+						</h3>
+					</div>
 					{renderListSkeletons()}
 				</div>
 			</div>

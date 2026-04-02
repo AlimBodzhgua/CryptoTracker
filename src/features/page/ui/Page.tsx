@@ -1,13 +1,6 @@
-import {
-	FC,
-	MutableRefObject,
-	ReactNode,
-	useRef,
-	UIEvent,
-	useEffect,
-	useCallback,
-	useState,
-} from 'react';
+import type { FC, ReactNode, MutableRefObject, UIEvent } from 'react';
+
+import { useRef, useEffect, useState } from 'react';
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
 import { useThrottle } from 'shared/hooks/useThrottling';
 import { useLocation } from 'react-router-dom';
@@ -76,9 +69,9 @@ export const Page: FC<PageProps> = (props) => {
 		}
 	}, 500);
 
-	const onScrollClick = useCallback(() => {
+	const onScrollClick = () => {
 		wrapperRef.current.scroll({ top: 0, behavior: 'smooth' });
-	}, []);
+	};
 
 	return (
 		<main
@@ -93,6 +86,7 @@ export const Page: FC<PageProps> = (props) => {
 			{scrollAppearance.showBtn && withAutoScrollTopBtn && (
 				<Button
 					theme='clear'
+					size='small'
 					className={classes.scrollBtn}
 					onClick={onScrollClick}
 				>

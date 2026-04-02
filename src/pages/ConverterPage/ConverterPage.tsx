@@ -20,7 +20,7 @@ const ConverterPage: FC<ConverterPageProps> = ({ className }) => {
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 	const { t } = useTranslation();
 
-	const onCloseHistory = () => useCallback(() => setIsOpenModal(false), []);
+	const onCloseHistory = useCallback(() => setIsOpenModal(false), []);
 
 	const onShowHistory = () => {
 		if (!user) {

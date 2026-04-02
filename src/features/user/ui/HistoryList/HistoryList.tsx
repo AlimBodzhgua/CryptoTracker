@@ -1,58 +1,31 @@
-import { FC, useCallback, memo } from 'react';
+import type { FC } from 'react';
+
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
+import { Button } from 'shared/UI/Button/Button';
 import { Message } from 'shared/UI/Message/Message';
-import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 import classnames from 'classnames';
 
+import { HistoryItem } from '../HistoryItem/HistoryItem';
 import { clearHistory } from '../../model/userActions';
 import { userSelectors } from '../../model/userSlice';
-import { HistoryItem } from '../HistoryItem/HistoryItem';
-import EmptyBox from '../../empty-box.svg'
+import EmptyBox from '../../assets/empty-box.svg'
+
+import { HistoryListSkeleton } from './HistoryListSkeleton';
 import classes from './HistoryList.module.scss';
 
 interface HistoryListProps {
 	className?: string;
 }
 
-const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
+const HistoryList: FC<HistoryListProps> = ({ className }) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const history = useAppSelector(userSelectors.selectUserConversionHistory);
 	const isLoading = useAppSelector(userSelectors.selectUserIsLoading);
 	const error = useAppSelector(userSelectors.selectUserError);
 
-	const onClear = useCallback(async () => {
-		dispatch(clearHistory());
-	}, [dispatch]);
-
-	const renderListSkeleton = useCallback(() => (
-		Array(3).fill(0).map((_, index) => (
-			<Skeleton
-				// eslint-disable-next-line
-				key={index}
-				width='240px'
-				height='32px'
-				radius='6px'
-				className={classes.listSkeleton}
-			/>
-		))
-	), []);
-
-	const renderHistoryContent = useCallback(() => {
-		if (history.length) {
-			return history.map((item) => (
-				<HistoryItem item={item} key={item.convertResult} />
-			));
-		}
-		return (
-			<div className={classes.emptyMsg}>
-				<EmptyBox className={classes.emptyIcon}/>
-				<h3 className={classes.emptyTitle}>{t('converter.history_empty')}</h3>
-			</div>
-		);
-	}, [history]);
+	const onClear = () => dispatch(clearHistory());
 
 	if (error) {
 		return <Message withIcon type='error' text={t('converter.error_loading_history')} />;
@@ -72,10 +45,19 @@ const HistoryList: FC<HistoryListProps> = memo(({ className }) => {
 				</Button>
 			</div>
 			<ul className={classnames(classes.HistoryList, className)}>
-				{isLoading ? renderListSkeleton() : renderHistoryContent()}
+				{isLoading ? (
+					<HistoryListSkeleton />
+				) : history.length ? (
+					history.map((item) => <HistoryItem item={item} key={item.convertResult} />)
+				) : (
+					<div className={classes.emptyMsg}>
+						<EmptyBox className={classes.emptyIcon} />
+						<h3 className={classes.emptyTitle}>{t('converter.history_empty')}</h3>
+					</div>
+				)}
 			</ul>
 		</>
 	);
-});
+};
 
 export default HistoryList;

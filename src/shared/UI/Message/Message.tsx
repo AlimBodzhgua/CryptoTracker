@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, ReactElement } from 'react';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import classnames from 'classnames';
@@ -17,6 +17,12 @@ interface MessageProps {
 	className?: string;
 }
 
+const mapToMessageIcon: Record<MessageType, ReactElement> = {
+	warn: <WarningIcon className={classes.icon} data-testid='icon'/>,
+	error: <ErrorIcon className={classes.icon} data-testid='icon' />,
+	success: <SuccessIcon className={classes.icon} data-testid='icon' />
+};
+
 export const Message: FC<MessageProps> = memo((props) => {
 	const {
 		type,
@@ -26,7 +32,7 @@ export const Message: FC<MessageProps> = memo((props) => {
 	} = props;
 	const { t } = useTranslation();
 
-	const mapToTitle = useMemo<Record<MessageType, string>>(() => ({
+	const mapToMessageTitle = useMemo<Record<MessageType, string>>(() => ({
 		error: t('status.error'),
 		warn: t('status.warning'),
 		success: t('status.success'),
@@ -37,19 +43,8 @@ export const Message: FC<MessageProps> = memo((props) => {
 			className={classnames(classes.Message, classes[type], className)}
 			data-testid='message'
 		>
-			{type === 'warn' && withIcon && (
-				<WarningIcon
-					className={classnames(classes.icon, classes.warnIcon)}
-					data-testid='icon'
-				/>
-			)}
-			{type === 'error' && withIcon && (
-				<ErrorIcon className={classes.icon} data-testid='icon' />
-			)}
-			{type === 'success' && withIcon && (
-				<SuccessIcon className={classes.icon} data-testid='icon' />
-			)}
-			<h1 className={classes.title}>{mapToTitle[type]}</h1>
+			{withIcon && mapToMessageIcon[type]}
+			<h1 className={classes.title}>{mapToMessageTitle[type]}</h1>
 			<div className={classes.text}>{text}</div>
 		</div>
 	);

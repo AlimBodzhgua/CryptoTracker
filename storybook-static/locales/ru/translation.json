@@ -1,81 +1,129 @@
 {
-	"Language": "Eng",
-	"Login": "Войти",
-	"Sign up": "Зарегистрироваться",
-	"Main": "Главная",
-	"Coins": "Монеты",
-	"Watchlist": "Список наблюдения",
-	"Profile": "Профиль",
-	"Converter": "Конвертер",
-	"Name": "Название",
-	"Price": "Цена",
-	"Change": "Изменение",
-	"Сhange 24h": "Изменения 24ч",
-	"24h volume": "24ч Объём",
-	"Market cap": "Рыночная капитализцаия",
-	"Error fetching coins": "Ошибка при получении монет",
-	"Market Stats": "Статистика Рынка",
+	"buttons": {
+		"login": "Войти",
+		"login_google": "Войти с помощью Google",
+		"register": "Регистрация",
+		"sign_up": "Регистрация",
+		"sign_in": "Войти",
+		"logout": "Выйти",
+		"reload_page": "Перезагрузить страницу",
+		"forgot_password?": "Забыли пароль?",
+		"edit": "Редактировать",
+		"cancel": "Отмена",
+		"save": "Сохранить",
+		"reset": "Сбросить",
+		"clear": "Очистить",
+		"convert": "Конвертировать",
+		"history": "История",
+		"add_coins": "Добавить монеты",
+		"overview": "Обзор"
+	},
 
-	"Btc Dominance": "Доминация биткоина",
-	"Total 24hVolume": "Общий 24ч. Объем",
-	"Total MarketCap": "Общая капитализация",
-	"Total Exchanges": "Всего обменов",
-	"Total Markets": "Всего рынков",
-	"Total Coins": "Всего монет",
-	"Best performing coins": "Самые эффективные монеты",
-	"Newest coins": "Новейшие монеты",
+	"forms": {
+		"login": "Вход",
+		"register": "Регистрация",
+		"password_reset": "Сброс пароля"
+	},
 
-	"Enter email...": "Введите почту...",
-	"Enter password...": "Введите пароль...",
-	"Please enter your email.": "Пожалуйста укажие почту.",
-	"Please enter your password.": "Пожалуйста укажите пароль.",
-	"Password should contain at least 8 characters": "Пароль должен содержать минимум 8 символов",
-	"Password Reset": "Сброс пароля",
-	"Don`t have an account?": "У вас нет аккаунта?",
-	"Sign Up": "Зарегистрироваться",
-	"Already have an account?": "Уже есть аккаунт?",
-	"Sign In": "Войти",
-	"User with such email already exist.": "Пользователь с таким адресом электронной почты уже существует.",
+	"profile": {
+		"title": "Профиль",
+		"login": "Логин",
+		"email": "Электронная почта",
+		"image_url": "Ссылка на изображение"
+	},
 
-	"An unexpected error occured": "Произошла непредвиденная ошибка",
-	"Reload the page": "Перезагрузить страницу",
-	"Are you sure you want to logout?": "Вы действительно хотите выйти?",
-	"An email has been sent to you to reset your password.": "Вам было отправлено письмо для сброса пароля.",
-	"Forgot Password?": "Забыли пароль?",
-	"Wrong password or email.": "Неверный пароль или адрес электронной почты",
-	"Your email is not veified": "Ваша почта не подтверждена",
-	"click to get verification mail": "нажмите, чтобы получить письмо с подтверждением",
+	"navigation": {
+		"main": "Главная",
+		"coins": "Монеты",
+		"watchlist": "Избранное",
+		"profile": "Профиль",
+		"converter": "Конвертер"
+	},
 
-	"This page require auth.": "Эта страница требует авторизации.",
-	"Soon you will redirect to the main page.": "Вы будете перенаправлены на главную страницу.",
-	"Please register or log in your account to access the page.": "Пожалуйста, зарегистрируйтесь или войдите в свою учетную запись, чтобы получить доступ к странице.",
+	"coin_fields": {
+		"name": "Название",
+		"price": "Цена",
+		"change": "Изменение",
+		"change_24h": "Изменение 24ч",
+		"volume_24h": "Объём 24ч",
+		"market_cap": "Капитализация"
+	},
 
-	"Edit": "Редактировать",
-	"Register": "Зарегистрироваться",
-	"Login": "Вход",
-	"Cancel": "Отменить",
-	"Save": "Сохранить",
-	"Reset": "Сбросить",
+	"errors": {
+		"general": "Произошла ошибка.",
+		"unexpected_general": "Произошла непредвиденная ошибка",
+		"fetching_coins": "Ошибка загрузки монет",
+		"fetching_data": "Ошибка получения данных, попробуйте перезагрузить страницу или зайти позже",
+		"not_found_page": "Страница не найдена"
+	},
 
-	"Only the user can see the history of previous conversions": "Только авторизованный пользователь может видеть историю предыдущих конвертаций",
-	"Error loading history, try to reload the page": "Ошибка загрузка истории, попробуйте обновить стрнаицу",
-	"Convertasion list is empty": "Список конвертаций пуст",
-	"Convertasion history": "История конвертаций",
-	"clear": "очистить",
-	"Select Coin": "Выберите монету",
-	"Convert": "Конвертировать",
-	"History": "История",
+	"market": {
+		"stats_title": "Статистика рынка",
+		"last_chart":  "График за последние 24 часа",
+		"rank": "Ранг",
+		"btc_dominance": "Доминирование BTC",
+		"total_24h_volume": "Общий объём 24ч",
+		"total_market_cap": "Общая капитализация",
+		"total_exchanges": "Бирж",
+		"total_markets": "Рынков",
+		"total_coins": "Всего монет",
+		"best_performing": "Лучшие за 24ч",
+		"newest_coins": "Новые монеты",
+		"error": "Ошибка при получении глобальной статистики, перезагрузите страницу или попробуйте позже."
+	},
 
-	"An error occurred.": "Произошла ошибка.",
-	"Warning!": "Внимение!",
-	"Success.": "Успешно.",
-	"Error fetching data, try to reload the page, or visiti the page later": "Ошибка при получении данных. Попробуйте перезагрузить страницу или посетите страницу позже.",
+	"placeholders": {
+		"enter_email": "Введите email...",
+		"enter_password": "Введите пароль...",
+		"search_coins": "Поиск монет...",
+		"enter_login": "Введите логин",
+		"enter_image_url": "Введите ссылку изображения"
+	},
 
-	"Error fetcthing watchlist coins": "Ошибка при получении списка отлеживаемых монет",
-	"Your watchlist Coins": "Ваш список отлеживаемых монет",
-	"Your watchlist is empty.": "Список отслеживаемых монет пуст.",
-	"You can add coins to watchlist on coins page.": "Вы можете добавить монеты на странице с монетами.",
-	"Add coins": "Добавить монеты",
-	"overview": "обзор",
-	"Last 24 hour chart": "График за последние 24 часа"
+	"messages": {
+		"please_enter_email": "Пожалуйста, введите email.",
+		"please_enter_password": "Пожалуйста, введите пароль.",
+		"password_min_length": "Пароль должен содержать минимум 6 символов",
+		"wrong_password_or_email": "Неверный email или пароль.",
+		"email_already_exist.": "Пользователь с таким email уже существует.",
+		"email_not_verified": "Ваш email не подтверждён",
+		"click_to_verify": "нажмите, чтобы получить письмо для подтверждения",
+		"register_or_login_account": "Пожалуйста, зарегистрируйтесь или войдите в аккаунт, чтобы открыть эту страницу.",
+		"logout_confirmation": "Вы уверены, что хотите выйти?",
+		"require_auth": "Для просмотра этой страницы нужно авторизоваться",
+		"password_reset_email_sent": "На вашу почту отправлено письмо для сброса пароля.",
+
+		"no_account": "Нет аккаунта?",
+		"already_have_account": "Уже есть аккаунт?",
+		"password_reset": "Сброс пароля",
+		"redirect_to_main": "Скоро вы будете перенаправлены на главную страницу."
+	},
+
+	"converter": {
+		"title": "Конвертер",
+		"from": "Из",
+		"to": "В",
+		"history_title": "История конвертаций",
+		"history_empty": "Список конвертаций пуст",
+		"only_user_can_see": "Историю конвертаций может видеть только владелец аккаунта",
+		"error_loading_history": "Ошибка загрузки истории, попробуйте перезагрузить страницу",
+		"select_coin": "Выберите монету"
+	},
+
+	"status": {
+		"warning": "Внимание!",
+		"success": "Успешно.",
+		"error": "Произошла ошибка."
+	},
+
+	"chart": {
+		"title": "График за последние 24 часа"
+	},
+
+	"watchlist": {
+		"title": "Ваше избранное",
+		"empty": "Ваш список избранного пуст.",
+		"empty_description": "Вы можете добавить монеты в избранное на странице «Монеты».",
+		"error": "Ошибка загрузки избранных монет"
+	}
 }

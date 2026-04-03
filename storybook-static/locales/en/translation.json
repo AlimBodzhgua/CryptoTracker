@@ -1,81 +1,127 @@
 {
-	"Language": "Ru",
-	"Login": "Login",
-	"Sign up": "Sign up",
-	"Main": "Main",
-	"Coins": "Coins",
-	"Watchlist": "Watchlist",
-	"Profile": "Profile",
-	"Converter": "Converter",
-	"Name": "name",
-	"Price": "price",
-	"Change": "change",
-	"Сhange 24h": "Сhange 24h",
-	"24h volume": "24h volume",
-	"Market cap": "market cap",
-	"Error fetching coins": "Error fetching coins",
-	"Market Stats": "Market Stats",
+	
+	"buttons": {
+		"login": "Login",
+		"login_google": "Login with Google",
+		"register": "Register",
+		"sign_up": "Sign up",
+		"sign_in": "Sign In",
+		"logout": "Logout",
+		"reload_page": "Reload the page",
+		"forgot_password?": "Forgot Password?",
+		"edit": "Edit",
+		"cancel": "Cancel",
+		"save": "Save",
+		"reset": "Reset",
+		"clear": "clear",
+		"convert": "Convert",
+		"history": "History",
+		"add_coins": "Add coins",
+		"overview": "overview"
+	},
 
-	"Btc Dominance": "Btc Dominance",
-	"Total 24hVolume": "Total 24hVolume",
-	"Total MarketCap": "Total MarketCap",
-	"Total Exchanges": "Total Exchanges",
-	"Total Markets": "Total Markets",
-	"Total Coins": "Total Coins",
-	"Best performing coins": "Best performing coins",
-	"Newest coins": "Newest coins",
+	"forms": {
+		"login": "Login",
+		"register": "Register",
+		"password_reset": "Password Reset"
+	},
 
-	"Enter email...": "Enter email...",
-	"Enter password...": "Enter password...",
-	"Please enter your email.": "Please enter your email.",
-	"Please enter your password.": "Please enter your password.",
-	"Passwrod should contain at least 6 scharacters": "Passwrod should contain at least 6 scharacters",
-	"Password Reset": "Password Reset",
-	"Don`t have an account?": "Don`t have an account?",
-	"Sign Up": "Sign Up",
-	"Already have an account?": "Already have an account?",
-	"Sign In": "Sign In",
-	"User with such email already exist.": "User with such email already exist.",
+	"profile": {
+		"title": "Profile",
+		"login": "Login",
+		"email": "Email",
+		"image_url": "Image URL"
+	},
 
-	"An unexpected error occured": "An unexpected error occured",
-	"Reload the page": "Reload the page",
-	"Are you sure you want to logout?": "Are you sure you want to logout?",
-	"An email has been sent to you to reset your password.": "An email has been sent to you to reset your password.",
-	"Forgot Password?": "Forgot Password?",
-	"Wrong password or email.": "Wrong password or email.",
-	"Your email is not veified": "Your email is not veified",
-	"click to get verification mail": "click to get veification mail",
-	"This page require auth.": "This page require auth.",
-	"Soon you will redirect to the main page.": "Soon you will redirect to the main page.",
-	"Please register or log in your account to access the page.": "Please register or log in your account to access the page.",
+	"navigation": {
+		"main": "Main",
+		"coins": "Coins",
+		"watchlist": "Watchlist",
+		"profile": "Profile",
+		"converter": "Converter"
+	},
 
+	"coin_fields": {
+		"name": "Name",
+		"price": "Price",
+		"change": "Change",
+		"change_24h": "Change 24h",
+		"volume_24h": "24h volume",
+		"market_cap": "Market cap"
+	},
+	
+	"errors": {
+		"general": "An error occurred.",
+		"unexpected_general": "An unexpected error occurred",
+		"fetching_coins": "Error fetching coins",
+		"fetching_data": "Error fetching data, try to reload the page, or visit the page later",
+		"not_found_page": "Page not found"
+	},
 
-	"Register": "Register",
-	"Login": "Login",
-	"Edit": "Edit",
-	"Cancel": "Cancel",
-	"Save": "Save",
-	"Reset": "Reset",
+	"market": {
+		"stats_title": "Market Stats",
+		"last_chart":  "Last 24 hour chart",
+		"rank": "Rank",
+		"btc_dominance": "Btc Dominance",
+		"total_24h_volume": "Total 24hVolume",
+		"total_market_cap": "Total MarketCap",
+		"total_exchanges": "Total Exchanges",
+		"total_markets": "Total Markets",
+		"total_coins": "Total Coins",
+		"best_performing": "Best performing coins",
+		"newest_coins": "Newest coins",
+		"error": "Error fetching global stats, reload the page or try it later"
+	},
 
-	"Only the user can see the history of previous conversions": "Only the user can see the history of previous conversions",
-	"Error loading history, try to reload the page": "Error loading history, try to reload the page",
-	"Convertasion list is empty": "Convertasion list is empty",
-	"Convertasion history": "Convertasion history",
-	"clear": "clear",
-	"Select Coin": "Select Coin",
-	"Convert": "Convert",
-	"History": "History",
+	"placeholders": {
+		"enter_email": "Enter email...",
+		"enter_password": "Enter password...",
+		"search_coins": "Search coins...",
+		"enter_login": "Enter your login",
+		"enter_image_url": "Enter your image url"
+	},
 
-	"An error occurred.": "An error occurred.",
-	"Warning!": "Warning!",
-	"Success.": "Success.",
-	"Error fetching data, try to reload the page, or visiti the page later": "Error fetching data, try to reload the page, or visiti the page later",
+	"messages": {
+		"please_enter_email": "Please enter your email.",
+		"please_enter_password": "Please enter your password.",
 
-	"Error fetching watchlist coins": "Error fetching watchlist coins",
-	"Your watchlist coins": "Your watchlist coins",
-	"Your watchlist is empty.": "Your watchlist is empty.",
-	"You can add coins to watchlist on coins page.": "You can add coins to watchlist on coins page.",
-	"Add coins": "Add coins",
-	"overview": "overview",
-	"Last 24 hour chart": "Last 24 hour chart"
+		"email_already_exist.": "User with such email already exist.",
+		"email_not_verified": "Your email is not verified",
+
+		"password_min_length": "Password should contain at least 6 characters",
+		"wrong_password_or_email": "Wrong password or email.",
+		"click_to_verify": "click to get verification mail",
+		"register_or_login_account": "Please register or log in your account to access the page.",
+		"logout_confirmation": "Are you sure you want to logout?",
+		"require_auth": "This page require auth.",
+		"password_reset_email_sent": "An email has been sent to you to reset your password.",
+		"password_reset": "Password Reset",
+		"no_account": "Don`t have an account?",
+		"already_have_account": "Already have an account?",
+		"redirect_to_main": "Soon you will redirect to the main page."
+	},
+
+	"converter": {
+		"title": "Converter",
+		"from": "From",
+		"to": "To",
+		"history_title": "Convertasion history",
+		"history_empty": "Convertasion list is empty",
+		"only_user_can_see": "Only the user can see the history of previous conversions",
+		"error_loading_history": "Error loading history, try to reload the page",
+		"select_coin": "Select Coin"
+	},
+	
+	"status": {
+		"warning": "Warning!",
+		"success": "Success.",
+		"error": "An error occurred."
+	},
+	
+	"watchlist": {
+		"title": "Your watchlist coins",
+		"empty": "Your watchlist is empty.",
+		"empty_description": "You can add coins to watchlist on coins page.",
+		"error": "Error fetching watchlist coins"
+	}
 }

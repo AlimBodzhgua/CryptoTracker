@@ -1,10 +1,10 @@
 import { Preview } from '@storybook/react';
-import { BrowserDecorator } from '../../src/config/storybook/BrowserDecorator';
-import { StyleDecorator } from '../../src/config/storybook/StyleDecorator';
-import { I18nDecorator } from '../../src/config/storybook/I18nDecorator';
-import { StoreDecorator } from '../../src/config/storybook/StoreDecorator';
-import { SuspenseDecorator } from '../../src/config/storybook/SuspenseDecorator';
-import '../../src/config/i18n/i18n';
+import { BrowserDecorator } from '../../src/shared/config/storybook/BrowserDecorator';
+import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
+import { I18nDecorator } from '../../src/shared/config/storybook/I18nDecorator';
+import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator';
+import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator';
+import '../../src/shared/config/i18n/i18n';
 
 const preview: Preview = {
 	parameters: {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
-
+import { Button } from 'shared/UI/Button/Button';
+import { DarkDecorator } from 'shared/config/storybook/DarkDecorator';
 import { Header } from './Header';
 
 const meta = {
@@ -10,30 +10,20 @@ const meta = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	decorators: DarkDecorator,
 	argTypes: {},
 } satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const UserLoggedIn: Story = {
-	args: {},
-	decorators: StoreDecorator({
-		user: {
-			authData: {
-				email: 'user@mail.ru',
-				login: 'user',
-				isEmailVerified: true,
-			},
-		},
-	}),
-};
-
-export const UserNotLoggedIn: Story = {
-	args: {},
-	decorators: StoreDecorator({
-		user: {
-			authData: undefined,
-		},
-	}),
+export const Primary: Story = {
+	args: {
+		elements: (
+			<>
+				<Button size='small'>Login</Button>
+				<Button size='small'>Register</Button>
+			</>
+		),
+	},
 };

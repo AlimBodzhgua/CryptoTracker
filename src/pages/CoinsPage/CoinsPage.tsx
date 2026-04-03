@@ -17,6 +17,7 @@ import { CURRENCY_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import classnames from 'classnames';
 import ResetIcon from './assets/reset.svg';
 import classes from './CoinsPage.module.scss';
+import Container from 'shared/UI/Container/Container';
 
 interface CoinsPageProps {
 	className?: string;
@@ -42,20 +43,22 @@ const CoinsPage: FC<CoinsPageProps> = ({ className }) => {
 			onScrollEnd={loadNextCoins}
 			withAutoScrollTopBtn
 		>
-			<div className={classes.topBar}>
-				<CoinsSearchBar />
-				<div className={classes.actions}>
-					<TagsSelector />
-					<PriceNotationSelector />
-					<Button className={classes.resetBtn} onClick={resetSettings}>
-						<ResetIcon className={classes.resetIcon}/>
-					</Button>
+			<Container size='xl'>
+				<div className={classes.topBar}>
+					<CoinsSearchBar />
+					<div className={classes.actions}>
+						<TagsSelector />
+						<PriceNotationSelector />
+						<Button className={classes.resetBtn} onClick={resetSettings}>
+							<ResetIcon className={classes.resetIcon}/>
+						</Button>
+					</div>
 				</div>
-			</div>
-			<CoinTable
-				currency={currency}
-				renderActionColumn={(coinId) => <AddToWatchListButton coinId={coinId} />}
-			/>
+				<CoinTable
+					currency={currency}
+					renderActionColumn={(coinId) => <AddToWatchListButton coinId={coinId} />}
+				/>
+			</Container>
 		</Page>
 	);
 };

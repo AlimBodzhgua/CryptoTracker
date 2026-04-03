@@ -1,8 +1,12 @@
 
 .CoinsSearchBar {
-	width: 100%;
+	width: 55%;
+	min-width: 330px;
+	flex-grow: 1;
+	
 	border: 1px solid #1F2330;
 	border-radius: 12px;
+
 	padding: 14px 20px 14px 28px;
 	color: var(--primary-text-color);
 	font-size: 15px;

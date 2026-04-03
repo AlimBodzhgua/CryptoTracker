@@ -16,18 +16,18 @@
 
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	justify-content: space-between;
-	gap: 16px;
-
-	width: 85%;
+	gap: 15px;
 }
 
 .actions {
-	height: 100%;
-
 	display: flex;
+	justify-content: flex-end;
 	align-items: center;
 	gap: 12px;
+
+	flex-wrap: wrap;
 }
 
 .resetBtn {
@@ -53,3 +53,4 @@
 	height: 24px;
 	transition: transform .2s linear;
 }
+

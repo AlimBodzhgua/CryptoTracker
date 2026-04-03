@@ -1,9 +1,9 @@
-import {
-	FC, ReactNode, Suspense, useCallback,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+
+import { Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from 'shared/UI/Layout/Layout';
 import { LoaderRing } from 'shared/UI/LoaderRing/LoaderRing';
+import { MainLayout } from '../layouts/MainLayout/MainLayout';
 import { RouteConfig } from './routeConfig';
 import { RequireAuth } from './RequireAuth';
 
@@ -16,7 +16,7 @@ export const AppRouter: FC = () => {
 
 	return (
 		<Routes>
-			<Route path='/' element={<Layout />}>
+			<Route path='/' element={<MainLayout />}>
 				{Object.values(RouteConfig).map((route) => (
 					<Route
 						key={route.path}

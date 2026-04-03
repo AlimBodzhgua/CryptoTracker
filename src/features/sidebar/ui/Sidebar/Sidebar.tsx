@@ -1,8 +1,11 @@
-import { FC, memo, useState } from 'react';
+import type { FC } from 'react';
+
+import { memo, useState } from 'react';
 import { Button } from 'shared/UI/Button/Button';
 import classnames from 'classnames';
-import { sidebarList } from '../../model/sidebarList';
+
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { sidebarList } from '../../model/sidebarList';
 import LeftIcon from '../../assets/left_arrow.svg';
 import RightIcon from '../../assets/right_arrow.svg';
 import classes from './Sidebar.module.scss';
@@ -12,16 +15,16 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
-	const [collapsed, setCollapsed] = useState<boolean>(false);
+	const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
 
-	const onToggleCollapsed = () => {
-		setCollapsed((prev) => !prev);
+	const onToggleIsCollapsed = () => {
+		setIsCollapsed((prev) => !prev);
 	};
 
 	return (
 		<aside
 			className={classnames(classes.Sidebar, className, {
-				[classes.collapsed]: collapsed,
+				[classes.collapsed]: isCollapsed,
 			})}
 			data-testid='sidebar'
 		>
@@ -31,18 +34,18 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 					<SidebarItem
 						key={item.path}
 						item={item}
-						collapsed={collapsed}
+						collapsed={isCollapsed}
 					/>
 				))}
 			</div>
 			<Button
 				className={classes.toggleBtn}
-				onClick={onToggleCollapsed}
+				onClick={onToggleIsCollapsed}
 				size='small'
 				theme='clear'
 				data-testid='toggle-button'
 			>
-				{collapsed ? (
+				{isCollapsed ? (
 					<RightIcon className={classes.arrowIcon} />
 				) : (
 					<LeftIcon className={classes.arrowIcon} />

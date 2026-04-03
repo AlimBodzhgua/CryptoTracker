@@ -14,7 +14,7 @@
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npx loki test -port 6006",
+    "test:ui": "npx loki test -port 6000",
     "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui\"",
     "test:ui:ok": "npx loki approve",
     "prepare": "husky",

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { sidebarList } from 'features/sidebar/model/sidebarList';
+import { DarkDecorator } from 'shared/config/storybook/DarkDecorator';
 import { SidebarItem } from './SidebarItem';
 
 const meta = {
@@ -10,6 +11,7 @@ const meta = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	decorators: DarkDecorator,
 	argTypes: {},
 } satisfies Meta<typeof SidebarItem>;
 

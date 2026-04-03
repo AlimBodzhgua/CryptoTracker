@@ -29,23 +29,15 @@
 	fill: #ffff;
 }
 
-.emptyMessage {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-
-	margin-top: 120px;
-}
 
 .iconWrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
+	
 	width: 50px;
 	height: 50px;
-
+	
 	border-radius: 50%;
 	background-color: grey;
 	margin-bottom: 8px;
@@ -56,15 +48,23 @@
 	fill: red!important;
 }
 
+.emptyMessage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	margin-top: 120px;
+}
+
 .emptyTitle {
 	font-size: 24px;
 	margin-bottom: 12px;
-
+	color: var(--primary-text-color);
 }
 
 .emptySubtitle {
 	font-size: 20px;
 	margin-bottom: 18px;
-
 	color: grey;
 }

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { DarkDecorator } from 'shared/config/storybook/DarkDecorator';
 import { Button } from './Button';
 
 const meta = {
@@ -10,6 +11,7 @@ const meta = {
 	},
 	tags: ['autodocs'],
 	argTypes: {},
+	decorators: DarkDecorator,
 } satisfies Meta<typeof Button>;
 
 export default meta;

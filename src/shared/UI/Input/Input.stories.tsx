@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { DarkDecorator } from 'shared/config/storybook/DarkDecorator';
 import { Input } from './Input';
 
 const meta = {
@@ -9,6 +10,7 @@ const meta = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	decorators: DarkDecorator,
 	argTypes: {},
 } satisfies Meta<typeof Input>;
 

@@ -17,10 +17,10 @@ export const HistoryListSkeleton: FC<HistoryListSkeletonProps> = ({ className })
 					<Skeleton
 						// eslint-disable-next-line
 						key={index}
-						width='240px'
+						width='100%'
 						height='32px'
 						radius='6px'
-						className={classes.listSkeleton}
+						className={classes.skeletonItem}
 					/>
 				))}
 		</ul>

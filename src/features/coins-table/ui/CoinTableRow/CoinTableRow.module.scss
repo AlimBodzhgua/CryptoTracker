@@ -6,12 +6,13 @@
 	td {
 		padding: 10px;
 		font-family: inherit;
+		vertical-align: middle;
 		text-align: center;
 		font-weight: 500;
 	}
 
 	.rank {
-		border-right: 1px solid #1F2330;
+		border-right: 2px solid #1F2330;
 	}
 
 	.bigColumn {
@@ -80,6 +81,6 @@
 	}
 }
 
-.CoinTableRow:nth-child(even) {
+.CoinTableRow:nth-child(odd) {
 	background-color: #1A1E2A;
 }

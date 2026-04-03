@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-
+import { DarkDecorator } from 'shared/config/storybook/DarkDecorator';
 import { Skeleton } from './Skeleton';
 
 const meta = {
@@ -10,6 +10,7 @@ const meta = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	decorators: DarkDecorator,
 	argTypes: {},
 } satisfies Meta<typeof Skeleton>;
 
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		width: 45,
+		width: 245,
 		height: 45,
 	},
 };

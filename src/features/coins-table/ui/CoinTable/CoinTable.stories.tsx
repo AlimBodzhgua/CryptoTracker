@@ -1,12 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { AddToWatchListButton } from 'features/user';
 import { CoinTable } from './CoinTable';
 import classes from './CoinTable.module.scss';
 
 const meta = {
 	title: 'components/CoinTable',
 	component: CoinTable,
+	args: {
+		renderActionColumn: (coinId) => <AddToWatchListButton coinId={coinId} />
+	},
 	parameters: {
 		layout: 'centered',
 	},

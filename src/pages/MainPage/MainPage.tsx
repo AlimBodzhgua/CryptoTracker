@@ -9,6 +9,7 @@ import { currencyActions, currencySelectors } from 'features/currency';
 import { CURRENCY_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import classnames from 'classnames';
 import classes from './MainPage.module.scss';
+import Container from 'shared/UI/Container/Container';
 
 interface MainPageProps {
 	className?: string;
@@ -28,7 +29,9 @@ const MainPage: FC<MainPageProps> = ({ className }) => {
 
 	return (
 		<Page className={classnames(classes.MainPage, className)}>
-			<GlobalStats currentCurrency={currentCurrency} afterFetch={initCurrency} />
+			<Container size='xl'>
+				<GlobalStats currentCurrency={currentCurrency} afterFetch={initCurrency} />
+			</Container>
 		</Page>
 	);
 };

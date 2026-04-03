@@ -8,6 +8,9 @@ import '../../src/shared/config/i18n/i18n';
 
 const preview: Preview = {
 	parameters: {
+		darkMode: {
+			current: 'dark',
+		},
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,

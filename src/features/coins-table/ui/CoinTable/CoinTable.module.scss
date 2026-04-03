@@ -36,6 +36,8 @@
 	border-collapse: separate;
 	border-spacing: 15px;
 	border-top: none;
+	border-radius: 0;
+	transform: translateY(-10px);
 
 	.colHeader {
 		padding: 2px 0;

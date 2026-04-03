@@ -5,12 +5,12 @@ import { Header } from 'features/header';
 import { AuthActionsMenu } from 'features/user';
 import { CurrencySwitcher } from 'features/currency';
 import { LangSwitcher } from 'features/lang-switcher';
-import classes from './Layout.module.scss';
+import classes from './MainLayout.module.scss';
 
 export const MainLayout: FC = () => (
-	<div className={classes.Layout}>
+	<div className={classes.MainLayout}>
 		<Sidebar />
-		<div className={classes.LayoutInner}>
+		<div className={classes.MainLayoutInner}>
 			<Header
 				elements={
 					<>

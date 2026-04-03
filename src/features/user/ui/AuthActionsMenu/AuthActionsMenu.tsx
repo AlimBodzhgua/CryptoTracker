@@ -1,7 +1,8 @@
-import { FC, useCallback, useEffect, useState, memo } from 'react';
+import type { FC } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { Button } from 'shared/UI/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { USER_LOCALSTORAGE_KEY } from 'shared/constants/localStorage';
 import classnames from 'classnames';
@@ -23,27 +24,26 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 	const [searchParams, setSearchParams] = useSearchParams();
 	const isAuth = useAppSelector(userSelectors.selectUser);
 	const dispatch = useAppDispatch();
-	const { pathname } = useLocation();
 
-	const onOpenRegisterModal = useCallback(() => {
+	const onOpenRegisterModal = () => {
 		setIsRegisterModal(true);
 		setSearchParams({ modal: 'register' });
-	}, [pathname]);
+	};
 
-	const onCloseRegisterModal = useCallback(() => {
+	const onCloseRegisterModal = () => {
 		setIsRegisterModal(false);
 		setSearchParams('');
-	}, [pathname]);
+	};
 
-	const onOpenLoginModal = useCallback(() => {
+	const onOpenLoginModal = () => {
 		setIsLoginModal(true);
 		setSearchParams({ modal: 'login' });
-	}, [pathname]);
+	};
 
-	const onCloseLoginModal = useCallback(() => {
+	const onCloseLoginModal = () => {
 		setIsLoginModal(false);
 		setSearchParams('');
-	}, [pathname]);
+	};
 
 	useEffect(() => {
 		if (searchParams.has('modal', 'register')) {
@@ -56,7 +56,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 		}
 	}, [searchParams]);
 
-	const onLogout = useCallback(async () => {
+	const onLogout = async () => {
 		const confirm = window.confirm(t('messages.logout_confirmation'));
 
 		if (confirm) {
@@ -66,7 +66,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 				localStorage.removeItem(USER_LOCALSTORAGE_KEY);
 			}
 		}
-	}, [dispatch]);
+	};
 
 	return (
 		<div

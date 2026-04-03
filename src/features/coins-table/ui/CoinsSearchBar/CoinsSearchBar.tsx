@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from 'shared/hooks/redux';
 import { useDebounce } from 'shared/hooks/useDebounce';
 import { Input } from 'shared/UI/Input/Input';
+import { Hotkey } from 'shared/UI/Hotkey/Hotkey';
 import classnames from 'classnames';
 
-import SearchIcon from '../../assets/search.svg';
-import { coinsActions, coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinsSearchBar.module.scss';
+import { coinsActions, coinsSelectors } from '../../model/coinsSlice';
+import SearchIcon from '../../assets/search.svg';
 
 interface CoinsSearchBarProps {
 	className?: string;
@@ -51,17 +52,6 @@ export const CoinsSearchBar: FC<CoinsSearchBarProps> = memo((props) => {
 		setSearchQuery(e.target.value);
 	};
 
-	const renderHotkeys = useCallback(
-		() => (
-			<div className={classes.hotkeyHelp}>
-				<span className={classes.hotkeyItem}>alt</span>
-				<span className={classes.hotkeyPlus}>+</span>
-				<span className={classes.hotkeyItem}>enter</span>
-			</div>
-		),
-		[],
-	);
-
 	return (
 		<Input
 			type='text'
@@ -70,7 +60,13 @@ export const CoinsSearchBar: FC<CoinsSearchBarProps> = memo((props) => {
 			onChange={onSearch}
 			ref={inputRef}
 			addonBefore={<SearchIcon className={classes.icon} />}
-			addonAfter={renderHotkeys()}
+			addonAfter={
+				<div className={classes.hotkeys}>
+					<Hotkey>alt</Hotkey>
+					<span className={classes.hotkeyPlus}>+</span>
+					<Hotkey>enter</Hotkey>
+				</div>
+			}
 			className={classnames(classes.CoinsSearchBar, className)}
 		/>
 	);

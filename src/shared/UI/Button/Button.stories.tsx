@@ -29,6 +29,20 @@ export const Secondary: Story = {
 	},
 };
 
+export const White: Story = {
+	args: {
+		children: 'button',
+		theme: 'white',
+	},
+};
+
+export const Red: Story = {
+	args: {
+		children: 'button',
+		theme: 'red',
+	},
+};
+
 export const Clear: Story = {
 	args: {
 		children: 'button',
@@ -44,7 +58,7 @@ export const SizeBig: Story = {
 	},
 };
 
-export const SizeMeduim: Story = {
+export const SizeMedium: Story = {
 	args: {
 		children: 'button',
 		theme: 'primary',

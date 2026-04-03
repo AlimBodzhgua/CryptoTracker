@@ -16,17 +16,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-	args: {},
+	args: {
+		placeholder: 'Enter data...'
+	},
 };
 
 export const WithAddonBefore: Story = {
 	args: {
+		placeholder: 'Enter data...',
 		addonBefore: <div>before</div>,
 	},
 };
 
 export const WithAddonAfter: Story = {
 	args: {
+		placeholder: 'Enter data...',
 		addonAfter: <div>after</div>,
 	},
 };

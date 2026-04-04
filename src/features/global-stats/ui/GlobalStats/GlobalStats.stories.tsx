@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { ContainerDecorator } from 'shared/config/storybook/ContainerDecorator';
 
 import { GlobalStats } from './GlobalStats';
+import { DarkDecorator } from 'shared/config/storybook/DarkDecorator';
 
 const meta = {
 	title: 'components/GlobalStats',
@@ -10,6 +12,7 @@ const meta = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	decorators: [ContainerDecorator, DarkDecorator],
 	argTypes: {},
 } satisfies Meta<typeof GlobalStats>;
 
@@ -50,6 +53,7 @@ export const Primary: Story = {
 				bestCoins: coinList,
 				newestCoins: coinList,
 			},
+			error: undefined,
 		},
 	}),
 };
@@ -59,9 +63,9 @@ export const WithError: Story = {
 		currentCurrency: 'USD',
 	},
 	decorators: StoreDecorator({
-		coins: {
+		globalStats: {
 			isLoading: false,
-			error: 'Error message',
+			error: 'Error',
 		},
 	}),
 };
@@ -71,7 +75,7 @@ export const IsLoading: Story = {
 		currentCurrency: 'USD',
 	},
 	decorators: StoreDecorator({
-		coins: {
+		globalStats: {
 			isLoading: true,
 		},
 	}),

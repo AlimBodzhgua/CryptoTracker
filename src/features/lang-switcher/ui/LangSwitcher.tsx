@@ -1,10 +1,11 @@
-import { FC, memo } from 'react';
+import type { FC } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/UI/Button/Button';
 import classnames from 'classnames';
 
-import GlobeIcon from '../assets/globe.svg';
 import classes from './LangSwitcher.module.scss';
+import GlobeIcon from '../assets/globe.svg';
 
 interface LangSwitcherProps {
 	className?: string;
@@ -27,23 +28,17 @@ export const LangSwitcher: FC<LangSwitcherProps> = memo(({ className }) => {
 			<GlobeIcon className={classes.icon} />
 			<div className={classes.languages}>
 				<span
-					className={classnames(
-						classes.language,
-						i18n.language === 'ru'
-							? classes.activeRu
-							: classes.inactiveRu,
-					)}
+					className={classnames(classes.language, {
+						[classes.active]: i18n.language === 'ru',
+					})}
 				>
 					Ru
 				</span>
 				<span className={classes.separator} />
 				<span
-					className={classnames(
-						classes.language,
-						i18n.language === 'en'
-							? classes.activeEn
-							: classes.inactiveEn,
-					)}
+					className={classnames(classes.language, {
+						[classes.active]: i18n.language === 'en',
+					})}
 				>
 					En
 				</span>

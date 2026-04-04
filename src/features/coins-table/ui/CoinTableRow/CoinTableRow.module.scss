@@ -66,10 +66,16 @@
 	}
 
 	.symbol {
-		display: block;
-		border: 1px solid grey;
-		padding: 1px;
+		color: var(--primary-text-color);
+		font-weight: 600;
+
+		border: 1px solid none;
+		border-radius: 3px;
+		background-color: var(--accent-color);
+		
 		height: fit-content;
+		width: fit-content;
+		padding: 2px 3px;
 	}
 
 	.positive {

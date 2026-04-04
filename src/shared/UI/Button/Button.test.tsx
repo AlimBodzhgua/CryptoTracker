@@ -6,7 +6,7 @@ describe('Button', () => {
 		render(
 			<Button
 				theme='primary'
-				size='medium'
+				size='md'
 				disabled
 			>
 				click

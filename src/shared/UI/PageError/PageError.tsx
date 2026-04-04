@@ -21,7 +21,7 @@ export const PageError: FC<PageErrorProps> = ({ className }) => {
 				className={classes.reload}
 				onClick={onReload}
 				theme='secondary'
-				size='big'
+				size='lg'
 			>
 				{t('buttons.reload_page')}
 			</Button>

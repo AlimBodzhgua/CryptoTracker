@@ -76,7 +76,7 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 				<div className={classes.itemActions}>
 					<Button
 						theme='primary'
-						size='small'
+						size='sm'
 						onClick={onOpenOverviewModal}
 						className={classes.overviewBtn}
 					>
@@ -87,7 +87,7 @@ export const WatchListItem: FC<WatchListItemProps> = memo((props) => {
 						isOpen={isOverviewModal}
 						onClose={onCloseOverviewModal}
 					/>
-					<Button theme='clear' size='small' onClick={onRemoveFromWatchList}>
+					<Button theme='clear' size='sm' onClick={onRemoveFromWatchList}>
 						<StarSelectedIcon className={classes.starIcon} />
 					</Button>
 					<Button theme='clear' className={classes.dragHandleBtn}>

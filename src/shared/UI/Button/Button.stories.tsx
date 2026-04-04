@@ -56,7 +56,7 @@ export const SizeBig: Story = {
 	args: {
 		children: 'button',
 		theme: 'primary',
-		size: 'big',
+		size: 'lg',
 	},
 };
 
@@ -64,7 +64,7 @@ export const SizeMedium: Story = {
 	args: {
 		children: 'button',
 		theme: 'primary',
-		size: 'medium',
+		size: 'md',
 	},
 };
 
@@ -72,6 +72,6 @@ export const SizeSmall: Story = {
 	args: {
 		children: 'button',
 		theme: 'primary',
-		size: 'small',
+		size: 'sm',
 	},
 };

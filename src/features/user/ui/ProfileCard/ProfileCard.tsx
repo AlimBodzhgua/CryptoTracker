@@ -78,7 +78,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
 				{t('messages.email_not_verified')}
 				<Button
 					theme='clear'
-					size='small'
+					size='sm'
 					className={classes.verifyBtn}
 					onClick={onGetVerificationMessage}
 				>

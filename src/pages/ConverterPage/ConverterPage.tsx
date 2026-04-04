@@ -46,7 +46,7 @@ const ConverterPage: FC<ConverterPageProps> = ({ className }) => {
 						<Button
 							className={classes.historyBtn}
 							theme='clear'
-							size='big'
+							size='lg'
 							onClick={onShowHistory}
 						>
 							<HistoryIcon className={classes.historyIcon} />

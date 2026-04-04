@@ -37,7 +37,7 @@ const HistoryList: FC<HistoryListProps> = ({ className }) => {
 				<h2 className={classes.title}>{t('converter.history_title')}</h2>
 				<Button
 					className={classes.clearBtn}
-					size='small'
+					size='sm'
 					onClick={onClear}
 					disabled={isLoading}
 				>

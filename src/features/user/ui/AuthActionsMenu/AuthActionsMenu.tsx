@@ -76,7 +76,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 			{isAuth ? (
 				<Button
 					theme='primary'
-					size='small'
+					size='sm'
 					onClick={onLogout}
 					data-testid='logout-button'
 				>
@@ -86,7 +86,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 				<>
 					<Button
 						theme='primary'
-						size='small'
+						size='sm'
 						onClick={onOpenRegisterModal}
 						data-testid='signup-button'
 					>
@@ -99,7 +99,7 @@ export const AuthActionsMenu: FC<AuthActionsMenuProps> = memo(({ className }) =>
 
 					<Button
 						theme='primary'
-						size='small'
+						size='sm'
 						onClick={onOpenLoginModal}
 						data-testid='login-button'
 					>

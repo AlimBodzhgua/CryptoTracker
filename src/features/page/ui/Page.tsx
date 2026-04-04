@@ -86,7 +86,7 @@ export const Page: FC<PageProps> = (props) => {
 			{scrollAppearance.showBtn && withAutoScrollTopBtn && (
 				<Button
 					theme='clear'
-					size='small'
+					size='sm'
 					className={classes.scrollBtn}
 					onClick={onScrollClick}
 				>

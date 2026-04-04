@@ -124,7 +124,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 				{t('messages.already_have_account')}
 				<Button
 					theme='clear'
-					size='small'
+					size='sm'
 					onClick={onMoveToLogin}
 					className={classes.loginBtn}
 					type='reset'

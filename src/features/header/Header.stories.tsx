@@ -21,8 +21,8 @@ export const Primary: Story = {
 	args: {
 		elements: (
 			<>
-				<Button size='small'>Login</Button>
-				<Button size='small'>Register</Button>
+				<Button size='sm'>Login</Button>
+				<Button size='sm'>Register</Button>
 			</>
 		),
 	},

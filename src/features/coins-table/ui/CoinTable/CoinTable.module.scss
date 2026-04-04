@@ -23,7 +23,12 @@
 .colHeader {
 	padding: 15px 0;
 	border-bottom: 1px solid #1F2330;
-	color: grey;
+	color: var(--secondary-text-color);
+	transition: color .2s linear;
+}
+
+.colHeader:hover {
+	color: var(--primary-text-color);
 }
 
 .colHeader:nth-child(1) {

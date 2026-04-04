@@ -44,7 +44,7 @@ const coinsList = [
 	{
 		uuid: 'razxDUgYGNAdQ',
 		symbol: 'ETH',
-		name: 'Etherum',
+		name: 'Ethereum',
 		iconUrl: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg',
 		rank: 2,
 		price: '3248.5472',

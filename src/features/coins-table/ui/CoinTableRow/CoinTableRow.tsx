@@ -1,8 +1,10 @@
-import { FC, memo, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
+import type { Coin, CurrencyType } from 'shared/types/coin';
+
+import { memo } from 'react';
 import { useFormatter } from 'shared/hooks/useFormatter';
 import { useAppSelector } from 'shared/hooks/redux';
 import classnames from 'classnames';
-import type { Coin, CurrencyType } from 'shared/types/coin';
 
 import { coinsSelectors } from '../../model/coinsSlice';
 import classes from './CoinTableRow.module.scss';
@@ -34,13 +36,11 @@ export const CoinTableRow: FC<CoinTableRowProps> = memo((props) => {
 			</td>
 			<td>{formatter.format(Number(coin.price))}</td>
 			<td className={coin.change?.startsWith('-') ? classes.negative : classes.positive}>
-				{coin.change ? `${coin.change}%` : '-'}
+				{coin.change?.startsWith('-') ? `${coin.change}%` : `+${coin.change}%`}
 			</td>
 			<td>{formatter.format(Number(coin['24hVolume']))}</td>
 			<td>{formatter.format(Number(coin.marketCap))}</td>
-			<td>
-				{renderActionColumn && renderActionColumn(coin.uuid)}
-			</td>
+			<td>{renderActionColumn && renderActionColumn(coin.uuid)}</td>
 		</tr>
 	);
 });

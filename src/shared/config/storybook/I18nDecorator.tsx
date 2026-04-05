@@ -2,13 +2,14 @@ import { Suspense, useEffect } from 'react';
 import { Decorator } from '@storybook/react';
 import { I18nextProvider } from 'react-i18next';
 
-import i18n from 'shared/config/i18n/i18n';
+import i18n from 'shared/config/i18n/i18nForStorybook';
 
 export const I18nDecorator: Decorator = (Story, { globals }) => {
-	const { locale } = globals;
+	const { locale } = globals ?? 'en';
 
 	useEffect(() => {
-		i18n.changeLanguage(locale);
+		const normalizedLocale = locale.startsWith('en') ? 'en' : 'ru';
+		i18n.changeLanguage(normalizedLocale);
 	}, [locale]);
 
 	return (

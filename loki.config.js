@@ -1,5 +1,9 @@
 module.exports = {
 	chromeSelector: '#storybook-root, #root',
+	chromeLoadTimeout: 45000,
+	waitFor: 3000,
+	chromeConcurrency: 2,
+	chromeRetries: 2,
 	diffingEngine: 'pixelmatch',
 	configurations: {
 		'chrome.laptop': {

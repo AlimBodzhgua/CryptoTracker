@@ -116,7 +116,7 @@ export const Converter: FC<ConverterProps> = memo((props) => {
 			<Button
 				className={classes.convertBtn}
 				onClick={onConvert}
-				disabled={isLoading}
+				isLoading={isLoading}
 			>
 				{t('buttons.convert')}
 			</Button>

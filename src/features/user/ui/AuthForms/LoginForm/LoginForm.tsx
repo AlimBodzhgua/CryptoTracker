@@ -133,7 +133,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				className={classes.button}
 				theme='secondary'
 				type='submit'
-				disabled={isLoading}
+				isLoading={isLoading}
 			>
 				{t('buttons.login')}
 			</Button>
@@ -142,7 +142,7 @@ const LoginForm: FC<LoginFormProps> = memo((props) => {
 				size='sm'
 				onClick={onLoginWithGoogle}
 				className={classes.googleBtn}
-				disabled={isLoading}
+				isLoading={isLoading}
 				type='reset'
 			>
 				<GoogleIcon className={classes.googleIcon} />

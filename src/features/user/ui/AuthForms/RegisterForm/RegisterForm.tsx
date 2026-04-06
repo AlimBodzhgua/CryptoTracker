@@ -114,7 +114,7 @@ const RegisterForm: FC<RegisterFormProps> = memo((props) => {
 
 			<Button
 				className={classes.button}
-				disabled={isLoading}
+				isLoading={isLoading}
 				theme='secondary'
 				type='submit'
 			>

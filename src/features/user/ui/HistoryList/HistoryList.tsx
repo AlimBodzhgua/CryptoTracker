@@ -39,7 +39,7 @@ const HistoryList: FC<HistoryListProps> = ({ className }) => {
 					className={classes.clearBtn}
 					size='sm'
 					onClick={onClear}
-					disabled={isLoading}
+					isLoading={isLoading}
 				>
 					{t('buttons.clear')}
 				</Button>

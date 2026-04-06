@@ -75,3 +75,25 @@ export const SizeSmall: Story = {
 		size: 'sm',
 	},
 };
+
+
+export const WithLoaderOnStart: Story = {
+	args: {
+		children: 'button',
+		theme: 'primary',
+		size: 'md',
+		isLoading: true,
+		loaderPlacement: 'start',
+	},
+};
+
+
+export const WithLoaderOnEnd: Story = {
+	args: {
+		children: 'button',
+		theme: 'primary',
+		size: 'md',
+		isLoading: true,
+		loaderPlacement: 'end',
+	},
+};

@@ -3,6 +3,9 @@
 	border: none;
 	padding: 4px;
 	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	font-size: inherit;
 	font-weight: 600;
@@ -58,15 +61,54 @@
 .sm {
 	font-size: 14px;
 	padding: 6px 14px;
-	border-radius: 6px
+	border-radius: 6px;
+
+	.loader {
+		width: 16px;
+		height: 16px;
+	}
+	
+	.loaderStart {
+		margin-right: 2px;		
+	}
+	
+	.loaderEnd {
+		margin-left: 2px;
+	}
 }
 
 .md {
-	padding: 8px 34px;
+	padding: 8px 22px;
 	font-size: 16px;
+
+	.loader {
+		width: 18px;
+		height: 18px;
+	}
+	
+	.loaderStart {
+		margin-right: 2px;		
+	}
+	
+	.loaderEnd {
+		margin-left: 2px;
+	}
 }
 
 .lg {
 	font-size: 18px;
 	padding: 10px 36px;
+
+	.loader {
+		width: 21px;
+		height: 21px;
+	}
+	
+	.loaderStart {
+		margin-right: 3px;
+	}
+	
+	.loaderEnd {
+		margin-left: 3px;
+	}
 }

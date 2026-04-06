@@ -88,7 +88,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 					theme='secondary'
 					type='submit'
 					className={classes.resetBtn}
-					disabled={isLoading}
+					isLoading={isLoading}
 				>
 					{t('buttons.reset')}
 				</Button>
@@ -96,7 +96,7 @@ const PasswordResetForm: FC<PasswordResetFormProps> = memo((props) => {
 					theme='secondary'
 					className={classes.cancelBtn}
 					onClick={onCancel}
-					disabled={isLoading}
+					isLoading={isLoading}
 				>
 					{t('buttons.cancel')}
 				</Button>

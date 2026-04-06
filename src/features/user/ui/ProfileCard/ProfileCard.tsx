@@ -166,7 +166,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
 							theme='red'
 							className={classes.editBtn}
 							onClick={onCancel}
-							disabled={isLoading}
+							isLoading={isLoading}
 						>
 							{t('buttons.cancel')}
 						</Button>
@@ -174,7 +174,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
 							theme='white'
 							className={classes.editBtn}
 							onClick={onSave}
-							disabled={isLoading}
+							isLoading={isLoading}
 						>
 							{t('buttons.save')}
 						</Button>
